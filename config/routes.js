@@ -21,4 +21,9 @@ router.route('/users/:id')
 router.route('/lessons')
   .get(lessons.index);
 
+router.route('/lessons/:id')
+  .get(lessons.show)
+  .put(lessons.update)
+  .delete(lessons.delete);
+
 module.exports = router;
