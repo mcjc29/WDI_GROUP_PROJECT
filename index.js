@@ -7,7 +7,7 @@ const customResponses = require('./lib/customResponses');
 const errorHandler    = require('./lib/errorHandler');
 
 const app             = express();
-const environment      = app.get('env');
+const environment     = app.get('env');
 
 const mongoose        = require('mongoose');
 mongoose.Promise      = require('bluebird');
