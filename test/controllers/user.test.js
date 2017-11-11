@@ -44,6 +44,17 @@ describe('Users', function() {
         .expect(200, done);
     });
 
+    it('should return a JSON object', done => {
+      api
+        .get('/api/users')
+        .set('Accept', 'application/json')
+        .end((err, res) => {
+          expect(res.header['content-type'])
+            .to.be.eq('application/json; charset=utf-8');
+          done();
+        });
+    });
+
     it('should return an array of users', function(done) {
       api
         .get('/api/users')
@@ -103,6 +114,44 @@ describe('Users', function() {
     });
   });
 
+  describe('returns multiple students', () => {
+
+    beforeEach(done => {
+      User.create([
+        {
+          firstName: 'person1',
+          lastName: 'person1',
+          image: 'person',
+          role: 'student',
+          email: 'person1@person.com',
+          password: 'password',
+          passwordConfirmation: 'password'
+        },
+        {
+          firstName: 'person2',
+          lastName: 'person2',
+          image: 'person',
+          role: 'student',
+          email: 'person2@person.com',
+          password: 'password',
+          passwordConfirmation: 'password'
+        }
+      ])
+        .then(() => done())
+        .catch(done);
+    });
+
+    it('should create 2 users', done => {
+      api
+        .get('/api/users')
+        .set('Accept', 'application/json')
+        .end((err, res) => {
+          expect(res.body.length).to.equal(2);
+          done();
+        });
+    });
+  });
+
   describe('GET /api/users/:id', () => {
 
     let user;
@@ -130,6 +179,33 @@ describe('Users', function() {
         .get(`/api/users/${user.id}`)
         .set('Accept', 'application/json')
         .expect(200, done);
+    });
+
+    it('should return a JSON object', done => {
+      api
+        .get(`/api/users/${user.id}`)
+        .set('Accept', 'application/json')
+        .end((err, res) => {
+          expect(res.header['content-type'])
+            .to.be.eq('application/json; charset=utf-8');
+          done();
+        });
+    });
+    it('should return object with properities: _id, firstName, lastName, image, role, email, createdAt, updatedAt', done => {
+      api.get(`/api/users/${user.id}`)
+        .set('Accept', 'application/json')
+        .end((err, res) => {
+          expect(res.body)
+            .and.have.all.keys([
+              'id',
+              'firstName',
+              'lastName',
+              'image',
+              'role',
+              'email'
+            ]);
+          done();
+        });
     });
   });
 
@@ -169,6 +245,32 @@ describe('Users', function() {
           passwordConfirmation: 'password'
         })
         .expect(200, done);
+    });
+    it('should return a JSON object', done => {
+      api
+        .get(`/api/users/${user.id}`)
+        .set('Accept', 'application/json')
+        .end((err, res) => {
+          expect(res.header['content-type'])
+            .to.be.eq('application/json; charset=utf-8');
+          done();
+        });
+    });
+    it('should return object with properities: _id, firstName, lastName, image, role, email, createdAt, updatedAt', done => {
+      api.get(`/api/users/${user.id}`)
+        .set('Accept', 'application/json')
+        .end((err, res) => {
+          expect(res.body)
+            .and.have.all.keys([
+              'id',
+              'firstName',
+              'lastName',
+              'image',
+              'role',
+              'email'
+            ]);
+          done();
+        });
     });
     it('should return updated data', function(done) {
       api
@@ -220,5 +322,4 @@ describe('Users', function() {
         .expect(204, done);
     });
   });
-
 });
