@@ -7,7 +7,7 @@ const customResponses = require('./lib/customResponses');
 const errorHandler    = require('./lib/errorHandler');
 
 const app             = express();
-const environment      = app.get('env');
+const environment     = app.get('env');
 
 const mongoose        = require('mongoose');
 mongoose.Promise      = require('bluebird');
@@ -24,6 +24,8 @@ app.get('/*', (req, res) => res.sendFile(`${__dirname}/public/index.html`));
 
 app.use(errorHandler);
 
-app.listen(port, () => console.log(`Express is up and running on port: ${port}`));
+if(environment !== 'test') {
+  app.listen(port, () => console.log(`Express is up and running on port: ${port}`));
+}
 
 module.exports = app;

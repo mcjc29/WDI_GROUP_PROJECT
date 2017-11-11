@@ -1,5 +1,6 @@
 /* globals api, expect, describe, xdescribe, beforeEach, afterEach, it, xit */
 require('../spec_helper');
+
 const User = require('../../models/user');
 
 describe('Authentications', function() {
@@ -33,17 +34,19 @@ describe('Authentications', function() {
         .end((err, res) => {
           expect(res.status).to.eq(200);
           expect(res.body).to.be.a('object');
-          expect(res.body.message).to.eq('Thanks for registering.');
+          expect(res.body.message).to.eq('Welcome person!');
           expect(res.body.token).to.be.a('string');
           done();
         });
     });
-    it('should not register a user without a firstName', function(done) {
+    it('should not register a user without a first name', function(done) {
       api
         .post('/api/register')
         .set('Accept', 'application/json')
         .send({
           user: {
+            lastName: 'person',
+            role: 'student',
             email: 'person@person.com',
             password: 'password',
             passwordConfirmation: 'password'
@@ -57,44 +60,6 @@ describe('Authentications', function() {
           done();
         });
     });
-    it('should not register a user without a lastName', function(done) {
-      api
-        .post('/api/register')
-        .set('Accept', 'application/json')
-        .send({
-          user: {
-            email: 'person@person.com',
-            password: 'password',
-            passwordConfirmation: 'password'
-          }
-        })
-        .end((err, res) => {
-          expect(res.status).to.eq(400);
-          expect(res.body).to.be.a('object');
-          expect(res.body.errors).to.eq('ValidationError: lastName: Path `lastName` is required.');
-          expect(res.body.message).to.eq('Bad Request');
-          done();
-        });
-    });
-    it('should not register a user without a role', function(done) {
-      api
-        .post('/api/register')
-        .set('Accept', 'application/json')
-        .send({
-          user: {
-            email: 'person@person.com',
-            password: 'password',
-            passwordConfirmation: 'password'
-          }
-        })
-        .end((err, res) => {
-          expect(res.status).to.eq(400);
-          expect(res.body).to.be.a('object');
-          expect(res.body.errors).to.eq('ValidationError: role: Path `role` is required.');
-          expect(res.body.message).to.eq('Bad Request');
-          done();
-        });
-    });
     it('should not register a user without an email', function(done) {
       api
         .post('/api/register')
@@ -102,6 +67,8 @@ describe('Authentications', function() {
         .send({
           user: {
             firstName: 'person',
+            lastName: 'person',
+            role: 'student',
             password: 'password',
             passwordConfirmation: 'password'
           }
@@ -121,14 +88,16 @@ describe('Authentications', function() {
         .send({
           user: {
             firstName: 'person',
+            lastName: 'person',
             email: 'person@person.com',
+            role: 'student',
             passwordConfirmation: 'password'
           }
         })
         .end((err, res) => {
           expect(res.status).to.eq(400);
           expect(res.body).to.be.a('object');
-          expect(res.body.errors).to.eq('ValidationError: password: required');
+          expect(res.body.errors).to.eq('ValidationError: passwordHash: Path `passwordHash` is required.');
           expect(res.body.message).to.eq('Bad Request');
           done();
         });
@@ -140,14 +109,16 @@ describe('Authentications', function() {
         .send({
           user: {
             firstName: 'person',
+            lastName: 'person',
             email: 'person@person.com',
+            role: 'student',
             password: 'password'
           }
         })
         .end((err, res) => {
           expect(res.status).to.eq(400);
           expect(res.body).to.be.a('object');
-          expect(res.body.errors).to.eq('ValidationError: passwordConfirmation: does not match');
+          expect(res.body.errors).to.eq('ValidationError: passwordConfirmation: Passwords do not match.');
           expect(res.body.message).to.eq('Bad Request');
           done();
         });
@@ -162,6 +133,10 @@ describe('Authentications', function() {
         .set('Accept', 'application/json')
         .send({
           user: {
+            firstName: 'person',
+            lastName: 'person',
+            image: 'person',
+            role: 'student',
             email: 'person@person.com',
             password: 'password',
             passwordConfirmation: 'password'
@@ -183,7 +158,7 @@ describe('Authentications', function() {
         .end((err, res) => {
           expect(res.status).to.eq(200);
           expect(res.body).to.be.a('object');
-          expect(res.body.message).to.eq('Welcome back!');
+          expect(res.body.message).to.eq('Welcome back person!');
           expect(res.body.token).to.be.a('string');
           done();
         });
@@ -220,4 +195,5 @@ describe('Authentications', function() {
         });
     });
   });
+
 });
