@@ -103,6 +103,32 @@ describe('Users', function() {
           done();
         });
     });
+  });
+  describe('GET /api/users/:id', () => {
+    let user;
+    beforeEach(done => {
+      User
+        .create({
+          firstName: 'person',
+          lastName: 'person',
+          image: 'person',
+          role: 'student',
+          email: 'person@person.com',
+          password: 'password',
+          passwordConfirmation: 'password'
+        })
+        .then(userData => {
+          user = userData;
+          done();
+        })
+        .catch(done);
+    });
 
+    it('should return a 200 response', done => {
+      api
+        .get(`/api/users/${user.id}`)
+        .set('Accept', 'application/json')
+        .expect(200, done);
+    });
   });
 });

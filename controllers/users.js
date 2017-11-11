@@ -8,7 +8,18 @@ function usersIndex(req, res, next) {
     .catch(next);
 }
 
+function usersShow(req, res, next) {
+  User
+    .findById(req.params.id)
+    .exec()
+    .then((user) => {
+      if(!user) return res.notFound();
+      res.json(user);
+    })
+    .catch(next);
+}
 
 module.exports = {
-  index: usersIndex
+  index: usersIndex,
+  show: usersShow
 };
