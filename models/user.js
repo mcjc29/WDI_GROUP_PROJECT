@@ -9,6 +9,8 @@ const userSchema = new mongoose.Schema({
   image: String,
   role: { type: String, required: true },
   passwordHash: { type: String, required: true }
+}, {
+  timestamps: true
 });
 
 userSchema
