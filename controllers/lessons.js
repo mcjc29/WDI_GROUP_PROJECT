@@ -8,6 +8,13 @@ function lessonsIndex(req, res, next) {
     .catch(next);
 }
 
+function lessonsCreate(req, res, next) {
+  Lesson
+    .create(req.body)
+    .then((lesson) => res.status(201).json(lesson))
+    .catch(next);
+}
+
 function lessonsShow(req, res, next) {
   Lesson
     .findById(req.params.id)
@@ -37,6 +44,7 @@ function lessonsDelete(req, res, next) {
 
 module.exports = {
   index: lessonsIndex,
+  create: lessonsCreate,
   show: lessonsShow,
   delete: lessonsDelete,
   update: lessonsUpdate

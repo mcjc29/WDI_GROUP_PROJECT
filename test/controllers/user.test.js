@@ -79,7 +79,9 @@ describe('Users', function() {
               'lastName',
               'image',
               'role',
-              'email'
+              'email',
+              'createdAt',
+              'updatedAt'
             ]);
           done();
         });
@@ -202,7 +204,9 @@ describe('Users', function() {
               'lastName',
               'image',
               'role',
-              'email'
+              'email',
+              'createdAt',
+              'updatedAt'
             ]);
           done();
         });
@@ -267,7 +271,9 @@ describe('Users', function() {
               'lastName',
               'image',
               'role',
-              'email'
+              'email',
+              'createdAt',
+              'updatedAt'
             ]);
           done();
         });
