@@ -22,15 +22,13 @@ describe('Users', function() {
         .post('/api/register')
         .set('Accept', 'application/json')
         .send({
-          user: {
-            firstName: 'person',
-            lastName: 'person',
-            image: 'person',
-            role: 'student',
-            email: 'person@person.com',
-            password: 'password',
-            passwordConfirmation: 'password'
-          }
+          firstName: 'person',
+          lastName: 'person',
+          image: 'person',
+          role: 'student',
+          email: 'person@person.com',
+          password: 'password',
+          passwordConfirmation: 'password'
         })
         .end(() => {
           done();
