@@ -8,7 +8,6 @@ function usersIndex(req, res, next) {
     .catch(next);
 }
 
-
 function usersShow(req, res, next) {
   User
     .findById(req.params.id)

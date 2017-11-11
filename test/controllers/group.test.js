@@ -2,29 +2,26 @@
 
 require('../spec_helper');
 
-const Lesson = require('../../models/lesson');
+const Group = require('../../models/group');
 
-describe('Lessons', function() {
+describe('Groups', function() {
 
   beforeEach(done => {
-    Lesson.collection.remove();
+    Group.collection.remove();
     done();
   });
 
   afterEach(done => {
-    Lesson.collection.remove();
+    Group.collection.remove();
     done();
   });
 
-  describe('GET /api/lessons', () => {
+  describe('GET /api/groups', () => {
     beforeEach(done => {
-      Lesson.create({
-        title: 'Basic Terminal, Navigating the Filesystem',
-        duration: '1:25',
-        creator: 'Alex Chin',
+      Group.create({
+        name: 'WDI30',
         city: 'London',
-        competencies: 'Programming, Server Applications',
-        taughtBy: 'Alex Chin'
+        taughtBy: 'Alex && Rane'
       })
         .then(() => done())
         .catch(done);
@@ -32,14 +29,14 @@ describe('Lessons', function() {
 
     it('should return a 200 response', done => {
       api
-        .get('/api/lessons')
+        .get('/api/groups')
         .set('Accept', 'application/json')
         .expect(200, done);
     });
 
     it('should return a JSON object', done => {
       api
-        .get('/api/lessons')
+        .get('/api/groups')
         .set('Accept', 'application/json')
         .end((err, res) => {
           expect(res.header['content-type'])
@@ -48,9 +45,9 @@ describe('Lessons', function() {
         });
     });
 
-    it('should return an array of lessons', function(done) {
+    it('should return an array of groups', function(done) {
       api
-        .get('/api/lessons')
+        .get('/api/groups')
         .set('Accept', 'application/json')
         .end((err, res) => {
           expect(res.body).to.be.an('array');
@@ -58,9 +55,9 @@ describe('Lessons', function() {
         });
     });
 
-    it('should return an array of lessons objects', function(done) {
+    it('should return an array of groups objects', function(done) {
       api
-        .get('/api/lessons')
+        .get('/api/groups')
         .set('Accept', 'application/json')
         .end((err, res) => {
           expect(res.body)
@@ -69,11 +66,8 @@ describe('Lessons', function() {
             .and.have.all.keys([
               '__v',
               '_id',
-              'title',
-              'duration',
-              'creator',
+              'name',
               'city',
-              'competencies',
               'taughtBy',
               'createdAt',
               'updatedAt'
@@ -82,31 +76,22 @@ describe('Lessons', function() {
         });
     });
 
-    it('should have properties: _id, title, duration, creator, city, taughtBy', function(done) {
+    it('should have properties: _id, name, city, taughtBy', function(done) {
       api
-        .get('/api/lessons')
+        .get('/api/groups')
         .set('Accept', 'application/json')
         .end((err, res) => {
-          const firstLesson = res.body[0];
-          expect(firstLesson)
+          const firstGroup = res.body[0];
+          expect(firstGroup)
             .to.have.property('_id')
             .and.to.be.a('string');
-          expect(firstLesson)
-            .to.have.property('title')
+          expect(firstGroup)
+            .to.have.property('name')
             .and.to.be.a('string');
-          expect(firstLesson)
-            .to.have.property('duration')
-            .and.to.be.a('string');
-          expect(firstLesson)
-            .to.have.property('creator')
-            .and.to.be.a('string');
-          expect(firstLesson)
+          expect(firstGroup)
             .to.have.property('city')
             .and.to.be.a('string');
-          expect(firstLesson)
-            .to.have.property('competencies')
-            .and.to.be.a('string');
-          expect(firstLesson)
+          expect(firstGroup)
             .to.have.property('taughtBy')
             .and.to.be.a('string');
           done();
@@ -114,34 +99,28 @@ describe('Lessons', function() {
     });
   });
 
-  describe('returns multiple lessons', () => {
+  describe('returns multiple groups', () => {
 
     beforeEach(done => {
-      Lesson.create([
+      Group.create([
         {
-          title: 'Basic Terminal, Navigating the Filesystem',
-          duration: '1:25',
-          creator: 'Alex Chin',
+          name: 'WDI30',
           city: 'London',
-          competencies: 'Programming, Server Applications',
-          taughtBy: 'Alex Chin'
+          taughtBy: 'Alex && Rane'
         },
         {
-          title: 'TDD',
-          duration: '1:25',
-          creator: 'Rane Gowan',
+          name: 'WDI29',
           city: 'London',
-          competencies: 'Programming',
-          taughtBy: 'Rane Gowan'
+          taughtBy: 'Mike'
         }
       ])
         .then(() => done())
         .catch(done);
     });
 
-    it('should create 2 lessons', done => {
+    it('should create 2 groups', done => {
       api
-        .get('/api/lessons')
+        .get('/api/groups')
         .set('Accept', 'application/json')
         .end((err, res) => {
           expect(res.body.length).to.equal(2);
@@ -150,34 +129,28 @@ describe('Lessons', function() {
     });
   });
 
-  describe('POST /api/lessons', () => {
+  describe('POST /api/groups', () => {
 
     it('should return a 201 response', done => {
       api
-        .post('/api/lessons')
+        .post('/api/groups')
         .set('Accept', 'application/json')
         .send({
-          title: 'Basic Terminal, Navigating the Filesystem',
-          duration: '1:25',
-          creator: 'Alex Chin',
+          name: 'WDI30',
           city: 'London',
-          competencies: 'Programming, Server Applications',
-          taughtBy: 'Alex Chin'
+          taughtBy: 'Alex && Rane'
         })
         .expect(201, done);
     });
 
-    it('should create a new lesson', done => {
+    it('should create a new group', done => {
       api
-        .post('/api/lessons')
+        .post('/api/groups')
         .set('Accept', 'application/json')
         .send({
-          title: 'Basic Terminal, Navigating the Filesystem',
-          duration: '1:25',
-          creator: 'Alex Chin',
+          name: 'WDI30',
           city: 'London',
-          competencies: 'Programming, Server Applications',
-          taughtBy: 'Alex Chin'
+          taughtBy: 'Alex && Rane'
         })
         .end((err, res) => {
           const group = res.body;
@@ -185,19 +158,15 @@ describe('Lessons', function() {
           expect(group)
             .to.have.property('_id')
             .and.to.be.a('string');
+
           expect(group)
-            .to.have.property('title')
+            .to.have.property('name')
             .and.to.be.a('string');
 
           expect(group)
-            .to.have.property('duration')
-            .and.to.be.a('string');
-          expect(group)
-            .to.have.property('creator')
-            .and.to.be.a('string');
-          expect(group)
             .to.have.property('city')
             .and.to.be.a('string');
+
           expect(group)
             .to.have.property('taughtBy')
             .and.to.be.a('string');
@@ -216,22 +185,20 @@ describe('Lessons', function() {
     });
 
   });
-  describe('GET /api/lessons/:id', () => {
 
-    let lesson;
+  describe('GET /api/groups/:id', () => {
+
+    let group;
 
     beforeEach(done => {
-      Lesson
+      Group
         .create({
-          title: 'Basic Terminal, Navigating the Filesystem',
-          duration: '1:25',
-          creator: 'Alex Chin',
+          name: 'WDI30',
           city: 'London',
-          competencies: 'Programming, Server Applications',
-          taughtBy: 'Alex Chin'
+          taughtBy: 'Alex && Rane'
         })
-        .then(lessonData => {
-          lesson = lessonData;
+        .then(groupData => {
+          group = groupData;
           done();
         })
         .catch(done);
@@ -239,14 +206,14 @@ describe('Lessons', function() {
 
     it('should return a 200 response', done => {
       api
-        .get(`/api/lessons/${lesson.id}`)
+        .get(`/api/groups/${group.id}`)
         .set('Accept', 'application/json')
         .expect(200, done);
     });
 
     it('should return a JSON object', done => {
       api
-        .get(`/api/lessons/${lesson.id}`)
+        .get(`/api/groups/${group.id}`)
         .set('Accept', 'application/json')
         .end((err, res) => {
           expect(res.header['content-type'])
@@ -254,19 +221,16 @@ describe('Lessons', function() {
           done();
         });
     });
-    it('should return object with properties:_id, title, duration, creator, city, taughtBy', done => {
-      api.get(`/api/lessons/${lesson.id}`)
+    it('should return object with properties:_id, name, city, taughtBy, createdAt, updatedAt', done => {
+      api.get(`/api/groups/${group.id}`)
         .set('Accept', 'application/json')
         .end((err, res) => {
           expect(res.body)
             .and.have.all.keys([
               '__v',
               '_id',
-              'title',
-              'duration',
-              'creator',
+              'name',
               'city',
-              'competencies',
               'taughtBy',
               'createdAt',
               'updatedAt'
@@ -276,22 +240,19 @@ describe('Lessons', function() {
     });
   });
 
-  describe('PUT /api/lessons/:id', () => {
+  describe('PUT /api/groups/:id', () => {
 
-    let lesson;
+    let group;
 
     beforeEach(done => {
-      Lesson
+      Group
         .create({
-          title: 'Basic Terminal, Navigating the Filesystem',
-          duration: '1:25',
-          creator: 'Alex Chin',
+          name: 'WDI30',
           city: 'London',
-          competencies: 'Programming, Server Applications',
-          taughtBy: 'Alex Chin'
+          taughtBy: 'Alex && Rane'
         })
-        .then(lessonData => {
-          lesson = lessonData;
+        .then(groupData => {
+          group = groupData;
           done();
         })
         .catch(done);
@@ -299,21 +260,18 @@ describe('Lessons', function() {
 
     it('should return 200 status', function(done) {
       api
-        .put(`/api/lessons/${lesson.id}`)
+        .put(`/api/groups/${group.id}`)
         .set('Accept', 'application/json')
         .send({
-          title: 'Basic Terminal, Navigating the Filesystem',
-          duration: '1',
-          creator: 'Alex Chin',
+          name: 'WDI31',
           city: 'London',
-          competencies: 'Programming, Server Applications',
-          taughtBy: 'Alex Chin'
+          taughtBy: 'Alex && Rane'
         })
         .expect(200, done);
     });
     it('should return a JSON object', done => {
       api
-        .get(`/api/lessons/${lesson.id}`)
+        .get(`/api/groups/${group.id}`)
         .set('Accept', 'application/json')
         .end((err, res) => {
           expect(res.header['content-type'])
@@ -321,19 +279,16 @@ describe('Lessons', function() {
           done();
         });
     });
-    it('should return object with properties: _id, firstName, lastName, image, role, email, createdAt, updatedAt', done => {
-      api.get(`/api/lessons/${lesson.id}`)
+    it('should return object with properties: _id, name, city, taughtBy', done => {
+      api.get(`/api/groups/${group.id}`)
         .set('Accept', 'application/json')
         .end((err, res) => {
           expect(res.body)
             .and.have.all.keys([
               '__v',
               '_id',
-              'title',
-              'duration',
-              'creator',
+              'name',
               'city',
-              'competencies',
               'taughtBy',
               'createdAt',
               'updatedAt'
@@ -343,49 +298,43 @@ describe('Lessons', function() {
     });
     it('should return updated data', function(done) {
       api
-        .put(`/api/lessons/${lesson.id}`)
+        .put(`/api/groups/${group.id}`)
         .set('Accept', 'application/json')
         .send({
-          title: 'Basic Terminal, Navigating the Filesystem',
-          duration: '1',
-          creator: 'Alex Chin',
+          name: 'WDI31',
           city: 'London',
-          competencies: 'Programming, Server Applications',
-          taughtBy: 'Alex Chin'
+          taughtBy: 'Alex && Rane'
         })
         .end((err, res) => {
-          expect(res.body.duration)
-            .to.be.eq('1');
+          expect(res.body.name)
+            .to.be.eq('WDI31');
           done();
         });
     });
 
   });
 
-  describe('DELETE /api/lessons/:id', () => {
+  describe('DELETE /api/groups/:id', () => {
 
-    let lesson;
+    let group;
 
     beforeEach(done => {
-      Lesson
+      Group
         .create({
-          title: 'Basic Terminal, Navigating the Filesystem',
-          duration: '1',
-          creator: 'Alex Chin',
+          name: 'WDI30',
           city: 'London',
-          competencies: 'Programming, Server Applications',
-          taughtBy: 'Alex Chin'
+          taughtBy: 'Alex && Rane'
         })
-        .then(lessonData => {
-          lesson = lessonData;
+        .then(groupData => {
+          group = groupData;
           done();
         })
         .catch(done);
     });
 
-    it('should remove a lesson by id', function(done) {
+    it('should remove a group by id', function(done) {
       api
-        .delete(`/api/lessons/${lesson.id}`)
+        .delete(`/api/groups/${group.id}`)
         .expect(204, done);
     });
   });

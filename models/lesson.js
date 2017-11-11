@@ -7,6 +7,8 @@ const lessonSchema = new mongoose.Schema({
   city: String,
   competencies: { type: String, required: true },
   taughtBy: { type: String, required: true }
+}, {
+  timestamps: true
 });
 
 module.exports = mongoose.model('lessonSchema', lessonSchema);
