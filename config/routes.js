@@ -13,6 +13,8 @@ router.route('/users')
   .get(users.index);
 
 router.route('/users/:id')
-  .get(users.show);
-  
+  .get(users.show)
+  .delete(users.delete)
+  .put(users.update);
+
 module.exports = router;

@@ -70,7 +70,7 @@ describe('Users', function() {
         });
     });
 
-    it('should have properties: _id, name, image', function(done) {
+    it('should have properties: _id, firstName, lastName, image, role, email', function(done) {
       api
         .get('/api/users')
         .set('Accept', 'application/json')
@@ -129,6 +129,90 @@ describe('Users', function() {
         .get(`/api/users/${user.id}`)
         .set('Accept', 'application/json')
         .expect(200, done);
+    });
+  });
+
+
+  describe('DELETE /api/users/:id', () => {
+    let user;
+    beforeEach(done => {
+      User
+        .create({
+          firstName: 'person',
+          lastName: 'person',
+          image: 'person',
+          role: 'student',
+          email: 'person@person.com',
+          password: 'password',
+          passwordConfirmation: 'password'
+        })
+        .then(userData => {
+          user = userData;
+          done();
+        })
+        .catch(done);
+    });
+    it('should remove a user by id', function(done) {
+      api
+        .delete(`/api/users/${user.id}`)
+        .expect(204, done);
+    });
+  });
+
+  describe( 'PUT/api/users/:id', () => {
+    let user;
+    beforeEach(done => {
+      User
+        .create({
+          firstName: 'person',
+          lastName: 'person',
+          image: 'person',
+          role: 'student',
+          email: 'person@person.com',
+          password: 'password',
+          passwordConfirmation: 'password'
+        })
+        .then(userData => {
+          user = userData;
+          done();
+        })
+        .catch(done);
+    });
+
+    it('should return 200 status', function(done) {
+      api
+        .put(`/api/users/${user.id}`)
+        .set('Accept', 'application/json')
+        .send({
+          firstName: 'personperson',
+          lastName: 'personperson',
+          image: 'person',
+          role: 'student',
+          email: 'person@person.com',
+          password: 'password',
+          passwordConfirmation: 'password'
+        })
+        .expect(200, done);
+    });
+
+    it('should return updated data', function(done) {
+      api
+        .put(`/api/users/${user.id}`)
+        .set('Accept', 'application/json')
+        .send({
+          firstName: 'personperson',
+          lastName: 'personperson',
+          image: 'person',
+          role: 'student',
+          email: 'person@person.com',
+          password: 'password',
+          passwordConfirmation: 'password'
+        })
+        .end((err, res) => {
+          expect(res.body.firstName)
+            .to.be.eq('personperson');
+          done();
+        });
     });
   });
 });

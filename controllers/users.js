@@ -19,7 +19,24 @@ function usersShow(req, res, next) {
     .catch(next);
 }
 
+function usersDelete(req, res, next) {
+  User
+    .findByIdAndRemove(req.params.id)
+    .exec()
+    .then(() => res.sendStatus(204))
+    .catch(next);
+}
+
+function usersUpdate(req, res, next) {
+  User
+    .findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true })
+    .exec()
+    .then(user => res.status(200).json(user))
+    .catch(next);
+}
 module.exports = {
   index: usersIndex,
-  show: usersShow
+  show: usersShow,
+  delete: usersDelete,
+  update: usersUpdate
 };
