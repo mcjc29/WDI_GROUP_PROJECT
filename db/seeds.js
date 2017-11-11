@@ -156,7 +156,7 @@ User
     firstName: 'Wilson',
     lastName: 'Espina',
     email: 'wislon@wilson.com',
-    image: 'https://user-images.githubusercontent.com/28314323/32404860-488bef72-c151-11e7-83a9-9924152bb158.jpg',
+    image: 'https://user-images.githubusercontent.com/28314323/32404855-373aa592-c151-11e7-9661-5e870aca48b6.jpg',
     role: 'student',
     password: 'password',
     passwordConfirmation: 'password'
