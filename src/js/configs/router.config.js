@@ -12,15 +12,13 @@ function Router($stateProvider, $urlRouterProvider) {
     })
     .state('login', {
       url: '/login',
-      templateUrl: '/js/views/registrations/login.html'
+      templateUrl: '/js/views/registrations/login.html',
+      controller: 'LoginCtrl as vm'
     })
     .state('register', {
       url: '/register',
-      templateUrl: '/js/views/registrations/register.html'
-    })
-    .state('usersIndex', {
-      url: '/users',
-      templateUrl: '/js/views/users/index.html'
+      templateUrl: '/js/views/registrations/register.html',
+      controller: 'RegisterCtrl as vm'
     });
   $urlRouterProvider.otherwise('/');
 }

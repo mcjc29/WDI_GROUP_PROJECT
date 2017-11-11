@@ -4,7 +4,7 @@ const { secret } = require('../config/environment');
 
 function authenticationsRegister(req, res, next){
   User
-    .create(req.body.user)
+    .create(req.body)
     .then(user => {
       const payload = { _id: user.id };
       const token = jwt.sign(payload, secret, { expiresIn: 60*60*24 });

@@ -4,7 +4,7 @@ function usersIndex(req, res, next) {
   User
     .find()
     .exec()
-    .then((user) => res.status(200).json(user))
+    .then((users) => res.status(200).json(users))
     .catch(next);
 }
 
@@ -38,6 +38,6 @@ function usersDelete(req, res, next) {
 module.exports = {
   index: usersIndex,
   show: usersShow,
-  delete: usersDelete,
-  update: usersUpdate
+  update: usersUpdate,
+  delete: usersDelete
 };
