@@ -17,6 +17,10 @@ function Router($stateProvider, $urlRouterProvider) {
     .state('register', {
       url: '/register',
       templateUrl: '/js/views/registrations/register.html'
+    })
+    .state('usersIndex', {
+      url: '/users',
+      templateUrl: '/js/views/users/index.html'
     });
   $urlRouterProvider.otherwise('/');
 }
