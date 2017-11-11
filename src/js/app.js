@@ -1,4 +1,6 @@
 angular
   .module('gaFeedback', [
-    'ui.router'
+    'ui.router',
+    'ngResource',
+    'satellizer'
   ]);

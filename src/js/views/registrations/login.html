@@ -1,13 +1,13 @@
 <h1>Log in</h1>
 
-<form>
-  <label>email</label>
-  <br></br>
-  <input type="text" name="email">
-  <br></br>
-  <label>Password</label>
-  <br></br>
-  <input type="text" name="password">
-  <br></br>
-  <input type="submit" value="login">
-  </form>
+<form ng-submit="vm.submitForm()">
+  <label for="email">Email</label>
+  <br>
+  <input type="text" name="email" ng-model="vm.user.email">
+  <br>
+  <label for="password">Password</label>
+  <br>
+  <input type="password" name="password" ng-model="vm.user.password">
+  <br>
+  <input type="submit" value="Login">
+</form>
