@@ -2,8 +2,8 @@ const mongoose = require('mongoose');
 
 const replySchema = new mongoose.Schema({
   createdBy: String,
-  content: String
-  // content: { type: String, required: true }
+  // content: String
+  content: { type: String, required: true }
 }, {
   timestamps: true
 });
