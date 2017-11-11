@@ -27,7 +27,7 @@ function Router($stateProvider, $urlRouterProvider) {
     })
     .state('usersShow', {
       url: '/users/:id',
-      templateUrl: '/js/views/users/userprofile.html',
+      templateUrl: '/js/views/users/show.html',
       controller: 'UsersShowCtrl as vm'
     });
   $urlRouterProvider.otherwise('/');
