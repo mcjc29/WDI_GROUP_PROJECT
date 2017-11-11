@@ -4,6 +4,7 @@ const authentications = require('../controllers/authentications');
 const users = require('../controllers/users');
 const lessons = require('../controllers/lessons');
 const groups = require('../controllers/groups');
+const comments = require('../controllers/comments');
 
 router.route('/register')
   .post(authentications.register);
@@ -36,5 +37,14 @@ router.route('/groups/:id')
   .get(groups.show)
   .put(groups.update)
   .delete(groups.delete);
+
+router.route('/comments')
+  .get(comments.index)
+  .post(comments.create);
+
+router.route('/comments/:id')
+  .get(comments.show)
+  .put(comments.update)
+  .delete(comments.delete);
 
 module.exports = router;
