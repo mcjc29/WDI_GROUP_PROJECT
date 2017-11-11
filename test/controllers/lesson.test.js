@@ -74,7 +74,9 @@ describe('Lessons', function() {
               'creator',
               'city',
               'competencies',
-              'taughtBy'
+              'taughtBy',
+              'createdAt',
+              'updatedAt'
             ]);
           done();
         });
@@ -148,6 +150,72 @@ describe('Lessons', function() {
     });
   });
 
+  describe('POST /api/lessons', () => {
+
+    it('should return a 201 response', done => {
+      api
+        .post('/api/lessons')
+        .set('Accept', 'application/json')
+        .send({
+          title: 'Basic Terminal, Navigating the Filesystem',
+          duration: '1:25',
+          creator: 'Alex Chin',
+          city: 'London',
+          competencies: 'Programming, Server Applications',
+          taughtBy: 'Alex Chin'
+        })
+        .expect(201, done);
+    });
+
+    it('should create a new lesson', done => {
+      api
+        .post('/api/lessons')
+        .set('Accept', 'application/json')
+        .send({
+          title: 'Basic Terminal, Navigating the Filesystem',
+          duration: '1:25',
+          creator: 'Alex Chin',
+          city: 'London',
+          competencies: 'Programming, Server Applications',
+          taughtBy: 'Alex Chin'
+        })
+        .end((err, res) => {
+          const group = res.body;
+
+          expect(group)
+            .to.have.property('_id')
+            .and.to.be.a('string');
+          expect(group)
+            .to.have.property('title')
+            .and.to.be.a('string');
+
+          expect(group)
+            .to.have.property('duration')
+            .and.to.be.a('string');
+          expect(group)
+            .to.have.property('creator')
+            .and.to.be.a('string');
+          expect(group)
+            .to.have.property('city')
+            .and.to.be.a('string');
+          expect(group)
+            .to.have.property('taughtBy')
+            .and.to.be.a('string');
+
+          expect(group)
+            .to.have.property('createdAt')
+            .and.to.be.a('string');
+
+          expect(group)
+            .to.have.property('updatedAt')
+            .and.to.be.a('string');
+
+          done();
+        });
+
+    });
+
+  });
   describe('GET /api/lessons/:id', () => {
 
     let lesson;
@@ -199,7 +267,9 @@ describe('Lessons', function() {
               'creator',
               'city',
               'competencies',
-              'taughtBy'
+              'taughtBy',
+              'createdAt',
+              'updatedAt'
             ]);
           done();
         });
@@ -264,7 +334,9 @@ describe('Lessons', function() {
               'creator',
               'city',
               'competencies',
-              'taughtBy'
+              'taughtBy',
+              'createdAt',
+              'updatedAt'
             ]);
           done();
         });

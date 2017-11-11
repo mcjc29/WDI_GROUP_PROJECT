@@ -4,6 +4,8 @@ const groupSchema = new mongoose.Schema({
   name: { type: String, required: true },
   city: String,
   taughtBy: { type: String, required: true }
+}, {
+  timestamps: true
 });
 
 module.exports = mongoose.model('groupSchema', groupSchema);

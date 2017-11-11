@@ -20,7 +20,8 @@ router.route('/users/:id')
   .delete(users.delete);
 
 router.route('/lessons')
-  .get(lessons.index);
+  .get(lessons.index)
+  .post(lessons.create);
 
 router.route('/lessons/:id')
   .get(lessons.show)
@@ -28,7 +29,8 @@ router.route('/lessons/:id')
   .delete(lessons.delete);
 
 router.route('/groups')
-  .get(groups.index);
+  .get(groups.index)
+  .post(groups.create);
 
 router.route('/groups/:id')
   .get(groups.show)

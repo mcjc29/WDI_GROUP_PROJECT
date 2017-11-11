@@ -8,6 +8,13 @@ function groupsIndex(req, res, next) {
     .catch(next);
 }
 
+function groupsCreate(req, res, next) {
+  Group
+    .create(req.body)
+    .then((group) => res.status(201).json(group))
+    .catch(next);
+}
+
 function groupsShow(req, res, next) {
   Group
     .findById(req.params.id)
@@ -37,6 +44,7 @@ function groupsDelete(req, res, next) {
 
 module.exports = {
   index: groupsIndex,
+  create: groupsCreate,
   show: groupsShow,
   delete: groupsDelete,
   update: groupsUpdate

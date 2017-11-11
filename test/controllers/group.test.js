@@ -68,7 +68,9 @@ describe('Groups', function() {
               '_id',
               'name',
               'city',
-              'taughtBy'
+              'taughtBy',
+              'createdAt',
+              'updatedAt'
             ]);
           done();
         });
@@ -127,6 +129,63 @@ describe('Groups', function() {
     });
   });
 
+  describe('POST /api/groups', () => {
+
+    it('should return a 201 response', done => {
+      api
+        .post('/api/groups')
+        .set('Accept', 'application/json')
+        .send({
+          name: 'WDI30',
+          city: 'London',
+          taughtBy: 'Alex && Rane'
+        })
+        .expect(201, done);
+    });
+
+    it('should create a new group', done => {
+      api
+        .post('/api/groups')
+        .set('Accept', 'application/json')
+        .send({
+          name: 'WDI30',
+          city: 'London',
+          taughtBy: 'Alex && Rane'
+        })
+        .end((err, res) => {
+          const group = res.body;
+
+          expect(group)
+            .to.have.property('_id')
+            .and.to.be.a('string');
+
+          expect(group)
+            .to.have.property('name')
+            .and.to.be.a('string');
+
+          expect(group)
+            .to.have.property('city')
+            .and.to.be.a('string');
+
+          expect(group)
+            .to.have.property('taughtBy')
+            .and.to.be.a('string');
+
+          expect(group)
+            .to.have.property('createdAt')
+            .and.to.be.a('string');
+
+          expect(group)
+            .to.have.property('updatedAt')
+            .and.to.be.a('string');
+
+          done();
+        });
+
+    });
+
+  });
+
   describe('GET /api/groups/:id', () => {
 
     let group;
@@ -162,7 +221,7 @@ describe('Groups', function() {
           done();
         });
     });
-    it('should return object with properties:_id, name, city, taughtBy', done => {
+    it('should return object with properties:_id, name, city, taughtBy, createdAt, updatedAt', done => {
       api.get(`/api/groups/${group.id}`)
         .set('Accept', 'application/json')
         .end((err, res) => {
@@ -172,7 +231,9 @@ describe('Groups', function() {
               '_id',
               'name',
               'city',
-              'taughtBy'
+              'taughtBy',
+              'createdAt',
+              'updatedAt'
             ]);
           done();
         });
@@ -228,7 +289,9 @@ describe('Groups', function() {
               '_id',
               'name',
               'city',
-              'taughtBy'
+              'taughtBy',
+              'createdAt',
+              'updatedAt'
             ]);
           done();
         });
