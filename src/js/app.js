@@ -1,2 +1,4 @@
 angular
-  .module('gaFeedback', []);
+  .module('gaFeedback', [
+    'ui.router'
+  ]);
