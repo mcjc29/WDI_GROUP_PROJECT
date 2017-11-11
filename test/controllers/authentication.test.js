@@ -21,15 +21,15 @@ describe('Authentications', function() {
         .post('/api/register')
         .set('Accept', 'application/json')
         .send({
-          user: {
-            firstName: 'person',
-            lastName: 'person',
-            image: 'person',
-            role: 'student',
-            email: 'person@person.com',
-            password: 'password',
-            passwordConfirmation: 'password'
-          }
+
+          firstName: 'person',
+          lastName: 'person',
+          image: 'person',
+          role: 'student',
+          email: 'person@person.com',
+          password: 'password',
+          passwordConfirmation: 'password'
+
         })
         .end((err, res) => {
           expect(res.status).to.eq(200);
@@ -44,13 +44,13 @@ describe('Authentications', function() {
         .post('/api/register')
         .set('Accept', 'application/json')
         .send({
-          user: {
+
             lastName: 'person',
             role: 'student',
             email: 'person@person.com',
             password: 'password',
             passwordConfirmation: 'password'
-          }
+
         })
         .end((err, res) => {
           expect(res.status).to.eq(400);
@@ -65,13 +65,13 @@ describe('Authentications', function() {
         .post('/api/register')
         .set('Accept', 'application/json')
         .send({
-          user: {
+
             firstName: 'person',
             lastName: 'person',
             role: 'student',
             password: 'password',
             passwordConfirmation: 'password'
-          }
+
         })
         .end((err, res) => {
           expect(res.status).to.eq(400);
@@ -86,13 +86,13 @@ describe('Authentications', function() {
         .post('/api/register')
         .set('Accept', 'application/json')
         .send({
-          user: {
+
             firstName: 'person',
             lastName: 'person',
             email: 'person@person.com',
             role: 'student',
             passwordConfirmation: 'password'
-          }
+
         })
         .end((err, res) => {
           expect(res.status).to.eq(400);
@@ -107,13 +107,13 @@ describe('Authentications', function() {
         .post('/api/register')
         .set('Accept', 'application/json')
         .send({
-          user: {
+
             firstName: 'person',
             lastName: 'person',
             email: 'person@person.com',
             role: 'student',
             password: 'password'
-          }
+
         })
         .end((err, res) => {
           expect(res.status).to.eq(400);
@@ -132,7 +132,7 @@ describe('Authentications', function() {
         .post('/api/register')
         .set('Accept', 'application/json')
         .send({
-          user: {
+
             firstName: 'person',
             lastName: 'person',
             image: 'person',
@@ -140,7 +140,7 @@ describe('Authentications', function() {
             email: 'person@person.com',
             password: 'password',
             passwordConfirmation: 'password'
-          }
+
         })
         .end(() => {
           done();

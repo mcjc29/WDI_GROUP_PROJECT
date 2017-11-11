@@ -14,9 +14,15 @@
       <nav>
         <ul>
           <li><a ui-sref="home">Home</a></li>
+<<<<<<< HEAD
           <li ng-if="!main.user"><a ui-sref="login">Login</a></li>
           <li ng-if="!main.user"><a ui-sref="register">Register</a></li>
           <li ng-if="main.user"><a href="#" ng-click="main.logout()">Logout</a></li>
+=======
+          <li><a ui-sref="login">Login</a></li>
+          <li><a ui-sref="register">Register</a></li>
+          <li><a ui-sref="usersIndex">Members</a></li>
+>>>>>>> 517627f675d534c456a789fbb6e7038928b26e12
         </ul>
       </nav>
     </header>

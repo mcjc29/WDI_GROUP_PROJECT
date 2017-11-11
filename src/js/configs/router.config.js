@@ -20,6 +20,11 @@ function Router($stateProvider, $urlRouterProvider, $locationProvider) {
       url: '/register',
       templateUrl: '/js/views/registrations/register.html',
       controller: 'RegisterCtrl as vm'
+    })
+    .state('usersIndex', {
+      url: '/users',
+      templateUrl: '/js/views/users/index.html',
+      controller: 'UsersIndexCtrl as vm'
     });
   $urlRouterProvider.otherwise('/');
 }
