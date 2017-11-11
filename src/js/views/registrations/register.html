@@ -1,34 +1,33 @@
+<h1>Register</h1>
 
-<h1>Form</h1>
-
-<form>
-<label>First name</label>
-<br></br>
-<input type="text" name="firstname">
-<br></br>
-<label>Last name</label>
-<br></br>
-<input type="text" name="lastname">
-<br></br>
-<label>Role</label>
-<br></br>
-<input type="text" name="role">
-<br></br>
-<label>email</label>
-<br></br>
-<input type="text" name="email">
-<br></br>
-<label>Image</label>
-<br></br>
-<input type="text">
-<br></br>
-<label>password</label>
-<br></br>
-<input type="text" name="password">
-<br></br>
-<label>Password Confirmation</label>
-<br></br>
-<input type="text" name="passwordConfirmation">
-<br></br>
-<input type="submit">
+<form ng-submit="vm.submitForm()">
+  <label for="firstName">First Name</label>
+  <br>
+  <input type="text" name="firstName" ng-model="vm.user.firstName">
+  <br>
+  <label for="lastName">Last Name</label>
+  <br>
+  <input type="text" name="lastName" ng-model="vm.user.lastName">
+  <br>
+  <label for="role">Role</label>
+  <br>
+  <input type="text" name="role" ng-model="vm.user.role">
+  <br>
+  <label for="email">Email</label>
+  <br>
+  <input type="text" name="email" ng-model="vm.user.email">
+  <br>
+  <label for="image">Image</label>
+  <br>
+  <input type="text" name="image" ng-model="vm.user.image">
+  <br>
+  <label for="password">Password</label>
+  <br>
+  <input type="password" name="password" ng-model="vm.user.password">
+  <br>
+  <label for="passwordConfirmation">Password Confirmation</label>
+  <br>
+  <input type="password" name="passwordConfirmation" ng-model="vm.user.passwordConfirmation">
+  <br>
+  <input type="submit" value="Register">
 </form>
