@@ -3,7 +3,7 @@ const User        = require('../models/user');
 const { db }      = require('../config/environment');
 mongoose.Promise  = require('bluebird');
 
-mongoose.connect(db, { useMongoClient: true });
+mongoose.connect(db.test, { useMongoClient: true });
 
 User.collection.drop();
 
