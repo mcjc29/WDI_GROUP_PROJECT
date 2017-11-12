@@ -56,6 +56,16 @@ function Router($stateProvider, $urlRouterProvider, $locationProvider) {
       templateUrl: '/js/views/groups/index.html',
       controller: 'GroupsIndexCtrl as vm'
     })
+    .state('groupsEdit', {
+      url: '/groups/:id/edit',
+      templateUrl: '/js/views/groups/form.html',
+      controller: 'GroupsEditCtrl as vm'
+    })
+    .state('groupsShow', {
+      url: '/groups/:id',
+      templateUrl: '/js/views/groups/show.html',
+      controller: 'GroupsShowCtrl as vm'
+    })
     .state('commentIndex', {
       url: '/chat',
       templateUrl: '/js/views/chat/chat.html',

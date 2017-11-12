@@ -2,7 +2,7 @@
 
 <ul ng-repeat="group in vm.groups track by $index">
   <li>
-    <h3><a ui-sref="groupsShow({ id: group.id })">{{ group.name }}</a></h3>
+    <h3><a ui-sref="groupsShow({ id: group._id })">{{ group.name }}</a></h3>
   </li>
   <li>
     <p>{{ group.city }}</p>
