@@ -2,6 +2,7 @@ const mongoose    = require('mongoose');
 const User        = require('../models/user');
 const Group       = require('../models/group');
 const Lesson      = require('../models/lesson');
+const Comment     = require('../models/comment');
 const { db }      = require('../config/environment');
 mongoose.Promise  = require('bluebird');
 
@@ -229,7 +230,27 @@ User
     password: 'password',
     passwordConfirmation: 'password'
   }])
-  .then((users) => console.log(`${users.length} users created!`))
+  .then((users) => {
+    console.log(`${users.length} users created!`);
+    return Comment
+      .create([{
+        content: 'Hi guys, can anyone help with my homework?',
+        createdBy: users[1],
+        replies: [{
+          content: 'Hey, I can help? Slack me up!',
+          createdBy: users[2]
+        }, {
+          content: 'Still struggling?',
+          createdBy: users[0]
+        }, {
+          content: 'I\'ve got some time to help!',
+          createdBy: users[6]
+        }]
+      }, {
+        content: 'Here to help with today\'s lesson - I\'m a ninja!',
+        createdBy: users[12]
+      }]);
+  })
   .catch((err) => console.log(err))
   .finally(() => mongoose.connection.close());
 

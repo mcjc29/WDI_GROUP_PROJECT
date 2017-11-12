@@ -41,6 +41,11 @@ function Router($stateProvider, $urlRouterProvider, $locationProvider) {
       templateUrl: '/js/views/lessons/index.html',
       controller: 'LessonsIndexCtrl as vm'
     })
+    .state('lessonsEdit', {
+      url: '/lessons/:id/edit',
+      templateUrl: '/js/views/lessons/form.html',
+      controller: 'LessonsEditCtrl as vm'
+    })
     .state('lessonsShow', {
       url: '/lessons/:id',
       templateUrl: '/js/views/lessons/show.html',
@@ -50,6 +55,11 @@ function Router($stateProvider, $urlRouterProvider, $locationProvider) {
       url: '/groups',
       templateUrl: '/js/views/groups/index.html',
       controller: 'GroupsIndexCtrl as vm'
+    })
+    .state('commentIndex', {
+      url: '/chat',
+      templateUrl: '/js/views/chat/chat.html',
+      controller: 'ChatCtrl as vm'
     });
   $urlRouterProvider.otherwise('/');
 }
