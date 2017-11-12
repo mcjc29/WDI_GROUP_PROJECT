@@ -5,5 +5,5 @@ angular
 GroupsIndexCtrl.$inject = ['Group'];
 function GroupsIndexCtrl(Group) {
   const vm = this;
-  vm.lesson = Group.query();
+  vm.groups = Group.query();
 }
