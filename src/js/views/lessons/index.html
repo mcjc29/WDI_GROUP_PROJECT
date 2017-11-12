@@ -1,6 +1,8 @@
 <h1>Lessons</h1>
 
-<ul ng-repeat="lesson in vm.lessons track by $index">
+<input type="text" class="search" ng-model="vm.q" placeholder="Find a lesson...">
+
+<ul ng-repeat="lesson in vm.filtered track by $index">
   <li>
     <h3><a ui-sref="lessonsShow({ id: lesson._id })">{{ lesson.title }}</a></h3>
   </li>
@@ -10,4 +12,4 @@
   <li>
     <p>{{ lesson.taughtBy }}</p>
   </li>
-  </ul>
+</ul>

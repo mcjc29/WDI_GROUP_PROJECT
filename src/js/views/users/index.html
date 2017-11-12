@@ -1,7 +1,7 @@
 <h1>Students</h1>
 <ul>
   <li ng-repeat="user in vm.user track by $index">
-    <img ng-src="{{ user.name }}" alt="{{ user.name}} image.'">
+    <img ng-src="{{ user.image }}" alt="{{ user.name}} image.'">
     <h4><a ui-sref="usersShow({ id: user.id })">{{ user.firstName}}</a></h4>
     <h4>{{ user.lastName }}</h4>
   </li>

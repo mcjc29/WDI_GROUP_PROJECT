@@ -2,9 +2,20 @@ angular
   .module('gaFeedback')
   .controller('LessonsIndexCtrl', LessonsIndexCtrl);
 
-LessonsIndexCtrl.$inject = ['Lesson'];
-function LessonsIndexCtrl(Lesson) {
+LessonsIndexCtrl.$inject = ['Lesson', 'filterFilter', '$scope'];
+function LessonsIndexCtrl(Lesson, filterFilter, $scope) {
   const vm = this;
   vm.lessons = Lesson.query();
-  console.log(vm.lessons);
+
+  function filterLesson() {
+    const params = { title: vm.q };
+    vm.filtered = filterFilter(vm.lessons, params);
+
+  }
+
+  $scope.$watchGroup([
+    () => vm.q
+  ], filterLesson);
+
+  vm.filterLesson = filterLesson;
 }
