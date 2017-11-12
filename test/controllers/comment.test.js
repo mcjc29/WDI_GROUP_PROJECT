@@ -3,6 +3,7 @@
 require('../spec_helper');
 
 const Comment = require('../../models/comment');
+const User = require('../../models/user');
 
 describe('Comments', function() {
 
@@ -11,19 +12,32 @@ describe('Comments', function() {
     done();
   });
 
-  afterEach(done => {
-    Comment.collection.remove();
+  beforeEach(done => {
+    User.collection.remove();
     done();
   });
 
   describe('GET /api/comments', () => {
+
     beforeEach(done => {
-      Comment.create({
-        createdBy: 'Martha',
-        content: 'Blah'
-      })
-        .then(() => done())
-        .catch(done);
+      User
+        .create({
+          firstName: 'person2',
+          lastName: 'person2',
+          role: 'student',
+          email: 'person2@person2.com',
+          password: 'password',
+          passwordConfirmation: 'password'
+        })
+        .then((user) => {
+          return Comment
+            .create({
+              createdBy: user,
+              content: 'Blah'
+            })
+            .then(() => done())
+            .catch(done);
+        });
     });
 
     it('should return a 200 response', done => {
@@ -67,7 +81,7 @@ describe('Comments', function() {
               '_id',
               'createdBy',
               'content',
-              'reply',
+              'replies',
               'createdAt',
               'updatedAt'
             ]);
@@ -98,18 +112,27 @@ describe('Comments', function() {
   describe('returns multiple comments', () => {
 
     beforeEach(done => {
-      Comment.create([
-        {
-          createdBy: 'Martha',
-          content: 'Blah'
-        },
-        {
-          createdBy: 'George',
-          content: 'Blah'
-        }
-      ])
-        .then(() => done())
-        .catch(done);
+      User
+        .create({
+          firstName: 'person',
+          lastName: 'person',
+          role: 'student',
+          email: 'person@person.com',
+          password: 'password',
+          passwordConfirmation: 'password'
+        })
+        .then((user) => {
+          return Comment
+            .create([{
+              createdBy: user,
+              content: 'Blah'
+            }, {
+              createdBy: user,
+              content: 'Hello'
+            }])
+            .then(() => done())
+            .catch(done);
+        });
     });
 
     it('should create 2 comments', done => {
@@ -125,12 +148,31 @@ describe('Comments', function() {
 
   describe('POST /api/comments', () => {
 
+    let user;
+
+    beforeEach(done => {
+      User
+        .create({
+          firstName: 'person',
+          lastName: 'person',
+          role: 'student',
+          email: 'person@person.com',
+          password: 'password',
+          passwordConfirmation: 'password'
+        })
+        .then(userData => {
+          user = userData;
+          done();
+        })
+        .catch(done);
+    });
+
     it('should return a 201 response', done => {
       api
         .post('/api/comments')
         .set('Accept', 'application/json')
         .send({
-          createdBy: 'Martha',
+          createdBy: user.id,
           content: 'Blah'
         })
         .expect(201, done);
@@ -141,7 +183,7 @@ describe('Comments', function() {
         .post('/api/comments')
         .set('Accept', 'application/json')
         .send({
-          createdBy: 'Martha',
+          createdBy: user.id,
           content: 'Blah'
         })
         .end((err, res) => {
@@ -179,16 +221,27 @@ describe('Comments', function() {
     let comment;
 
     beforeEach(done => {
-      Comment
+      User
         .create({
-          createdBy: 'Martha',
-          content: 'Blah'
+          firstName: 'person',
+          lastName: 'person',
+          role: 'student',
+          email: 'person@person.com',
+          password: 'password',
+          passwordConfirmation: 'password'
         })
-        .then(commentData => {
-          comment = commentData;
-          done();
-        })
-        .catch(done);
+        .then((user) => {
+          return Comment
+            .create({
+              createdBy: user,
+              content: 'Blah'
+            })
+            .then(commentData => {
+              comment = commentData;
+              done();
+            })
+            .catch(done);
+        });
     });
 
     it('should return a 200 response', done => {
@@ -219,7 +272,7 @@ describe('Comments', function() {
               '_id',
               'createdBy',
               'content',
-              'reply',
+              'replies',
               'createdAt',
               'updatedAt'
             ]);
@@ -231,18 +284,31 @@ describe('Comments', function() {
   describe('PUT /api/comments/:id', () => {
 
     let comment;
+    let user;
 
     beforeEach(done => {
-      Comment
+      User
         .create({
-          createdBy: 'Martha',
-          content: 'Blah'
+          firstName: 'person',
+          lastName: 'person',
+          role: 'student',
+          email: 'person@person.com',
+          password: 'password',
+          passwordConfirmation: 'password'
         })
-        .then(commentData => {
-          comment = commentData;
-          done();
-        })
-        .catch(done);
+        .then((userData) => {
+          user = userData;
+          return Comment
+            .create({
+              createdBy: user,
+              content: 'Blah'
+            })
+            .then(commentData => {
+              comment = commentData;
+              done();
+            })
+            .catch(done);
+        });
     });
 
     it('should return 200 status', function(done) {
@@ -250,11 +316,12 @@ describe('Comments', function() {
         .put(`/api/comments/${comment.id}`)
         .set('Accept', 'application/json')
         .send({
-          createdBy: 'George',
+          createdBy: user.id,
           content: 'Blah'
         })
         .expect(200, done);
     });
+
     it('should return a JSON object', done => {
       api
         .get(`/api/comments/${comment.id}`)
@@ -276,24 +343,25 @@ describe('Comments', function() {
               '_id',
               'createdBy',
               'content',
-              'reply',
+              'replies',
               'createdAt',
               'updatedAt'
             ]);
           done();
         });
     });
+
     it('should return updated data', function(done) {
       api
         .put(`/api/comments/${comment.id}`)
         .set('Accept', 'application/json')
         .send({
-          createdBy: 'George',
+          createdBy: user.id,
           content: 'Blah'
         })
         .end((err, res) => {
           expect(res.body.createdBy)
-            .to.be.eq('George');
+            .to.be.eq(user.id);
           done();
         });
     });
@@ -304,16 +372,27 @@ describe('Comments', function() {
     let comment;
 
     beforeEach(done => {
-      Comment
+      User
         .create({
-          createdBy: 'Martha',
-          content: 'Blah'
+          firstName: 'person',
+          lastName: 'person',
+          role: 'student',
+          email: 'person@person.com',
+          password: 'password',
+          passwordConfirmation: 'password'
         })
-        .then(commentData => {
-          comment = commentData;
-          done();
-        })
-        .catch(done);
+        .then((user) => {
+          return Comment
+            .create({
+              createdBy: user,
+              content: 'Blah'
+            })
+            .then(commentData => {
+              comment = commentData;
+              done();
+            })
+            .catch(done);
+        });
     });
 
     it('should remove a comment by id', function(done) {
@@ -321,5 +400,7 @@ describe('Comments', function() {
         .delete(`/api/comments/${comment.id}`)
         .expect(204, done);
     });
+
   });
+
 });
