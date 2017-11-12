@@ -1,0 +1,13 @@
+<h1>{{ vm.lesson.title }}</h1>
+
+<div>
+  <h3>{{ vm.user.firstName }}</h3>
+  <p>
+    {{ vm.lesson.competencies }}
+  </p>
+  <p>
+    {{ vm.lesson.instructor }}
+  </p>
+</div>
+
+<a ui-sref="lessonsEdit({ id: vm.lesson.id })">Edit</a>
