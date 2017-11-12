@@ -1,8 +1,7 @@
 const mongoose = require('mongoose');
 
 const replySchema = new mongoose.Schema({
-  createdBy: String,
-  // content: String
+  createdBy: { type: mongoose.Schema.ObjectId, ref: 'User', required: true },
   content: { type: String, required: true }
 }, {
   timestamps: true
@@ -14,9 +13,9 @@ replySchema.methods.belongsTo = function replyBelongsTo(user) {
 };
 
 const commentSchema = new mongoose.Schema({
-  createdBy: String,
+  createdBy: { type: mongoose.Schema.ObjectId, ref: 'User', required: true },
   content: { type: String, required: true },
-  reply: [replySchema]
+  replies: [replySchema]
 }, {
   timestamps: true
 });

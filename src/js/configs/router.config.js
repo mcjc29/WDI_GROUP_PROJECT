@@ -40,6 +40,11 @@ function Router($stateProvider, $urlRouterProvider, $locationProvider) {
       url: '/lessons',
       templateUrl: '/js/views/lessons/index.html',
       controller: 'LessonsIndexCtrl as vm'
+    })
+    .state('commentIndex', {
+      url: '/chat',
+      templateUrl: '/js/views/chat/chat.html',
+      controller: 'ChatCtrl as vm'
     });
   $urlRouterProvider.otherwise('/');
 }
