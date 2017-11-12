@@ -1,0 +1,10 @@
+<h1>Groups</h1>
+
+<ul ng-repeat="group in vm.group track by $index">
+  <li>
+    <h3><a ui-sref="groupsShow({ id: group.id })">{{ group.title }}</a></h3>
+  </li>
+  <li>
+    <p>{{ group.competencies }}</p>
+  </li>
+  </ul>
