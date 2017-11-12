@@ -1,11 +1,15 @@
 const mongoose    = require('mongoose');
 const User        = require('../models/user');
+const Group       = require('../models/group');
+const Lesson      = require('../models/lesson');
 const { db }      = require('../config/environment');
 mongoose.Promise  = require('bluebird');
 
 mongoose.connect(db.development, { useMongoClient: true });
 
 User.collection.drop();
+Group.collection.drop();
+Lesson.collection.drop();
 
 User
   .create([{
@@ -226,5 +230,53 @@ User
     passwordConfirmation: 'password'
   }])
   .then((users) => console.log(`${users.length} users created!`))
+  .catch((err) => console.log(err))
+  .finally(() => mongoose.connection.close());
+
+Group
+  .create([{
+    name: 'WDI-30',
+    city: 'London',
+    taughtBy: 'Rane, Alex'
+  }, {
+    name: 'WDI-29',
+    city: 'London',
+    taughtBy: 'Mike Hayden, Emily Isacke'
+  }, {
+    name: 'UX-12',
+    city: 'London',
+    taughtBy: '???, ???'
+  }])
+  .then((groups) => console.log(`${groups.length} groups created!`))
+  .catch((err) => console.log(err))
+  .finally(() => mongoose.connection.close());
+
+Lesson
+  .create([{
+    title: 'Ng Resource Factories',
+    date: '2017-11-01',
+    duration: '1hr25mins',
+    creator: 'Alex Chin',
+    city: 'London',
+    competencies: 'Front End Frameworks',
+    taughtBy: 'Alex Chin'
+  }, {
+    title: 'Angular $http',
+    date: '2017-10-30',
+    duration: '1hr25mins',
+    creator: 'Alex Chin & Micah Rich',
+    city: 'London & LA',
+    competencies: 'Front End Frameworks',
+    taughtBy: 'Rane Gowan'
+  }, {
+    title: 'Uploading Images with Angular',
+    date: '2017-11-08',
+    duration: '1hr25mins',
+    creator: 'Mike Hayden',
+    city: 'London',
+    competencies: 'Programming, Server Applications, MV* Applications',
+    taughtBy: 'Alex Chin'
+  }])
+  .then((groups) => console.log(`${groups.length} groups created!`))
   .catch((err) => console.log(err))
   .finally(() => mongoose.connection.close());
