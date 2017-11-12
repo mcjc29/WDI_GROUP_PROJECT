@@ -4,7 +4,7 @@ angular
 
 LessonsShowCtrl.$inject = ['Lesson', '$stateParams'];
 
-function LessonsShowCtrl(Lesson, $stateParams ) {
+function LessonsShowCtrl(Lesson, $stateParams) {
   const vm = this;
   vm.lessons = Lesson.get($stateParams);
 }
