@@ -1,8 +1,13 @@
 <h1>Lessons</h1>
 
-<ul>
-  <li ng-repeat="lesson in vm.lesson track by $index">
-    <h4><a ui-sref="lessonsShow({ id: lesson.id })">{{ lesson.title }}</a></h4>
-    <h4>{{ lesson.comppetencies }}</h4>
+<ul ng-repeat="lesson in vm.lessons track by $index">
+  <li>
+    <h3><a ui-sref="lessonsShow({ id: lesson._id })">{{ lesson.title }}</a></h3>
+  </li>
+  <li>
+    <p>{{ lesson.competencies }}</p>
+  </li>
+  <li>
+    <p>{{ lesson.taughtBy }}</p>
   </li>
   </ul>

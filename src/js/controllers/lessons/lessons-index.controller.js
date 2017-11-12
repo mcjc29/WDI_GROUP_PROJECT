@@ -5,5 +5,6 @@ angular
 LessonsIndexCtrl.$inject = ['Lesson'];
 function LessonsIndexCtrl(Lesson) {
   const vm = this;
-  vm.lesson = Lesson.query();
+  vm.lessons = Lesson.query();
+  console.log(vm.lessons);
 }
