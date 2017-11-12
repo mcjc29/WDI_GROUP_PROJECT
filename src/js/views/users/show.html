@@ -1,6 +1,8 @@
-<h1>{{ vm.user.firstName }}' Profile'</h1>
+<h1>{{ vm.user.firstName }}'s Profile</h1>
 
 <div>
   <h3>{{ vm.user.firstName }}</h3>
-  <img ng-src="" alt="{{ user.firstName }}">
+  <img ng-src="{{ vm.user.image }}" alt="{{ vm.user.firstName }}">
 </div>
+
+<a ui-sref="usersEdit({ id: vm.user.id })">Edit</a>
