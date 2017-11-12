@@ -2,6 +2,7 @@ const mongoose  = require('mongoose');
 
 const lessonSchema = new mongoose.Schema({
   title: { type: String, required: true },
+  date: Date,
   duration: String,
   creator: String,
   city: String,
@@ -11,4 +12,4 @@ const lessonSchema = new mongoose.Schema({
   timestamps: true
 });
 
-module.exports = mongoose.model('lessonSchema', lessonSchema);
+module.exports = mongoose.model('Lesson', lessonSchema);
