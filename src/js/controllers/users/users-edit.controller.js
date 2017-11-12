@@ -14,6 +14,6 @@ function UsersEditCtrl(User, $stateParams, $state) {
       .$promise
       .then(user => {
         $state.go('usersShow', { id: user.id });
-      });  
+      });
   };
 }
