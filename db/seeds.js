@@ -277,6 +277,6 @@ Lesson
     competencies: 'Programming, Server Applications, MV* Applications',
     taughtBy: 'Alex Chin'
   }])
-  .then((groups) => console.log(`${groups.length} groups created!`))
+  .then((lessons) => console.log(`${lessons.length} lessons created!`))
   .catch((err) => console.log(err))
   .finally(() => mongoose.connection.close());
