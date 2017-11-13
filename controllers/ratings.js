@@ -10,8 +10,11 @@ function ratingsIndex(req, res, next) {
 }
 
 function ratingsCreate(req, res, next) {
+  const rating = req.body;
+  rating.createdBy = req.user;
+  console.log(rating.createdBy);
   Rating
-    .create(req.body)
+    .create(rating)
     .then((rating) => res.status(201).json(rating))
     .catch(next);
 }

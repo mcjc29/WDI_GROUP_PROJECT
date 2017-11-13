@@ -2,16 +2,14 @@ angular
   .module('gaFeedback')
   .controller('RatingsCtrl', RatingsCtrl);
 
-RatingsCtrl.$inject = ['Rating', '$state', 'currentUserService'];
+RatingsCtrl.$inject = ['Rating', '$state'];
 
-function RatingsCtrl(Rating, $state, currentUserService) {
+function RatingsCtrl(Rating, $state) {
   const vm = this;
   vm.submit = addRating;
 
   function addRating() {
-    const user = currentUserService.currentUser.id;
     vm.newRating = {
-      createdBy: user,
       pace: vm.pace,
       concepts: vm.concepts,
       syntax: vm.syntax,

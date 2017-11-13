@@ -7,7 +7,6 @@ LessonsShowCtrl.$inject = ['Lesson', '$stateParams', 'Rating'];
 function LessonsShowCtrl(Lesson, $stateParams, Rating ) {
   const vm = this;
   vm.lessons = Lesson.get($stateParams);
-  vm.rating = null;
 
   Rating
     .query()

@@ -12,6 +12,8 @@ mongoose.connect(db.development, { useMongoClient: true });
 User.collection.drop();
 Cohort.collection.drop();
 Lesson.collection.drop();
+Rating.collection.drop();
+Comment.collection.drop();
 
 User
   .create([{
