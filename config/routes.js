@@ -22,6 +22,7 @@ router.route('/users/:id')
   .delete(users.delete);
 
 router.route('/ratings')
+  .get(ratings.index)
   .post(ratings.create);
 
 router.route('/lessons')

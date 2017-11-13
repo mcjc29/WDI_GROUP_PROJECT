@@ -1,5 +1,13 @@
 const Rating = require('../models/rating');
 
+function ratingsIndex(req, res, next) {
+  Rating
+    .find()
+    .exec()
+    .then((ratings) => res.status(200).json(ratings))
+    .catch(next);
+}
+
 function ratingsCreate(req, res, next) {
   Rating
     .create(req.body)
@@ -7,5 +15,6 @@ function ratingsCreate(req, res, next) {
     .catch(next);
 }
 module.exports = {
+  index: ratingsIndex,
   create: ratingsCreate
 };
