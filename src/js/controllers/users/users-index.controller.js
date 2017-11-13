@@ -5,6 +5,6 @@ angular
 UsersIndexCtrl.$inject = ['User', '$scope'];
 function UsersIndexCtrl(User) {
   const vm = this;
-  vm.user = User.query();
+  vm.users = User.query();
 
 }

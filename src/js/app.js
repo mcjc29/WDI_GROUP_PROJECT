@@ -3,7 +3,8 @@ angular
     'ui.router',
     'ngResource',
     'satellizer',
-    'ui.knob'
+    'ui.knob',
+    'angular.filter'
   ]);
 
 document.addEventListener('DOMContentLoaded', function () {

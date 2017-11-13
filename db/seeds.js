@@ -330,36 +330,62 @@ Lesson
   .catch((err) => console.log(err))
   .finally(() => mongoose.connection.close());
 
-Rating
+User
   .create([{
-    pace: 50,
-    concepts: 50,
-    syntax: 50,
-    confidence: 50,
-    message: 'Feeling ok!',
-    needHelp: false
-  },{
-    pace: -25,
-    concepts: 0,
-    syntax: 15,
-    confidence: 10,
-    message: 'Alex is going too fast :(',
-    needHelp: true
-  },{
-    pace: 0,
-    concepts: 10,
-    syntax: 10,
-    confidence: 25,
-    message: '',
-    needHelp: true
-  },{
-    pace: 90,
-    concepts: 75,
-    syntax: 80,
-    confidence: 70,
-    message: 'Feeling pretty good about things!',
-    needHelp: false
+    firstName: 'Gavin',
+    lastName: 'Hughes',
+    email: 'gavin@gavin.com',
+    cohort: 'WDI-30',
+    image: 'https://user-images.githubusercontent.com/28314323/32404877-98317998-c151-11e7-8689-5d92aa4dec10.jpg',
+    role: 'student',
+    password: 'password',
+    passwordConfirmation: 'password'
   }])
+  .then((users) => {
+    console.log(`${users.length} users created!`);
+    return Rating
+      .create([{
+        createdBy: users[0],
+        pace: 50,
+        concepts: 50,
+        syntax: 50,
+        confidence: 50,
+        message: 'Feeling ok!',
+        needHelp: false
+      },{
+        createdBy: users[0],
+        pace: -25,
+        concepts: 0,
+        syntax: 15,
+        confidence: 10,
+        message: 'Alex is going too fast :(',
+        needHelp: true
+      },{
+        createdBy: users[0],
+        pace: 0,
+        concepts: 10,
+        syntax: 10,
+        confidence: 25,
+        message: '',
+        needHelp: true
+      },{
+        createdBy: users[0],
+        pace: 90,
+        concepts: 75,
+        syntax: 80,
+        confidence: 70,
+        message: 'Feeling pretty good about things!',
+        needHelp: false
+      },{
+        createdBy: users[0],
+        pace: 40,
+        concepts: 20,
+        syntax: 20,
+        confidence: 30,
+        message: 'Tired AF!',
+        needHelp: false
+      }]);
+  })
   .then((ratings) => console.log(`${ratings.length} ratings created!`))
   .catch((err) => console.log(err))
   .finally(() => mongoose.connection.close());

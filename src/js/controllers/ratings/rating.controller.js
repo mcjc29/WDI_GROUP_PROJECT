@@ -6,7 +6,6 @@ RatingsCtrl.$inject = ['Rating', '$state', 'currentUserService'];
 
 function RatingsCtrl(Rating, $state, currentUserService) {
   const vm = this;
-
   vm.submit = addRating;
 
   function addRating() {
@@ -18,7 +17,6 @@ function RatingsCtrl(Rating, $state, currentUserService) {
       syntax: vm.syntax,
       confidence: vm.confidence
     };
-    console.log(vm.newRating);
     Rating
       .save(vm.newRating)
       .$promise
