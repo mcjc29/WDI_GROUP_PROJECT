@@ -11,9 +11,9 @@ mongoose.connect(db.development, { useMongoClient: true });
 
 User.collection.drop();
 Cohort.collection.drop();
+Comment.collection.drop();
 Lesson.collection.drop();
 Rating.collection.drop();
-Comment.collection.drop();
 
 User
   .create([{
@@ -279,115 +279,101 @@ User
       }, {
         content: 'Here to help with today\'s lesson - I\'m a ninja!',
         createdBy: users[12]
-      }]);
+      }])
+      .then((comments) => {
+        console.log(`${comments.length} comments created!`);
+        return Cohort
+          .create([{
+            name: 'WDI-30',
+            city: 'London',
+            taughtBy: 'Rane, Alex'
+          }, {
+            name: 'WDI-29',
+            city: 'London',
+            taughtBy: 'Mike Hayden, Emily Isacke'
+          }, {
+            name: 'UX-12',
+            city: 'London',
+            taughtBy: '???, ???'
+          }])
+          .then((cohorts) => {
+            console.log(`${cohorts.length} cohorts created!`);
+            return Lesson
+              .create([{
+                title: 'Ng Resource Factories',
+                startTime: new Date(2017, 11, 10, 10, 30),
+                endTime: new Date(2017, 11, 20, 11, 30),
+                creator: 'Alex Chin',
+                city: 'London',
+                competencies: 'Front End Frameworks',
+                taughtBy: 'Alex Chin'
+              }, {
+                title: 'Angular $http',
+                startTime: new Date(2017, 11, 5, 10, 30),
+                endTime: new Date(2017, 11, 20, 11, 30),
+                creator: 'Alex Chin & Micah Rich',
+                city: 'London & LA',
+                competencies: 'Front End Frameworks',
+                taughtBy: 'Rane Gowan'
+              }, {
+                title: 'Uploading Images with Angular',
+                startTime: new Date(2017, 11, 5, 10, 30),
+                endTime: new Date(2017, 11, 20, 11, 30),
+                creator: 'Mike Hayden',
+                city: 'London',
+                competencies: 'Programming, Server Applications, MV* Applications',
+                taughtBy: 'Alex Chin'
+              }])
+              .then((lessons) => {
+                console.log(`${lessons.length} lessons created!`);
+                return Rating
+                  .create([{
+                    createdBy: users[0],
+                    pace: 50,
+                    concepts: 50,
+                    syntax: 50,
+                    confidence: 50,
+                    message: 'Feeling ok!',
+                    needHelp: false
+                  },{
+                    createdBy: users[0],
+                    pace: -25,
+                    concepts: 0,
+                    syntax: 15,
+                    confidence: 10,
+                    message: 'Alex is going too fast :(',
+                    needHelp: true
+                  },{
+                    createdBy: users[0],
+                    pace: 0,
+                    concepts: 10,
+                    syntax: 10,
+                    confidence: 25,
+                    message: '',
+                    needHelp: true
+                  },{
+                    createdBy: users[0],
+                    pace: 90,
+                    concepts: 75,
+                    syntax: 80,
+                    confidence: 70,
+                    message: 'Feeling pretty good about things!',
+                    needHelp: false
+                  },{
+                    createdBy: users[0],
+                    pace: 40,
+                    concepts: 20,
+                    syntax: 20,
+                    confidence: 30,
+                    message: 'Tired AF!',
+                    needHelp: false
+                  }])
+                  .then((ratings) => {
+                    console.log(`${ratings.length} ratings created!`);
+                  });
+              });
+          });
+      });
   })
-  .catch((err) => console.log(err))
-  .finally(() => mongoose.connection.close());
-
-Cohort
-  .create([{
-    name: 'WDI-30',
-    city: 'London',
-    taughtBy: 'Rane, Alex'
-  }, {
-    name: 'WDI-29',
-    city: 'London',
-    taughtBy: 'Mike Hayden, Emily Isacke'
-  }, {
-    name: 'UX-12',
-    city: 'London',
-    taughtBy: '???, ???'
-  }])
-  .then((cohorts) => console.log(`${cohorts.length} cohorts created!`))
-  .catch((err) => console.log(err))
-  .finally(() => mongoose.connection.close());
-
-Lesson
-  .create([{
-    title: 'Ng Resource Factories',
-    startTime: new Date(2017, 11, 10, 10, 30),
-    endTime: new Date(2017, 11, 20, 11, 30),
-    creator: 'Alex Chin',
-    city: 'London',
-    competencies: 'Front End Frameworks',
-    taughtBy: 'Alex Chin'
-  }, {
-    title: 'Angular $http',
-    startTime: new Date(2017, 11, 5, 10, 30),
-    endTime: new Date(2017, 11, 20, 11, 30),
-    creator: 'Alex Chin & Micah Rich',
-    city: 'London & LA',
-    competencies: 'Front End Frameworks',
-    taughtBy: 'Rane Gowan'
-  }, {
-    title: 'Uploading Images with Angular',
-    startTime: new Date(2017, 11, 5, 10, 30),
-    endTime: new Date(2017, 11, 20, 11, 30),
-    creator: 'Mike Hayden',
-    city: 'London',
-    competencies: 'Programming, Server Applications, MV* Applications',
-    taughtBy: 'Alex Chin'
-  }])
-  .then((lessons) => console.log(`${lessons.length} lessons created!`))
-  .catch((err) => console.log(err))
-  .finally(() => mongoose.connection.close());
-
-User
-  .create([{
-    firstName: 'Gavin',
-    lastName: 'Hughes',
-    email: 'gavin@gavin.com',
-    cohort: 'WDI-30',
-    image: 'https://user-images.githubusercontent.com/28314323/32404877-98317998-c151-11e7-8689-5d92aa4dec10.jpg',
-    role: 'student',
-    password: 'password',
-    passwordConfirmation: 'password'
-  }])
-  .then((users) => {
-    console.log(`${users.length} users created!`);
-    return Rating
-      .create([{
-        createdBy: users[0],
-        pace: 50,
-        concepts: 50,
-        syntax: 50,
-        confidence: 50,
-        message: 'Feeling ok!',
-        needHelp: false
-      },{
-        createdBy: users[0],
-        pace: -25,
-        concepts: 0,
-        syntax: 15,
-        confidence: 10,
-        message: 'Alex is going too fast :(',
-        needHelp: true
-      },{
-        createdBy: users[0],
-        pace: 0,
-        concepts: 10,
-        syntax: 10,
-        confidence: 25,
-        message: '',
-        needHelp: true
-      },{
-        createdBy: users[0],
-        pace: 90,
-        concepts: 75,
-        syntax: 80,
-        confidence: 70,
-        message: 'Feeling pretty good about things!',
-        needHelp: false
-      },{
-        createdBy: users[0],
-        pace: 40,
-        concepts: 20,
-        syntax: 20,
-        confidence: 30,
-        message: 'Tired AF!',
-        needHelp: false
-      }]);
-  })
-  .then((ratings) => console.log(`${ratings.length} ratings created!`))
   .catch((err) => console.log(err))
   .finally(() => mongoose.connection.close());
