@@ -26,6 +26,7 @@ describe('Authentications', function() {
           lastName: 'person',
           image: 'person',
           role: 'student',
+          cohort: 'WDI-30',
           email: 'person@person.com',
           password: 'password',
           passwordConfirmation: 'password'
@@ -44,13 +45,12 @@ describe('Authentications', function() {
         .post('/api/register')
         .set('Accept', 'application/json')
         .send({
-
-            lastName: 'person',
-            role: 'student',
-            email: 'person@person.com',
-            password: 'password',
-            passwordConfirmation: 'password'
-
+          lastName: 'person',
+          role: 'student',
+          cohort: 'WDI-30',
+          email: 'person@person.com',
+          password: 'password',
+          passwordConfirmation: 'password'
         })
         .end((err, res) => {
           expect(res.status).to.eq(400);
@@ -65,13 +65,12 @@ describe('Authentications', function() {
         .post('/api/register')
         .set('Accept', 'application/json')
         .send({
-
-            firstName: 'person',
-            lastName: 'person',
-            role: 'student',
-            password: 'password',
-            passwordConfirmation: 'password'
-
+          firstName: 'person',
+          lastName: 'person',
+          role: 'student',
+          cohort: 'WDI-30',
+          password: 'password',
+          passwordConfirmation: 'password'
         })
         .end((err, res) => {
           expect(res.status).to.eq(400);
@@ -81,18 +80,37 @@ describe('Authentications', function() {
           done();
         });
     });
+    it('should not register a user without a cohort', function(done) {
+      api
+        .post('/api/register')
+        .set('Accept', 'application/json')
+        .send({
+          firstName: 'person',
+          lastName: 'person',
+          email: 'person@person.com',
+          role: 'student',
+          password: 'password',
+          passwordConfirmation: 'password'
+        })
+        .end((err, res) => {
+          expect(res.status).to.eq(400);
+          expect(res.body).to.be.a('object');
+          expect(res.body.errors).to.eq('ValidationError: cohort: Path `cohort` is required.');
+          expect(res.body.message).to.eq('Bad Request');
+          done();
+        });
+    });
     it('should not register a user without a password', function(done) {
       api
         .post('/api/register')
         .set('Accept', 'application/json')
         .send({
-
-            firstName: 'person',
-            lastName: 'person',
-            email: 'person@person.com',
-            role: 'student',
-            passwordConfirmation: 'password'
-
+          firstName: 'person',
+          lastName: 'person',
+          email: 'person@person.com',
+          role: 'student',
+          cohort: 'WDI-30',
+          passwordConfirmation: 'password'
         })
         .end((err, res) => {
           expect(res.status).to.eq(400);
@@ -107,13 +125,12 @@ describe('Authentications', function() {
         .post('/api/register')
         .set('Accept', 'application/json')
         .send({
-
-            firstName: 'person',
-            lastName: 'person',
-            email: 'person@person.com',
-            role: 'student',
-            password: 'password'
-
+          firstName: 'person',
+          lastName: 'person',
+          email: 'person@person.com',
+          role: 'student',
+          cohort: 'WDI-30',
+          password: 'password'
         })
         .end((err, res) => {
           expect(res.status).to.eq(400);
@@ -132,15 +149,14 @@ describe('Authentications', function() {
         .post('/api/register')
         .set('Accept', 'application/json')
         .send({
-
-            firstName: 'person',
-            lastName: 'person',
-            image: 'person',
-            role: 'student',
-            email: 'person@person.com',
-            password: 'password',
-            passwordConfirmation: 'password'
-
+          firstName: 'person',
+          lastName: 'person',
+          image: 'person',
+          role: 'student',
+          cohort: 'WDI-30',
+          email: 'person@person.com',
+          password: 'password',
+          passwordConfirmation: 'password'
         })
         .end(() => {
           done();

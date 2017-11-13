@@ -8,6 +8,7 @@ const userSchema = new mongoose.Schema({
   email: { type: String, unique: true, required: true },
   image: String,
   role: { type: String, required: true },
+  cohort: { type: String, required: true },
   passwordHash: { type: String, required: true }
 }, {
   timestamps: true

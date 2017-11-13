@@ -1,6 +1,6 @@
 const mongoose    = require('mongoose');
 const User        = require('../models/user');
-const Group       = require('../models/group');
+const Cohort       = require('../models/cohort');
 const Lesson      = require('../models/lesson');
 const Comment     = require('../models/comment');
 const { db }      = require('../config/environment');
@@ -9,7 +9,7 @@ mongoose.Promise  = require('bluebird');
 mongoose.connect(db.development, { useMongoClient: true });
 
 User.collection.drop();
-Group.collection.drop();
+Cohort.collection.drop();
 Lesson.collection.drop();
 
 User
@@ -254,7 +254,7 @@ User
   .catch((err) => console.log(err))
   .finally(() => mongoose.connection.close());
 
-Group
+Cohort
   .create([{
     name: 'WDI-30',
     city: 'London',
@@ -268,7 +268,7 @@ Group
     city: 'London',
     taughtBy: '???, ???'
   }])
-  .then((groups) => console.log(`${groups.length} groups created!`))
+  .then((cohorts) => console.log(`${cohorts.length} cohorts created!`))
   .catch((err) => console.log(err))
   .finally(() => mongoose.connection.close());
 

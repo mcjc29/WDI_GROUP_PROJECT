@@ -26,6 +26,7 @@ describe('Users', function() {
           lastName: 'person',
           image: 'person',
           role: 'student',
+          cohort: 'WDI-30',
           email: 'person@person.com',
           password: 'password',
           passwordConfirmation: 'password'
@@ -77,6 +78,7 @@ describe('Users', function() {
               'lastName',
               'image',
               'role',
+              'cohort',
               'email',
               'createdAt',
               'updatedAt'
@@ -107,6 +109,9 @@ describe('Users', function() {
             .to.have.property('role')
             .and.to.be.a('string');
           expect(firstUser)
+            .to.have.property('cohort')
+            .and.to.be.a('string');
+          expect(firstUser)
             .to.have.property('email')
             .and.to.be.a('string');
           done();
@@ -123,6 +128,7 @@ describe('Users', function() {
           lastName: 'person1',
           image: 'person',
           role: 'student',
+          cohort: 'WDI-30',
           email: 'person1@person.com',
           password: 'password',
           passwordConfirmation: 'password'
@@ -132,6 +138,7 @@ describe('Users', function() {
           lastName: 'person2',
           image: 'person',
           role: 'student',
+          cohort: 'WDI-30',
           email: 'person2@person.com',
           password: 'password',
           passwordConfirmation: 'password'
@@ -163,6 +170,7 @@ describe('Users', function() {
           lastName: 'person',
           image: 'person',
           role: 'student',
+          cohort: 'WDI-30',
           email: 'person@person.com',
           password: 'password',
           passwordConfirmation: 'password'
@@ -202,6 +210,7 @@ describe('Users', function() {
               'lastName',
               'image',
               'role',
+              'cohort',
               'email',
               'createdAt',
               'updatedAt'
@@ -222,6 +231,7 @@ describe('Users', function() {
           lastName: 'person',
           image: 'person',
           role: 'student',
+          cohort: 'WDI-30',
           email: 'person@person.com',
           password: 'password',
           passwordConfirmation: 'password'
@@ -242,6 +252,7 @@ describe('Users', function() {
           lastName: 'personperson',
           image: 'person',
           role: 'student',
+          cohort: 'WDI-30',
           email: 'person@person.com',
           password: 'password',
           passwordConfirmation: 'password'
@@ -269,6 +280,7 @@ describe('Users', function() {
               'lastName',
               'image',
               'role',
+              'cohort',
               'email',
               'createdAt',
               'updatedAt'
@@ -285,6 +297,7 @@ describe('Users', function() {
           lastName: 'personperson',
           image: 'person',
           role: 'student',
+          cohort: 'WDI-30',
           email: 'person@person.com',
           password: 'password',
           passwordConfirmation: 'password'
@@ -309,6 +322,7 @@ describe('Users', function() {
           lastName: 'person',
           image: 'person',
           role: 'student',
+          cohort: 'WDI-30',
           email: 'person@person.com',
           password: 'password',
           passwordConfirmation: 'password'
