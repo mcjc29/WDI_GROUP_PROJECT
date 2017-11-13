@@ -11,7 +11,6 @@ document.addEventListener('DOMContentLoaded', function () {
   if ($navbarBurgers.length > 0) {
     $navbarBurgers.forEach(function ($el) {
       $el.addEventListener('click', function () {
-        console.log('hello');
         const target = $el.dataset.target;
         const $target = document.getElementById(target);
         $el.classList.toggle('is-active');
