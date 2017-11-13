@@ -30,6 +30,7 @@ userSchema
   .path('email')
   .validate(validateEmail);
 
+userSchema.statics.fetchByIdWithRatings = fetchByIdWithRatings;
 userSchema.methods.validatePassword = validatePassword;
 
 userSchema.set('toJSON', {
@@ -47,6 +48,32 @@ userSchema.set('toJSON', {
 });
 
 module.exports = mongoose.model('User', userSchema);
+
+function fetchByIdWithRatings(req, res) {
+  const self = this;
+  return new Promise((resolve, reject) => {
+    self
+      .findById(req.params.id)
+      .exec()
+      .then((user) => {
+        if (!user) return res.notFound();
+        req.user = user.toObject();
+
+        return self.model('Rating')
+          // .findAndGroup - create new static model?
+          .find({
+            createdBy: user.id
+          })
+          .exec();
+      })
+      .then(ratings => {
+        // Can't add ratings without converting .toObject()
+        req.user.ratings = ratings;
+        return resolve(req.user);
+      })
+      .catch(reject);
+  });
+}
 
 function setPassword(value){
   this._password    = value;

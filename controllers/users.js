@@ -1,4 +1,5 @@
 const User = require('../models/user');
+const Rating = require('../models/rating');
 
 function usersIndex(req, res, next) {
   User
@@ -10,12 +11,8 @@ function usersIndex(req, res, next) {
 
 function usersShow(req, res, next) {
   User
-    .findById(req.params.id)
-    .exec()
-    .then((user) => {
-      if(!user) return res.notFound();
-      res.json(user);
-    })
+    .fetchByIdWithRatings(req, res)
+    .then(user => res.status(200).json(user))
     .catch(next);
 }
 
