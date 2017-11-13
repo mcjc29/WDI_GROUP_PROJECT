@@ -5,12 +5,20 @@ angular
 LessonsIndexCtrl.$inject = ['Lesson', 'filterFilter', '$scope'];
 function LessonsIndexCtrl(Lesson, filterFilter, $scope) {
   const vm = this;
-  vm.lessons = Lesson.query();
+
+  Lesson
+    .query()
+    .$promise
+    .then(lessons => {
+      vm.lessons = lessons;
+      filterLesson();
+    });
 
   function filterLesson() {
     const params = { title: vm.q };
 
     vm.filtered = filterFilter(vm.lessons, params);
+    console.log(vm.q);
   }
 
   $scope.$watchGroup([

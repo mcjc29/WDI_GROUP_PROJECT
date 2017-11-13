@@ -3,14 +3,17 @@ const Comment = require('../models/comment');
 function commentsIndex(req, res, next) {
   Comment
     .find()
+    .populate('createdBy')
     .exec()
     .then((comment) => res.status(200).json(comment))
     .catch(next);
 }
 
 function commentsCreate(req, res, next) {
+  const comment = req.body;
+  comment.createdBy = req.user;
   Comment
-    .create(req.body)
+    .create(comment)
     .then((comment) => res.status(201).json(comment))
     .catch(next);
 }

@@ -1,7 +1,11 @@
 <h1>Chat</h1>
+<form ng-submit="vm.submit()">
+  <input type="text" name="comment" placeholder="Write a message..." value="vm.newComment" ng-model="vm.newComment">
+  <input type="submit" value="Post">
+</form>
 <ul>
-  <li ng-repeat="comment in vm.comment track by $index">
-    <h4>{{ comment.createdBy }}</h4>
+  <li ng-repeat="comment in vm.comments track by $index">
+    <h4>{{ comment.createdBy.firstName }}</h4>
     <p>{{ comment.content }}</p>
   </li>
 </ul>
