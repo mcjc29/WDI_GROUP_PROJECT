@@ -5,6 +5,7 @@ const users = require('../controllers/users');
 const lessons = require('../controllers/lessons');
 const cohorts = require('../controllers/cohorts');
 const comments = require('../controllers/comments');
+const ratings = require('../controllers/ratings');
 
 router.route('/register')
   .post(authentications.register);
@@ -19,6 +20,9 @@ router.route('/users/:id')
   .get(users.show)
   .put(users.update)
   .delete(users.delete);
+
+router.route('/ratings')
+  .post(ratings.create);
 
 router.route('/lessons')
   .get(lessons.index)
