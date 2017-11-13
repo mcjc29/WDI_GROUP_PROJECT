@@ -6,7 +6,8 @@ KnobCtrl.$inject = [];
 
 function KnobCtrl() {
   const vm = this;
-  vm.value = 0;
+  vm.value = 50;
+  console.log(vm.value);
   vm.options1 = {
     min: -100,
     max: 100,

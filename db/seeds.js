@@ -1,8 +1,9 @@
 const mongoose    = require('mongoose');
 const User        = require('../models/user');
-const Cohort       = require('../models/cohort');
+const Cohort      = require('../models/cohort');
 const Lesson      = require('../models/lesson');
 const Comment     = require('../models/comment');
+const Rating      = require('../models/rating');
 const { db }      = require('../config/environment');
 mongoose.Promise  = require('bluebird');
 
@@ -297,6 +298,11 @@ Lesson
     city: 'London',
     competencies: 'Programming, Server Applications, MV* Applications',
     taughtBy: 'Alex Chin'
+  }])
+
+Rating
+  .create([{
+
   }])
   .then((lessons) => console.log(`${lessons.length} lessons created!`))
   .catch((err) => console.log(err))
