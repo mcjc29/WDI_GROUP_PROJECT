@@ -6,10 +6,6 @@ RatingsCtrl.$inject = ['Rating', '$state', 'currentUserService'];
 
 function RatingsCtrl(Rating, $state, currentUserService) {
   const vm = this;
-<<<<<<< HEAD:src/js/controllers/knob/knob.controller.js
-  vm.value = 50;
-  console.log(vm.value);
-=======
   vm.submit = addRating;
 
   function addRating() {
@@ -21,7 +17,6 @@ function RatingsCtrl(Rating, $state, currentUserService) {
       syntax: vm.syntax,
       confidence: vm.confidence
     };
-    console.log(vm.newRating);
     Rating
       .save(vm.newRating)
       .$promise
@@ -30,7 +25,6 @@ function RatingsCtrl(Rating, $state, currentUserService) {
       });
   }
 
->>>>>>> 8a9393222317403ac6360df60cab3e17155526ca:src/js/controllers/ratings/rating.controller.js
   vm.options1 = {
     min: -100,
     max: 100,

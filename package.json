@@ -51,21 +51,15 @@
     }
   },
   "dependencies": {
-    "angular-filter": "^0.5.17",
     "bcrypt": "^1.0.2",
     "bluebird": "^3.5.0",
     "body-parser": "^1.17.1",
-    "bulma": "^0.6.1",
-    "chai": "^4.1.2",
     "cors": "^2.8.4",
     "express": "^4.15.2",
     "express-jwt": "^5.3.0",
-    "istanbul": "^0.4.5",
     "jsonwebtoken": "^8.1.0",
-    "mocha": "^4.0.1",
     "mongoose": "^4.8.6",
     "morgan": "^1.8.1",
-    "supertest": "^3.0.0",
     "validator": "^5.6.0"
   },
   "devDependencies": {
@@ -100,6 +94,10 @@
     "jshint": "^2.9.4",
     "jshint-stylish": "^2.2.1",
     "main-bower-files": "^2.13.1",
-    "require-dir": "^0.3.1"
+    "require-dir": "^0.3.1",
+    "istanbul": "^0.4.5",
+    "chai": "^4.1.2",
+    "mocha": "^4.0.1",
+    "supertest": "^3.0.0"
   }
 }
