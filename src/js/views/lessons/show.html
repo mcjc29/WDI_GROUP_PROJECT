@@ -6,8 +6,12 @@
   <p>
     {{ vm.lessons.taughtBy }}
   </p>
+
+<h1>{{ vm.ratings }}</h1>
+<h1>{{ vm.rating }}</h1>
+
   <div>
-    <ui-knob id="main-knob" value="vm.pace" name="pace" options="vm.options1" ng-model="vm.pace"></ui-knob>
+    <ui-knob id="main-knob" value="vm.rating.pace" name="pace" options="vm.options1"></ui-knob>
   </div>
   <div>
     <h1>{{ vm.concepts }}</h1>
@@ -19,6 +23,6 @@
   <div>
     <ui-knob value="vm.confidence" name="confidence" options="vm.options4" ng-model="vm.confidence"></ui-knob>
   </div>
-  
+
   <a ui-sref="lessonsEdit({ id: vm.lessons._id })">Edit</a>
 </div>
