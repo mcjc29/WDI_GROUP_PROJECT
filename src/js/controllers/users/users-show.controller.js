@@ -4,8 +4,8 @@ angular
 
 UsersShowCtrl.$inject = ['User', '$stateParams'];
 
-function UsersShowCtrl(User, $stateParams ) {
+function UsersShowCtrl(User, $stateParams) {
   const vm = this;
   vm.user = User.get($stateParams);
-  
+
 }
