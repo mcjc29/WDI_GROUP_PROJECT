@@ -4,8 +4,7 @@ angular
     'ngResource',
     'satellizer',
     'ui.knob',
-    'angular.filter',
-    'chart.js'
+    'angular.filter'
   ]);
 
 document.addEventListener('DOMContentLoaded', function () {

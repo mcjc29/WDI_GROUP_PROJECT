@@ -14,9 +14,23 @@ function LessonsShowCtrl(Lesson, $stateParams, Rating ) {
     .$promise
     .then(data => {
       vm.ratings = data;
-      vm.pace = vm.ratings[0];
-      console.log(vm.pace);
-      // vm.concepts = vm.ratings[1];
+
+      const paceValues = [];
+      data.filter(rating => paceValues.push(rating.pace));
+      vm.avgPace = Math.ceil((paceValues.reduce((a,b) => a + b)) / paceValues.length);
+
+      const conceptsValues = [];
+      data.filter(rating => conceptsValues.push(rating.concepts));
+      vm.avgConcepts = Math.ceil((conceptsValues.reduce((a,b) => a + b)) / conceptsValues.length);
+
+      const syntaxValues = [];
+      data.filter(rating => syntaxValues.push(rating.syntax));
+      vm.avgSyntax = Math.ceil((syntaxValues.reduce((a,b) => a + b)) / syntaxValues.length);
+
+      const confidenceValues = [];
+      data.filter(rating => confidenceValues.push(rating.confidence));
+      vm.avgConfidence = Math.ceil((confidenceValues.reduce((a,b) => a + b)) / confidenceValues.length);
+
     });
 
   vm.options1 = {
