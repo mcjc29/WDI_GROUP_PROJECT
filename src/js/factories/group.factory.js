@@ -1,11 +1,11 @@
 angular
   .module('gaFeedback')
-  .factory('Group', Group);
+  .factory('Cohort', Cohort);
 
-Group.$inject = ['API', '$resource'];
+Cohort.$inject = ['API', '$resource'];
 
-function Group(API, $resource) {
-  return $resource(`${API}/groups/:id`, {
+function Cohort(API, $resource) {
+  return $resource(`${API}/cohorts/:id`, {
     id: '@_id'
   }, {
     update: { method: 'PUT' }
