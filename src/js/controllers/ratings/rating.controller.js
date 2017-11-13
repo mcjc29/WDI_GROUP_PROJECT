@@ -1,13 +1,33 @@
 angular
   .module('gaFeedback')
-  .controller('KnobCtrl', KnobCtrl);
+  .controller('RatingsCtrl', RatingsCtrl);
 
-KnobCtrl.$inject = [];
+RatingsCtrl.$inject = ['Rating', '$state'];
 
-function KnobCtrl() {
+function RatingsCtrl(Rating, $state) {
   const vm = this;
+<<<<<<< HEAD:src/js/controllers/knob/knob.controller.js
   vm.value = 50;
   console.log(vm.value);
+=======
+  vm.submit = addRating;
+
+  function addRating() {
+    vm.newRating = {
+      pace: vm.pace,
+      concepts: vm.concepts,
+      syntax: vm.syntax,
+      confidence: vm.confidence
+    };
+    Rating
+      .save(vm.newRating)
+      .$promise
+      .then(() => {
+        $state.go('lessonsIndex');
+      });
+  }
+
+>>>>>>> 8a9393222317403ac6360df60cab3e17155526ca:src/js/controllers/ratings/rating.controller.js
   vm.options1 = {
     min: -100,
     max: 100,

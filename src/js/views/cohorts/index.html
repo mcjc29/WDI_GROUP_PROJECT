@@ -1,0 +1,13 @@
+<h1>Cohorts</h1>
+
+<ul ng-repeat="cohort in vm.cohorts track by $index">
+  <li>
+    <h3><a ui-sref="cohortsShow({ id: cohort._id })">{{ cohort.name }}</a></h3>
+  </li>
+  <li>
+    <p>{{ cohort.city }}</p>
+  </li>
+  <li>
+    <p>{{ cohort.taughtBy }}</p>
+  </li>
+  </ul>

@@ -71,10 +71,10 @@ function Router($stateProvider, $urlRouterProvider, $locationProvider) {
       templateUrl: '/js/views/chat/chat.html',
       controller: 'ChatCtrl as vm'
     })
-    .state('knobsIndex', {
-      url: '/knobs',
-      templateUrl: '/js/views/knobs/index.html',
-      controller: 'KnobCtrl as vm'
+    .state('ratingsIndex', {
+      url: '/ratings',
+      templateUrl: '/js/views/ratings/index.html',
+      controller: 'RatingsCtrl as vm'
     });
   $urlRouterProvider.otherwise('/');
 }

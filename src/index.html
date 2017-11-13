@@ -2,8 +2,11 @@
 <html ng-app="gaFeedback">
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <base href="/">
     <title>WDI Project 3</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.1/css/bulma.min.css">
     <!-- inject:js -->
     <!-- endinject -->
     <!-- inject:css -->
@@ -11,17 +14,30 @@
   </head>
   <body ng-controller="MainCtrl as main">
     <header>
-      <nav>
-        <ul>
-          <li><a ui-sref="home">Home</a></li>
-          <li ng-if="!main.user"><a ui-sref="login">Login</a></li>
-          <li ng-if="!main.user"><a ui-sref="register">Register</a></li>
-          <li ng-if="main.user"><a ui-sref="usersIndex">Members</a></li>
-          <li ng-if="main.user"><a ui-sref="lessonsIndex">Lessons</a></li>
-          <li ng-if="main.user"><a ui-sref="groupsIndex">Groups</a></li>
-          <li ng-if="main.user"><a ui-sref="commentIndex">Chat</a></li>
-          <li ng-if="main.user"><a href="#" ng-click="main.logout()">Logout</a></li>
-        </ul>
+      <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+          <a class="navbar-item" href="/">
+            <img src="/images/ga_logo.png" alt="General Assembly" height="28">
+          </a>
+          <button class="button navbar-burger" data-target="navMenu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+        <div class="navbar-menu" id="navMenu">
+          <div class="navbar-start">
+            <a class="navbar-item" ng-if="main.user" ui-sref="usersIndex">Your Class</a>
+            <a class="navbar-item" ng-if="main.user" ui-sref="lessonsIndex">Lessons</a>
+            <a class="navbar-item" ng-if="main.user" ui-sref="cohortsIndex">Cohorts</a>
+            <a class="navbar-item" ng-if="main.user" ui-sref="commentIndex">Chat</a>
+          </div>
+          <div class="navbar-end">
+            <a class="navbar-item" ng-if="!main.user" ui-sref="login">Login</a>
+            <a class="navbar-item" ng-if="!main.user" ui-sref="register">Register</a>
+            <a class="navbar-item" ng-if="main.user" href="#" ng-click="main.logout()">Logout</a>
+          </div>
+        </div>
       </nav>
     </header>
     <h1>WDI Project 3</h1>

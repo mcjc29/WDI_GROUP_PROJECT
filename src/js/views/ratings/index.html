@@ -1,0 +1,24 @@
+<form class="add-rating" ng-submit="vm.submit()">
+<div>
+  <ui-knob id="main-knob" value="vm.pace" name="pace" options="vm.options1" ng-model="vm.pace"></ui-knob>
+</div>
+<div>
+  <h1>{{ vm.concepts }}</h1>
+  <ui-knob value="vm.concepts" name="concepts" options="vm.options2" ng-model="vm.concepts"></ui-knob>
+</div>
+<div>
+  <ui-knob value="vm.syntax" name="syntax" options="vm.options3" ng-model="vm.syntax"></ui-knob>
+</div>
+<div>
+  <ui-knob value="vm.confidence" name="confidence" options="vm.options4" ng-model="vm.confidence"></ui-knob>
+</div>
+<!-- <div>
+<p>{{ message.content }}</p>
+</div> -->
+<!-- <div>
+<input type="checkbox" id="status" value="status">
+<label for="status">I need help</label>
+</div> -->
+<input type="submit" value="Submit">
+
+</form>
