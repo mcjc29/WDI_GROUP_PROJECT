@@ -305,23 +305,23 @@ Lesson
   .create([{
     title: 'Ng Resource Factories',
     startTime: new Date(2017, 11, 10, 10, 30),
-    endTime: new Date(2017, 11, 10, 11, 30),
+    endTime: new Date(2017, 11, 20, 11, 30),
     creator: 'Alex Chin',
     city: 'London',
     competencies: 'Front End Frameworks',
     taughtBy: 'Alex Chin'
   }, {
     title: 'Angular $http',
-    startTime: new Date(2017, 8, 5, 10, 30),
-    endTime: new Date(2017, 8, 5, 11, 30),
+    startTime: new Date(2017, 11, 5, 10, 30),
+    endTime: new Date(2017, 11, 20, 11, 30),
     creator: 'Alex Chin & Micah Rich',
     city: 'London & LA',
     competencies: 'Front End Frameworks',
     taughtBy: 'Rane Gowan'
   }, {
     title: 'Uploading Images with Angular',
-    startTime: new Date(2017, 4, 7, 10, 30),
-    endTime: new Date(2017, 4, 7, 11, 30),
+    startTime: new Date(2017, 11, 5, 10, 30),
+    endTime: new Date(2017, 11, 20, 11, 30),
     creator: 'Mike Hayden',
     city: 'London',
     competencies: 'Programming, Server Applications, MV* Applications',
