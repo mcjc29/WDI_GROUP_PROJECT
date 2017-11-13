@@ -2,9 +2,9 @@ angular
   .module('gaFeedback')
   .controller('RatingsCtrl', RatingsCtrl);
 
-RatingsCtrl.$inject = ['Rating', '$state'];
+RatingsCtrl.$inject = ['Rating', '$state', 'currentUserService'];
 
-function RatingsCtrl(Rating, $state) {
+function RatingsCtrl(Rating, $state, currentUserService) {
   const vm = this;
 <<<<<<< HEAD:src/js/controllers/knob/knob.controller.js
   vm.value = 50;
@@ -13,12 +13,15 @@ function RatingsCtrl(Rating, $state) {
   vm.submit = addRating;
 
   function addRating() {
+    const user = currentUserService.currentUser.id;
     vm.newRating = {
+      createdBy: user,
       pace: vm.pace,
       concepts: vm.concepts,
       syntax: vm.syntax,
       confidence: vm.confidence
     };
+    console.log(vm.newRating);
     Rating
       .save(vm.newRating)
       .$promise
