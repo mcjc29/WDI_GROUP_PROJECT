@@ -2,24 +2,24 @@
 
 require('../spec_helper');
 
-const Group = require('../../models/group');
+const Cohort = require('../../models/cohort');
 
-describe('Groups', function() {
+describe('Cohorts', function() {
 
   beforeEach(done => {
-    Group.collection.remove();
+    Cohort.collection.remove();
     done();
   });
 
   afterEach(done => {
-    Group.collection.remove();
+    Cohort.collection.remove();
     done();
   });
 
-  describe('GET /api/groups', () => {
+  describe('GET /api/cohorts', () => {
     beforeEach(done => {
-      Group.create({
-        name: 'WDI30',
+      Cohort.create({
+        name: 'WDI-30',
         city: 'London',
         taughtBy: 'Alex && Rane'
       })
@@ -29,14 +29,14 @@ describe('Groups', function() {
 
     it('should return a 200 response', done => {
       api
-        .get('/api/groups')
+        .get('/api/cohorts')
         .set('Accept', 'application/json')
         .expect(200, done);
     });
 
     it('should return a JSON object', done => {
       api
-        .get('/api/groups')
+        .get('/api/cohorts')
         .set('Accept', 'application/json')
         .end((err, res) => {
           expect(res.header['content-type'])
@@ -45,9 +45,9 @@ describe('Groups', function() {
         });
     });
 
-    it('should return an array of groups', function(done) {
+    it('should return an array of cohorts', function(done) {
       api
-        .get('/api/groups')
+        .get('/api/cohorts')
         .set('Accept', 'application/json')
         .end((err, res) => {
           expect(res.body).to.be.an('array');
@@ -55,9 +55,9 @@ describe('Groups', function() {
         });
     });
 
-    it('should return an array of groups objects', function(done) {
+    it('should return an array of cohorts objects', function(done) {
       api
-        .get('/api/groups')
+        .get('/api/cohorts')
         .set('Accept', 'application/json')
         .end((err, res) => {
           expect(res.body)
@@ -78,7 +78,7 @@ describe('Groups', function() {
 
     it('should have properties: _id, name, city, taughtBy', function(done) {
       api
-        .get('/api/groups')
+        .get('/api/cohorts')
         .set('Accept', 'application/json')
         .end((err, res) => {
           const firstGroup = res.body[0];
@@ -99,12 +99,12 @@ describe('Groups', function() {
     });
   });
 
-  describe('returns multiple groups', () => {
+  describe('returns multiple cohorts', () => {
 
     beforeEach(done => {
-      Group.create([
+      Cohort.create([
         {
-          name: 'WDI30',
+          name: 'WDI-30',
           city: 'London',
           taughtBy: 'Alex && Rane'
         },
@@ -118,9 +118,9 @@ describe('Groups', function() {
         .catch(done);
     });
 
-    it('should create 2 groups', done => {
+    it('should create 2 cohorts', done => {
       api
-        .get('/api/groups')
+        .get('/api/cohorts')
         .set('Accept', 'application/json')
         .end((err, res) => {
           expect(res.body.length).to.equal(2);
@@ -129,53 +129,53 @@ describe('Groups', function() {
     });
   });
 
-  describe('POST /api/groups', () => {
+  describe('POST /api/cohorts', () => {
 
     it('should return a 201 response', done => {
       api
-        .post('/api/groups')
+        .post('/api/cohorts')
         .set('Accept', 'application/json')
         .send({
-          name: 'WDI30',
+          name: 'WDI-30',
           city: 'London',
           taughtBy: 'Alex && Rane'
         })
         .expect(201, done);
     });
 
-    it('should create a new group', done => {
+    it('should create a new cohort', done => {
       api
-        .post('/api/groups')
+        .post('/api/cohorts')
         .set('Accept', 'application/json')
         .send({
-          name: 'WDI30',
+          name: 'WDI-30',
           city: 'London',
           taughtBy: 'Alex && Rane'
         })
         .end((err, res) => {
-          const group = res.body;
+          const cohort = res.body;
 
-          expect(group)
+          expect(cohort)
             .to.have.property('_id')
             .and.to.be.a('string');
 
-          expect(group)
+          expect(cohort)
             .to.have.property('name')
             .and.to.be.a('string');
 
-          expect(group)
+          expect(cohort)
             .to.have.property('city')
             .and.to.be.a('string');
 
-          expect(group)
+          expect(cohort)
             .to.have.property('taughtBy')
             .and.to.be.a('string');
 
-          expect(group)
+          expect(cohort)
             .to.have.property('createdAt')
             .and.to.be.a('string');
 
-          expect(group)
+          expect(cohort)
             .to.have.property('updatedAt')
             .and.to.be.a('string');
 
@@ -186,19 +186,19 @@ describe('Groups', function() {
 
   });
 
-  describe('GET /api/groups/:id', () => {
+  describe('GET /api/cohorts/:id', () => {
 
-    let group;
+    let cohort;
 
     beforeEach(done => {
-      Group
+      Cohort
         .create({
-          name: 'WDI30',
+          name: 'WDI-30',
           city: 'London',
           taughtBy: 'Alex && Rane'
         })
-        .then(groupData => {
-          group = groupData;
+        .then(cohortData => {
+          cohort = cohortData;
           done();
         })
         .catch(done);
@@ -206,14 +206,14 @@ describe('Groups', function() {
 
     it('should return a 200 response', done => {
       api
-        .get(`/api/groups/${group.id}`)
+        .get(`/api/cohorts/${cohort.id}`)
         .set('Accept', 'application/json')
         .expect(200, done);
     });
 
     it('should return a JSON object', done => {
       api
-        .get(`/api/groups/${group.id}`)
+        .get(`/api/cohorts/${cohort.id}`)
         .set('Accept', 'application/json')
         .end((err, res) => {
           expect(res.header['content-type'])
@@ -222,7 +222,7 @@ describe('Groups', function() {
         });
     });
     it('should return object with properties:_id, name, city, taughtBy, createdAt, updatedAt', done => {
-      api.get(`/api/groups/${group.id}`)
+      api.get(`/api/cohorts/${cohort.id}`)
         .set('Accept', 'application/json')
         .end((err, res) => {
           expect(res.body)
@@ -240,19 +240,19 @@ describe('Groups', function() {
     });
   });
 
-  describe('PUT /api/groups/:id', () => {
+  describe('PUT /api/cohorts/:id', () => {
 
-    let group;
+    let cohort;
 
     beforeEach(done => {
-      Group
+      Cohort
         .create({
-          name: 'WDI30',
+          name: 'WDI-30',
           city: 'London',
           taughtBy: 'Alex && Rane'
         })
-        .then(groupData => {
-          group = groupData;
+        .then(cohortData => {
+          cohort = cohortData;
           done();
         })
         .catch(done);
@@ -260,10 +260,10 @@ describe('Groups', function() {
 
     it('should return 200 status', function(done) {
       api
-        .put(`/api/groups/${group.id}`)
+        .put(`/api/cohorts/${cohort.id}`)
         .set('Accept', 'application/json')
         .send({
-          name: 'WDI31',
+          name: 'WDI-31',
           city: 'London',
           taughtBy: 'Alex && Rane'
         })
@@ -271,7 +271,7 @@ describe('Groups', function() {
     });
     it('should return a JSON object', done => {
       api
-        .get(`/api/groups/${group.id}`)
+        .get(`/api/cohorts/${cohort.id}`)
         .set('Accept', 'application/json')
         .end((err, res) => {
           expect(res.header['content-type'])
@@ -280,7 +280,7 @@ describe('Groups', function() {
         });
     });
     it('should return object with properties: _id, name, city, taughtBy', done => {
-      api.get(`/api/groups/${group.id}`)
+      api.get(`/api/cohorts/${cohort.id}`)
         .set('Accept', 'application/json')
         .end((err, res) => {
           expect(res.body)
@@ -298,43 +298,43 @@ describe('Groups', function() {
     });
     it('should return updated data', function(done) {
       api
-        .put(`/api/groups/${group.id}`)
+        .put(`/api/cohorts/${cohort.id}`)
         .set('Accept', 'application/json')
         .send({
-          name: 'WDI31',
+          name: 'WDI-31',
           city: 'London',
           taughtBy: 'Alex && Rane'
         })
         .end((err, res) => {
           expect(res.body.name)
-            .to.be.eq('WDI31');
+            .to.be.eq('WDI-31');
           done();
         });
     });
 
   });
 
-  describe('DELETE /api/groups/:id', () => {
+  describe('DELETE /api/cohorts/:id', () => {
 
-    let group;
+    let cohort;
 
     beforeEach(done => {
-      Group
+      Cohort
         .create({
-          name: 'WDI30',
+          name: 'WDI-30',
           city: 'London',
           taughtBy: 'Alex && Rane'
         })
-        .then(groupData => {
-          group = groupData;
+        .then(cohortData => {
+          cohort = cohortData;
           done();
         })
         .catch(done);
     });
 
-    it('should remove a group by id', function(done) {
+    it('should remove a cohort by id', function(done) {
       api
-        .delete(`/api/groups/${group.id}`)
+        .delete(`/api/cohorts/${cohort.id}`)
         .expect(204, done);
     });
   });

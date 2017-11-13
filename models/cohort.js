@@ -1,6 +1,6 @@
 const mongoose  = require('mongoose');
 
-const groupSchema = new mongoose.Schema({
+const cohortSchema = new mongoose.Schema({
   name: { type: String, required: true },
   city: String,
   taughtBy: { type: String, required: true }
@@ -8,4 +8,4 @@ const groupSchema = new mongoose.Schema({
   timestamps: true
 });
 
-module.exports = mongoose.model('Group', groupSchema);
+module.exports = mongoose.model('Cohort', cohortSchema);

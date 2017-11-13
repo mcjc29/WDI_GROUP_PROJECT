@@ -1,4 +1,4 @@
-/* globals api, expect, describe, beforeEach, afterEach, it */
+/* globals api, expect, describe, beforeEach, it */
 
 require('../spec_helper');
 
@@ -25,6 +25,7 @@ describe('Comments', function() {
           firstName: 'person2',
           lastName: 'person2',
           role: 'student',
+          cohort: 'WDI-30',
           email: 'person2@person2.com',
           password: 'password',
           passwordConfirmation: 'password'
@@ -117,6 +118,7 @@ describe('Comments', function() {
           firstName: 'person',
           lastName: 'person',
           role: 'student',
+          cohort: 'WDI-30',
           email: 'person@person.com',
           password: 'password',
           passwordConfirmation: 'password'
@@ -156,6 +158,7 @@ describe('Comments', function() {
           firstName: 'person',
           lastName: 'person',
           role: 'student',
+          cohort: 'WDI-30',
           email: 'person@person.com',
           password: 'password',
           passwordConfirmation: 'password'
@@ -226,6 +229,7 @@ describe('Comments', function() {
           firstName: 'person',
           lastName: 'person',
           role: 'student',
+          cohort: 'WDI-30',
           email: 'person@person.com',
           password: 'password',
           passwordConfirmation: 'password'
@@ -292,6 +296,7 @@ describe('Comments', function() {
           firstName: 'person',
           lastName: 'person',
           role: 'student',
+          cohort: 'WDI-30',
           email: 'person@person.com',
           password: 'password',
           passwordConfirmation: 'password'
@@ -377,6 +382,7 @@ describe('Comments', function() {
           firstName: 'person',
           lastName: 'person',
           role: 'student',
+          cohort: 'WDI-30',
           email: 'person@person.com',
           password: 'password',
           passwordConfirmation: 'password'

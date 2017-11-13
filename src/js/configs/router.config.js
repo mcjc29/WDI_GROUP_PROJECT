@@ -51,20 +51,20 @@ function Router($stateProvider, $urlRouterProvider, $locationProvider) {
       templateUrl: '/js/views/lessons/show.html',
       controller: 'LessonsShowCtrl as vm'
     })
-    .state('groupsIndex', {
-      url: '/groups',
-      templateUrl: '/js/views/groups/index.html',
-      controller: 'GroupsIndexCtrl as vm'
+    .state('cohortsIndex', {
+      url: '/cohorts',
+      templateUrl: '/js/views/cohorts/index.html',
+      controller: 'CohortsIndexCtrl as vm'
     })
-    .state('groupsEdit', {
-      url: '/groups/:id/edit',
-      templateUrl: '/js/views/groups/form.html',
-      controller: 'GroupsEditCtrl as vm'
+    .state('cohortsEdit', {
+      url: '/cohorts/:id/edit',
+      templateUrl: '/js/views/cohorts/form.html',
+      controller: 'CohortsEditCtrl as vm'
     })
-    .state('groupsShow', {
-      url: '/groups/:id',
-      templateUrl: '/js/views/groups/show.html',
-      controller: 'GroupsShowCtrl as vm'
+    .state('cohortsShow', {
+      url: '/cohorts/:id',
+      templateUrl: '/js/views/cohorts/show.html',
+      controller: 'CohortsShowCtrl as vm'
     })
     .state('commentIndex', {
       url: '/chat',

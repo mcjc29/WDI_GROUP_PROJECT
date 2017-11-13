@@ -3,7 +3,7 @@ const router  = express.Router();
 const authentications = require('../controllers/authentications');
 const users = require('../controllers/users');
 const lessons = require('../controllers/lessons');
-const groups = require('../controllers/groups');
+const cohorts = require('../controllers/cohorts');
 const comments = require('../controllers/comments');
 
 router.route('/register')
@@ -29,14 +29,14 @@ router.route('/lessons/:id')
   .put(lessons.update)
   .delete(lessons.delete);
 
-router.route('/groups')
-  .get(groups.index)
-  .post(groups.create);
+router.route('/cohorts')
+  .get(cohorts.index)
+  .post(cohorts.create);
 
-router.route('/groups/:id')
-  .get(groups.show)
-  .put(groups.update)
-  .delete(groups.delete);
+router.route('/cohorts/:id')
+  .get(cohorts.show)
+  .put(cohorts.update)
+  .delete(cohorts.delete);
 
 router.route('/comments')
   .get(comments.index)

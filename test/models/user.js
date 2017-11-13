@@ -35,12 +35,12 @@ describe('User', function() {
       done();
     });
   });
-
-  it('should be invalid if passwordHash is empty', function(done) {
+  
+  it('should be invalid if cohort is empty', function(done) {
     const user = new User();
 
     user.validate(function(err) {
-      expect(err.errors.passwordHash).to.exist;
+      expect(err.errors.cohort).to.exist;
       done();
     });
   });

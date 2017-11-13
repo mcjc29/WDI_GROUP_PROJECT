@@ -1,11 +1,12 @@
-const express         = require('express');
-const morgan          = require('morgan');
-const bodyParser      = require('body-parser');
-const router          = require('./config/routes');
-const { db, port }    = require('./config/environment');
-const customResponses = require('./lib/customResponses');
-const errorHandler    = require('./lib/errorHandler');
-const cors            = require('cors');
+const express              = require('express');
+const morgan               = require('morgan');
+const bodyParser           = require('body-parser');
+const router               = require('./config/routes');
+const { db, port, secret } = require('./config/environment');
+const customResponses      = require('./lib/customResponses');
+const errorHandler         = require('./lib/errorHandler');
+const cors                 = require('cors');
+const expressJWT           = require('express-jwt');
 
 const app             = express();
 const environment     = app.get('env');
@@ -19,6 +20,21 @@ app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(`${__dirname}/public`));
+
+app.use('/api', expressJWT({ secret: secret })
+  .unless({
+    path: [
+      { url: '/api/login', methods: ['POST'] },
+      { url: '/api/register', methods: ['POST'] }
+    ]
+  }));
+
+app.use(jwtErrorHandler);
+
+function jwtErrorHandler(err, req, res, next){
+  if (err.name !== 'UnauthorizedError') return next();
+  return res.status(401).json({ message: 'You must be logged in to view this content' });
+}
 
 app.use(customResponses);
 app.use('/api', router);
