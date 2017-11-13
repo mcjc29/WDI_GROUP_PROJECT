@@ -3,6 +3,7 @@ const Comment = require('../models/comment');
 function commentsIndex(req, res, next) {
   Comment
     .find()
+    .populate()
     .exec()
     .then((comment) => res.status(200).json(comment))
     .catch(next);
