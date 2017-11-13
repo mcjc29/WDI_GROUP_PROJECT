@@ -10,36 +10,37 @@ function UsersShowCtrl(User, $stateParams, Rating) {
 
   vm.rating = null;
 
-  // Rating
-  //   .query()
-  //   .$promise
-  //   .then(data => {
-  //     vm.ratings = data;
-  //
-  //     const userRatings = data;
-  //     console.log('before filter', userRatings);
-  //     userRatings.filter(rating => {
-  //       return rating.createdBy.id === $stateParams.id;
-  //     });
-  //     console.log('after filter', userRatings);
-  //
-  //     const paceValues = [];
-  //     data.filter(rating => paceValues.push(rating.pace));
-  //     vm.avgPace = Math.ceil((paceValues.reduce((a,b) => a + b)) / paceValues.length);
-  //     console.log(paceValues);
-  //     // const conceptsValues = [];
-  //     // data.filter(rating => conceptsValues.push(rating.concepts));
-  //     // vm.avgConcepts = Math.ceil((conceptsValues.reduce((a,b) => a + b)) / conceptsValues.length);
-  //     //
-  //     // const syntaxValues = [];
-  //     // data.filter(rating => syntaxValues.push(rating.syntax));
-  //     // vm.avgSyntax = Math.ceil((syntaxValues.reduce((a,b) => a + b)) / syntaxValues.length);
-  //     //
-  //     // const confidenceValues = [];
-  //     // data.filter(rating => confidenceValues.push(rating.confidence));
-  //     // vm.avgConfidence = Math.ceil((confidenceValues.reduce((a,b) => a + b)) / confidenceValues.length);
-  //
-  //   });
+  Rating
+    .query()
+    .$promise
+    .then(data => {
+      vm.ratings = data;
+
+      // const userRatings = data;
+      // console.log('before filter', userRatings);
+      // userRatings.filter(rating => {
+      //   return rating.createdBy.id === $stateParams.id;
+      // });
+      // console.log('after filter', userRatings);
+
+      const paceValues = [];
+      data.filter(rating => paceValues.push(rating.pace));
+      vm.avgPace = Math.ceil((paceValues.reduce((a,b) => a + b)) / paceValues.length);
+      console.log(paceValues);
+
+      const conceptsValues = [];
+      data.filter(rating => conceptsValues.push(rating.concepts));
+      vm.avgConcepts = Math.ceil((conceptsValues.reduce((a,b) => a + b)) / conceptsValues.length);
+
+      const syntaxValues = [];
+      data.filter(rating => syntaxValues.push(rating.syntax));
+      vm.avgSyntax = Math.ceil((syntaxValues.reduce((a,b) => a + b)) / syntaxValues.length);
+
+      const confidenceValues = [];
+      data.filter(rating => confidenceValues.push(rating.confidence));
+      vm.avgConfidence = Math.ceil((confidenceValues.reduce((a,b) => a + b)) / confidenceValues.length);
+
+    });
 
   vm.options1 = {
     readOnly: true,

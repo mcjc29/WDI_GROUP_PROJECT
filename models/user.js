@@ -30,7 +30,7 @@ userSchema
   .path('email')
   .validate(validateEmail);
 
-userSchema.statics.fetchWithRatings = fetchWithRatings;
+userSchema.statics.fetchByIdWithRatings = fetchByIdWithRatings;
 userSchema.methods.validatePassword = validatePassword;
 
 userSchema.set('toJSON', {
@@ -49,7 +49,7 @@ userSchema.set('toJSON', {
 
 module.exports = mongoose.model('User', userSchema);
 
-function fetchWithRatings(req, res) {
+function fetchByIdWithRatings(req, res) {
   const self = this;
   return new Promise((resolve, reject) => {
     self

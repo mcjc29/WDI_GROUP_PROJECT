@@ -11,7 +11,7 @@ function usersIndex(req, res, next) {
 
 function usersShow(req, res, next) {
   User
-    .fetchWithRatings(req, res)
+    .fetchByIdWithRatings(req, res)
     .then(user => res.status(200).json(user))
     .catch(next);
 }
