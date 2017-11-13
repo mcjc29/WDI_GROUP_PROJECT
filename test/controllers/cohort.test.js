@@ -31,6 +31,7 @@ describe('Cohorts', function() {
       api
         .get('/api/cohorts')
         .set('Accept', 'application/json')
+        .set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YTA5N2E5ZDk2YzUxNTA4MGFjZGFkYTciLCJpYXQiOjE1MTA1NzEwOTEsImV4cCI6MTUxMDY1NzQ5MX0.pTMVDWc-xsoEdTuyYnfQ1GIPKf15HUrJ6118XDSC1jY')
         .expect(200, done);
     });
 
