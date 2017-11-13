@@ -27,8 +27,7 @@ User
     firstName: 'Rupesh',
     lastName: 'Bhatti',
     email: 'rupesh@rupesh.com',
-
-    cohort: 'WDI-30',  cohort: 'WDI-30',
+    cohort: 'WDI-30',
     image: 'https://user-images.githubusercontent.com/28314323/32336469-55698e72-bfe7-11e7-9d02-fdabd2a2d95d.jpg',
     role: 'student',
     password: 'password',
