@@ -1,8 +1,9 @@
 const mongoose    = require('mongoose');
 const User        = require('../models/user');
-const Cohort       = require('../models/cohort');
+const Cohort      = require('../models/cohort');
 const Lesson      = require('../models/lesson');
 const Comment     = require('../models/comment');
+const Rating      = require('../models/rating');
 const { db }      = require('../config/environment');
 mongoose.Promise  = require('bluebird');
 
@@ -326,5 +327,39 @@ Lesson
     taughtBy: 'Alex Chin'
   }])
   .then((lessons) => console.log(`${lessons.length} lessons created!`))
+  .catch((err) => console.log(err))
+  .finally(() => mongoose.connection.close());
+
+Rating
+  .create([{
+    pace: 50,
+    concepts: 50,
+    syntax: 50,
+    confidence: 50,
+    message: 'Feeling ok!',
+    needHelp: false
+  },{
+    pace: -25,
+    concepts: 0,
+    syntax: 15,
+    confidence: 10,
+    message: 'Alex is going too fast :(',
+    needHelp: true
+  },{
+    pace: 0,
+    concepts: 10,
+    syntax: 10,
+    confidence: 25,
+    message: '',
+    needHelp: true
+  },{
+    pace: 90,
+    concepts: 75,
+    syntax: 80,
+    confidence: 70,
+    message: 'Feeling pretty good about things!',
+    needHelp: false
+  }])
+  .then((ratings) => console.log(`${ratings.length} ratings created!`))
   .catch((err) => console.log(err))
   .finally(() => mongoose.connection.close());
