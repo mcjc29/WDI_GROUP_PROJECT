@@ -2,8 +2,8 @@ const mongoose  = require('mongoose');
 
 const lessonSchema = new mongoose.Schema({
   title: { type: String, required: true },
-  date: Date,
-  duration: String,
+  startTime: Date,
+  endTime: Date,
   creator: String,
   city: String,
   competencies: { type: String, required: true },

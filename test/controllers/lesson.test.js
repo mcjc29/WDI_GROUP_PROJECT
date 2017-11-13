@@ -20,7 +20,9 @@ describe('Lessons', function() {
     beforeEach(done => {
       Lesson.create({
         title: 'Basic Terminal, Navigating the Filesystem',
-        duration: '1:25',
+        date: '2/29/1992',
+        startTime: new Date(1776, 4, 5, 10, 30),
+        endTime: new Date(1776, 4, 5, 11, 30),
         creator: 'Alex Chin',
         city: 'London',
         competencies: 'Programming, Server Applications',
@@ -70,7 +72,8 @@ describe('Lessons', function() {
               '__v',
               '_id',
               'title',
-              'duration',
+              'startTime',
+              'endTime',
               'creator',
               'city',
               'competencies',
@@ -82,7 +85,7 @@ describe('Lessons', function() {
         });
     });
 
-    it('should have properties: _id, title, duration, creator, city, taughtBy', function(done) {
+    it('should have properties: _id, title, startTime, endTime, creator, city, competencies, taughtBy', function(done) {
       api
         .get('/api/lessons')
         .set('Accept', 'application/json')
@@ -95,8 +98,11 @@ describe('Lessons', function() {
             .to.have.property('title')
             .and.to.be.a('string');
           expect(firstLesson)
-            .to.have.property('duration')
-            .and.to.be.a('string');
+            .to.have.property('startTime')
+            .and.to.be.a('date');
+          expect(firstLesson)
+            .to.have.property('endTime')
+            .and.to.be.a('date');
           expect(firstLesson)
             .to.have.property('creator')
             .and.to.be.a('string');
@@ -120,7 +126,8 @@ describe('Lessons', function() {
       Lesson.create([
         {
           title: 'Basic Terminal, Navigating the Filesystem',
-          duration: '1:25',
+          startTime: new Date(1776, 4, 5, 10, 30),
+          endTime: new Date(1776, 4, 5, 11, 30),
           creator: 'Alex Chin',
           city: 'London',
           competencies: 'Programming, Server Applications',
@@ -128,7 +135,8 @@ describe('Lessons', function() {
         },
         {
           title: 'TDD',
-          duration: '1:25',
+          startTime: new Date(1776, 4, 5, 10, 30),
+          endTime: new Date(1776, 4, 5, 11, 30),
           creator: 'Rane Gowan',
           city: 'London',
           competencies: 'Programming',
@@ -158,7 +166,8 @@ describe('Lessons', function() {
         .set('Accept', 'application/json')
         .send({
           title: 'Basic Terminal, Navigating the Filesystem',
-          duration: '1:25',
+          startTime: new Date(1776, 4, 5, 10, 30),
+          endTime: new Date(1776, 4, 5, 11, 30),
           creator: 'Alex Chin',
           city: 'London',
           competencies: 'Programming, Server Applications',
@@ -173,40 +182,42 @@ describe('Lessons', function() {
         .set('Accept', 'application/json')
         .send({
           title: 'Basic Terminal, Navigating the Filesystem',
-          duration: '1:25',
+          startTime: new Date(1776, 4, 5, 10, 30),
+          endTime: new Date(1776, 4, 5, 11, 30),
           creator: 'Alex Chin',
           city: 'London',
           competencies: 'Programming, Server Applications',
           taughtBy: 'Alex Chin'
         })
         .end((err, res) => {
-          const group = res.body;
+          const firstLesson = res.body;
 
-          expect(group)
+          expect(firstLesson)
             .to.have.property('_id')
             .and.to.be.a('string');
-          expect(group)
+          expect(firstLesson)
             .to.have.property('title')
             .and.to.be.a('string');
-
-          expect(group)
-            .to.have.property('duration')
-            .and.to.be.a('string');
-          expect(group)
+          expect(firstLesson)
+            .to.have.property('startTime')
+            .and.to.be.a('date');
+          expect(firstLesson)
+            .to.have.property('endTime')
+            .and.to.be.a('date');
+          expect(firstLesson)
             .to.have.property('creator')
             .and.to.be.a('string');
-          expect(group)
+          expect(firstLesson)
             .to.have.property('city')
             .and.to.be.a('string');
-          expect(group)
+          expect(firstLesson)
             .to.have.property('taughtBy')
             .and.to.be.a('string');
-
-          expect(group)
+          expect(firstLesson)
             .to.have.property('createdAt')
             .and.to.be.a('string');
 
-          expect(group)
+          expect(firstLesson)
             .to.have.property('updatedAt')
             .and.to.be.a('string');
 
@@ -216,6 +227,7 @@ describe('Lessons', function() {
     });
 
   });
+
   describe('GET /api/lessons/:id', () => {
 
     let lesson;
@@ -224,7 +236,8 @@ describe('Lessons', function() {
       Lesson
         .create({
           title: 'Basic Terminal, Navigating the Filesystem',
-          duration: '1:25',
+          startTime: new Date(1776, 4, 5, 10, 30),
+          endTime: new Date(1776, 4, 5, 11, 30),
           creator: 'Alex Chin',
           city: 'London',
           competencies: 'Programming, Server Applications',
@@ -254,7 +267,7 @@ describe('Lessons', function() {
           done();
         });
     });
-    it('should return object with properties:_id, title, duration, creator, city, taughtBy', done => {
+    it('should return object with properties:_id, title, startTime, endTime, creator, city, competencies, taughtBy, createdAt, updatedAt', done => {
       api.get(`/api/lessons/${lesson.id}`)
         .set('Accept', 'application/json')
         .end((err, res) => {
@@ -263,7 +276,8 @@ describe('Lessons', function() {
               '__v',
               '_id',
               'title',
-              'duration',
+              'startTime',
+              'endTime',
               'creator',
               'city',
               'competencies',
@@ -284,7 +298,8 @@ describe('Lessons', function() {
       Lesson
         .create({
           title: 'Basic Terminal, Navigating the Filesystem',
-          duration: '1:25',
+          startTime: new Date(1776, 4, 5, 10, 30),
+          endTime: new Date(1776, 4, 5, 11, 30),
           creator: 'Alex Chin',
           city: 'London',
           competencies: 'Programming, Server Applications',
@@ -303,11 +318,12 @@ describe('Lessons', function() {
         .set('Accept', 'application/json')
         .send({
           title: 'Basic Terminal, Navigating the Filesystem',
-          duration: '1',
+          startTime: new Date(1776, 4, 5, 10, 30),
+          endTime: new Date(1776, 4, 5, 11, 30),
           creator: 'Alex Chin',
           city: 'London',
           competencies: 'Programming, Server Applications',
-          taughtBy: 'Alex Chin'
+          taughtBy: 'Rane'
         })
         .expect(200, done);
     });
@@ -321,7 +337,7 @@ describe('Lessons', function() {
           done();
         });
     });
-    it('should return object with properties: _id, firstName, lastName, image, role, email, createdAt, updatedAt', done => {
+    it('should return object with properties: _id, title, startTime, endTime, creator, city, competencies, taughtBy, createdAt, updatedAt', done => {
       api.get(`/api/lessons/${lesson.id}`)
         .set('Accept', 'application/json')
         .end((err, res) => {
@@ -330,7 +346,8 @@ describe('Lessons', function() {
               '__v',
               '_id',
               'title',
-              'duration',
+              'startTime',
+              'endTime',
               'creator',
               'city',
               'competencies',
@@ -347,15 +364,16 @@ describe('Lessons', function() {
         .set('Accept', 'application/json')
         .send({
           title: 'Basic Terminal, Navigating the Filesystem',
-          duration: '1',
+          startTime: new Date(1776, 4, 5, 10, 30),
+          endTime: new Date(1776, 4, 5, 11, 30),
           creator: 'Alex Chin',
           city: 'London',
           competencies: 'Programming, Server Applications',
-          taughtBy: 'Alex Chin'
+          taughtBy: 'Rane'
         })
         .end((err, res) => {
-          expect(res.body.duration)
-            .to.be.eq('1');
+          expect(res.body.taughtBy)
+            .to.be.eq('Rane');
           done();
         });
     });
@@ -370,7 +388,8 @@ describe('Lessons', function() {
       Lesson
         .create({
           title: 'Basic Terminal, Navigating the Filesystem',
-          duration: '1',
+          startTime: new Date(1776, 4, 5, 10, 30),
+          endTime: new Date(1776, 4, 5, 11, 30),
           creator: 'Alex Chin',
           city: 'London',
           competencies: 'Programming, Server Applications',
