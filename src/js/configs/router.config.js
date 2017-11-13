@@ -70,6 +70,11 @@ function Router($stateProvider, $urlRouterProvider, $locationProvider) {
       url: '/chat',
       templateUrl: '/js/views/chat/chat.html',
       controller: 'ChatCtrl as vm'
+    })
+    .state('knobsIndex', {
+      url: '/knobs',
+      templateUrl: '/js/views/knobs/index.html',
+      controller: 'KnobCtrl as vm'
     });
   $urlRouterProvider.otherwise('/');
 }
