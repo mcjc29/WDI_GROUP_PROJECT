@@ -39,7 +39,7 @@ User
     lastName: 'Potter',
     email: 'siobhan@siobhan.com',
     cohort: 'WDI-30',
-    image: 'https://user-images.githubusercontent.com/28314323/32336420-37401b96-bfe7-11e7-82ce-f7a9a94798c4.jpg',
+    image: 'https://user-images.githubusercontent.com/28314323/32336467-5211c230-bfe7-11e7-9af5-286502b8fca1.jpg',
     role: 'student',
     password: 'password',
     passwordConfirmation: 'password'
