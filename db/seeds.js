@@ -303,24 +303,24 @@ Cohort
 Lesson
   .create([{
     title: 'Ng Resource Factories',
-    date: '2017-11-01',
-    duration: '1hr25mins',
+    startTime: new Date(2017, 11, 10, 10, 30),
+    endTime: new Date(2017, 11, 10, 11, 30),
     creator: 'Alex Chin',
     city: 'London',
     competencies: 'Front End Frameworks',
     taughtBy: 'Alex Chin'
   }, {
     title: 'Angular $http',
-    date: '2017-10-30',
-    duration: '1hr25mins',
+    startTime: new Date(2017, 8, 5, 10, 30),
+    endTime: new Date(2017, 8, 5, 11, 30),
     creator: 'Alex Chin & Micah Rich',
     city: 'London & LA',
     competencies: 'Front End Frameworks',
     taughtBy: 'Rane Gowan'
   }, {
     title: 'Uploading Images with Angular',
-    date: '2017-11-08',
-    duration: '1hr25mins',
+    startTime: new Date(2017, 4, 7, 10, 30),
+    endTime: new Date(2017, 4, 7, 11, 30),
     creator: 'Mike Hayden',
     city: 'London',
     competencies: 'Programming, Server Applications, MV* Applications',
