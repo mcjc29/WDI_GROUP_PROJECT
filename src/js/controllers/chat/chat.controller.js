@@ -7,7 +7,6 @@ ChatCtrl.$inject = ['Comment'];
 function ChatCtrl(Comment) {
   const vm = this;
   vm.comments = Comment.query();
-
   vm.submit = addComment;
 
   function addComment() {
