@@ -35,10 +35,10 @@ function RatingsCtrl(Rating, $state) {
   vm.options2 = {
     min: 0,
     max: 100,
-    bgColor: '#2C3E50',
+    bgColor: '#4a4a4a',
     trackWidth: 50,
     barWidth: 30,
-    barColor: '#FFAE1A',
+    barColor: '#2CC185',
     textColor: '#eee'
   };
 
@@ -54,7 +54,7 @@ function RatingsCtrl(Rating, $state) {
     },
     trackWidth: 40,
     barWidth: 25,
-    trackColor: '#656D7F',
+    trackColor: '#4a4a4a',
     barColor: '#2CC185'
   };
 

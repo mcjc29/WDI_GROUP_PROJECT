@@ -1,16 +1,28 @@
 <h1>Chat</h1>
-<form ng-submit="vm.submit()">
-  <input type="text" name="comment" placeholder="Write a message..." value="vm.newComment" ng-model="vm.newComment">
-  <input type="submit" value="Post">
+  <div class="box">
+    <article class="media chat-article">
+      <div class="media-left">
+      </div>
+      <div class="media-content">
+        <div class="content">
+          <form ng-submit="vm.submit()">
+            <div class="field">
+              <label class="label">How are you doing?</label>
+              <div class="control">
+                <input class="input" type="text" name="comment" value="vm.newComment" ng-model="vm.newComment" placeholder="Write a message...">
+              </div>
+            </div>
+            <div class="control">
+              <button class="button is-link">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </article>
+  </div>
 </form>
-<ul>
-  <li ng-repeat="comment in vm.comments track by $index">
-    <h4>{{ comment.createdBy.firstName }}</h4>
-    <p>{{ comment.content }}</p>
-  </li>
-</ul>
 
-<div class="box" ng-repeat="comment in vm.comments track by $index">
+<div class="box chat-box" ng-repeat="comment in vm.comments track by $index">
   <article class="media">
     <div class="media-left">
       <figure class="image is-64x64">
@@ -29,9 +41,6 @@
         <div class="level-left">
           <a class="level-item">
             <span class="icon is-small"><i class="fa fa-reply"></i></span>
-          </a>
-          <a class="level-item">
-            <span class="icon is-small"><i class="fa fa-retweet"></i></span>
           </a>
           <a class="level-item">
             <span class="icon is-small"><i class="fa fa-heart"></i></span>

@@ -24,7 +24,7 @@ function LessonsNewCtrl(Lesson, $state) {
       .save(vm.newLesson)
       .$promise
       .then(() => {
-        $state.go('lesonsIndex');
+        $state.go('lessonsIndex');
       });
   }
 }

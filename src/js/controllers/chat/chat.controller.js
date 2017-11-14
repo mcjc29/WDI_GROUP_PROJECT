@@ -6,7 +6,14 @@ ChatCtrl.$inject = ['Comment'];
 
 function ChatCtrl(Comment) {
   const vm = this;
-  vm.comments = Comment.query();
+
+  Comment
+    .query()
+    .$promise
+    .then(data => {
+      vm.comments = data.reverse();
+    });
+
   vm.submit = addComment;
 
   function addComment() {
@@ -17,7 +24,12 @@ function ChatCtrl(Comment) {
       .save(newComment)
       .$promise
       .then(() => {
-        vm.comments = Comment.query();
+        Comment
+          .query()
+          .$promise
+          .then(data => {
+            vm.comments = data.reverse();
+          });
         vm.newComment = '';
       });
   }
