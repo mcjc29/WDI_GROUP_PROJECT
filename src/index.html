@@ -26,6 +26,7 @@
         </div>
         <div class="navbar-menu" id="navMenu">
           <div class="navbar-start">
+            <a class="navbar-item" ng-if="main.user" ui-sref="ratingsIndex">Rate it</a>
             <a class="navbar-item" ng-if="main.user" ui-sref="usersIndex">Your Class</a>
             <a class="navbar-item" ng-if="main.user" ui-sref="lessonsIndex">Lessons</a>
             <a class="navbar-item" ng-if="main.user" ui-sref="cohortsIndex">Cohorts</a>
