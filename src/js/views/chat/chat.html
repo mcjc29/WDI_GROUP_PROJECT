@@ -13,7 +13,7 @@
               </div>
             </div>
             <div class="control">
-              <button class="button is-link">Submit</button>
+              <button class="button is-primary">Submit</button>
             </div>
           </form>
         </div>
@@ -32,32 +32,33 @@
     <div class="media-content">
       <div class="content">
         <p>
-          <strong>{{ comment.createdBy.firstName }}</strong>&nbsp;<small>{{ comment.createdAt }}</small>
-          <br>
-          {{ comment.content }}
+          <strong>{{ comment.createdBy.firstName }}</strong>&nbsp;<a class="delete is-large" ng-if="comment.createdBy.id == vm.user._id" ng-click="vm.delete(comment)">Delete</a><br>
+          <small>{{ comment.createdAt }}</small><br>
         </p>
+        <p>{{ comment.content }}</p>
       </div>
       <div ng-if="comment.replies.length > 0" class="content chat-reply">
         <p ng-repeat="reply in comment.replies">
-          <strong>{{ reply.createdBy.firstName }}</strong>
+          <strong>{{ reply.createdBy.firstName }}</strong>&nbsp;
+          <small>{{ reply.createdAt }}</small>
           <br>
           {{ reply.content }}
         </p>
       </div>
       <div class="content">
         <form ng-submit="vm.replySubmit()">
-          <div class="field">
-            <label class="label">Reply</label>
+          <label class="label"><small>Reply</small></label>
+          <div class="field has-addons">
             <div class="control">
-              <input class="input" type="text" name="reply" value="vm.newReply" ng-model="vm.newReply" placeholder="Write a response...">
+              <input class="input is-small" type="text" name="reply" value="vm.newReply" ng-model="vm.newReply" placeholder="Send a response...">
             </div>
-          </div>
-          <div class="control">
-            <button class="button is-link">Submit</button>
+            <div class="control">
+              <button class="button is-small is-primary reply-btn">Reply</button>
+            </div>
           </div>
         </form>
       </div>
-      <nav class="level is-mobile">
+      <!-- <nav class="level is-mobile">
         <div class="level-left">
           <a class="level-item">
             <span class="icon is-small"><i class="fa fa-reply"></i></span>
@@ -66,7 +67,7 @@
             <span class="icon is-small"><i class="fa fa-heart"></i></span>
           </a>
         </div>
-      </nav>
+      </nav> -->
     </div>
   </article>
 </div>

@@ -2,11 +2,16 @@ angular
   .module('gaFeedback')
   .controller('ChatCtrl', ChatCtrl);
 
-ChatCtrl.$inject = ['Comment'];
+ChatCtrl.$inject = ['Comment', '$moment', '$rootScope', '$state'];
 
-function ChatCtrl(Comment) {
+function ChatCtrl(Comment, $moment, $rootScope, $state) {
   const vm = this;
-  vm.addReply = false;
+  vm.submit = addComment;
+  vm.delete = deleteComment;
+
+  $rootScope.$on('user defined', (event, data) => {
+    vm.user = data.user;
+  });
 
   Comment
     .query()
@@ -14,12 +19,12 @@ function ChatCtrl(Comment) {
     .then(data => {
       vm.comments = data.reverse();
       vm.comments.forEach(comment => {
-        comment.createdAt = comment.createdAt.toDateString();
+        comment.createdAt = $moment(comment.createdAt).fromNow();
+        comment.replies.forEach(reply => {
+          reply.createdAt = $moment(reply.createdAt).fromNow();
+        });
       });
     });
-
-  vm.submit = addComment;
-  vm.showReplyForm = showReply;
 
   function addComment() {
     const newComment = {
@@ -39,7 +44,13 @@ function ChatCtrl(Comment) {
       });
   }
 
-  function showReply() {
-    vm.addReply = true;
+  function deleteComment(comment) {
+    Comment
+      .remove({ id: comment.id })
+      .$promise
+      .then(() => {
+        $state.go('studentsIndex');
+      });
   }
+
 }

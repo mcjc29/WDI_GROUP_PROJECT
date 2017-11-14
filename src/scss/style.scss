@@ -31,14 +31,12 @@ img {
   margin-left: -15px;
 }
 
-.chat-box {
-  padding-bottom: 2.5rem;
-  .chat-reply {
-    background: #f7f7f7;
-    padding: 10px;
-    border-radius: 8px;
-  }
-  .reply-input {
+.chat-reply {
+  background: #f7f7f7;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.reply-input {
     display: none;
-  }
 }

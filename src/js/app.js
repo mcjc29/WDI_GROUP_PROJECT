@@ -5,5 +5,6 @@ angular
     'satellizer',
     'ui.knob',
     'angular.filter',
-    'chart.js'
+    'chart.js',
+    'angular-momentjs'
   ]);
