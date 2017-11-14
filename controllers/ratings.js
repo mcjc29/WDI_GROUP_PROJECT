@@ -2,10 +2,11 @@ const Rating = require('../models/rating');
 
 function ratingsIndex(req, res, next) {
   Rating
+    // .findAndGroup(req, res)
     .find()
     .populate('createdBy')
     .exec()
-    .then((ratings) => res.status(200).json(ratings))
+    .then(ratings => res.status(200).json(ratings))
     .catch(next);
 }
 
