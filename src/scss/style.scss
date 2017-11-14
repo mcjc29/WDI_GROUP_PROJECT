@@ -15,6 +15,7 @@ img {
   }
 }
 .field {
-  border-width: 2px;
-  border-color: black;
+  $border: black;
+  $border-width: 3px;
+
 }
