@@ -1,34 +1,4 @@
-<h1>Lesson</h1>
-<!-- <form>
-  <label>Title</label>
-
-  <input type="text" name="title">
-
-  <label>Type</label>
-  <input type="text" name="type">
-
-  <label>Duration</label>
-  <input type="text" name="duration">
-
-  <label>Creator</label>
-
-  <label>City</label>
-
-  <input type="text" name="city">
-
-  <input type="text" name="creator">
-
-  <label>Competencies</label>
-
-  <input type="text" name="competencies">
-
-  <label>Instructor</label>
-
-  <input type="text" name="taughtBy">
-
-  <input type="submit">
-</form> -->
-
+<h1>Add New Lesson</h1>
 
 <form ng-submit="vm.submit()">
 <div class="field">
@@ -40,13 +10,13 @@
 <div class="field">
   <label class="label">Start Time</label>
   <div class="control">
-    <input class="input" type="date" placeholder="Start time..." ng-model="vm.startTime">
+    <input class="input" type="datetime-local" placeholder="Start time..." ng-model="vm.startTime">
   </div>
 </div>
 <div class="field">
   <label class="label">End Time</label>
   <div class="control">
-    <input class="input" type="time" placeholder="End time..." ng-model="vm.endTime">
+    <input class="input" type="datetime-local" placeholder="End time..." ng-model="vm.endTime">
   </div>
 </div>
 <div class="field">
