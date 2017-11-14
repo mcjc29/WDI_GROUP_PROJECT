@@ -301,8 +301,8 @@ User
             return Lesson
               .create([{
                 title: 'Ng Resource Factories',
-                startTime: new Date(2017, 11, 14, 11, 40),
-                endTime: new Date(2017, 11, 14, 13, 40),
+                startTime: new Date(2017, 10, 14, 12, 8),
+                endTime: new Date(2017, 10, 14, 13, 40),
                 creator: 'Alex Chin',
                 city: 'London',
                 competencies: 'Front End Frameworks',
@@ -310,7 +310,7 @@ User
               }, {
                 title: 'Angular $http',
                 startTime: new Date(2017, 11, 5, 10, 30),
-                endTime: new Date(2017, 11, 20, 11, 30),
+                endTime: new Date(2017, 11, 8, 11, 30),
                 creator: 'Alex Chin & Micah Rich',
                 city: 'London & LA',
                 competencies: 'Front End Frameworks',
