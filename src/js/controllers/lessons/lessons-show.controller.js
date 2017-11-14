@@ -6,7 +6,7 @@ LessonsShowCtrl.$inject = ['Lesson', '$stateParams', 'Rating', '$scope', '$timeo
 
 function LessonsShowCtrl(Lesson, $stateParams, Rating, $scope) {
   const vm = this;
-  vm.lessons = Lesson.get($stateParams);
+  vm.lesson = Lesson.get($stateParams);
 
   vm.avgPace;
   vm.avgConcepts;
