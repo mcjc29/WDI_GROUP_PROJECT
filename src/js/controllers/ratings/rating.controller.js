@@ -56,4 +56,19 @@ function RatingsCtrl(Rating, $state) {
     barColor: '#2CC185'
   };
 
+  vm.options4 = {
+    skin: {
+      type: 'tron',
+      width: 5,
+      space: 1
+    },
+    min: -10,
+    max: 10,
+    trackWidth: 40,
+    barWidth: 25,
+    barCap: 25,
+    barColor: '#fa4542',
+    textColor: 'black'
+  };
+
 }
