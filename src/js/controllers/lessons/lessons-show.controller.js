@@ -2,7 +2,7 @@ angular
   .module('gaFeedback')
   .controller('LessonsShowCtrl', LessonsShowCtrl);
 
-LessonsShowCtrl.$inject = ['Lesson', '$stateParams', 'Rating', '$scope', '$timeout'];
+LessonsShowCtrl.$inject = ['Lesson', '$stateParams', 'Rating', '$scope'];
 
 function LessonsShowCtrl(Lesson, $stateParams, Rating, $scope) {
   const vm = this;
@@ -19,20 +19,27 @@ function LessonsShowCtrl(Lesson, $stateParams, Rating, $scope) {
     .then(data => {
       vm.ratings = data;
 
+      const lessonData = [];
+      data.filter(rating => {
+        if ((rating.createdAt >= vm.lesson.startTime && rating.createdAt <= vm.lesson.endTime)) {
+          lessonData.push(rating);
+        }
+      });
+
       const paceValues = [];
-      data.filter(rating => paceValues.push(rating.pace));
+      lessonData.filter(rating => paceValues.push(rating.pace));
       vm.avgPace = Math.ceil((paceValues.reduce((a,b) => a + b)) / paceValues.length);
 
       const conceptsValues = [];
-      data.filter(rating => conceptsValues.push(rating.concepts));
+      lessonData.filter(rating => conceptsValues.push(rating.concepts));
       vm.avgConcepts = Math.ceil((conceptsValues.reduce((a,b) => a + b)) / conceptsValues.length);
 
       const syntaxValues = [];
-      data.filter(rating => syntaxValues.push(rating.syntax));
+      lessonData.filter(rating => syntaxValues.push(rating.syntax));
       vm.avgSyntax = Math.ceil((syntaxValues.reduce((a,b) => a + b)) / syntaxValues.length);
 
       const confidenceValues = [];
-      data.filter(rating => confidenceValues.push(rating.confidence));
+      lessonData.filter(rating => confidenceValues.push(rating.confidence));
       vm.avgConfidence = Math.ceil((confidenceValues.reduce((a,b) => a + b)) / confidenceValues.length);
 
       $scope.labels = ['Pace of Lesson', 'Concepts', 'Syntax', 'Confidence'];
