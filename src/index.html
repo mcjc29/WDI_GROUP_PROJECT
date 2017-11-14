@@ -18,13 +18,13 @@
           <a class="navbar-item" href="/">
             <img src="/images/ga_logo.png" alt="General Assembly" height="28">
           </a>
-          <button class="button navbar-burger is-dark" data-target="navMenu">
+          <button class="button navbar-burger is-dark" ng-class="{ 'is-active': main.showBurgerMenu}" data-target="navMenu" ng-click="main.showBurgerMenu = !main.showBurgerMenu">
             <span></span>
             <span></span>
             <span></span>
           </button>
         </div>
-        <div class="navbar-menu" id="navMenu">
+        <div class="navbar-menu" ng-class="{ 'is-active': main.showBurgerMenu}" id="navMenu">
           <div class="navbar-start">
             <a class="navbar-item" ng-if="main.user" ui-sref="ratingsIndex">Rate it</a>
             <a class="navbar-item" ng-if="main.user" ui-sref="usersIndex">Your Class</a>

@@ -25,11 +25,11 @@ function RatingsCtrl(Rating, $state, User, currentUserService, $rootScope) {
       .save(vm.newRating)
       .$promise
       .then(rating => {
-        // console.log('rating ----->', rating);
+        console.log('rating ----->', rating);
         return User.update({ id: vm.user._id }, vm.user);
       })
       .then(user => {
-        // console.log('user ----->', user);
+        console.log('user ----->', user);
         $state.go('lessonsIndex');
       });
     // vm.helpStatus = {

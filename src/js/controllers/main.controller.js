@@ -2,13 +2,14 @@ angular
   .module('gaFeedback')
   .controller('MainCtrl', MainCtrl);
 
-MainCtrl.$inject = ['$rootScope', 'currentUserService', '$state'];
+MainCtrl.$inject = ['$rootScope', 'currentUserService', '$state', '$transitions'];
 
-function MainCtrl($rootScope, currentUserService, $state) {
+function MainCtrl($rootScope, currentUserService, $state, $transitions) {
 
   const vm = this;
 
   vm.logout = logout;
+  vm.showBurgerMenu = false;
 
   $rootScope.$on('loggedIn', () => {
     vm.user = currentUserService.currentUser;
@@ -26,4 +27,8 @@ function MainCtrl($rootScope, currentUserService, $state) {
     $state.go('home');
   });
 
+  $transitions.onSuccess({}, function() {
+    vm.showBurgerMenu = false;
+  });
+  //have changed how state chnage sucess works - now use transitions and then inject what you want to happen on change
 }
