@@ -13,7 +13,7 @@ function LoginCtrl($auth, $state, currentUserService) {
       .login(vm.user)
       .then(() => {
         currentUserService.getUser();
-        $state.go('home');
+        $state.go('ratingsIndex');
       });
   }
 }
