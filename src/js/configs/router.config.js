@@ -41,6 +41,11 @@ function Router($stateProvider, $urlRouterProvider, $locationProvider) {
       templateUrl: '/js/views/lessons/index.html',
       controller: 'LessonsIndexCtrl as vm'
     })
+    .state('lessonsNew', {
+      url: '/lessons/new',
+      templateUrl: '/js/views/lessons/form.html',
+      controller: 'LessonsNewCtrl as vm'
+    })
     .state('lessonsEdit', {
       url: '/lessons/:id/edit',
       templateUrl: '/js/views/lessons/form.html',

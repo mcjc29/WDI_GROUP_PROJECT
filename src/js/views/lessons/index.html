@@ -1,5 +1,7 @@
 <h1>Lessons</h1>
 
+<input type="submit" ui-sref="lessonsNew" value="Add a lesson">
+
 <input type="text" class="search" ng-model="vm.q" placeholder="Find a lesson...">
 
 <ul ng-repeat="lesson in vm.filtered track by $index">
