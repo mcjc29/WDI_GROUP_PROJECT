@@ -2,11 +2,16 @@ angular
   .module('gaFeedback')
   .controller('LessonsShowCtrl', LessonsShowCtrl);
 
-LessonsShowCtrl.$inject = ['Lesson', '$stateParams', 'Rating'];
+LessonsShowCtrl.$inject = ['Lesson', '$stateParams', 'Rating', '$scope', '$timeout'];
 
-function LessonsShowCtrl(Lesson, $stateParams, Rating ) {
+function LessonsShowCtrl(Lesson, $stateParams, Rating, $scope) {
   const vm = this;
   vm.lessons = Lesson.get($stateParams);
+
+  vm.avgPace;
+  vm.avgConcepts;
+  vm.avgSyntax;
+  vm.avgConfidence;
 
   Rating
     .query()
@@ -30,31 +35,21 @@ function LessonsShowCtrl(Lesson, $stateParams, Rating ) {
       data.filter(rating => confidenceValues.push(rating.confidence));
       vm.avgConfidence = Math.ceil((confidenceValues.reduce((a,b) => a + b)) / confidenceValues.length);
 
+      $scope.labels = ['Pace of Lesson', 'Concepts', 'Syntax', 'Confidence'];
+
+      $scope.data = [vm.avgPace, vm.avgConcepts, vm.avgSyntax, vm.avgConfidence];
+
+      $scope.options = {
+        scale: {
+          ticks: {min: 0, max: 100}
+        }
+      };
+
     });
 
   vm.options1 = {
-    readOnly: true,
-    min: -100,
+    min: 0,
     max: 100,
-    barColor: '#5BC01E',
-    trackColor: '#212121',
-    trackWidth: 15,
-    barWidth: 30
-  };
-
-  vm.options2 = {
-    min: -100,
-    readOnly: true,
-    max: 100,
-    bgColor: '#2C3E50',
-    trackWidth: 50,
-    barWidth: 30,
-    barColor: '#FFAE1A',
-    textColor: '#eee'
-  };
-
-  vm.options3 = {
-    unit: '%',
     readOnly: true,
     subText: {
       enabled: true,
@@ -67,4 +62,53 @@ function LessonsShowCtrl(Lesson, $stateParams, Rating ) {
     trackColor: '#656D7F',
     barColor: '#2CC185'
   };
+
+  vm.options2 = {
+    min: 0,
+    max: 100,
+    readOnly: true,
+    subText: {
+      enabled: true,
+      text: 'Concepts',
+      color: 'gray',
+      font: 'arial'
+    },
+    trackWidth: 40,
+    barWidth: 25,
+    trackColor: '#656D7F',
+    barColor: '#2CC185'
+  };
+
+  vm.options3 = {
+    min: 0,
+    max: 100,
+    readOnly: true,
+    subText: {
+      enabled: true,
+      text: 'Syntax',
+      color: 'gray',
+      font: 'arial'
+    },
+    trackWidth: 40,
+    barWidth: 25,
+    trackColor: '#656D7F',
+    barColor: '#2CC185'
+  };
+
+  vm.options4 = {
+    min: 0,
+    max: 100,
+    readOnly: true,
+    subText: {
+      enabled: true,
+      text: 'Confidence',
+      color: 'gray',
+      font: 'arial'
+    },
+    trackWidth: 40,
+    barWidth: 25,
+    trackColor: '#656D7F',
+    barColor: '#2CC185'
+  };
+
 }
