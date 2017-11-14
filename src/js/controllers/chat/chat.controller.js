@@ -6,6 +6,7 @@ ChatCtrl.$inject = ['Comment'];
 
 function ChatCtrl(Comment) {
   const vm = this;
+  vm.addReply = false;
 
   Comment
     .query()
@@ -15,6 +16,7 @@ function ChatCtrl(Comment) {
     });
 
   vm.submit = addComment;
+  vm.showReplyForm = showReply;
 
   function addComment() {
     const newComment = {
@@ -32,5 +34,9 @@ function ChatCtrl(Comment) {
           });
         vm.newComment = '';
       });
+  }
+
+  function showReply() {
+    vm.addReply = true;
   }
 }

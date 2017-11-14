@@ -1,6 +1,6 @@
 main {
   width: 90%;
-  margin: 30px auto 0;
+  margin: 30px auto;
 }
 
 h1 {
@@ -34,8 +34,11 @@ img {
 .chat-box {
   padding-bottom: 2.5rem;
   .chat-reply {
-    background: #e0e0e0;
+    background: #f7f7f7;
     padding: 10px;
     border-radius: 8px;
+  }
+  .reply-input {
+    display: none;
   }
 }

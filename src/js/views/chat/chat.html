@@ -26,7 +26,7 @@
   <article class="media">
     <div class="media-left">
       <figure class="image is-64x64">
-        <img src="{{ comment.createdBy.image }}" alt="Image">
+        <img src="{{ comment.createdBy.image }}" alt="{{ comment.createdBy.firstName }}">
       </figure>
     </div>
     <div class="media-content">
@@ -37,17 +37,30 @@
           {{ comment.content }}
         </p>
       </div>
-      <div ng-if="comment.replies" class="content chat-reply">
+      <div ng-if="comment.replies.length > 0" class="content chat-reply">
         <p ng-repeat="reply in comment.replies">
           <strong>{{ reply.createdBy.firstName }}</strong>
           <br>
           {{ reply.content }}
         </p>
       </div>
+      <div ng-show="vm.addReply" class="content">
+        <form ng-submit="vm.replySubmit()">
+          <div class="field">
+            <label class="label">Reply</label>
+            <div class="control">
+              <input class="input" type="text" name="comment" value="vm.newComment" ng-model="vm.newComment" placeholder="Write a response...">
+            </div>
+          </div>
+          <div class="control">
+            <button class="button is-link">Submit</button>
+          </div>
+        </form>
+      </div>
       <nav class="level is-mobile">
         <div class="level-left">
           <a class="level-item">
-            <span class="icon is-small"><i class="fa fa-reply"></i></span>
+            <span class="icon is-small"><i ng-click="vm.showReplyForm()" class="fa fa-reply"></i></span>
           </a>
           <a class="level-item">
             <span class="icon is-small"><i class="fa fa-heart"></i></span>
