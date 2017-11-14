@@ -301,8 +301,8 @@ User
             return Lesson
               .create([{
                 title: 'Ng Resource Factories',
-                startTime: new Date(2017, 11, 10, 10, 30),
-                endTime: new Date(2017, 11, 20, 11, 30),
+                startTime: new Date(2017, 11, 14, 11, 40),
+                endTime: new Date(2017, 11, 14, 13, 40),
                 creator: 'Alex Chin',
                 city: 'London',
                 competencies: 'Front End Frameworks',

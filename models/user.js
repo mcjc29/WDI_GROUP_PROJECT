@@ -61,8 +61,8 @@ function fetchByIdWithRatings(req, res) {
 
         return self
           .model('Rating')
-          // .find({ createdBy: user.id })
-          .findAndGroup(req, res)
+          .find({ createdBy: user.id })
+          // .findAndGroup(req, res)
           // find ratings by req.user and group
           .exec();
       })

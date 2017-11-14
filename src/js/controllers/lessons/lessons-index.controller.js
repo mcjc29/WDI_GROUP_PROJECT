@@ -18,7 +18,6 @@ function LessonsIndexCtrl(Lesson, filterFilter, $scope) {
     const params = { title: vm.q };
 
     vm.filtered = filterFilter(vm.lessons, params);
-    console.log(vm.q);
   }
 
   $scope.$watchGroup([
