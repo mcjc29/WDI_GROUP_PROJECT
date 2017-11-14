@@ -7,7 +7,7 @@ UsersShowCtrl.$inject = ['User', '$stateParams', 'Rating'];
 function UsersShowCtrl(User, $stateParams, Rating) {
   const vm = this;
   vm.user = User.get($stateParams);
-
+  console.log(vm.user);
   vm.rating = null;
 
   Rating
@@ -16,17 +16,18 @@ function UsersShowCtrl(User, $stateParams, Rating) {
     .then(data => {
       vm.ratings = data;
 
-      // const userRatings = data;
-      // console.log('before filter', userRatings);
-      // userRatings.filter(rating => {
-      //   return rating.createdBy.id === $stateParams.id;
-      // });
-      // console.log('after filter', userRatings);
+      const userRatings = data;
+      console.log('before filter', userRatings);
+      userRatings.filter(rating => {
+        console.log($stateParams.id);
+        console.log(rating.createdBy.id);
+        return rating.createdBy.id === $stateParams.id;
+      });
+      console.log('after filter', userRatings);
 
       const paceValues = [];
       data.filter(rating => paceValues.push(rating.pace));
       vm.avgPace = Math.ceil((paceValues.reduce((a,b) => a + b)) / paceValues.length);
-      console.log(paceValues);
 
       const conceptsValues = [];
       data.filter(rating => conceptsValues.push(rating.concepts));

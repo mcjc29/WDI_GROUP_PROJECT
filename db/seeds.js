@@ -367,6 +367,30 @@ User
                     confidence: 30,
                     message: 'Tired AF!',
                     needHelp: false
+                  },{
+                    createdBy: users[10],
+                    pace: 90,
+                    concepts: 90,
+                    syntax: 90,
+                    confidence: 90,
+                    message: 'Smashing it!',
+                    needHelp: false
+                  },{
+                    createdBy: users[20],
+                    pace: 60,
+                    concepts: 60,
+                    syntax: 60,
+                    confidence: 60,
+                    message: 'Doing pretty good!',
+                    needHelp: false
+                  },{
+                    createdBy: users[15],
+                    pace: 50,
+                    concepts: 20,
+                    syntax: 20,
+                    confidence: 40,
+                    message: 'Not too bad!',
+                    needHelp: false
                   }])
                   .then((ratings) => {
                     console.log(`${ratings.length} ratings created!`);
