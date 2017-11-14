@@ -23,14 +23,29 @@
 </div>
 </div>
 
-<ul>
-  <li ng-repeat="rating in vm.lessonData track by $index">
 
-    <figure class="image is-64x64">
-      <h3><a ui-sref="usersShow({ id: rating.createdBy.id })"><img src="{{ rating.createdBy.image }}" alt="Image"></a></h3>
-    </figure>
-    <h4>{{ rating.createdBy.firstName }}</h4>
-    <p>{{ rating.message }}</p>
-
-  </li>
-</ul>
+    <div class="box" ng-repeat="rating in vm.lessonData track by $index">
+      <article class="media">
+        <div class="media-left">
+          <figure class="image is-64x64">
+            <a ui-sref="usersShow({ id: rating.createdBy.id })"><img src="{{ rating.createdBy.image }}" alt="Image"></a>
+          </figure>
+        </div>
+        <div class="media-content">
+          <div class="content">
+          <h4>{{ rating.createdBy.firstName }}</h4>
+          <p>{{ rating.message }}</p>
+        </div>
+          <nav class="level is-mobile">
+            <div class="level-left">
+              <ul>
+              <li>Pace: {{ rating.pace }}</li>
+              <li>Concepts: {{ rating.concepts }}</li>
+              <li>Syntax: {{ rating.syntax }}</li>
+              <li>Confidence: {{ rating.confidence }}</li>
+              <ul>
+            </div>
+          </nav>
+        </div>
+      </article>
+    </div>
