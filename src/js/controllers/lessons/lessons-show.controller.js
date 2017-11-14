@@ -26,6 +26,8 @@ function LessonsShowCtrl(Lesson, $stateParams, Rating, $scope) {
         }
       });
 
+      vm.lessonData = lessonData;
+
       const paceValues = [];
       lessonData.filter(rating => paceValues.push(rating.pace));
       vm.avgPace = Math.ceil((paceValues.reduce((a,b) => a + b)) / paceValues.length);
