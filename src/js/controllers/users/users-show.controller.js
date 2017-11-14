@@ -44,7 +44,7 @@ function UsersShowCtrl(User, $stateParams, Rating) {
 
   vm.options1 = {
     readOnly: true,
-    min: -100,
+    min: 0,
     max: 100,
     barColor: '#5BC01E',
     trackColor: '#212121',
@@ -53,8 +53,8 @@ function UsersShowCtrl(User, $stateParams, Rating) {
   };
 
   vm.options2 = {
-    min: -100,
     readOnly: true,
+    min: 0,
     max: 100,
     bgColor: '#2C3E50',
     trackWidth: 50,
@@ -64,6 +64,8 @@ function UsersShowCtrl(User, $stateParams, Rating) {
   };
 
   vm.options3 = {
+    min: 0,
+    max: 100,
     unit: '%',
     readOnly: true,
     subText: {
