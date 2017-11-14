@@ -7,6 +7,7 @@
   <a ng-if="main.user.role === instructor" ui-sref="lessonsEdit({ id: vm.lessons._id })">Edit</a>
 </div>
 <canvas id="radar" class="chart chart-radar" chart-data="data" chart-options="options" chart-labels="labels"></canvas>
+
 <div class="columns knob">
 <div class="column">
   <ui-knob value="vm.avgPace" name="pace" options="vm.options1"></ui-knob>
@@ -21,3 +22,15 @@
   <ui-knob value="vm.avgConfidence" name="confidence" options="vm.options4" ng-model="vm.confidence"></ui-knob>
 </div>
 </div>
+
+<ul>
+  <li ng-repeat="rating in vm.lessonData track by $index">
+
+    <figure class="image is-64x64">
+      <h3><a ui-sref="usersShow({ id: rating.createdBy.id })"><img src="{{ rating.createdBy.image }}" alt="Image"></a></h3>
+    </figure>
+    <h4>{{ rating.createdBy.firstName }}</h4>
+    <p>{{ rating.message }}</p>
+
+  </li>
+</ul>
