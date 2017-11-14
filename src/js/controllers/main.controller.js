@@ -12,6 +12,9 @@ function MainCtrl($rootScope, currentUserService, $state) {
 
   $rootScope.$on('loggedIn', () => {
     vm.user = currentUserService.currentUser;
+    $rootScope.$broadcast('user defined', {
+      user: vm.user
+    });
   });
 
   function logout() {
