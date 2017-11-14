@@ -27,10 +27,10 @@
       <textarea class="textarea" placeholder="Leave a comment..."></textarea>
     </div>
   </div>
-
   <div>
-    <input type="checkbox" id="status" value="status">
-    <label for="status">I need help</label>
+    <label for="needHelp" value="vm.user.needHelp">
+      <input type="checkbox" ng-model="vm.user.needHelp" ng-checked="vm.user.needHelp">I need help
+    </label>
   </div>
 
   <div class="control">

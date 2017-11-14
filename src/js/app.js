@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', function () {
         $el.classList.toggle('is-active');
         $target.classList.toggle('is-active');
       });
+
     });
   }
 });
