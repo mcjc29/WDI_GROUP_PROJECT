@@ -1,17 +1,51 @@
 <h1>Lessons</h1>
 
-<input type="submit" ui-sref="lessonsNew" value="Add a lesson">
+<div class="content">
+  <div class="control">
+    <button type="submit" ui-sref="lessonsNew" class="button is-link">Add a lesson</button>
+  </div>
+</div>
 
-<input type="text" class="search" ng-model="vm.q" placeholder="Find a lesson...">
+<div class="box">
+  <div class="content">
+    <div class="field">
+      <label class="label">Search for a lesson...</label>
+      <div class="control">
+        <input class="input" type="text" ng-model="vm.q" placeholder="Search for a lesson...">
+      </div>
+    </div>
+  </div>
+</div>
 
-<ul ng-repeat="lesson in vm.filtered track by $index">
-  <li>
-    <h3><a ui-sref="lessonsShow({ id: lesson._id })">{{ lesson.title }}</a></h3>
-  </li>
-  <li>
-    <p>{{ lesson.competencies }}</p>
-  </li>
-  <li>
-    <p>{{ lesson.taughtBy }}</p>
-  </li>
-</ul>
+<div class="box" ng-repeat="lesson in vm.filtered track by $index">
+  <div class="content has-text-centered">
+    <p>
+      <strong><a ui-sref="lessonsShow({ id: lesson._id })">{{ lesson.title }}</strong></a>
+    </p>
+  </div>
+  <div class="content has-text-centered">
+    <p>
+      {{ lesson.competencies }}
+    </p>
+  </div>
+
+  <div class="level">
+    <div class="level-item has-text-centered">
+      <div>
+        <p class="heading">Taught by</p>
+        <p class="small">{{ lesson.taughtBy }}</p>
+      </div>
+    </div>
+    <div class="level-item has-text-centered">
+      <div>
+        <p class="heading">Location</p>
+        <p class="small">{{ lesson.city }}</p>
+      </div>
+    </div>
+    <div class="level-item has-text-centered">
+      <div>
+        <p class="heading">Created by</p>
+        <p class="small">{{ lesson.creator }}</p>
+      </div>
+    </div>
+</div>
