@@ -4,22 +4,22 @@
   <p>{{ vm.date }}</p>
   <p>{{ vm.lesson.city }}</p>
   <p>{{ vm.lesson.taughtBy }}</p>
-  <a ng-if="main.user.role === instructor" ui-sref="lessonsEdit({ id: vm.lessons._id })">Edit</a>
+  <a ng-if="main.user.role === instructor" ui-sref="lessonsEdit({ id: vm.lesson._id })">Edit</a>
 </div>
 <canvas id="radar" class="chart chart-radar" chart-data="data" chart-options="options" chart-labels="labels"></canvas>
 
 <div class="columns knob">
 <div class="column">
-  <ui-knob value="vm.avgPace" name="pace" options="vm.options1"></ui-knob>
+  <ui-knob value="vm.avgPace" name="pace" options="vm.options1" ng-model="vm.avgPace"></ui-knob>
 </div>
 <div class="column">
-  <ui-knob value="vm.avgConcepts" name="concepts" options="vm.options2" ng-model="vm.concepts"></ui-knob>
+  <ui-knob value="vm.avgConcepts" name="concepts" options="vm.options2" ng-model="vm.avgConcepts"></ui-knob>
 </div>
 <div class="column">
-  <ui-knob value="vm.avgSyntax" name="syntax" options="vm.options3" ng-model="vm.syntax"></ui-knob>
+  <ui-knob value="vm.avgSyntax" name="syntax" options="vm.options3" ng-model="vm.avgSyntax"></ui-knob>
 </div>
 <div class="column">
-  <ui-knob value="vm.avgConfidence" name="confidence" options="vm.options4" ng-model="vm.confidence"></ui-knob>
+  <ui-knob value="vm.avgConfidence" name="confidence" options="vm.options4" ng-model="vm.avgConfidence"></ui-knob>
 </div>
 </div>
 

@@ -2,12 +2,11 @@ angular
   .module('gaFeedback')
   .controller('UsersShowCtrl', UsersShowCtrl);
 
-UsersShowCtrl.$inject = ['User', '$stateParams', 'Rating'];
+UsersShowCtrl.$inject = ['User', '$stateParams', 'Rating', '$scope'];
 
-function UsersShowCtrl(User, $stateParams, Rating) {
+function UsersShowCtrl(User, $stateParams, Rating, $scope) {
   const vm = this;
   vm.user = User.get($stateParams);
-  console.log(vm.user);
   vm.rating = null;
 
   Rating
@@ -21,7 +20,6 @@ function UsersShowCtrl(User, $stateParams, Rating) {
         if (rating.createdBy.id === vm.user._id) {
           userData.push(rating);
         }
-        console.log(userData);
       });
 
       const paceValues = [];
@@ -40,11 +38,35 @@ function UsersShowCtrl(User, $stateParams, Rating) {
       userData.filter(rating => confidenceValues.push(rating.confidence));
       vm.avgConfidence = Math.ceil((confidenceValues.reduce((a,b) => a + b)) / confidenceValues.length);
 
+      const ratingDates = [];
+      userData.filter(rating => ratingDates.push(rating.createdAt.toString()));
+
+      $scope.labels = ratingDates;
+      $scope.series = ['Series A', 'Series B'];
+      $scope.data = confidenceValues;
+      $scope.onClick = function (points, evt) {
+        console.log(points, evt);
+      };
+      $scope.datasetOverride = [{ yAxisID: 'y-axis-1' }, { yAxisID: 'y-axis-2' }];
+      $scope.options = {
+        scales: {
+          yAxes: [
+            {
+              id: 'y-axis-1',
+              ticks: {min: 0, max: 100},
+              type: 'linear',
+              display: true,
+              position: 'left'
+            }
+          ]
+        }
+      };
+
     });
 
   vm.options1 = {
     readOnly: true,
-    min: -100,
+    min: 0,
     max: 100,
     barColor: '#5BC01E',
     trackColor: '#212121',
@@ -53,8 +75,8 @@ function UsersShowCtrl(User, $stateParams, Rating) {
   };
 
   vm.options2 = {
-    min: -100,
     readOnly: true,
+    min: 0,
     max: 100,
     bgColor: '#2C3E50',
     trackWidth: 50,
@@ -64,6 +86,8 @@ function UsersShowCtrl(User, $stateParams, Rating) {
   };
 
   vm.options3 = {
+    min: 0,
+    max: 100,
     unit: '%',
     readOnly: true,
     subText: {

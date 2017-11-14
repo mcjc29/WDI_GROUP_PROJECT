@@ -24,7 +24,7 @@ function RatingsCtrl(Rating, $state) {
   }
 
   vm.options1 = {
-    min: -100,
+    min: 0,
     max: 100,
     barColor: '#5BC01E',
     trackColor: '#212121',
@@ -33,7 +33,7 @@ function RatingsCtrl(Rating, $state) {
   };
 
   vm.options2 = {
-    min: -100,
+    min: 0,
     max: 100,
     bgColor: '#2C3E50',
     trackWidth: 50,
@@ -43,6 +43,8 @@ function RatingsCtrl(Rating, $state) {
   };
 
   vm.options3 = {
+    min: 0,
+    max: 100,
     unit: '%',
     subText: {
       enabled: true,
@@ -62,8 +64,8 @@ function RatingsCtrl(Rating, $state) {
       width: 5,
       space: 1
     },
-    min: -10,
-    max: 10,
+    min: 0,
+    max: 100,
     trackWidth: 40,
     barWidth: 25,
     barCap: 50,

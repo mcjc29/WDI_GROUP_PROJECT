@@ -1,33 +1,3 @@
-<!-- <h1>Ratings Index</h1> -->
-<!--
-<form class="add-rating" ng-submit="vm.submit()">
-<div calss="knob">
-  <
-  <ui-knob class="knob" id="main-knob knob" value="vm.pace" name="pace" options="vm.options4" ng-model="vm.pace"></ui-knob>
-</div>
-<div>
-  <label for="concepts">Concepts</label>
-  <ui-knob class="knob" value="vm.concepts" name="concepts" options="vm.options2" ng-model="vm.concepts"></ui-knob>
-</div>
-<div>
-  <label for="syntax">Syntax</label>
-  <ui-knob class="knob" value="vm.syntax" name="syntax" options="vm.options3" ng-model="vm.syntax"></ui-knob>
-</div>
-<div>
-  <label for="confidence">Confidence</label>
-  <ui-knob calss="knob" value="vm.confidence" name="confidence" options="vm.options4" ng-model="vm.confidence"></ui-knob>
-</div>
-<div>
-<p>{{ message.content }}</p>
-</div>
-<div>
-<input type="checkbox" id="status" value="status">
-<label for="status">I need help</label>
-</div>
-<input type="submit" value="Submit">
-
-</form> -->
-
 <h1>Ratings Index</h1>
 
 <form class="add-rating" ng-submit="vm.submit()">
@@ -51,13 +21,20 @@
     </div>
   </div>
 
-  <div>
-  <p>{{ message.content }}</p>
+  <div class="field">
+    <label class="label">Message</label>
+    <div class="control">
+      <textarea class="textarea" placeholder="Leave a comment..."></textarea>
+    </div>
   </div>
+
   <div>
-  <input type="checkbox" id="status" value="status">
-  <label for="status">I need help</label>
+    <input type="checkbox" id="status" value="status">
+    <label for="status">I need help</label>
   </div>
-  <input type="submit" value="Submit">
+
+  <div class="control">
+    <button class="button is-primary">Submit</button>
+  </div>
 
 </form>
