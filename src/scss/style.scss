@@ -6,3 +6,11 @@ main {
 img {
   height: 250px;
 }
+
+.knob {
+  display: inline-block;
+  margin: 20px auto;
+  ui-knob {
+    padding: 30px;
+  }
+}
