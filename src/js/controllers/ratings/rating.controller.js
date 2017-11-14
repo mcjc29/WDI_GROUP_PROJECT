@@ -66,7 +66,7 @@ function RatingsCtrl(Rating, $state) {
     max: 10,
     trackWidth: 40,
     barWidth: 25,
-    barCap: 25,
+    barCap: 50,
     barColor: '#fa4542',
     textColor: 'black'
   };

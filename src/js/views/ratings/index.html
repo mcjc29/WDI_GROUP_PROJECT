@@ -1,24 +1,63 @@
+<!-- <h1>Ratings Index</h1> -->
+<!--
 <form class="add-rating" ng-submit="vm.submit()">
-<div>
-  <ui-knob id="main-knob" value="vm.pace" name="pace" options="vm.options4" ng-model="vm.pace"></ui-knob>
+<div calss="knob">
+  <
+  <ui-knob class="knob" id="main-knob knob" value="vm.pace" name="pace" options="vm.options4" ng-model="vm.pace"></ui-knob>
 </div>
 <div>
-  <h1>{{ vm.concepts }}</h1>
-  <ui-knob value="vm.concepts" name="concepts" options="vm.options2" ng-model="vm.concepts"></ui-knob>
+  <label for="concepts">Concepts</label>
+  <ui-knob class="knob" value="vm.concepts" name="concepts" options="vm.options2" ng-model="vm.concepts"></ui-knob>
 </div>
 <div>
-  <ui-knob value="vm.syntax" name="syntax" options="vm.options3" ng-model="vm.syntax"></ui-knob>
+  <label for="syntax">Syntax</label>
+  <ui-knob class="knob" value="vm.syntax" name="syntax" options="vm.options3" ng-model="vm.syntax"></ui-knob>
 </div>
 <div>
-  <ui-knob value="vm.confidence" name="confidence" options="vm.options4" ng-model="vm.confidence"></ui-knob>
+  <label for="confidence">Confidence</label>
+  <ui-knob calss="knob" value="vm.confidence" name="confidence" options="vm.options4" ng-model="vm.confidence"></ui-knob>
 </div>
-<!-- <div>
+<div>
 <p>{{ message.content }}</p>
-</div> -->
-<!-- <div>
+</div>
+<div>
 <input type="checkbox" id="status" value="status">
 <label for="status">I need help</label>
-</div> -->
+</div>
 <input type="submit" value="Submit">
+
+</form> -->
+
+<h1>Ratings Index</h1>
+
+<form class="add-rating" ng-submit="vm.submit()">
+
+  <div class="columns knob">
+    <div class="column">
+      <label for="pace">Lesson Pace</label>
+      <ui-knob value="vm.avgPace" name="concepts" options="vm.options2" ng-model="vm.pace"></ui-knob>
+    </div>
+    <div class="column">
+      <label for="concepts">Lesson Concepts</label>
+      <ui-knob value="vm.avgConcepts" name="concepts" options="vm.options2" ng-model="vm.concepts"></ui-knob>
+    </div>
+    <div class="column">
+      <label for="Syntax">Lesson Syntax</label>
+      <ui-knob value="vm.avgSyntax" name="syntax" options="vm.options2" ng-model="vm.syntax"></ui-knob>
+    </div>
+    <div class="column">
+      <label for="confidence">Overall Confidence</label>
+      <ui-knob value="vm.avgConfidence" name="confidence" options="vm.options2" ng-model="vm.confidence"></ui-knob>
+    </div>
+  </div>
+
+  <div>
+  <p>{{ message.content }}</p>
+  </div>
+  <div>
+  <input type="checkbox" id="status" value="status">
+  <label for="status">I need help</label>
+  </div>
+  <input type="submit" value="Submit">
 
 </form>
