@@ -37,6 +37,13 @@
           {{ comment.content }}
         </p>
       </div>
+      <div ng-if="comment.replies" class="content chat-reply">
+        <p ng-repeat="reply in comment.replies">
+          <strong>{{ reply.createdBy.firstName }}</strong>
+          <br>
+          {{ reply.content }}
+        </p>
+      </div>
       <nav class="level is-mobile">
         <div class="level-left">
           <a class="level-item">
