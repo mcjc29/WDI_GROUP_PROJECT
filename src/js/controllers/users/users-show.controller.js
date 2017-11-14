@@ -7,6 +7,7 @@ UsersShowCtrl.$inject = ['User', '$stateParams', 'Rating'];
 function UsersShowCtrl(User, $stateParams, Rating) {
   const vm = this;
   vm.user = User.get($stateParams);
+  console.log(vm.user);
   vm.rating = null;
 
   Rating
@@ -15,29 +16,28 @@ function UsersShowCtrl(User, $stateParams, Rating) {
     .then(data => {
       vm.ratings = data;
 
-      // const userRatings = data;
-      // console.log('before filter', userRatings);
-      // userRatings.filter(rating => {
-      //   console.log($stateParams.id);
-      //   console.log(rating.createdBy.id);
-      //   return rating.createdBy.id === $stateParams.id;
-      // });
-      // console.log('after filter', userRatings);
+      const userData = [];
+      data.filter(rating => {
+        if (rating.createdBy.id === vm.user._id) {
+          userData.push(rating);
+        }
+        console.log(userData);
+      });
 
       const paceValues = [];
-      data.filter(rating => paceValues.push(rating.pace));
+      userData.filter(rating => paceValues.push(rating.pace));
       vm.avgPace = Math.ceil((paceValues.reduce((a,b) => a + b)) / paceValues.length);
 
       const conceptsValues = [];
-      data.filter(rating => conceptsValues.push(rating.concepts));
+      userData.filter(rating => conceptsValues.push(rating.concepts));
       vm.avgConcepts = Math.ceil((conceptsValues.reduce((a,b) => a + b)) / conceptsValues.length);
 
       const syntaxValues = [];
-      data.filter(rating => syntaxValues.push(rating.syntax));
+      userData.filter(rating => syntaxValues.push(rating.syntax));
       vm.avgSyntax = Math.ceil((syntaxValues.reduce((a,b) => a + b)) / syntaxValues.length);
 
       const confidenceValues = [];
-      data.filter(rating => confidenceValues.push(rating.confidence));
+      userData.filter(rating => confidenceValues.push(rating.confidence));
       vm.avgConfidence = Math.ceil((confidenceValues.reduce((a,b) => a + b)) / confidenceValues.length);
 
     });
