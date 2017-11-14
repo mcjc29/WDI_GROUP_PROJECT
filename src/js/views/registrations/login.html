@@ -1,13 +1,29 @@
 <h1>Log in</h1>
-
 <form ng-submit="vm.submitForm()">
-  <label for="email">Email</label>
-
-  <input type="text" name="email" ng-model="vm.user.email">
-
-  <label for="password">Password</label>
-
-  <input type="password" name="password" ng-model="vm.user.password">
-
-  <input type="submit" value="Login">
-</form>
+<div class="field">
+  <p class="control has-icons-left has-icons-right">
+    <input class="input" type="email" placeholder="Email" ng-model="vm.user.email">
+    <span class="icon is-small is-left">
+      <i class="fa fa-envelope"></i>
+    </span>
+    <span class="icon is-small is-right">
+      <i class="fa fa-check"></i>
+    </span>
+  </p>
+</div>
+<div class="field">
+  <p class="control has-icons-left">
+    <input class="input" type="password" placeholder="Password" ng-model="vm.user.password">
+    <span class="icon is-small is-left">
+      <i class="fa fa-lock"></i>
+    </span>
+  </p>
+</div>
+<div class="field">
+  <p class="control">
+    <button class="button is-success">
+      Login
+    </button>
+  </p>
+</div>
+<form>
