@@ -13,6 +13,9 @@ function ChatCtrl(Comment) {
     .$promise
     .then(data => {
       vm.comments = data.reverse();
+      vm.comments.forEach(comment => {
+        comment.createdAt = comment.createdAt.toDateString();
+      });
     });
 
   vm.submit = addComment;
