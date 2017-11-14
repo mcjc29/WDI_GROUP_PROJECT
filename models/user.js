@@ -9,7 +9,8 @@ const userSchema = new mongoose.Schema({
   image: String,
   role: { type: String, required: true },
   cohort: { type: String, required: true },
-  passwordHash: { type: String, required: true }
+  passwordHash: { type: String, required: true },
+  needHelp: Boolean
 }, {
   timestamps: true
 });

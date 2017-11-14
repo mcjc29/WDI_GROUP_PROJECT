@@ -17,6 +17,7 @@ function usersShow(req, res, next) {
 }
 
 function usersUpdate(req, res, next) {
+  console.log(req.body);
   User
     .findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true })
     .exec()

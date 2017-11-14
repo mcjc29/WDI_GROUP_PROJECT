@@ -2,11 +2,16 @@ angular
   .module('gaFeedback')
   .controller('RatingsCtrl', RatingsCtrl);
 
-RatingsCtrl.$inject = ['Rating', '$state'];
+RatingsCtrl.$inject = ['Rating', '$state', 'User', 'currentUserService', '$rootScope'];
 
-function RatingsCtrl(Rating, $state) {
+function RatingsCtrl(Rating, $state, User, currentUserService, $rootScope) {
   const vm = this;
   vm.submit = addRating;
+  vm.needHelp = false;
+
+  $rootScope.$on('user defined', (event, data) => {
+    vm.user = data.user;
+  });
 
   function addRating() {
     vm.newRating = {
@@ -15,12 +20,22 @@ function RatingsCtrl(Rating, $state) {
       syntax: vm.syntax,
       confidence: vm.confidence
     };
+    // console.log(user);
     Rating
       .save(vm.newRating)
       .$promise
-      .then(() => {
+      .then(rating => {
+        // console.log('rating ----->', rating);
+        return User.update({ id: vm.user._id }, vm.user);
+      })
+      .then(user => {
+        // console.log('user ----->', user);
         $state.go('lessonsIndex');
       });
+    // vm.helpStatus = {
+    //   needHelp: vm.needHelp
+    // };
+
   }
 
   vm.options1 = {

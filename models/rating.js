@@ -6,8 +6,7 @@ const ratingSchema = new mongoose.Schema({
   concepts: { type: Number, required: true },
   syntax: { type: Number, required: true },
   confidence: { type: Number, required: true },
-  message: String,
-  needHelp: Boolean
+  message: String
 }, {
   timestamps: true
 });
