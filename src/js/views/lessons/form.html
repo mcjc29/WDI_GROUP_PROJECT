@@ -28,47 +28,49 @@
 
   <input type="submit">
 </form> -->
-<form>
+
+
+<form ng-submit="vm.submit()">
 <div class="field">
   <label class="label">Title</label>
   <div class="control">
-    <input class="input" type="text" placeholder="Title...">
+    <input class="input" type="text" placeholder="Title..." ng-model="vm.title">
   </div>
 </div>
 <div class="field">
-  <label class="label">Type</label>
+  <label class="label">Start Time</label>
   <div class="control">
-    <input class="input" type="text" placeholder="Type...">
+    <input class="input" type="date" placeholder="Start time..." ng-model="vm.startTime">
   </div>
 </div>
 <div class="field">
-  <label class="label">Duration</label>
+  <label class="label">End Time</label>
   <div class="control">
-    <input class="input" type="text" placeholder="Duration...">
+    <input class="input" type="time" placeholder="End time..." ng-model="vm.endTime">
   </div>
 </div>
 <div class="field">
   <label class="label">Creator</label>
   <div class="control">
-    <input class="input" type="text" placeholder="Name of creator...">
+    <input class="input" type="text" placeholder="Name of creator..." ng-model="vm.creator">
   </div>
 </div>
 <div class="field">
   <label class="label">City</label>
   <div class="control">
-    <input class="input" type="text" placeholder="City...">
+    <input class="input" type="text" placeholder="City..." ng-model="vm.city">
   </div>
 </div>
 <div class="field">
   <label class="label">Competencies</label>
   <div class="control">
-    <input class="input" type="text" placeholder="Competencies...">
+    <input class="input" type="text" placeholder="Competencies..." ng-model="vm.competencies">
   </div>
 </div>
 <div class="field">
   <label class="label">Instructor</label>
   <div class="control">
-    <input class="input" type="text" placeholder="Instructor...">
+    <input class="input" type="text" placeholder="Instructor..." ng-model="vm.taughtBy">
   </div>
 </div>
 <div class="field is-grouped">
