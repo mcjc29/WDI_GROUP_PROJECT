@@ -2,9 +2,9 @@ angular
   .module('gaFeedback')
   .controller('UsersShowCtrl', UsersShowCtrl);
 
-UsersShowCtrl.$inject = ['User', '$stateParams', 'Rating', '$scope', '$moment'];
+UsersShowCtrl.$inject = ['User', '$stateParams', 'Rating', '$moment'];
 
-function UsersShowCtrl(User, $stateParams, Rating, $scope, $moment) {
+function UsersShowCtrl(User, $stateParams, Rating, $moment) {
   const vm = this;
   vm.user = User.get($stateParams);
   vm.rating = null;
@@ -42,13 +42,18 @@ function UsersShowCtrl(User, $stateParams, Rating, $scope, $moment) {
       const ratingDates = [];
       userData.filter(rating => ratingDates.push($moment(rating.createdAt).fromNow()));
 
-      $scope.labels = ratingDates;
-      $scope.data = confidenceValues;
-      $scope.options = {
+      vm.labels = ratingDates;
+      vm.data = confidenceValues;
+      vm.chartOptions = {
         title: {
           display: true,
           text: 'Confidence Level Over Time'
         },
+        // legend: {
+        //   labels: {
+        //     defaultFontSize: 30
+        //   }
+        // },
         scales: {
           yAxes: [
             {
@@ -59,16 +64,14 @@ function UsersShowCtrl(User, $stateParams, Rating, $scope, $moment) {
               position: 'left',
               scaleLabel: {
                 display: true,
-                labelString: 'Confidence',
-                fontFamily: 'Arial'
+                labelString: 'Confidence'
               }
             }
           ]
         }
       };
-      console.log($scope.options);
     });
-
+    
   vm.options = {
     animate: false,
     min: 0,

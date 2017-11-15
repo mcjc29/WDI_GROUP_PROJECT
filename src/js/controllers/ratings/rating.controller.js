@@ -9,9 +9,6 @@ function RatingsCtrl(Rating, $state, User, currentUserService, $timeout) {
   vm.submit = addRating;
   vm.needHelp = false;
 
-  // $rootScope.$on('user defined', (event, data) => {
-  //   vm.user = data.user;
-  // });
   $timeout(() => {
     vm.user = currentUserService.currentUser;
   }, 50);

@@ -2,9 +2,9 @@ angular
   .module('gaFeedback')
   .controller('LessonsShowCtrl', LessonsShowCtrl);
 
-LessonsShowCtrl.$inject = ['Lesson', '$stateParams', 'Rating', '$scope'];
+LessonsShowCtrl.$inject = ['Lesson', '$stateParams', 'Rating'];
 
-function LessonsShowCtrl(Lesson, $stateParams, Rating, $scope) {
+function LessonsShowCtrl(Lesson, $stateParams, Rating) {
   const vm = this;
   vm.lesson = Lesson.get($stateParams);
 
@@ -44,13 +44,25 @@ function LessonsShowCtrl(Lesson, $stateParams, Rating, $scope) {
       lessonData.filter(rating => confidenceValues.push(rating.confidence));
       vm.avgConfidence = Math.ceil((confidenceValues.reduce((a,b) => a + b)) / confidenceValues.length);
 
-      $scope.labels = ['Pace of Lesson', 'Concepts', 'Syntax', 'Confidence'];
+      vm.labels = ['Pace of Lesson', 'Concepts', 'Syntax', 'Confidence'];
 
-      $scope.data = [vm.avgPace, vm.avgConcepts, vm.avgSyntax, vm.avgConfidence];
+      vm.data = [vm.avgPace, vm.avgConcepts, vm.avgSyntax, vm.avgConfidence];
 
-      $scope.options = {
+      vm.chartOptions = {
+        title: {
+          display: true,
+          text: 'Lesson Snapshot'
+        },
         scale: {
           ticks: {min: 0, max: 100}
+        },
+        layout: {
+          padding: {
+            left: 0,
+            right: 0,
+            top: 0,
+            bottom: 0
+          }
         }
       };
 
