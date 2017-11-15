@@ -23,6 +23,9 @@
       <strong><a ui-sref="lessonsShow({ id: lesson._id })">{{ lesson.title }}</strong></a>
     </p>
   </div>
+  <div class="conente has-text-centered">
+    <small>{{ lesson.createdAt }}</small>
+  </div>
   <div class="content has-text-centered">
     <p>
       {{ lesson.competencies }}
@@ -48,4 +51,4 @@
         <p class="small">{{ lesson.creator }}</p>
       </div>
     </div>
-</div>
+  </div>
