@@ -1,5 +1,18 @@
 <h1>Log in</h1>
+
+
+<div class="modal-background"></div>
+
+<div class="modal-card">
+  <header class="modal-card-head">
+    <p class="modal-card-title">
+      Log In
+    </p>
+    <button class="delete" ng-click="vm.close()"></button>
+  </header>
+
 <form ng-submit="vm.submitForm()">
+<section class="modal-card-body">
 <div class="field">
   <p class="control has-icons-left has-icons-right">
     <input class="input" type="email" placeholder="Email" ng-model="vm.user.email">
@@ -11,6 +24,7 @@
     </span>
   </p>
 </div>
+
 <div class="field">
   <p class="control has-icons-left">
     <input class="input" type="password" placeholder="Password" ng-model="vm.user.password">
@@ -19,11 +33,34 @@
     </span>
   </p>
 </div>
-<div class="field">
-  <p class="control">
-    <button class="button is-success">
-      Login
-    </button>
-  </p>
+</section>
+<footer class="modal-card-foot">
+  <div class="field">
+    <p class="control">
+      <button class="button is-success">
+        Login
+      </button>
+    </p>
+  </div>
+</footer>
+</form>
+  <button class="modal-close"
+        ng-click="vm.close()"></button>
 </div>
-<form>
+
+  <!-- <div class="modal-background"></div>
+  <div class="modal-card">
+      <header class="modal-card-head">
+          <p class="modal-card-title">Modal title</p>
+          <button class="delete"
+                  ng-click="vm.close()"></button>
+      </header>
+      <section class="modal-card-body">{{vm.hello}}</section>
+      <footer class="modal-card-foot">
+          <a class="button is-primary">Save changes</a>
+          <a class="button"
+             ng-click="vm.close()">Cancel</a>
+      </footer>
+  </div>
+  <button class="modal-close"
+          ng-click="vm.close()"></button> -->
