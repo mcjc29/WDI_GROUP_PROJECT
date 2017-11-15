@@ -4,7 +4,8 @@
   <p>{{ vm.date }}</p>
   <p>{{ vm.lesson.city }}</p>
   <p>{{ vm.lesson.taughtBy }}</p>
-  <p><a ng-href="{{ vm.lesson.lessonNotes }}" target="_blank">Read</a></p>
+
+  <button class="button"><a ng-href="{{ vm.lesson.lessonNotes }}" target="_blank" download>Download Lesson Notes</a></button>
 
   <a ng-if="main.user.role === instructor" ui-sref="lessonsEdit({ id: vm.lesson._id })">Edit</a>
 </div>
