@@ -1,4 +1,3 @@
-
 <div>
   <h1>{{ vm.lesson.title }}</h1>
   <p>{{ vm.lesson.competencies }}</p>
@@ -37,90 +36,90 @@
   <div class="content has-text-centered">
     <h1>Average Student Ratings</h1>
   </div>
+
   <div class="level">
     <div class="level-item has-text-centered">
       <div>
-        <h2 class="heading">Lesson Pace</h3>
-          <ui-knob value="vm.avgPace" name="pace" options="vm.options" ng-model="vm.avgPace"></ui-knob>
+        <h2 class="heading">Lesson Pace</h2>
+        <ui-knob value="vm.avgPace" name="pace" options="vm.options" ng-model="vm.avgPace"></ui-knob>
+      </div>
+    </div>
+    <div class="level-item has-text-centered">
+      <div>
+        <h2 class="heading">Lesson Concepts</h2>
+        <ui-knob value="vm.avgConcepts" name="concepts" options="vm.options" ng-model="vm.avgConcepts"></ui-knob>
+      </div>
+    </div>
+    <div class="level-item has-text-centered">
+      <div>
+        <h2 class="heading">Lesson Syntax</h2>
+        <ui-knob value="vm.avgSyntax" name="syntax" options="vm.options" ng-model="vm.avgSyntax"></ui-knob>
         </div>
       </div>
       <div class="level-item has-text-centered">
         <div>
-          <h2 class="heading">Lesson Concepts</h3>
-            <ui-knob value="vm.avgConcepts" name="concepts" options="vm.options" ng-model="vm.avgConcepts"></ui-knob>
-          </div>
+          <h2 class="heading">Overall Confidence</h2>
+          <ui-knob value="vm.avgConfidence" name="confidence" options="vm.options" ng-model="vm.avgConfidence"></ui-knob>
         </div>
-        <div class="level-item has-text-centered">
-          <div>
-            <h2 class="heading">Lesson Syntax</h3>
-              <ui-knob value="vm.avgSyntax" name="syntax" options="vm.options" ng-model="vm.avgSyntax"></ui-knob>
-            </div>
-          </div>
-          <div class="level-item has-text-centered">
-            <div>
-              <h2 class="heading">Overall Confidence</h3>
-                <ui-knob value="vm.avgConfidence" name="confidence" options="vm.options" ng-model="vm.avgConfidence"></ui-knob>
-              </div>
-            </div>
-          </div>
-        </div>
+      </div>
+    </div>
+  </div>
 
 
+  <div class="box">
+    <div class="content has-text-centered">
+      <h1>Student Ratings</h1>
+    </div>
+    <div class="columns" ng-repeat="users in vm.lessonData | chunkBy:4">
+      <div class="column" ng-repeat="user in users">
         <div class="box">
-          <div class="content has-text-centered">
-            <h1>Student Ratings</h1>
-          </div>
-          <div class="columns" ng-repeat="users in vm.lessonData | chunkBy:4">
-            <div class="column" ng-repeat="user in users">
-              <div class="box">
-                <article class="media">
-                  <div class="media-left">
-                    <figure class="image is-64x64">
-                      <img src="{{ user.createdBy.image }}" alt="Image">
-                    </figure>
+          <article class="media">
+            <div class="media-left">
+              <figure class="image is-64x64">
+                <img src="{{ user.createdBy.image }}" alt="Image">
+              </figure>
+            </div>
+            <div class="media-content">
+              <div class="content has-text-centered">
+                <p>
+                  <strong>{{ user.createdBy.firstName }}</strong>
+                  <br>{{ rating.message }}
+                </p>
+              </div>
+              <div class="content">
+                <div class="has-text-centered">
+                  <div>
+                    <strong>Lesson Pace</strong>
+                    <small>{{ user.pace }}</small>
                   </div>
-                  <div class="media-content">
-                    <div class="content has-text-centered">
-                      <p>
-                        <strong>{{ user.createdBy.firstName }}</strong>
-                        <br>
-                        {{ rating.message }}
-                      </p>
-                    </div>
-                    <div class="content">
-                      <div class="has-text-centered">
-                        <div>
-                          <strong>Lesson Pace</strong>
-                          <small>{{ user.pace }}</small>
-                        </div>
-                      </div>
-                      <div class="has-text-centered">
-                        <div>
-                          <strong>Lesson Concepts</strong>
-                          <small>{{ user.concepts }}</small>
-                        </div>
-                      </div>
-                      <div class="has-text-centered">
-                        <div>
-                          <strong>Lesson Syntax</strong>
-                          <small>{{ user.syntax }}</small>
-                        </div>
-                      </div>
-                      <div class="has-text-centered">
-                        <div>
-                          <strong>Confidence</strong>
-                          <small>{{ user.confidence }}</small>
-                        </div>
-                      </div>
-                      <div class="has-text-centered">
-                        <div>
-                          <small>{{ user.message }}</small>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </article>
+                </div>
+                <div class="has-text-centered">
+                <div>
+                  <strong>Lesson Concepts</strong>
+                  <small>{{ user.concepts }}</small>
+                </div>
+              </div>
+              <div class="has-text-centered">
+              <div>
+                  <strong>Lesson Syntax</strong>
+                  <small>{{ user.syntax }}</small>
+                </div>
+              </div>
+              <div class="has-text-centered">
+                <div>
+                  <strong>Confidence</strong>
+                  <small>{{ user.confidence }}</small>
+                </div>
+              </div>
+              <div class="has-text-centered">
+                <div>
+                  <small>{{ user.message }}</small>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</div>
