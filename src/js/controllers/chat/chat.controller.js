@@ -8,6 +8,7 @@ function ChatCtrl(Comment, $moment, $rootScope) {
   const vm = this;
   vm.submit = addComment;
   vm.delete = deleteComment;
+  vm.deleteReply = deleteReply;
   vm.submitReply = addReply;
 
   $rootScope.$on('user defined', (event, data) => {
@@ -72,14 +73,12 @@ function ChatCtrl(Comment, $moment, $rootScope) {
   }
 
   function addReply(comment) {
-    const newReply = {
-      createdBy: vm.user._id,
-      replies: {
-        content: vm.newReply
-      }
+    const reply = document.getElementById(comment._id).value;
+    vm.newReply = {
+      content: reply
     };
     Comment
-      .update({ id: comment._id }, newReply)
+      .replyCreate({ id: comment._id }, vm.newReply)
       .$promise
       .then(() => {
         Comment
@@ -93,7 +92,27 @@ function ChatCtrl(Comment, $moment, $rootScope) {
                 reply.createdAt = $moment(reply.createdAt).fromNow();
               });
             });
-            vm.newComment = '';
+            document.getElementById(comment._id).value = '';
+          });
+      });
+  }
+
+  function deleteReply(comment, reply) {
+    Comment
+      .replyDelete({ id: comment._id, replyId: reply._id })
+      .$promise
+      .then(() => {
+        Comment
+          .query()
+          .$promise
+          .then(data => {
+            vm.comments = data.reverse();
+            vm.comments.forEach(comment => {
+              comment.createdAt = $moment(comment.createdAt).fromNow();
+              comment.replies.forEach(reply => {
+                reply.createdAt = $moment(reply.createdAt).fromNow();
+              });
+            });
           });
       });
   }

@@ -52,4 +52,10 @@ router.route('/comments/:id')
   .put(comments.update)
   .delete(comments.delete);
 
+router.route('/comments/:id/replies')
+  .post(comments.replyCreate);
+
+router.route('/comments/:id/replies/:replyId')
+  .delete(comments.replyDelete);
+
 module.exports = router;

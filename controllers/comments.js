@@ -45,10 +45,41 @@ function commentsDelete(req, res, next) {
     .catch(next);
 }
 
+function replyCreate(req, res, next) {
+  Comment
+    .findById(req.params.id)
+    .exec()
+    .then(comment => {
+      if(!comment) return res.notFound();
+      req.body.createdBy = req.user._id;
+      comment.replies.push(req.body);
+      comment.save();
+      res.status(201).json(comment);
+    })
+    .catch(next);
+}
+
+function replyDelete(req, res, next) {
+  Comment
+    .findById(req.params.id)
+    .exec()
+    .then(comment => {
+      if(!comment) return res.notFound();
+      const reply = comment.replies.id(req.params.replyId);
+      console.log(reply);
+      reply.remove();
+      comment.save();
+    })
+    .then(() => res.sendStatus(204))
+    .catch(next);
+}
+
 module.exports = {
   index: commentsIndex,
   create: commentsCreate,
   show: commentsShow,
   delete: commentsDelete,
-  update: commentsUpdate
+  update: commentsUpdate,
+  replyCreate: replyCreate,
+  replyDelete: replyDelete
 };
