@@ -10,7 +10,7 @@
         <h3>{{ vm.user.firstName }} {{ vm.user.lastName }}</h3>
         <h5>{{ vm.user.email }}</h5>
         <h5>{{ vm.user.cohort | uppercase }} {{ vm.user.role | uppercase }}</h5>
-        <button class="button is-primary" ui-sref="usersEdit({ id: vm.user.id })">Edit Info</button>
+        <button ng-if="vm.user._id === main.user._id" class="button is-primary" ui-sref="usersEdit({ id: vm.user.id })">Edit Info</button>
       </div>
     </div>
   </article>
