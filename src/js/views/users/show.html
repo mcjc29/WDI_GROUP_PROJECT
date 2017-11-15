@@ -1,11 +1,21 @@
 <h1>{{ vm.user.firstName }}'s Profile</h1>
 
-<div>
-  <h3>{{ vm.user.firstName }}</h3>
-  <img ng-src="{{ vm.user.image }}" alt="{{ vm.user.firstName }}">
-</div>
-
-<a ui-sref="usersEdit({ id: vm.user.id })">Edit</a>
+  <div class="box">
+    <article class="media chat-article">
+      <div class="media-left">
+        <img ng-src="{{ vm.user.image }}" alt="{{ vm.user.firstName }}">
+      </div>
+      <div class="media-content">
+        <div class="content">
+          <h3>{{ vm.user.firstName }} {{ vm.user.lastName }}</h3>
+          <h5>{{ vm.user.email }}</h5>
+          <h5>{{ vm.user.cohort }}</h5>
+          <h5>{{ vm.user.role }}</h5>
+          <button class="button is-primary" ui-sref="usersEdit({ id: vm.user.id })">Edit Info</button>
+        </div>
+      </div>
+    </article>
+  </div>
 
 <div class="columns knob">
   <div class="column">

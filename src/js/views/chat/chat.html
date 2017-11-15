@@ -1,26 +1,25 @@
 <h1>Chat</h1>
-  <div class="box">
-    <article class="media chat-article">
-      <div class="media-left">
-      </div>
-      <div class="media-content">
-        <div class="content">
-          <form ng-submit="vm.submit()">
-            <div class="field">
-              <label class="label">How are you doing?</label>
-              <div class="control">
-                <input class="input" type="text" name="comment" value="vm.newComment" ng-model="vm.newComment" placeholder="Write a message...">
-              </div>
-            </div>
+<div class="box">
+  <article class="media chat-article">
+    <div class="media-left">
+    </div>
+    <div class="media-content">
+      <div class="content">
+        <form ng-submit="vm.submit()">
+          <div class="field">
+            <label class="label">How are you doing?</label>
             <div class="control">
-              <button class="button is-primary">Submit</button>
+              <input class="input" type="text" name="comment" value="vm.newComment" ng-model="vm.newComment" placeholder="Write a message...">
             </div>
-          </form>
-        </div>
+          </div>
+          <div class="control">
+            <button class="button is-primary">Submit</button>
+          </div>
+        </form>
       </div>
-    </article>
-  </div>
-</form>
+    </div>
+  </article>
+</div>
 
 <div class="box chat-box" ng-repeat="comment in vm.comments track by $index">
   <article class="media">
@@ -61,15 +60,15 @@
         </form>
       </div>
       <!-- <nav class="level is-mobile">
-        <div class="level-left">
-          <a class="level-item">
-            <span class="icon is-small"><i class="fa fa-reply"></i></span>
-          </a>
-          <a class="level-item">
-            <span class="icon is-small"><i class="fa fa-heart"></i></span>
-          </a>
-        </div>
-      </nav> -->
-    </div>
-  </article>
+      <div class="level-left">
+      <a class="level-item">
+      <span class="icon is-small"><i class="fa fa-reply"></i></span>
+    </a>
+    <a class="level-item">
+    <span class="icon is-small"><i class="fa fa-heart"></i></span>
+  </a>
+</div>
+</nav> -->
+</div>
+</article>
 </div>

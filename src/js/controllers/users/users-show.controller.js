@@ -2,9 +2,9 @@ angular
   .module('gaFeedback')
   .controller('UsersShowCtrl', UsersShowCtrl);
 
-UsersShowCtrl.$inject = ['User', '$stateParams', 'Rating', '$scope'];
+UsersShowCtrl.$inject = ['User', '$stateParams', 'Rating', '$scope', '$moment'];
 
-function UsersShowCtrl(User, $stateParams, Rating, $scope) {
+function UsersShowCtrl(User, $stateParams, Rating, $scope, $moment) {
   const vm = this;
   vm.user = User.get($stateParams);
   vm.rating = null;
@@ -40,7 +40,7 @@ function UsersShowCtrl(User, $stateParams, Rating, $scope) {
       vm.avgConfidence = Math.ceil((confidenceValues.reduce((a,b) => a + b)) / confidenceValues.length);
 
       const ratingDates = [];
-      userData.filter(rating => ratingDates.push(rating.createdAt.toString()));
+      userData.filter(rating => ratingDates.push($moment(rating.createdAt).fromNow()));
 
       $scope.labels = ratingDates;
       $scope.series = ['Series A', 'Series B'];
@@ -51,6 +51,10 @@ function UsersShowCtrl(User, $stateParams, Rating, $scope) {
       console.log(vm.options);
       $scope.datasetOverride = [{ yAxisID: 'y-axis-1' }, { yAxisID: 'y-axis-2' }];
       $scope.options = {
+        title: {
+          display: true,
+          text: 'Confidence Level Over Time'
+        },
         scales: {
           yAxes: [
             {
@@ -58,7 +62,12 @@ function UsersShowCtrl(User, $stateParams, Rating, $scope) {
               ticks: {min: 0, max: 100},
               type: 'linear',
               display: true,
-              position: 'left'
+              position: 'left',
+              scaleLabel: {
+                display: true,
+                labelString: 'Confidence',
+                fontFamily: 'Arial'
+              }
             }
           ]
         }
