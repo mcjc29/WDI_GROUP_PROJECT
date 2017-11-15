@@ -4,6 +4,7 @@ $dgreen: #0B726E
 $turq:   #32b8b6
 
 $primary:#FB4542
+$poppy:  #F15050
 $yellow: #F9D302
 $ornage: #F98B02
 
@@ -51,4 +52,7 @@ img {
 
 .reply-input {
     display: none;
+}
+.button {
+  background: $ornage;
 }
