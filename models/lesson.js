@@ -7,7 +7,8 @@ const lessonSchema = new mongoose.Schema({
   creator: String,
   city: String,
   competencies: { type: String, required: true },
-  taughtBy: { type: String, required: true }
+  taughtBy: { type: String, required: true },
+  lessonNotes: String
 }, {
   timestamps: true
 });

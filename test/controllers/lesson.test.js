@@ -3,8 +3,12 @@
 require('../spec_helper');
 
 const Lesson = require('../../models/lesson');
+const User = require('../../models/user');
 
 describe('Lessons', function() {
+
+  let token;
+
 
   beforeEach(done => {
     Lesson.collection.remove();
@@ -16,7 +20,29 @@ describe('Lessons', function() {
     done();
   });
 
+
   describe('GET /api/lessons', () => {
+
+    beforeEach(done => {
+      api
+        .post('/api/register')
+        .set('Accept', 'application/json')
+        .send({
+          firstName: 'person',
+          lastName: 'person',
+          image: 'person',
+          role: 'student',
+          cohort: 'WDI-30',
+          email: 'person@person.com',
+          password: 'password',
+          passwordConfirmation: 'password'
+        })
+        .end((err, res) => {
+          token = res.body.token;
+          done();
+        });
+    });
+
     beforeEach(done => {
       Lesson.create({
         title: 'Basic Terminal, Navigating the Filesystem',
@@ -36,7 +62,7 @@ describe('Lessons', function() {
       api
         .get('/api/lessons')
         .set('Accept', 'application/json')
-        .set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YTBiZDhkYTA2NTY4OTJlZTMyNTc4YjMiLCJpYXQiOjE1MTA3MjcxNTMsImV4cCI6MTUxMDgxMzU1M30.s65ZTkNYlk2FB73hCSkWwJPDfhD-f7I9E4CanPrYWHY')
+        .set('Authorization', `Bearer ${token}`)
         .expect(200, done);
     });
 
@@ -44,7 +70,7 @@ describe('Lessons', function() {
       api
         .get('/api/lessons')
         .set('Accept', 'application/json')
-        .set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YTBiZDhkYTA2NTY4OTJlZTMyNTc4YjMiLCJpYXQiOjE1MTA3MjcxNTMsImV4cCI6MTUxMDgxMzU1M30.s65ZTkNYlk2FB73hCSkWwJPDfhD-f7I9E4CanPrYWHY')
+        .set('Authorization', `Bearer ${token}`)
         .end((err, res) => {
           expect(res.header['content-type'])
             .to.be.eq('application/json; charset=utf-8');
@@ -56,7 +82,7 @@ describe('Lessons', function() {
       api
         .get('/api/lessons')
         .set('Accept', 'application/json')
-        .set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YTBiZDhkYTA2NTY4OTJlZTMyNTc4YjMiLCJpYXQiOjE1MTA3MjcxNTMsImV4cCI6MTUxMDgxMzU1M30.s65ZTkNYlk2FB73hCSkWwJPDfhD-f7I9E4CanPrYWHY')
+        .set('Authorization', `Bearer ${token}`)
         .end((err, res) => {
           expect(res.body).to.be.an('array');
           done();
@@ -67,7 +93,7 @@ describe('Lessons', function() {
       api
         .get('/api/lessons')
         .set('Accept', 'application/json')
-        .set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YTBiZDhkYTA2NTY4OTJlZTMyNTc4YjMiLCJpYXQiOjE1MTA3MjcxNTMsImV4cCI6MTUxMDgxMzU1M30.s65ZTkNYlk2FB73hCSkWwJPDfhD-f7I9E4CanPrYWHY')
+        .set('Authorization', `Bearer ${token}`)
         .end((err, res) => {
           expect(res.body)
             .to.be.an('array')
@@ -93,7 +119,7 @@ describe('Lessons', function() {
       api
         .get('/api/lessons')
         .set('Accept', 'application/json')
-        .set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YTBiZDhkYTA2NTY4OTJlZTMyNTc4YjMiLCJpYXQiOjE1MTA3MjcxNTMsImV4cCI6MTUxMDgxMzU1M30.s65ZTkNYlk2FB73hCSkWwJPDfhD-f7I9E4CanPrYWHY')
+        .set('Authorization', `Bearer ${token}`)
         .end((err, res) => {
           const firstLesson = res.body[0];
           expect(firstLesson)
@@ -156,7 +182,7 @@ describe('Lessons', function() {
       api
         .get('/api/lessons')
         .set('Accept', 'application/json')
-        .set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YTBiZDhkYTA2NTY4OTJlZTMyNTc4YjMiLCJpYXQiOjE1MTA3MjcxNTMsImV4cCI6MTUxMDgxMzU1M30.s65ZTkNYlk2FB73hCSkWwJPDfhD-f7I9E4CanPrYWHY')
+        .set('Authorization', `Bearer ${token}`)
         .end((err, res) => {
           expect(res.body.length).to.equal(2);
           done();
@@ -170,7 +196,7 @@ describe('Lessons', function() {
       api
         .post('/api/lessons')
         .set('Accept', 'application/json')
-        .set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YTBiZDhkYTA2NTY4OTJlZTMyNTc4YjMiLCJpYXQiOjE1MTA3MjcxNTMsImV4cCI6MTUxMDgxMzU1M30.s65ZTkNYlk2FB73hCSkWwJPDfhD-f7I9E4CanPrYWHY')
+        .set('Authorization', `Bearer ${token}`)
         .send({
           title: 'Basic Terminal, Navigating the Filesystem',
           startTime: new Date(1776, 4, 5, 10, 30),
@@ -187,7 +213,7 @@ describe('Lessons', function() {
       api
         .post('/api/lessons')
         .set('Accept', 'application/json')
-        .set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YTBiZDhkYTA2NTY4OTJlZTMyNTc4YjMiLCJpYXQiOjE1MTA3MjcxNTMsImV4cCI6MTUxMDgxMzU1M30.s65ZTkNYlk2FB73hCSkWwJPDfhD-f7I9E4CanPrYWHY')
+        .set('Authorization', `Bearer ${token}`)
         .send({
           title: 'Basic Terminal, Navigating the Filesystem',
           startTime: new Date(1776, 4, 5, 10, 30),
@@ -262,7 +288,7 @@ describe('Lessons', function() {
       api
         .get(`/api/lessons/${lesson.id}`)
         .set('Accept', 'application/json')
-        .set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YTBiZDhkYTA2NTY4OTJlZTMyNTc4YjMiLCJpYXQiOjE1MTA3MjcxNTMsImV4cCI6MTUxMDgxMzU1M30.s65ZTkNYlk2FB73hCSkWwJPDfhD-f7I9E4CanPrYWHY')
+        .set('Authorization', `Bearer ${token}`)
         .expect(200, done);
     });
 
@@ -270,7 +296,7 @@ describe('Lessons', function() {
       api
         .get(`/api/lessons/${lesson.id}`)
         .set('Accept', 'application/json')
-        .set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YTBiZDhkYTA2NTY4OTJlZTMyNTc4YjMiLCJpYXQiOjE1MTA3MjcxNTMsImV4cCI6MTUxMDgxMzU1M30.s65ZTkNYlk2FB73hCSkWwJPDfhD-f7I9E4CanPrYWHY')
+        .set('Authorization', `Bearer ${token}`)
         .end((err, res) => {
           expect(res.header['content-type'])
             .to.be.eq('application/json; charset=utf-8');
@@ -280,7 +306,7 @@ describe('Lessons', function() {
     it('should return object with properties:_id, title, startTime, endTime, creator, city, competencies, taughtBy, createdAt, updatedAt', done => {
       api.get(`/api/lessons/${lesson.id}`)
         .set('Accept', 'application/json')
-        .set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YTBiZDhkYTA2NTY4OTJlZTMyNTc4YjMiLCJpYXQiOjE1MTA3MjcxNTMsImV4cCI6MTUxMDgxMzU1M30.s65ZTkNYlk2FB73hCSkWwJPDfhD-f7I9E4CanPrYWHY')
+        .set('Authorization', `Bearer ${token}`)
         .end((err, res) => {
           expect(res.body)
             .and.have.all.keys([
@@ -327,7 +353,7 @@ describe('Lessons', function() {
       api
         .put(`/api/lessons/${lesson.id}`)
         .set('Accept', 'application/json')
-        .set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YTBiZDhkYTA2NTY4OTJlZTMyNTc4YjMiLCJpYXQiOjE1MTA3MjcxNTMsImV4cCI6MTUxMDgxMzU1M30.s65ZTkNYlk2FB73hCSkWwJPDfhD-f7I9E4CanPrYWHY')
+        .set('Authorization', `Bearer ${token}`)
         .send({
           title: 'Basic Terminal, Navigating the Filesystem',
           startTime: new Date(1776, 4, 5, 10, 30),
@@ -343,7 +369,7 @@ describe('Lessons', function() {
       api
         .get(`/api/lessons/${lesson.id}`)
         .set('Accept', 'application/json')
-        .set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YTBiZDhkYTA2NTY4OTJlZTMyNTc4YjMiLCJpYXQiOjE1MTA3MjcxNTMsImV4cCI6MTUxMDgxMzU1M30.s65ZTkNYlk2FB73hCSkWwJPDfhD-f7I9E4CanPrYWHY')
+        .set('Authorization', `Bearer ${token}`)
         .end((err, res) => {
           expect(res.header['content-type'])
             .to.be.eq('application/json; charset=utf-8');
@@ -353,7 +379,7 @@ describe('Lessons', function() {
     it('should return object with properties: _id, title, startTime, endTime, creator, city, competencies, taughtBy, createdAt, updatedAt', done => {
       api.get(`/api/lessons/${lesson.id}`)
         .set('Accept', 'application/json')
-        .set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YTBiZDhkYTA2NTY4OTJlZTMyNTc4YjMiLCJpYXQiOjE1MTA3MjcxNTMsImV4cCI6MTUxMDgxMzU1M30.s65ZTkNYlk2FB73hCSkWwJPDfhD-f7I9E4CanPrYWHY')
+        .set('Authorization', `Bearer ${token}`)
         .end((err, res) => {
           expect(res.body)
             .and.have.all.keys([
@@ -376,7 +402,7 @@ describe('Lessons', function() {
       api
         .put(`/api/lessons/${lesson.id}`)
         .set('Accept', 'application/json')
-        .set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YTBiZDhkYTA2NTY4OTJlZTMyNTc4YjMiLCJpYXQiOjE1MTA3MjcxNTMsImV4cCI6MTUxMDgxMzU1M30.s65ZTkNYlk2FB73hCSkWwJPDfhD-f7I9E4CanPrYWHY')
+        .set('Authorization', `Bearer ${token}`)
         .send({
           title: 'Basic Terminal, Navigating the Filesystem',
           startTime: new Date(1776, 4, 5, 10, 30),
@@ -420,7 +446,7 @@ describe('Lessons', function() {
     it('should remove a lesson by id', function(done) {
       api
         .delete(`/api/lessons/${lesson.id}`)
-        .set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YTBiZDhkYTA2NTY4OTJlZTMyNTc4YjMiLCJpYXQiOjE1MTA3MjcxNTMsImV4cCI6MTUxMDgxMzU1M30.s65ZTkNYlk2FB73hCSkWwJPDfhD-f7I9E4CanPrYWHY')
+        .set('Authorization', `Bearer ${token}`)
         .expect(204, done);
     });
   });

@@ -10,7 +10,7 @@
         <h3>{{ vm.user.firstName }} {{ vm.user.lastName }}</h3>
         <h5>{{ vm.user.email }}</h5>
         <h5>{{ vm.user.cohort | uppercase }} {{ vm.user.role | uppercase }}</h5>
-        <button class="button is-primary" ui-sref="usersEdit({ id: vm.user.id })">Edit Info</button>
+        <button ng-if="vm.user._id === main.user._id" class="button is-primary" ui-sref="usersEdit({ id: vm.user.id })">Edit Info</button>
       </div>
     </div>
   </article>
@@ -26,22 +26,39 @@
   </article>
 </div>
 
-<div class="columns knob">
-  <div class="column">
-    <ui-knob id="main-knob" value="vm.avgPace" name="pace" options="vm.options"></ui-knob>
+<div class="box">
+  <div class="content has-text-centered">
+    <h1>{{ vm.user.firstName }}'s Average Ratings</h1>
   </div>
-  <div class="column">
-    <ui-knob value="vm.avgConcepts" name="concepts" options="vm.options" ng-model="vm.concepts"></ui-knob>
-  </div>
-  <div class="column">
-    <ui-knob value="vm.avgSyntax" name="syntax" options="vm.options" ng-model="vm.syntax"></ui-knob>
-  </div>
-  <div class="column">
-    <ui-knob value="vm.avgConfidence" name="confidence" options="vm.options" ng-model="vm.confidence"></ui-knob>
+  <div class="level">
+    <div class="level-item has-text-centered">
+      <div>
+        <h2 class="heading">Lesson Pace</h2>
+        <ui-knob value="vm.avgPace" name="pace" options="vm.options"></ui-knob>
+      </div>
+    </div>
+    <div class="level-item has-text-centered">
+      <div>
+        <h2 class="heading">Lesson Concepts</h2>
+        <ui-knob value="vm.avgConcepts" name="concepts" options="vm.options" ng-model="vm.concepts"></ui-knob>
+      </div>
+    </div>
+    <div class="level-item has-text-centered">
+      <div>
+        <h2 class="heading">Lesson Syntax</h2>
+        <ui-knob value="vm.avgSyntax" name="syntax" options="vm.options" ng-model="vm.syntax"></ui-knob>
+      </div>
+    </div>
+    <div class="level-item has-text-centered">
+      <div>
+        <h2 class="heading">Overall Confidence</h2>
+        <ui-knob value="vm.avgConfidence" name="confidence" options="vm.options" ng-model="vm.confidence"></ui-knob>
+      </div>
+    </div>
   </div>
 </div>
 
-<canvas ng-show"vm.data" id="line" class="chart chart-line" chart-data="vm.data"
-chart-labels="vm.labels" chart-options="vm.chartOptions"
-chart-dataset-override="vm.datasetOverride" chart-click="vm.onClick">
-</canvas>
+<div class="box">
+  <canvas ng-show"vm.data" id="line" class="chart chart-line" chart-data="vm.data" chart-labels="vm.labels" chart-options="vm.chartOptions" chart-dataset-override="vm.datasetOverride" chart-click="vm.onClick">
+  </canvas>
+</div>

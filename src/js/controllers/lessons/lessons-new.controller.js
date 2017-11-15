@@ -17,7 +17,8 @@ function LessonsNewCtrl(Lesson, $state) {
       creator: vm.creator,
       city: vm.city,
       competencies: vm.competencies,
-      taughtBy: vm.taughtBy
+      taughtBy: vm.taughtBy,
+      base64: vm.base64
     };
     console.log(vm.startTime);
 
