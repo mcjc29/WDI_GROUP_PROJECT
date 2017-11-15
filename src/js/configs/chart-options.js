@@ -4,7 +4,7 @@ angular
 
 function ChartJsProvider(ChartJsProvider) {
   ChartJsProvider
-    .setOptions('radar', {
-      chartColors: ['#803690']
+    .setOptions({
+      chartColors: ['#2CC185']
     });
 }
