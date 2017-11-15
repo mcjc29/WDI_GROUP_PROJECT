@@ -4,6 +4,8 @@
   <p>{{ vm.date }}</p>
   <p>{{ vm.lesson.city }}</p>
   <p>{{ vm.lesson.taughtBy }}</p>
+  <p><a ng-href="{{ vm.lesson.lessonNotes }}" target="_blank">Read</a></p>
+
   <a ng-if="main.user.role === instructor" ui-sref="lessonsEdit({ id: vm.lesson._id })">Edit</a>
 </div>
 
@@ -86,21 +88,22 @@
                   <br>{{ rating.message }}
                 </p>
               </div>
-              <div class="content">
-                <div class="has-text-centered">
-                  <div>
-                    <strong>Lesson Pace</strong>
-                    <small>{{ user.pace }}</small>
-                  </div>
+            </div>
+            <div class="content">
+              <div class="has-text-centered">
+                <div>
+                  <strong>Lesson Pace</strong>
+                  <small>{{ user.pace }}</small>
                 </div>
-                <div class="has-text-centered">
+              </div>
+              <div class="has-text-centered">
                 <div>
                   <strong>Lesson Concepts</strong>
                   <small>{{ user.concepts }}</small>
                 </div>
               </div>
               <div class="has-text-centered">
-              <div>
+                <div>
                   <strong>Lesson Syntax</strong>
                   <small>{{ user.syntax }}</small>
                 </div>
@@ -118,8 +121,11 @@
               </div>
             </div>
           </div>
-        </article>
-      </div>
+        </div>
+      </article>
     </div>
   </div>
-</div>
+
+
+<h2>Lesson notes</h2>
+<div class="markdown-body" btf-markdown ng-include="vm.returnLessonNotes(vm.lesson.lessonNotes)"></div>

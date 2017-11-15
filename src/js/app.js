@@ -6,5 +6,7 @@ angular
     'ui.knob',
     'angular.filter',
     'chart.js',
-    'angular-momentjs'
+    'angular-momentjs',
+    'ngSanitize',
+    'btford.markdown'
   ]);
