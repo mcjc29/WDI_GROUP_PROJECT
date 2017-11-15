@@ -67,5 +67,5 @@ function LessonsShowCtrl(Lesson, $stateParams, Rating, $scope) {
     textColor: '#eee',
     readOnly: true
   };
-  
+
 }

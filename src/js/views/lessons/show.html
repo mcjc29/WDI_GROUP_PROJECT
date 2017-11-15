@@ -6,6 +6,7 @@
   <p>{{ vm.lesson.taughtBy }}</p>
   <a ng-if="main.user.role === instructor" ui-sref="lessonsEdit({ id: vm.lesson._id })">Edit</a>
 </div>
+
 <canvas id="radar" class="chart chart-radar" chart-data="data" chart-options="options" chart-labels="labels"></canvas>
 
 <div class="columns knob">
