@@ -12,13 +12,14 @@ function LessonsNewCtrl(Lesson, $state) {
   function addLesson() {
     vm.newLesson = {
       title: vm.title,
-      stateTime: vm.startTime,
+      startTime: vm.startTime,
       endTime: vm.endTime,
       creator: vm.creator,
       city: vm.city,
       competencies: vm.competencies,
       taughtBy: vm.taughtBy
     };
+    console.log(vm.startTime);
 
     Lesson
       .save(vm.newLesson)

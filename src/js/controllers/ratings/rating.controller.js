@@ -25,7 +25,7 @@ function RatingsCtrl(Rating, $state, User, currentUserService, $timeout) {
       syntax: vm.syntax,
       confidence: vm.confidence
     };
-    // console.log(user);
+    console.log(user);
     Rating
       .save(vm.newRating)
       .$promise
@@ -37,9 +37,9 @@ function RatingsCtrl(Rating, $state, User, currentUserService, $timeout) {
         console.log('user ----->', user);
         $state.go('lessonsIndex');
       });
-    // vm.helpStatus = {
-    //   needHelp: vm.needHelp
-    // };
+    vm.helpStatus = {
+      needHelp: vm.needHelp
+    };
 
   }
 

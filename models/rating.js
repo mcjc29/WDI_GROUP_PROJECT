@@ -57,16 +57,16 @@ module.exports = mongoose.model('Rating', ratingSchema);
 //   });
 
 
-  // const self = this;
-  // return new Promise((resolve, reject) => {
-  //   self
-  //     .find()
-  //     .exec()
-  //     .then((rating) => {
-  //       if (!rating) return res.notFound();
-  //       console.log(rating);
-  //
-  //     })
-  //     .catch(reject);
-  // });
+// const self = this;
+// return new Promise((resolve, reject) => {
+//   self
+//     .find()
+//     .exec()
+//     .then((rating) => {
+//       if (!rating) return res.notFound();
+//       console.log(rating);
+//
+//     })
+//     .catch(reject);
+// });
 // }

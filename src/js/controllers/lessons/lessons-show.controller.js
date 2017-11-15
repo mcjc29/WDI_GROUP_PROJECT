@@ -56,68 +56,16 @@ function LessonsShowCtrl(Lesson, $stateParams, Rating, $scope) {
 
     });
 
-  vm.options1 = {
+  vm.options = {
+    animate: false,
     min: 0,
     max: 100,
-    readOnly: true,
-    subText: {
-      enabled: true,
-      text: 'Pace',
-      color: 'gray',
-      font: 'arial'
-    },
-    trackWidth: 40,
-    barWidth: 25,
-    trackColor: '#656D7F',
-    barColor: '#2CC185'
+    bgColor: '#4a4a4a',
+    trackWidth: 50,
+    barWidth: 30,
+    barColor: '#2CC185',
+    textColor: '#eee',
+    readOnly: true
   };
-
-  vm.options2 = {
-    min: 0,
-    max: 100,
-    readOnly: true,
-    subText: {
-      enabled: true,
-      text: 'Concepts',
-      color: 'gray',
-      font: 'arial'
-    },
-    trackWidth: 40,
-    barWidth: 25,
-    trackColor: '#656D7F',
-    barColor: '#2CC185'
-  };
-
-  vm.options3 = {
-    min: 0,
-    max: 100,
-    readOnly: true,
-    subText: {
-      enabled: true,
-      text: 'Syntax',
-      color: 'gray',
-      font: 'arial'
-    },
-    trackWidth: 40,
-    barWidth: 25,
-    trackColor: '#656D7F',
-    barColor: '#2CC185'
-  };
-
-  vm.options4 = {
-    min: 0,
-    max: 100,
-    readOnly: true,
-    subText: {
-      enabled: true,
-      text: 'Confidence',
-      color: 'gray',
-      font: 'arial'
-    },
-    trackWidth: 40,
-    barWidth: 25,
-    trackColor: '#656D7F',
-    barColor: '#2CC185'
-  };
-
+  
 }
