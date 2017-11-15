@@ -20,7 +20,7 @@ function RatingsCtrl(Rating, $state, User, currentUserService, $rootScope) {
       syntax: vm.syntax,
       confidence: vm.confidence
     };
-    // console.log(user);
+    console.log(user);
     Rating
       .save(vm.newRating)
       .$promise
@@ -32,9 +32,9 @@ function RatingsCtrl(Rating, $state, User, currentUserService, $rootScope) {
         console.log('user ----->', user);
         $state.go('lessonsIndex');
       });
-    // vm.helpStatus = {
-    //   needHelp: vm.needHelp
-    // };
+    vm.helpStatus = {
+      needHelp: vm.needHelp
+    };
 
   }
 
