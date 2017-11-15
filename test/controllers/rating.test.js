@@ -11,11 +11,15 @@ describe('Ratings', function() {
 
   beforeEach(done => {
     Rating.collection.remove();
+    User.collection.remove();
+
     done();
   });
 
   afterEach(done => {
     Rating.collection.remove();
+    User.collection.remove();
+
     done();
   });
 
@@ -42,14 +46,27 @@ describe('Ratings', function() {
     });
 
     beforeEach(done => {
-      Rating.create({
-        createdBy: 'person',
-        pace: 10,
-        concepts: 10,
-        syntax: 10,
-        confidence: 10,
-        message: 'lovin it'
-      })
+      User
+        .create({
+          firstName: 'person2',
+          lastName: 'person2',
+          role: 'student',
+          cohort: 'WDI-30',
+          email: 'person2@person2.com',
+          password: 'password',
+          passwordConfirmation: 'password'
+        })
+        .then((user) => {
+          return Rating
+            .create({
+              createdBy: user,
+              pace: 10,
+              concepts: 10,
+              syntax: 10,
+              confidence: 10,
+              message: 'lovin it'
+            });
+        })
         .then(() => done())
         .catch(done);
     });
@@ -144,26 +161,38 @@ describe('Ratings', function() {
   });
 
   describe('returns multiple ratings', () => {
-
     beforeEach(done => {
-      Rating.create([
-        {
-          createdBy: 'person',
-          pace: 10,
-          concepts: 10,
-          syntax: 10,
-          confidence: 10,
-          message: 'lovin it'
-        },
-        {
-          createdBy: 'person2',
-          pace: 11,
-          concepts: 10,
-          syntax: 11,
-          confidence: 11,
-          message: 'yay'
-        }
-      ])
+      User
+        .create({
+          firstName: 'person2',
+          lastName: 'person2',
+          role: 'student',
+          cohort: 'WDI-30',
+          email: 'person2@person2.com',
+          password: 'password',
+          passwordConfirmation: 'password'
+        })
+        .then((user) => {
+          return Rating
+            .create([
+              {
+                createdBy: user,
+                pace: 10,
+                concepts: 10,
+                syntax: 10,
+                confidence: 10,
+                message: 'lovin it'
+              },
+              {
+                createdBy: 'person2',
+                pace: 11,
+                concepts: 10,
+                syntax: 11,
+                confidence: 11,
+                message: 'yay'
+              }
+            ]);
+        })
         .then(() => done())
         .catch(done);
     });

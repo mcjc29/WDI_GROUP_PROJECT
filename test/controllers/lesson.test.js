@@ -12,11 +12,14 @@ describe('Lessons', function() {
 
   beforeEach(done => {
     Lesson.collection.remove();
+    User.collection.remove();
     done();
   });
 
   afterEach(done => {
     Lesson.collection.remove();
+    User.collection.remove();
+
     done();
   });
 
@@ -53,6 +56,7 @@ describe('Lessons', function() {
         city: 'London',
         competencies: 'Programming, Server Applications',
         taughtBy: 'Alex Chin'
+
       })
         .then(() => done())
         .catch(done);
