@@ -2,12 +2,13 @@ angular
   .module('gaFeedback')
   .controller('UsersShowCtrl', UsersShowCtrl);
 
-UsersShowCtrl.$inject = ['User', '$stateParams', 'Rating', '$scope'];
+UsersShowCtrl.$inject = ['User', '$stateParams', 'Rating', '$scope', '$moment'];
 
-function UsersShowCtrl(User, $stateParams, Rating, $scope) {
+function UsersShowCtrl(User, $stateParams, Rating, $scope, $moment) {
   const vm = this;
   vm.user = User.get($stateParams);
   vm.rating = null;
+  vm.options;
 
   Rating
     .query()
@@ -39,7 +40,7 @@ function UsersShowCtrl(User, $stateParams, Rating, $scope) {
       vm.avgConfidence = Math.ceil((confidenceValues.reduce((a,b) => a + b)) / confidenceValues.length);
 
       const ratingDates = [];
-      userData.filter(rating => ratingDates.push(rating.createdAt.toString()));
+      userData.filter(rating => ratingDates.push($moment(rating.createdAt).fromNow()));
 
       $scope.labels = ratingDates;
       $scope.series = ['Series A', 'Series B'];
@@ -47,8 +48,13 @@ function UsersShowCtrl(User, $stateParams, Rating, $scope) {
       $scope.onClick = function (points, evt) {
         console.log(points, evt);
       };
+      console.log(vm.options);
       $scope.datasetOverride = [{ yAxisID: 'y-axis-1' }, { yAxisID: 'y-axis-2' }];
       $scope.options = {
+        title: {
+          display: true,
+          text: 'Confidence Level Over Time'
+        },
         scales: {
           yAxes: [
             {
@@ -56,7 +62,12 @@ function UsersShowCtrl(User, $stateParams, Rating, $scope) {
               ticks: {min: 0, max: 100},
               type: 'linear',
               display: true,
-              position: 'left'
+              position: 'left',
+              scaleLabel: {
+                display: true,
+                labelString: 'Confidence',
+                fontFamily: 'Arial'
+              }
             }
           ]
         }
@@ -64,41 +75,17 @@ function UsersShowCtrl(User, $stateParams, Rating, $scope) {
 
     });
 
-  vm.options1 = {
-    readOnly: true,
+  vm.options = {
+    animate: false,
     min: 0,
     max: 100,
-    barColor: '#5BC01E',
-    trackColor: '#212121',
-    trackWidth: 15,
-    barWidth: 30
-  };
-
-  vm.options2 = {
-    readOnly: true,
-    min: 0,
-    max: 100,
-    bgColor: '#2C3E50',
+    bgColor: '#4a4a4a',
     trackWidth: 50,
     barWidth: 30,
-    barColor: '#FFAE1A',
-    textColor: '#eee'
+    barColor: '#2CC185',
+    textColor: '#eee',
+    readOnly: true
   };
 
-  vm.options3 = {
-    min: 0,
-    max: 100,
-    unit: '%',
-    readOnly: true,
-    subText: {
-      enabled: true,
-      text: 'Pace',
-      color: 'gray',
-      font: 'arial'
-    },
-    trackWidth: 40,
-    barWidth: 25,
-    trackColor: '#656D7F',
-    barColor: '#2CC185'
-  };
+
 }

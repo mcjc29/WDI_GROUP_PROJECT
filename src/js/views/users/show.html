@@ -1,24 +1,34 @@
 <h1>{{ vm.user.firstName }}'s Profile</h1>
 
-<div>
-  <h3>{{ vm.user.firstName }}</h3>
-  <img ng-src="{{ vm.user.image }}" alt="{{ vm.user.firstName }}">
-</div>
-
-<a ui-sref="usersEdit({ id: vm.user.id })">Edit</a>
+  <div class="box">
+    <article class="media chat-article">
+      <div class="media-left">
+        <img ng-src="{{ vm.user.image }}" alt="{{ vm.user.firstName }}">
+      </div>
+      <div class="media-content">
+        <div class="content">
+          <h3>{{ vm.user.firstName }} {{ vm.user.lastName }}</h3>
+          <h5>{{ vm.user.email }}</h5>
+          <h5>{{ vm.user.cohort }}</h5>
+          <h5>{{ vm.user.role }}</h5>
+          <button class="button is-primary" ui-sref="usersEdit({ id: vm.user.id })">Edit Info</button>
+        </div>
+      </div>
+    </article>
+  </div>
 
 <div class="columns knob">
   <div class="column">
-    <ui-knob id="main-knob" value="vm.avgPace" name="pace" options="vm.options1"></ui-knob>
+    <ui-knob id="main-knob" value="vm.avgPace" name="pace" options="vm.options"></ui-knob>
   </div>
   <div class="column">
-    <ui-knob value="vm.avgConcepts" name="concepts" options="vm.options2" ng-model="vm.concepts"></ui-knob>
+    <ui-knob value="vm.avgConcepts" name="concepts" options="vm.options" ng-model="vm.concepts"></ui-knob>
   </div>
   <div class="column">
-    <ui-knob value="vm.avgSyntax" name="syntax" options="vm.options3" ng-model="vm.syntax"></ui-knob>
+    <ui-knob value="vm.avgSyntax" name="syntax" options="vm.options" ng-model="vm.syntax"></ui-knob>
   </div>
   <div class="column">
-    <ui-knob value="vm.avgConfidence" name="confidence" options="vm.options4" ng-model="vm.confidence"></ui-knob>
+    <ui-knob value="vm.avgConfidence" name="confidence" options="vm.options" ng-model="vm.confidence"></ui-knob>
   </div>
 </div>
 
