@@ -4,7 +4,7 @@
   <p>{{ vm.date }}</p>
   <p>{{ vm.lesson.city }}</p>
   <p>{{ vm.lesson.taughtBy }}</p>
-  <img ng-src="{{ lessonsShow.lessonNotes.imageSRC }}">
+
 
   <a ng-if="main.user.role === instructor" ui-sref="lessonsEdit({ id: vm.lesson._id })">Edit</a>
 </div>

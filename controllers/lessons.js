@@ -9,6 +9,8 @@ function lessonsIndex(req, res, next) {
 }
 
 function lessonsCreate(req, res, next) {
+  // if(req.file) req.body.lessonNotes = req.file.filename;
+
   Lesson
     .create(req.body)
     .then((lesson) => res.status(201).json(lesson))
@@ -16,6 +18,8 @@ function lessonsCreate(req, res, next) {
 }
 
 function lessonsShow(req, res, next) {
+  // if(req.file) req.body.lessonNotes = req.file.filename;
+
   Lesson
     .findById(req.params.id)
     .exec()
@@ -27,6 +31,8 @@ function lessonsShow(req, res, next) {
 }
 
 function lessonsUpdate(req, res, next) {
+  // if(req.file) req.body.lessonNotes = req.file.filename;
+
   Lesson
     .findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true })
     .exec()
