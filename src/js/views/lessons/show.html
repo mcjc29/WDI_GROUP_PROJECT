@@ -3,7 +3,10 @@
 <div>
   <p>{{ vm.lesson.competencies }}</p>
   <p>{{ vm.date }}</p>
-  <p><a ng-href="{{ vm.lesson.lessonNotes }}" target="_blank">Read</a></p>
+  <p>{{ vm.lesson.city }}</p>
+  <p>{{ vm.lesson.taughtBy }}</p>
+
+  <button class="button"><a ng-href="{{ vm.lesson.lessonNotes }}" target="_blank" download>Download Lesson Notes</a></button>
 
   <a ng-if="main.user.role === instructor" ui-sref="lessonsEdit({ id: vm.lesson._id })">Edit</a>
 </div>

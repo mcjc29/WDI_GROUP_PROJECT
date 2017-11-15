@@ -1,5 +1,5 @@
-<h1>Ratings Index</h1>
-
+<h1>Ratings</h1>
+<h2>Rate each from 1 <small>(least positive)</small> to 100 <small>(most positive)</small></h2>
 <div class="box">
   <form class="add-rating" ng-submit="vm.submit()">
     <div class="level">
@@ -7,24 +7,28 @@
         <div>
           <h1 class="heading">Lesson Pace</h3>
           <ui-knob value="vm.pace" name="concepts" options="vm.options2" ng-model="vm.pace"></ui-knob>
+          <h4 class="heading">How do you feel the pace</br>of the lesson is?</h4>
         </div>
       </div>
       <div class="level-item has-text-centered">
         <div>
           <h1 class="heading">Lesson Concepts</h3>
           <ui-knob value="vm.concepts" name="concepts" options="vm.options2" ng-model="vm.concepts"></ui-knob>
+          <h4 class="heading">How well do you understand</br>the concepts of this lesson?</h4>
         </div>
       </div>
       <div class="level-item has-text-centered">
         <div>
           <h1 class="heading">Lesson Syntax</h3>
           <ui-knob value="vm.syntax" name="syntax" options="vm.options2" ng-model="vm.syntax"></ui-knob>
+          <h4 class="heading">How well do you understand</br>the syntax of this lesson?</h4>
         </div>
       </div>
       <div class="level-item has-text-centered">
         <div>
           <h1 class="heading">Overall Confidence</h3>
           <ui-knob value="vm.confidence" name="confidence" options="vm.options2" ng-model="vm.confidence"></ui-knob>
+          <h4 class="heading">How confident do you feel</br>after this lesson?</h4>
         </div>
       </div>
     </div>
