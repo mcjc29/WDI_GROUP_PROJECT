@@ -43,13 +43,7 @@ function UsersShowCtrl(User, $stateParams, Rating, $scope, $moment) {
       userData.filter(rating => ratingDates.push($moment(rating.createdAt).fromNow()));
 
       $scope.labels = ratingDates;
-      $scope.series = ['Series A', 'Series B'];
       $scope.data = confidenceValues;
-      $scope.onClick = function (points, evt) {
-        console.log(points, evt);
-      };
-      console.log(vm.options);
-      $scope.datasetOverride = [{ yAxisID: 'y-axis-1' }, { yAxisID: 'y-axis-2' }];
       $scope.options = {
         title: {
           display: true,
@@ -72,7 +66,7 @@ function UsersShowCtrl(User, $stateParams, Rating, $scope, $moment) {
           ]
         }
       };
-
+      console.log($scope.options);
     });
 
   vm.options = {

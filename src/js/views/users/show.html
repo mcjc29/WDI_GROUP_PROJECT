@@ -3,14 +3,13 @@
   <div class="box">
     <article class="media chat-article">
       <div class="media-left">
-        <img ng-src="{{ vm.user.image }}" alt="{{ vm.user.firstName }}">
+        <img class="profile-show-img" ng-src="{{ vm.user.image }}" alt="{{ vm.user.firstName }}">
       </div>
       <div class="media-content">
         <div class="content">
           <h3>{{ vm.user.firstName }} {{ vm.user.lastName }}</h3>
           <h5>{{ vm.user.email }}</h5>
-          <h5>{{ vm.user.cohort }}</h5>
-          <h5>{{ vm.user.role }}</h5>
+          <h5>{{ vm.user.cohort | uppercase }} {{ vm.user.role | uppercase }}</h5>
           <button class="button is-primary" ui-sref="usersEdit({ id: vm.user.id })">Edit Info</button>
         </div>
       </div>
