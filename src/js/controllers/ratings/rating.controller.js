@@ -21,6 +21,7 @@ function RatingsCtrl(Rating, $state, User, currentUserService, $timeout) {
       syntax: vm.syntax,
       confidence: vm.confidence
     };
+
     Rating
       .save(vm.newRating)
       .$promise
