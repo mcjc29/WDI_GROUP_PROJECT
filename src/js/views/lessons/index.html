@@ -1,6 +1,5 @@
 <h1>Lessons</h1>
-
-<div class="content">
+<div ng-if="main.user.role === 'instructor'" class="content">
   <div class="control">
     <button type="submit" ui-sref="lessonsNew" class="button is-link">Add a lesson</button>
   </div>
