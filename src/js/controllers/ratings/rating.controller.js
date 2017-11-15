@@ -9,12 +9,8 @@ function RatingsCtrl(Rating, $state, User, currentUserService, $timeout) {
   vm.submit = addRating;
   vm.needHelp = false;
 
-  // $rootScope.$on('user defined', (event, data) => {
-  //   vm.user = data.user;
-  // });
   $timeout(() => {
     vm.user = currentUserService.currentUser;
-    console.log(vm.user);
   }, 50);
 
 
@@ -25,16 +21,17 @@ function RatingsCtrl(Rating, $state, User, currentUserService, $timeout) {
       syntax: vm.syntax,
       confidence: vm.confidence
     };
+<<<<<<< HEAD
     // console.log(user);
+=======
+>>>>>>> 1cb8a1abea04827cf0b2267416cf1d07a452c721
     Rating
       .save(vm.newRating)
       .$promise
-      .then(rating => {
-        console.log('rating ----->', rating);
+      .then(() => {
         return User.update({ id: vm.user._id }, vm.user);
       })
-      .then(user => {
-        console.log('user ----->', user);
+      .then(() => {
         $state.go('lessonsIndex');
       });
     vm.helpStatus = {

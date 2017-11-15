@@ -33,7 +33,7 @@
         <p>
           <strong>{{ comment.createdBy.firstName }}</strong>&nbsp;
           <small>{{ comment.createdAt }}</small>
-          <span class="float-right"><a class="delete is-large" ng-if="comment.createdBy.id == vm.user._id" ng-click="vm.delete(comment)">Delete</a></span>
+          <span class="float-right"><a class="delete is-large" ng-if="comment.createdBy.id === main.user._id" ng-click="vm.delete(comment)">Delete</a></span>
         </p>
         <p>{{ comment.content }}</p>
       </div>
@@ -41,7 +41,7 @@
         <p ng-repeat="reply in comment.replies">
           <strong>{{ reply.createdBy.firstName }}</strong>&nbsp;
           <small>{{ reply.createdAt }}</small>
-          <span class="float-right"><a class="delete is-small" ng-if="reply.createdBy.id == vm.user._id" ng-click="vm.deleteReply(comment, reply)">Delete</a></span>
+          <span class="float-right"><a class="delete is-small" ng-if="reply.createdBy.id === main.user._id" ng-click="vm.deleteReply(comment, reply)">Delete</a></span>
           <br>
           {{ reply.content }}
         </p>

@@ -1,3 +1,16 @@
+
+$lgreen: #199840;
+$dgreen: #0B726E;
+$turq:   #32b8b6;
+
+$primary: #FB4542;
+$poppy:   #F15050;
+$yellow:  #F9D302;
+$orange:  #F98B02;
+
+
+
+
 main {
   width: 90%;
   margin: 30px auto;
@@ -41,6 +54,15 @@ img {
     display: none;
 }
 
+
 .float-right {
   float: right;
+}
+
+.profile-show-img {
+  margin-left: 16px;
+}
+
+.text-center {
+  text-align: center;
 }
