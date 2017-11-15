@@ -1,27 +1,74 @@
-<div>
-  <h1>{{ vm.lesson.title }}</h1>
-  <p>{{ vm.lesson.competencies }}</p>
-  <p>{{ vm.date }}</p>
-  <p>{{ vm.lesson.city }}</p>
-  <p>{{ vm.lesson.taughtBy }}</p>
-  <a ng-if="main.user.role === instructor" ui-sref="lessonsEdit({ id: vm.lesson._id })">Edit</a>
+
+<div class="box">
+  <div class="content has-text-centered">
+    <h1>{{ vm.lesson.title }}</h1>
+    <p>
+      {{ vm.lesson.competencies }}
+    </p>
+  </div>
+
+  <div class="level">
+    <div class="level-item has-text-centered">
+      <div>
+        <p class="heading">Taught by</p>
+        <p class="small">{{ vm.lesson.taughtBy }}</p>
+      </div>
+    </div>
+    <div class="level-item has-text-centered">
+      <div>
+        <p class="heading">Location</p>
+        <p class="small">{{ vm.lesson.city }}</p>
+      </div>
+    </div>
+    <div class="level-item has-text-centered">
+      <div>
+        <p class="heading">Created by</p>
+        <p class="small">{{ vm.lesson.creator }}</p>
+      </div>
+    </div>
+  </div>
 </div>
+
+
+<div class="box">
+  <div class="content has-text-centered">
+    <h1>Average Student Ratings</h1>
+  </div>
+  <div class="level">
+    <div class="level-item has-text-centered">
+      <div>
+        <h2 class="heading">Lesson Pace</h3>
+        <ui-knob value="vm.avgPace" name="pace" options="vm.options" ng-model="vm.avgPace"></ui-knob>
+      </div>
+    </div>
+    <div class="level-item has-text-centered">
+      <div>
+        <h2 class="heading">Lesson Concepts</h3>
+        <ui-knob value="vm.avgConcepts" name="concepts" options="vm.options" ng-model="vm.avgConcepts"></ui-knob>
+      </div>
+    </div>
+    <div class="level-item has-text-centered">
+      <div>
+        <h2 class="heading">Lesson Syntax</h3>
+        <ui-knob value="vm.avgSyntax" name="syntax" options="vm.options" ng-model="vm.avgSyntax"></ui-knob>
+      </div>
+    </div>
+    <div class="level-item has-text-centered">
+      <div>
+        <h2 class="heading">Overall Confidence</h3>
+        <ui-knob value="vm.avgConfidence" name="confidence" options="vm.options" ng-model="vm.avgConfidence"></ui-knob>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
 <canvas id="radar" class="chart chart-radar" chart-data="data" chart-options="options" chart-labels="labels"></canvas>
 
-<div class="columns knob">
-<div class="column">
-  <ui-knob value="vm.avgPace" name="pace" options="vm.options" ng-model="vm.avgPace"></ui-knob>
-</div>
-<div class="column">
-  <ui-knob value="vm.avgConcepts" name="concepts" options="vm.options" ng-model="vm.avgConcepts"></ui-knob>
-</div>
-<div class="column">
-  <ui-knob value="vm.avgSyntax" name="syntax" options="vm.options" ng-model="vm.avgSyntax"></ui-knob>
-</div>
-<div class="column">
-  <ui-knob value="vm.avgConfidence" name="confidence" options="vm.options" ng-model="vm.avgConfidence"></ui-knob>
-</div>
-</div>
+
 
 
     <div class="box" ng-repeat="rating in vm.lessonData track by $index">
