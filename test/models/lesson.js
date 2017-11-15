@@ -11,6 +11,22 @@ describe('Lesson', function() {
       done();
     });
   });
+  it('should be invalid if startTime is empty', function(done) {
+    const lesson = new Lesson();
+
+    lesson.validate(function(err) {
+      expect(err.errors.startTime).to.exist;
+      done();
+    });
+  });
+  it('should be invalid if endTime is empty', function(done) {
+    const lesson = new Lesson();
+
+    lesson.validate(function(err) {
+      expect(err.errors.endTime).to.exist;
+      done();
+    });
+  });
   it('should be invalid if competencies is empty', function(done) {
     const lesson = new Lesson();
 

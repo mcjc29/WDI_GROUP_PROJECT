@@ -21,6 +21,7 @@ describe('Users', function() {
       api
         .post('/api/register')
         .set('Accept', 'application/json')
+        .set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YTBiZDhkYTA2NTY4OTJlZTMyNTc4YjMiLCJpYXQiOjE1MTA3MjcxNTMsImV4cCI6MTUxMDgxMzU1M30.s65ZTkNYlk2FB73hCSkWwJPDfhD-f7I9E4CanPrYWHY')
         .send({
           firstName: 'person',
           lastName: 'person',
@@ -40,6 +41,7 @@ describe('Users', function() {
       api
         .get('/api/users')
         .set('Accept', 'application/json')
+        .set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YTBiZDhkYTA2NTY4OTJlZTMyNTc4YjMiLCJpYXQiOjE1MTA3MjcxNTMsImV4cCI6MTUxMDgxMzU1M30.s65ZTkNYlk2FB73hCSkWwJPDfhD-f7I9E4CanPrYWHY')
         .expect(200, done);
     });
 
@@ -47,6 +49,7 @@ describe('Users', function() {
       api
         .get('/api/users')
         .set('Accept', 'application/json')
+        .set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YTBiZDhkYTA2NTY4OTJlZTMyNTc4YjMiLCJpYXQiOjE1MTA3MjcxNTMsImV4cCI6MTUxMDgxMzU1M30.s65ZTkNYlk2FB73hCSkWwJPDfhD-f7I9E4CanPrYWHY')
         .end((err, res) => {
           expect(res.header['content-type'])
             .to.be.eq('application/json; charset=utf-8');
@@ -58,6 +61,7 @@ describe('Users', function() {
       api
         .get('/api/users')
         .set('Accept', 'application/json')
+        .set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YTBiZDhkYTA2NTY4OTJlZTMyNTc4YjMiLCJpYXQiOjE1MTA3MjcxNTMsImV4cCI6MTUxMDgxMzU1M30.s65ZTkNYlk2FB73hCSkWwJPDfhD-f7I9E4CanPrYWHY')
         .end((err, res) => {
           expect(res.body).to.be.an('array');
           done();
@@ -68,6 +72,7 @@ describe('Users', function() {
       api
         .get('/api/users')
         .set('Accept', 'application/json')
+        .set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YTBiZDhkYTA2NTY4OTJlZTMyNTc4YjMiLCJpYXQiOjE1MTA3MjcxNTMsImV4cCI6MTUxMDgxMzU1M30.s65ZTkNYlk2FB73hCSkWwJPDfhD-f7I9E4CanPrYWHY')
         .end((err, res) => {
           expect(res.body)
             .to.be.an('array')
@@ -91,6 +96,7 @@ describe('Users', function() {
       api
         .get('/api/users')
         .set('Accept', 'application/json')
+        .set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YTBiZDhkYTA2NTY4OTJlZTMyNTc4YjMiLCJpYXQiOjE1MTA3MjcxNTMsImV4cCI6MTUxMDgxMzU1M30.s65ZTkNYlk2FB73hCSkWwJPDfhD-f7I9E4CanPrYWHY')
         .end((err, res) => {
           const firstUser = res.body[0];
           expect(firstUser)
@@ -152,6 +158,7 @@ describe('Users', function() {
       api
         .get('/api/users')
         .set('Accept', 'application/json')
+        .set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YTBiZDhkYTA2NTY4OTJlZTMyNTc4YjMiLCJpYXQiOjE1MTA3MjcxNTMsImV4cCI6MTUxMDgxMzU1M30.s65ZTkNYlk2FB73hCSkWwJPDfhD-f7I9E4CanPrYWHY')
         .end((err, res) => {
           expect(res.body.length).to.equal(2);
           done();
@@ -186,6 +193,7 @@ describe('Users', function() {
       api
         .get(`/api/users/${user.id}`)
         .set('Accept', 'application/json')
+        .set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YTBiZDhkYTA2NTY4OTJlZTMyNTc4YjMiLCJpYXQiOjE1MTA3MjcxNTMsImV4cCI6MTUxMDgxMzU1M30.s65ZTkNYlk2FB73hCSkWwJPDfhD-f7I9E4CanPrYWHY')
         .expect(200, done);
     });
 
@@ -193,25 +201,30 @@ describe('Users', function() {
       api
         .get(`/api/users/${user.id}`)
         .set('Accept', 'application/json')
+        .set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YTBiZDhkYTA2NTY4OTJlZTMyNTc4YjMiLCJpYXQiOjE1MTA3MjcxNTMsImV4cCI6MTUxMDgxMzU1M30.s65ZTkNYlk2FB73hCSkWwJPDfhD-f7I9E4CanPrYWHY')
         .end((err, res) => {
           expect(res.header['content-type'])
             .to.be.eq('application/json; charset=utf-8');
           done();
         });
     });
-    it('should return object with properities: _id, firstName, lastName, image, role, email, createdAt, updatedAt', done => {
+    it('should return object with properties: _id, firstName, lastName, image, role, email, createdAt, updatedAt', done => {
       api.get(`/api/users/${user.id}`)
         .set('Accept', 'application/json')
+        .set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YTBiZDhkYTA2NTY4OTJlZTMyNTc4YjMiLCJpYXQiOjE1MTA3MjcxNTMsImV4cCI6MTUxMDgxMzU1M30.s65ZTkNYlk2FB73hCSkWwJPDfhD-f7I9E4CanPrYWHY')
         .end((err, res) => {
           expect(res.body)
             .and.have.all.keys([
-              'id',
+              '__v',
+              '_id',
               'firstName',
               'lastName',
               'image',
               'role',
               'cohort',
               'email',
+              'passwordHash',
+              'ratings',
               'createdAt',
               'updatedAt'
             ]);
@@ -247,6 +260,7 @@ describe('Users', function() {
       api
         .put(`/api/users/${user.id}`)
         .set('Accept', 'application/json')
+        .set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YTBiZDhkYTA2NTY4OTJlZTMyNTc4YjMiLCJpYXQiOjE1MTA3MjcxNTMsImV4cCI6MTUxMDgxMzU1M30.s65ZTkNYlk2FB73hCSkWwJPDfhD-f7I9E4CanPrYWHY')
         .send({
           firstName: 'personperson',
           lastName: 'personperson',
@@ -263,25 +277,30 @@ describe('Users', function() {
       api
         .get(`/api/users/${user.id}`)
         .set('Accept', 'application/json')
+        .set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YTBiZDhkYTA2NTY4OTJlZTMyNTc4YjMiLCJpYXQiOjE1MTA3MjcxNTMsImV4cCI6MTUxMDgxMzU1M30.s65ZTkNYlk2FB73hCSkWwJPDfhD-f7I9E4CanPrYWHY')
         .end((err, res) => {
           expect(res.header['content-type'])
             .to.be.eq('application/json; charset=utf-8');
           done();
         });
     });
-    it('should return object with properities: _id, firstName, lastName, image, role, email, createdAt, updatedAt', done => {
+    it('should return object with properties: _id, firstName, lastName, image, role, email, createdAt, updatedAt', done => {
       api.get(`/api/users/${user.id}`)
         .set('Accept', 'application/json')
+        .set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YTBiZDhkYTA2NTY4OTJlZTMyNTc4YjMiLCJpYXQiOjE1MTA3MjcxNTMsImV4cCI6MTUxMDgxMzU1M30.s65ZTkNYlk2FB73hCSkWwJPDfhD-f7I9E4CanPrYWHY')
         .end((err, res) => {
           expect(res.body)
             .and.have.all.keys([
-              'id',
+              '__v',
+              '_id',
               'firstName',
               'lastName',
               'image',
               'role',
               'cohort',
               'email',
+              'passwordHash',
+              'ratings',
               'createdAt',
               'updatedAt'
             ]);
@@ -292,6 +311,7 @@ describe('Users', function() {
       api
         .put(`/api/users/${user.id}`)
         .set('Accept', 'application/json')
+        .set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YTBiZDhkYTA2NTY4OTJlZTMyNTc4YjMiLCJpYXQiOjE1MTA3MjcxNTMsImV4cCI6MTUxMDgxMzU1M30.s65ZTkNYlk2FB73hCSkWwJPDfhD-f7I9E4CanPrYWHY')
         .send({
           firstName: 'personperson',
           lastName: 'personperson',
@@ -337,7 +357,9 @@ describe('Users', function() {
     it('should remove a user by id', function(done) {
       api
         .delete(`/api/users/${user.id}`)
+        .set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YTBiZDhkYTA2NTY4OTJlZTMyNTc4YjMiLCJpYXQiOjE1MTA3MjcxNTMsImV4cCI6MTUxMDgxMzU1M30.s65ZTkNYlk2FB73hCSkWwJPDfhD-f7I9E4CanPrYWHY')
         .expect(204, done);
+
     });
   });
 });

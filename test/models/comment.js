@@ -3,6 +3,14 @@ require('../spec_helper');
 const Comment = require('../../models/comment');
 
 describe('Comment', function() {
+  it('should be invalid if createdBy is empty', function(done) {
+    const comment = new Comment();
+
+    comment.validate(function(err) {
+      expect(err.errors.createdBy).to.exist;
+      done();
+    });
+  });
   it('should be invalid if content is empty', function(done) {
     const comment = new Comment();
 
@@ -11,5 +19,5 @@ describe('Comment', function() {
       done();
     });
   });
-  
+
 });
