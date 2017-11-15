@@ -2,16 +2,21 @@ angular
   .module('gaFeedback')
   .controller('RatingsCtrl', RatingsCtrl);
 
-RatingsCtrl.$inject = ['Rating', '$state', 'User', 'currentUserService', '$rootScope'];
+RatingsCtrl.$inject = ['Rating', '$state', 'User', 'currentUserService', '$timeout'];
 
-function RatingsCtrl(Rating, $state, User, currentUserService, $rootScope) {
+function RatingsCtrl(Rating, $state, User, currentUserService, $timeout) {
   const vm = this;
   vm.submit = addRating;
   vm.needHelp = false;
 
-  $rootScope.$on('user defined', (event, data) => {
-    vm.user = data.user;
-  });
+  // $rootScope.$on('user defined', (event, data) => {
+  //   vm.user = data.user;
+  // });
+  $timeout(() => {
+    vm.user = currentUserService.currentUser;
+    console.log(vm.user);
+  }, 50);
+
 
   function addRating() {
     vm.newRating = {
