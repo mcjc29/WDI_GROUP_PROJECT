@@ -6,7 +6,7 @@ const lessons = require('../controllers/lessons');
 const cohorts = require('../controllers/cohorts');
 const comments = require('../controllers/comments');
 const ratings = require('../controllers/ratings');
-const fileUpload = require('../lib/fileUpload');
+// const fileUpload = require('../lib/fileUpload');
 
 router.route('/register')
   .post(authentications.register);
@@ -28,10 +28,12 @@ router.route('/ratings')
 
 router.route('/lessons')
   .get(lessons.index)
-  .post(fileUpload, lessons.create);
+  .post(lessons.create);
+// .post(fileUpload, lessons.create);
 
 router.route('/lessons/:id')
-  .get(fileUpload, lessons.show)
+  .get(lessons.show)
+// .get(fileUpload, lessons.show)
   .put(lessons.update)
   .delete(lessons.delete);
 
