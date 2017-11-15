@@ -13,7 +13,6 @@ function base64() {
 
       fileReader.onload = function fileLoaded() {
         ngModel.$setViewValue(fileReader.result);
-
       };
 
       element.on('change', (e) => {
@@ -22,22 +21,5 @@ function base64() {
       });
     }
 
-
-
-    // return {
-    //   restrict: 'A',
-    //   require: 'ngModel',
-    //   link($scope, element, attrs, ngModel) {
-    //
-    //     fileReader.onload = function fileLoaded() {
-    //       ngModel.$setViewValue(fileReader.result);
-    //     };
-    //
-    //     element.on('change', (e) => {
-    //       const file = (e.target.files || e.dataTransfer.files)[0];
-    //       fileReader.readAsDataURL(file);
-    //     });
-    //   }
-    // };
   };
 }
