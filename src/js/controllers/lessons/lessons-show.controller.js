@@ -2,11 +2,18 @@ angular
   .module('gaFeedback')
   .controller('LessonsShowCtrl', LessonsShowCtrl);
 
-LessonsShowCtrl.$inject = ['Lesson', '$stateParams', 'Rating'];
+LessonsShowCtrl.$inject = ['Lesson', '$stateParams', 'Rating', '$moment'];
 
-function LessonsShowCtrl(Lesson, $stateParams, Rating) {
+function LessonsShowCtrl(Lesson, $stateParams, Rating, $moment) {
   const vm = this;
-  vm.lesson = Lesson.get($stateParams);
+
+  Lesson
+    .get({ id: $stateParams.id })
+    .$promise
+    .then(lesson => {
+      vm.lesson = lesson;
+      vm.lesson.createdAt = $moment(vm.lesson.createdAt).format('Do MMMM YYYY');
+    });
 
   vm.avgPace;
   vm.avgConcepts;
