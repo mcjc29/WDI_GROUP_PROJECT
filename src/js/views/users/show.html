@@ -1,20 +1,30 @@
 <h1>{{ vm.user.firstName }}'s Profile</h1>
 
-  <div class="box">
-    <article class="media chat-article">
-      <div class="media-left">
-        <img class="profile-show-img" ng-src="{{ vm.user.image }}" alt="{{ vm.user.firstName }}">
+<div class="box">
+  <article class="media chat-article">
+    <div class="media-left">
+      <img class="profile-show-img" ng-src="{{ vm.user.image }}" alt="{{ vm.user.firstName }}">
+    </div>
+    <div class="media-content">
+      <div class="content">
+        <h3>{{ vm.user.firstName }} {{ vm.user.lastName }}</h3>
+        <h5>{{ vm.user.email }}</h5>
+        <h5>{{ vm.user.cohort | uppercase }} {{ vm.user.role | uppercase }}</h5>
+        <button class="button is-primary" ui-sref="usersEdit({ id: vm.user.id })">Edit Info</button>
       </div>
-      <div class="media-content">
-        <div class="content">
-          <h3>{{ vm.user.firstName }} {{ vm.user.lastName }}</h3>
-          <h5>{{ vm.user.email }}</h5>
-          <h5>{{ vm.user.cohort | uppercase }} {{ vm.user.role | uppercase }}</h5>
-          <button class="button is-primary" ui-sref="usersEdit({ id: vm.user.id })">Edit Info</button>
-        </div>
+    </div>
+  </article>
+</div>
+
+<div ng-if="vm.avgPace === 0" class="box">
+  <article class="media">
+    <div class="media-content">
+      <div class="content text-center">
+        <h2>{{ vm.user.firstName }} hasn't rated any lessons yet.</h2>
       </div>
-    </article>
-  </div>
+    </div>
+  </article>
+</div>
 
 <div class="columns knob">
   <div class="column">
@@ -31,7 +41,7 @@
   </div>
 </div>
 
-<canvas id="line" class="chart chart-line" chart-data="data"
-chart-labels="labels" chart-series="series" chart-options="options"
-chart-dataset-override="datasetOverride" chart-click="onClick">
+<canvas ng-show"vm.data" id="line" class="chart chart-line" chart-data="vm.data"
+chart-labels="vm.labels" chart-options="vm.chartOptions"
+chart-dataset-override="vm.datasetOverride" chart-click="vm.onClick">
 </canvas>
