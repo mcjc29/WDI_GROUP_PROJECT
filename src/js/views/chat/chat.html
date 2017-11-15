@@ -32,8 +32,9 @@
     <div class="media-content">
       <div class="content">
         <p>
-          <strong>{{ comment.createdBy.firstName }}</strong>&nbsp;<a class="delete is-large" ng-if="comment.createdBy.id == vm.user._id" ng-click="vm.delete(comment)">Delete</a><br>
-          <small>{{ comment.createdAt }}</small><br>
+          <strong>{{ comment.createdBy.firstName }}</strong>&nbsp;
+          <small>{{ comment.createdAt }}</small>
+          <span class="float-right"><a class="delete is-large" ng-if="comment.createdBy.id == vm.user._id" ng-click="vm.delete(comment)">Delete</a></span>
         </p>
         <p>{{ comment.content }}</p>
       </div>
@@ -41,12 +42,13 @@
         <p ng-repeat="reply in comment.replies">
           <strong>{{ reply.createdBy.firstName }}</strong>&nbsp;
           <small>{{ reply.createdAt }}</small>
+          <span class="float-right"><a class="delete is-small" ng-if="comment.createdBy.id == vm.user._id" ng-click="vm.delete(comment)">Delete</a></span>
           <br>
           {{ reply.content }}
         </p>
       </div>
       <div class="content">
-        <form ng-submit="vm.replySubmit()">
+        <form ng-submit="vm.submitReply(comment)">
           <label class="label"><small>Reply</small></label>
           <div class="field has-addons">
             <div class="control">
