@@ -20,19 +20,19 @@
     <div class="columns" ng-repeat="lessons in vm.filtered | chunkBy:3 | orderBy: '-'">
       <div class="column" ng-repeat="lesson in lessons">
 
-        <div class="box">
+        <div class="box box-hover">
           <div class="content">
             <div class="has-text-centered">
-              <p class="strong">
+              <p><strong>
                 {{ lesson.title }}
-              </p>
+              </strong></p>
               <small class="is-small">
                 {{ lesson.createdAt }}
               </small>
             </div>
           </div>
           <div class="has-text-centered">
-            <a class="button is-outlined" ui-sref="lessonsShow({ id: lesson._id })">See lesson</a>
+            <a class="button is-outlined" ui-sref="lessonsShow({ id: lesson._id })">View Lesson</a>
           </div>
         </div>
       </div>
