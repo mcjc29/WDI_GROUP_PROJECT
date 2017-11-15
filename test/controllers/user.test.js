@@ -5,6 +5,8 @@ const User = require('../../models/user');
 
 describe('Users', function() {
 
+  let token;
+
   beforeEach(done => {
     User.collection.remove();
     done();

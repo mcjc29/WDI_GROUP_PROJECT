@@ -40,7 +40,7 @@ describe('Ratings', function() {
           done();
         });
     });
-    
+
     beforeEach(done => {
       Rating.create({
         createdBy: 'person',

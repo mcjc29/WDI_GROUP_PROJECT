@@ -28,12 +28,10 @@ router.route('/ratings')
 
 router.route('/lessons')
   .get(lessons.index)
-  // .post(lessons.create);
   .post(fileUpload, lessons.create);
 
 router.route('/lessons/:id')
   .get(lessons.show)
-// .get(fileUpload, lessons.show)
   .put(lessons.update)
   .delete(lessons.delete);
 
