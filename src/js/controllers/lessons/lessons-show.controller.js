@@ -2,9 +2,9 @@ angular
   .module('gaFeedback')
   .controller('LessonsShowCtrl', LessonsShowCtrl);
 
-LessonsShowCtrl.$inject = ['Lesson', '$stateParams', 'Rating', '$scope'];
+LessonsShowCtrl.$inject = ['Lesson', '$stateParams', 'Rating'];
 
-function LessonsShowCtrl(Lesson, $stateParams, Rating, $scope) {
+function LessonsShowCtrl(Lesson, $stateParams, Rating) {
   const vm = this;
   vm.lesson = Lesson.get($stateParams);
 
