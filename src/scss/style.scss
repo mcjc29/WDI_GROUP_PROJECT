@@ -65,6 +65,32 @@ img {
 .text-center {
   text-align: center;
 }
+
 .box-hover:hover {
   background: #fbfbfb;
+}
+
+.chat-help {
+  margin-top: -108px;
+  margin-left: -6px;
+}
+
+.index-help {
+  // margin-top: -108px;
+  // margin-left: -6px;
+}
+
+.user-index {
+  cursor: pointer;
+  &:hover {
+    background: #2CC185;
+  }
+}
+
+.block {
+  display: block;
+}
+
+.user-img-lrg {
+  margin-bottom: 16px;
 }
