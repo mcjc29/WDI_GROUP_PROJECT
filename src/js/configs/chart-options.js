@@ -5,7 +5,6 @@ angular
 function ChartJsProvider(ChartJsProvider) {
   ChartJsProvider
     .setOptions('radar', {
-      chartColors: ['#803690'],
-      pointStyle: 'square'
+      chartColors: ['#803690']
     });
 }
