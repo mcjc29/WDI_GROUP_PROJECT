@@ -3,20 +3,46 @@
 require('../spec_helper');
 
 const Cohort = require('../../models/cohort');
+const User = require('../../models/user');
 
 describe('Cohorts', function() {
 
+  let token;
+
   beforeEach(done => {
     Cohort.collection.remove();
+    User.collection.remove();
     done();
   });
 
   afterEach(done => {
     Cohort.collection.remove();
+    User.collection.remove();
     done();
   });
 
   describe('GET /api/cohorts', () => {
+
+    beforeEach(done => {
+      api
+        .post('/api/register')
+        .set('Accept', 'application/json')
+        .send({
+          firstName: 'person',
+          lastName: 'person',
+          image: 'person',
+          role: 'student',
+          cohort: 'WDI-30',
+          email: 'person@person.com',
+          password: 'password',
+          passwordConfirmation: 'password'
+        })
+        .end((err, res) => {
+          token = res.body.token;
+          done();
+        });
+    });
+
     beforeEach(done => {
       Cohort.create({
         name: 'WDI-30',
@@ -31,7 +57,7 @@ describe('Cohorts', function() {
       api
         .get('/api/cohorts')
         .set('Accept', 'application/json')
-        .set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YTBiZDhkYTA2NTY4OTJlZTMyNTc4YjMiLCJpYXQiOjE1MTA3MjcxNTMsImV4cCI6MTUxMDgxMzU1M30.s65ZTkNYlk2FB73hCSkWwJPDfhD-f7I9E4CanPrYWHY')
+        .set('Authorization', `Bearer ${token}`)
         .expect(200, done);
     });
 
@@ -39,7 +65,7 @@ describe('Cohorts', function() {
       api
         .get('/api/cohorts')
         .set('Accept', 'application/json')
-        .set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YTBiZDhkYTA2NTY4OTJlZTMyNTc4YjMiLCJpYXQiOjE1MTA3MjcxNTMsImV4cCI6MTUxMDgxMzU1M30.s65ZTkNYlk2FB73hCSkWwJPDfhD-f7I9E4CanPrYWHY')
+        .set('Authorization', `Bearer ${token}`)
         .end((err, res) => {
           expect(res.header['content-type'])
             .to.be.eq('application/json; charset=utf-8');
@@ -50,7 +76,7 @@ describe('Cohorts', function() {
       api
         .get('/api/cohorts')
         .set('Accept', 'application/json')
-        .set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YTBiZDhkYTA2NTY4OTJlZTMyNTc4YjMiLCJpYXQiOjE1MTA3MjcxNTMsImV4cCI6MTUxMDgxMzU1M30.s65ZTkNYlk2FB73hCSkWwJPDfhD-f7I9E4CanPrYWHY')
+        .set('Authorization', `Bearer ${token}`)
         .end((err, res) => {
           expect(res.body.token).to.be.a('string');
           done();
@@ -61,7 +87,7 @@ describe('Cohorts', function() {
       api
         .get('/api/cohorts')
         .set('Accept', 'application/json')
-        .set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YTBiZDhkYTA2NTY4OTJlZTMyNTc4YjMiLCJpYXQiOjE1MTA3MjcxNTMsImV4cCI6MTUxMDgxMzU1M30.s65ZTkNYlk2FB73hCSkWwJPDfhD-f7I9E4CanPrYWHY')
+        .set('Authorization', `Bearer ${token}`)
         .end((err, res) => {
           expect(res.body).to.be.an('array');
           done();
@@ -72,7 +98,7 @@ describe('Cohorts', function() {
       api
         .get('/api/cohorts')
         .set('Accept', 'application/json')
-        .set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YTBiZDhkYTA2NTY4OTJlZTMyNTc4YjMiLCJpYXQiOjE1MTA3MjcxNTMsImV4cCI6MTUxMDgxMzU1M30.s65ZTkNYlk2FB73hCSkWwJPDfhD-f7I9E4CanPrYWHY')
+        .set('Authorization', `Bearer ${token}`)
         .end((err, res) => {
           expect(res.body)
             .to.be.an('array')
@@ -94,7 +120,7 @@ describe('Cohorts', function() {
       api
         .get('/api/cohorts')
         .set('Accept', 'application/json')
-        .set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YTBiZDhkYTA2NTY4OTJlZTMyNTc4YjMiLCJpYXQiOjE1MTA3MjcxNTMsImV4cCI6MTUxMDgxMzU1M30.s65ZTkNYlk2FB73hCSkWwJPDfhD-f7I9E4CanPrYWHY')
+        .set('Authorization', `Bearer ${token}`)
         .end((err, res) => {
           const firstGroup = res.body[0];
           expect(firstGroup)
@@ -137,7 +163,7 @@ describe('Cohorts', function() {
       api
         .get('/api/cohorts')
         .set('Accept', 'application/json')
-        .set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YTBiZDhkYTA2NTY4OTJlZTMyNTc4YjMiLCJpYXQiOjE1MTA3MjcxNTMsImV4cCI6MTUxMDgxMzU1M30.s65ZTkNYlk2FB73hCSkWwJPDfhD-f7I9E4CanPrYWHY')
+        .set('Authorization', `Bearer ${token}`)
         .end((err, res) => {
           expect(res.body.length).to.equal(2);
           done();
@@ -151,7 +177,7 @@ describe('Cohorts', function() {
       api
         .post('/api/cohorts')
         .set('Accept', 'application/json')
-        .set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YTBiZDhkYTA2NTY4OTJlZTMyNTc4YjMiLCJpYXQiOjE1MTA3MjcxNTMsImV4cCI6MTUxMDgxMzU1M30.s65ZTkNYlk2FB73hCSkWwJPDfhD-f7I9E4CanPrYWHY')
+        .set('Authorization', `Bearer ${token}`)
         .send({
           name: 'WDI-30',
           city: 'London',
@@ -164,7 +190,7 @@ describe('Cohorts', function() {
       api
         .post('/api/cohorts')
         .set('Accept', 'application/json')
-        .set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YTBiZDhkYTA2NTY4OTJlZTMyNTc4YjMiLCJpYXQiOjE1MTA3MjcxNTMsImV4cCI6MTUxMDgxMzU1M30.s65ZTkNYlk2FB73hCSkWwJPDfhD-f7I9E4CanPrYWHY')
+        .set('Authorization', `Bearer ${token}`)
         .send({
           name: 'WDI-30',
           city: 'London',
@@ -226,7 +252,7 @@ describe('Cohorts', function() {
       api
         .get(`/api/cohorts/${cohort.id}`)
         .set('Accept', 'application/json')
-        .set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YTBiZDhkYTA2NTY4OTJlZTMyNTc4YjMiLCJpYXQiOjE1MTA3MjcxNTMsImV4cCI6MTUxMDgxMzU1M30.s65ZTkNYlk2FB73hCSkWwJPDfhD-f7I9E4CanPrYWHY')
+        .set('Authorization', `Bearer ${token}`)
         .expect(200, done);
     });
 
@@ -234,7 +260,7 @@ describe('Cohorts', function() {
       api
         .get(`/api/cohorts/${cohort.id}`)
         .set('Accept', 'application/json')
-        .set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YTBiZDhkYTA2NTY4OTJlZTMyNTc4YjMiLCJpYXQiOjE1MTA3MjcxNTMsImV4cCI6MTUxMDgxMzU1M30.s65ZTkNYlk2FB73hCSkWwJPDfhD-f7I9E4CanPrYWHY')
+        .set('Authorization', `Bearer ${token}`)
         .end((err, res) => {
           expect(res.header['content-type'])
             .to.be.eq('application/json; charset=utf-8');
@@ -244,7 +270,7 @@ describe('Cohorts', function() {
     it('should return object with properties:_id, name, city, taughtBy, createdAt, updatedAt', done => {
       api.get(`/api/cohorts/${cohort.id}`)
         .set('Accept', 'application/json')
-        .set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YTBiZDhkYTA2NTY4OTJlZTMyNTc4YjMiLCJpYXQiOjE1MTA3MjcxNTMsImV4cCI6MTUxMDgxMzU1M30.s65ZTkNYlk2FB73hCSkWwJPDfhD-f7I9E4CanPrYWHY')
+        .set('Authorization', `Bearer ${token}`)
         .end((err, res) => {
           expect(res.body)
             .and.have.all.keys([
@@ -283,7 +309,7 @@ describe('Cohorts', function() {
       api
         .put(`/api/cohorts/${cohort.id}`)
         .set('Accept', 'application/json')
-        .set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YTBiZDhkYTA2NTY4OTJlZTMyNTc4YjMiLCJpYXQiOjE1MTA3MjcxNTMsImV4cCI6MTUxMDgxMzU1M30.s65ZTkNYlk2FB73hCSkWwJPDfhD-f7I9E4CanPrYWHY')
+        .set('Authorization', `Bearer ${token}`)
         .send({
           name: 'WDI-31',
           city: 'London',
@@ -295,7 +321,7 @@ describe('Cohorts', function() {
       api
         .get(`/api/cohorts/${cohort.id}`)
         .set('Accept', 'application/json')
-        .set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YTBiZDhkYTA2NTY4OTJlZTMyNTc4YjMiLCJpYXQiOjE1MTA3MjcxNTMsImV4cCI6MTUxMDgxMzU1M30.s65ZTkNYlk2FB73hCSkWwJPDfhD-f7I9E4CanPrYWHY')
+        .set('Authorization', `Bearer ${token}`)
         .end((err, res) => {
           expect(res.header['content-type'])
             .to.be.eq('application/json; charset=utf-8');
@@ -305,7 +331,7 @@ describe('Cohorts', function() {
     it('should return object with properties: _id, name, city, taughtBy', done => {
       api.get(`/api/cohorts/${cohort.id}`)
         .set('Accept', 'application/json')
-        .set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YTBiZDhkYTA2NTY4OTJlZTMyNTc4YjMiLCJpYXQiOjE1MTA3MjcxNTMsImV4cCI6MTUxMDgxMzU1M30.s65ZTkNYlk2FB73hCSkWwJPDfhD-f7I9E4CanPrYWHY')
+        .set('Authorization', `Bearer ${token}`)
         .end((err, res) => {
           expect(res.body)
             .and.have.all.keys([
@@ -324,7 +350,7 @@ describe('Cohorts', function() {
       api
         .put(`/api/cohorts/${cohort.id}`)
         .set('Accept', 'application/json')
-        .set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YTBiZDhkYTA2NTY4OTJlZTMyNTc4YjMiLCJpYXQiOjE1MTA3MjcxNTMsImV4cCI6MTUxMDgxMzU1M30.s65ZTkNYlk2FB73hCSkWwJPDfhD-f7I9E4CanPrYWHY')
+        .set('Authorization', `Bearer ${token}`)
         .send({
           name: 'WDI-31',
           city: 'London',
@@ -360,7 +386,7 @@ describe('Cohorts', function() {
     it('should remove a cohort by id', function(done) {
       api
         .delete(`/api/cohorts/${cohort.id}`)
-        .set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YTBiZDhkYTA2NTY4OTJlZTMyNTc4YjMiLCJpYXQiOjE1MTA3MjcxNTMsImV4cCI6MTUxMDgxMzU1M30.s65ZTkNYlk2FB73hCSkWwJPDfhD-f7I9E4CanPrYWHY')
+        .set('Authorization', `Bearer ${token}`)
         .expect(204, done);
     });
   });

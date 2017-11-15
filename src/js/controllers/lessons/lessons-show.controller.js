@@ -80,4 +80,8 @@ function LessonsShowCtrl(Lesson, $stateParams, Rating, $scope) {
     readOnly: true
   };
 
+  vm.returnLessonNotes = (url) => {
+    return url;
+  };
+
 }

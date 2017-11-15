@@ -3,8 +3,11 @@
 require('../spec_helper');
 
 const Rating = require('../../models/rating');
+const User = require('../../models/user');
 
 describe('Ratings', function() {
+
+  let token;
 
   beforeEach(done => {
     Rating.collection.remove();
@@ -17,6 +20,27 @@ describe('Ratings', function() {
   });
 
   describe('GET /api/ratings', () => {
+
+    beforeEach(done => {
+      api
+        .post('/api/register')
+        .set('Accept', 'application/json')
+        .send({
+          firstName: 'person',
+          lastName: 'person',
+          image: 'person',
+          role: 'student',
+          cohort: 'WDI-30',
+          email: 'person@person.com',
+          password: 'password',
+          passwordConfirmation: 'password'
+        })
+        .end((err, res) => {
+          token = res.body.token;
+          done();
+        });
+    });
+    
     beforeEach(done => {
       Rating.create({
         createdBy: 'person',
@@ -34,7 +58,7 @@ describe('Ratings', function() {
       api
         .get('/api/ratings')
         .set('Accept', 'application/json')
-        .set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YTBiZDhkYTA2NTY4OTJlZTMyNTc4YjMiLCJpYXQiOjE1MTA3MjcxNTMsImV4cCI6MTUxMDgxMzU1M30.s65ZTkNYlk2FB73hCSkWwJPDfhD-f7I9E4CanPrYWHY')
+        .set('Authorization', `Bearer ${token}`)
         .expect(200, done);
     });
 
@@ -42,7 +66,7 @@ describe('Ratings', function() {
       api
         .get('/api/ratings')
         .set('Accept', 'application/json')
-        .set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YTBiZDhkYTA2NTY4OTJlZTMyNTc4YjMiLCJpYXQiOjE1MTA3MjcxNTMsImV4cCI6MTUxMDgxMzU1M30.s65ZTkNYlk2FB73hCSkWwJPDfhD-f7I9E4CanPrYWHY')
+        .set('Authorization', `Bearer ${token}`)
         .end((err, res) => {
           expect(res.header['content-type'])
             .to.be.eq('application/json; charset=utf-8');
@@ -54,7 +78,7 @@ describe('Ratings', function() {
       api
         .get('/api/ratings')
         .set('Accept', 'application/json')
-        .set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YTBiZDhkYTA2NTY4OTJlZTMyNTc4YjMiLCJpYXQiOjE1MTA3MjcxNTMsImV4cCI6MTUxMDgxMzU1M30.s65ZTkNYlk2FB73hCSkWwJPDfhD-f7I9E4CanPrYWHY')
+        .set('Authorization', `Bearer ${token}`)
         .end((err, res) => {
           expect(res.body).to.be.an('array');
           done();
@@ -65,7 +89,7 @@ describe('Ratings', function() {
       api
         .get('/api/ratings')
         .set('Accept', 'application/json')
-        .set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YTBiZDhkYTA2NTY4OTJlZTMyNTc4YjMiLCJpYXQiOjE1MTA3MjcxNTMsImV4cCI6MTUxMDgxMzU1M30.s65ZTkNYlk2FB73hCSkWwJPDfhD-f7I9E4CanPrYWHY')
+        .set('Authorization', `Bearer ${token}`)
         .end((err, res) => {
           expect(res.body)
             .to.be.an('array')
@@ -90,7 +114,7 @@ describe('Ratings', function() {
       api
         .get('/api/ratings')
         .set('Accept', 'application/json')
-        .set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YTBiZDhkYTA2NTY4OTJlZTMyNTc4YjMiLCJpYXQiOjE1MTA3MjcxNTMsImV4cCI6MTUxMDgxMzU1M30.s65ZTkNYlk2FB73hCSkWwJPDfhD-f7I9E4CanPrYWHY')
+        .set('Authorization', `Bearer ${token}`)
         .end((err, res) => {
           const firstRating = res.body[0];
           expect(firstRating)
@@ -148,7 +172,7 @@ describe('Ratings', function() {
       api
         .get('/api/ratings')
         .set('Accept', 'application/json')
-        .set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YTBiZDhkYTA2NTY4OTJlZTMyNTc4YjMiLCJpYXQiOjE1MTA3MjcxNTMsImV4cCI6MTUxMDgxMzU1M30.s65ZTkNYlk2FB73hCSkWwJPDfhD-f7I9E4CanPrYWHY')
+        .set('Authorization', `Bearer ${token}`)
         .end((err, res) => {
           expect(res.body.length).to.equal(2);
           done();
@@ -162,7 +186,7 @@ describe('Ratings', function() {
       api
         .post('/api/ratings')
         .set('Accept', 'application/json')
-        .set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YTBiZDhkYTA2NTY4OTJlZTMyNTc4YjMiLCJpYXQiOjE1MTA3MjcxNTMsImV4cCI6MTUxMDgxMzU1M30.s65ZTkNYlk2FB73hCSkWwJPDfhD-f7I9E4CanPrYWHY')
+        .set('Authorization', `Bearer ${token}`)
         .send({
           createdBy: 'person',
           pace: 10,
@@ -178,7 +202,7 @@ describe('Ratings', function() {
       api
         .post('/api/ratings')
         .set('Accept', 'application/json')
-        .set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YTBiZDhkYTA2NTY4OTJlZTMyNTc4YjMiLCJpYXQiOjE1MTA3MjcxNTMsImV4cCI6MTUxMDgxMzU1M30.s65ZTkNYlk2FB73hCSkWwJPDfhD-f7I9E4CanPrYWHY')
+        .set('Authorization', `Bearer ${token}`)
         .send({
           createdBy: 'person',
           pace: 10,

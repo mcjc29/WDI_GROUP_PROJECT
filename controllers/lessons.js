@@ -9,7 +9,7 @@ function lessonsIndex(req, res, next) {
 }
 
 function lessonsCreate(req, res, next) {
-  // if(req.file) req.body.lessonNotes = req.file.filename;
+  if (req.file) req.body.lessonNotes = req.file;
 
   Lesson
     .create(req.body)
