@@ -1,40 +1,46 @@
 <h1>Ratings Index</h1>
 
-<form class="add-rating" ng-submit="vm.submit()">
-
-  <div class="columns knob">
-    <div class="column">
-      <label for="pace">Lesson Pace</label>
-      <ui-knob value="vm.pace" name="concepts" options="vm.options2" ng-model="vm.pace"></ui-knob>
+<div class="box">
+  <form class="add-rating" ng-submit="vm.submit()">
+    <div class="level">
+      <div class="level-item has-text-centered">
+        <div>
+          <h1 class="heading">Lesson Pace</h3>
+          <ui-knob value="vm.pace" name="concepts" options="vm.options2" ng-model="vm.pace"></ui-knob>
+        </div>
+      </div>
+      <div class="level-item has-text-centered">
+        <div>
+          <h1 class="heading">Lesson Concepts</h3>
+          <ui-knob value="vm.concepts" name="concepts" options="vm.options2" ng-model="vm.concepts"></ui-knob>
+        </div>
+      </div>
+      <div class="level-item has-text-centered">
+        <div>
+          <h1 class="heading">Lesson Syntax</h3>
+          <ui-knob value="vm.syntax" name="syntax" options="vm.options2" ng-model="vm.syntax"></ui-knob>
+        </div>
+      </div>
+      <div class="level-item has-text-centered">
+        <div>
+          <h1 class="heading">Overall Confidence</h3>
+          <ui-knob value="vm.confidence" name="confidence" options="vm.options2" ng-model="vm.confidence"></ui-knob>
+        </div>
+      </div>
     </div>
-    <div class="column">
-      <label for="concepts">Lesson Concepts</label>
-      <ui-knob value="vm.concepts" name="concepts" options="vm.options2" ng-model="vm.concepts"></ui-knob>
+    <div class="field">
+      <label class="label">Message</label>
+      <div class="control">
+        <textarea class="textarea" placeholder="Leave a comment..."></textarea>
+      </div>
     </div>
-    <div class="column">
-      <label for="Syntax">Lesson Syntax</label>
-      <ui-knob value="vm.syntax" name="syntax" options="vm.options2" ng-model="vm.syntax"></ui-knob>
+    <div>
+      <label for="needHelp" value="vm.user.needHelp">
+        <input type="checkbox" ng-model="vm.user.needHelp" ng-checked="vm.user.needHelp">I need help
+      </label>
     </div>
-    <div class="column">
-      <label for="confidence">Overall Confidence</label>
-      <ui-knob value="vm.confidence" name="confidence" options="vm.options2" ng-model="vm.confidence"></ui-knob>
-    </div>
-  </div>
-
-  <div class="field">
-    <label class="label">Message</label>
     <div class="control">
-      <textarea class="textarea" placeholder="Leave a comment..."></textarea>
+      <button class="button is-primary">Submit</button>
     </div>
-  </div>
-  <div>
-    <label for="needHelp" value="vm.user.needHelp">
-      <input type="checkbox" ng-model="vm.user.needHelp" ng-checked="vm.user.needHelp">I need help
-    </label>
-  </div>
-
-  <div class="control">
-    <button class="button is-primary">Submit</button>
-  </div>
-
-</form>
+  </form>
+</div>
