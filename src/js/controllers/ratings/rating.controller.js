@@ -21,6 +21,10 @@ function RatingsCtrl(Rating, $state, User, currentUserService, $timeout) {
       syntax: vm.syntax,
       confidence: vm.confidence
     };
+<<<<<<< HEAD
+    // console.log(user);
+=======
+>>>>>>> 1cb8a1abea04827cf0b2267416cf1d07a452c721
     Rating
       .save(vm.newRating)
       .$promise
