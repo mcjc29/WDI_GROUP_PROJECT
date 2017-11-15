@@ -51,24 +51,35 @@ function LessonsShowCtrl(Lesson, $stateParams, Rating, $moment) {
       lessonData.filter(rating => confidenceValues.push(rating.confidence));
       vm.avgConfidence = Math.ceil((confidenceValues.reduce((a,b) => a + b)) / confidenceValues.length);
 
-      vm.labels = ['Pace of Lesson', 'Concepts', 'Syntax', 'Confidence'];
+      vm.labels = ['Confidence', 'Concepts', 'Syntax', 'Pace'];
 
-      vm.data = [vm.avgPace, vm.avgConcepts, vm.avgSyntax, vm.avgConfidence];
+      vm.data = [vm.avgConfidence, vm.avgConcepts, vm.avgSyntax, vm.avgPace];
 
       vm.chartOptions = {
         title: {
           display: true,
-          text: 'Lesson Snapshot'
+          text: 'Lesson Snapshot',
+          fontSize: 24
         },
         scale: {
-          ticks: {min: 0, max: 100}
+          ticks: {
+            min: 0,
+            max: 100,
+            labels: {
+              display: false
+            }
+          },
+          pointLabels: {
+            display: true,
+            fontSize: 20
+          }
         },
         layout: {
           padding: {
-            left: 0,
-            right: 0,
-            top: 0,
-            bottom: 0
+            left: 20,
+            right: 20,
+            top: 20,
+            bottom: 20
           }
         }
       };
