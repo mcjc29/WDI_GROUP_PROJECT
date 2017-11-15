@@ -31,7 +31,7 @@ describe('Cohorts', function() {
       api
         .get('/api/cohorts')
         .set('Accept', 'application/json')
-        .set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YTA5N2E5ZDk2YzUxNTA4MGFjZGFkYTciLCJpYXQiOjE1MTA1NzEwOTEsImV4cCI6MTUxMDY1NzQ5MX0.pTMVDWc-xsoEdTuyYnfQ1GIPKf15HUrJ6118XDSC1jY')
+        .set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YTBiZDhkYTA2NTY4OTJlZTMyNTc4YjMiLCJpYXQiOjE1MTA3MjcxNTMsImV4cCI6MTUxMDgxMzU1M30.s65ZTkNYlk2FB73hCSkWwJPDfhD-f7I9E4CanPrYWHY')
         .expect(200, done);
     });
 
@@ -39,9 +39,20 @@ describe('Cohorts', function() {
       api
         .get('/api/cohorts')
         .set('Accept', 'application/json')
+        .set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YTBiZDhkYTA2NTY4OTJlZTMyNTc4YjMiLCJpYXQiOjE1MTA3MjcxNTMsImV4cCI6MTUxMDgxMzU1M30.s65ZTkNYlk2FB73hCSkWwJPDfhD-f7I9E4CanPrYWHY')
         .end((err, res) => {
           expect(res.header['content-type'])
             .to.be.eq('application/json; charset=utf-8');
+          done();
+        });
+    });
+    it('response should return a token', done => {
+      api
+        .get('/api/cohorts')
+        .set('Accept', 'application/json')
+        .set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YTBiZDhkYTA2NTY4OTJlZTMyNTc4YjMiLCJpYXQiOjE1MTA3MjcxNTMsImV4cCI6MTUxMDgxMzU1M30.s65ZTkNYlk2FB73hCSkWwJPDfhD-f7I9E4CanPrYWHY')
+        .end((err, res) => {
+          expect(res.body.token).to.be.a('string');
           done();
         });
     });
@@ -50,6 +61,7 @@ describe('Cohorts', function() {
       api
         .get('/api/cohorts')
         .set('Accept', 'application/json')
+        .set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YTBiZDhkYTA2NTY4OTJlZTMyNTc4YjMiLCJpYXQiOjE1MTA3MjcxNTMsImV4cCI6MTUxMDgxMzU1M30.s65ZTkNYlk2FB73hCSkWwJPDfhD-f7I9E4CanPrYWHY')
         .end((err, res) => {
           expect(res.body).to.be.an('array');
           done();
@@ -60,6 +72,7 @@ describe('Cohorts', function() {
       api
         .get('/api/cohorts')
         .set('Accept', 'application/json')
+        .set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YTBiZDhkYTA2NTY4OTJlZTMyNTc4YjMiLCJpYXQiOjE1MTA3MjcxNTMsImV4cCI6MTUxMDgxMzU1M30.s65ZTkNYlk2FB73hCSkWwJPDfhD-f7I9E4CanPrYWHY')
         .end((err, res) => {
           expect(res.body)
             .to.be.an('array')
@@ -81,6 +94,7 @@ describe('Cohorts', function() {
       api
         .get('/api/cohorts')
         .set('Accept', 'application/json')
+        .set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YTBiZDhkYTA2NTY4OTJlZTMyNTc4YjMiLCJpYXQiOjE1MTA3MjcxNTMsImV4cCI6MTUxMDgxMzU1M30.s65ZTkNYlk2FB73hCSkWwJPDfhD-f7I9E4CanPrYWHY')
         .end((err, res) => {
           const firstGroup = res.body[0];
           expect(firstGroup)
@@ -123,6 +137,7 @@ describe('Cohorts', function() {
       api
         .get('/api/cohorts')
         .set('Accept', 'application/json')
+        .set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YTBiZDhkYTA2NTY4OTJlZTMyNTc4YjMiLCJpYXQiOjE1MTA3MjcxNTMsImV4cCI6MTUxMDgxMzU1M30.s65ZTkNYlk2FB73hCSkWwJPDfhD-f7I9E4CanPrYWHY')
         .end((err, res) => {
           expect(res.body.length).to.equal(2);
           done();
@@ -136,6 +151,7 @@ describe('Cohorts', function() {
       api
         .post('/api/cohorts')
         .set('Accept', 'application/json')
+        .set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YTBiZDhkYTA2NTY4OTJlZTMyNTc4YjMiLCJpYXQiOjE1MTA3MjcxNTMsImV4cCI6MTUxMDgxMzU1M30.s65ZTkNYlk2FB73hCSkWwJPDfhD-f7I9E4CanPrYWHY')
         .send({
           name: 'WDI-30',
           city: 'London',
@@ -148,6 +164,7 @@ describe('Cohorts', function() {
       api
         .post('/api/cohorts')
         .set('Accept', 'application/json')
+        .set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YTBiZDhkYTA2NTY4OTJlZTMyNTc4YjMiLCJpYXQiOjE1MTA3MjcxNTMsImV4cCI6MTUxMDgxMzU1M30.s65ZTkNYlk2FB73hCSkWwJPDfhD-f7I9E4CanPrYWHY')
         .send({
           name: 'WDI-30',
           city: 'London',
@@ -209,6 +226,7 @@ describe('Cohorts', function() {
       api
         .get(`/api/cohorts/${cohort.id}`)
         .set('Accept', 'application/json')
+        .set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YTBiZDhkYTA2NTY4OTJlZTMyNTc4YjMiLCJpYXQiOjE1MTA3MjcxNTMsImV4cCI6MTUxMDgxMzU1M30.s65ZTkNYlk2FB73hCSkWwJPDfhD-f7I9E4CanPrYWHY')
         .expect(200, done);
     });
 
@@ -216,6 +234,7 @@ describe('Cohorts', function() {
       api
         .get(`/api/cohorts/${cohort.id}`)
         .set('Accept', 'application/json')
+        .set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YTBiZDhkYTA2NTY4OTJlZTMyNTc4YjMiLCJpYXQiOjE1MTA3MjcxNTMsImV4cCI6MTUxMDgxMzU1M30.s65ZTkNYlk2FB73hCSkWwJPDfhD-f7I9E4CanPrYWHY')
         .end((err, res) => {
           expect(res.header['content-type'])
             .to.be.eq('application/json; charset=utf-8');
@@ -225,6 +244,7 @@ describe('Cohorts', function() {
     it('should return object with properties:_id, name, city, taughtBy, createdAt, updatedAt', done => {
       api.get(`/api/cohorts/${cohort.id}`)
         .set('Accept', 'application/json')
+        .set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YTBiZDhkYTA2NTY4OTJlZTMyNTc4YjMiLCJpYXQiOjE1MTA3MjcxNTMsImV4cCI6MTUxMDgxMzU1M30.s65ZTkNYlk2FB73hCSkWwJPDfhD-f7I9E4CanPrYWHY')
         .end((err, res) => {
           expect(res.body)
             .and.have.all.keys([
@@ -263,6 +283,7 @@ describe('Cohorts', function() {
       api
         .put(`/api/cohorts/${cohort.id}`)
         .set('Accept', 'application/json')
+        .set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YTBiZDhkYTA2NTY4OTJlZTMyNTc4YjMiLCJpYXQiOjE1MTA3MjcxNTMsImV4cCI6MTUxMDgxMzU1M30.s65ZTkNYlk2FB73hCSkWwJPDfhD-f7I9E4CanPrYWHY')
         .send({
           name: 'WDI-31',
           city: 'London',
@@ -274,6 +295,7 @@ describe('Cohorts', function() {
       api
         .get(`/api/cohorts/${cohort.id}`)
         .set('Accept', 'application/json')
+        .set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YTBiZDhkYTA2NTY4OTJlZTMyNTc4YjMiLCJpYXQiOjE1MTA3MjcxNTMsImV4cCI6MTUxMDgxMzU1M30.s65ZTkNYlk2FB73hCSkWwJPDfhD-f7I9E4CanPrYWHY')
         .end((err, res) => {
           expect(res.header['content-type'])
             .to.be.eq('application/json; charset=utf-8');
@@ -283,6 +305,7 @@ describe('Cohorts', function() {
     it('should return object with properties: _id, name, city, taughtBy', done => {
       api.get(`/api/cohorts/${cohort.id}`)
         .set('Accept', 'application/json')
+        .set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YTBiZDhkYTA2NTY4OTJlZTMyNTc4YjMiLCJpYXQiOjE1MTA3MjcxNTMsImV4cCI6MTUxMDgxMzU1M30.s65ZTkNYlk2FB73hCSkWwJPDfhD-f7I9E4CanPrYWHY')
         .end((err, res) => {
           expect(res.body)
             .and.have.all.keys([
@@ -301,6 +324,7 @@ describe('Cohorts', function() {
       api
         .put(`/api/cohorts/${cohort.id}`)
         .set('Accept', 'application/json')
+        .set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YTBiZDhkYTA2NTY4OTJlZTMyNTc4YjMiLCJpYXQiOjE1MTA3MjcxNTMsImV4cCI6MTUxMDgxMzU1M30.s65ZTkNYlk2FB73hCSkWwJPDfhD-f7I9E4CanPrYWHY')
         .send({
           name: 'WDI-31',
           city: 'London',
@@ -336,6 +360,7 @@ describe('Cohorts', function() {
     it('should remove a cohort by id', function(done) {
       api
         .delete(`/api/cohorts/${cohort.id}`)
+        .set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YTBiZDhkYTA2NTY4OTJlZTMyNTc4YjMiLCJpYXQiOjE1MTA3MjcxNTMsImV4cCI6MTUxMDgxMzU1M30.s65ZTkNYlk2FB73hCSkWwJPDfhD-f7I9E4CanPrYWHY')
         .expect(204, done);
     });
   });

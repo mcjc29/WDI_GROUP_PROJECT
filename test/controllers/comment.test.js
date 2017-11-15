@@ -45,6 +45,7 @@ describe('Comments', function() {
       api
         .get('/api/comments')
         .set('Accept', 'application/json')
+        .set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YTBiZDhkYTA2NTY4OTJlZTMyNTc4YjMiLCJpYXQiOjE1MTA3MjcxNTMsImV4cCI6MTUxMDgxMzU1M30.s65ZTkNYlk2FB73hCSkWwJPDfhD-f7I9E4CanPrYWHY')
         .expect(200, done);
     });
 
@@ -52,6 +53,7 @@ describe('Comments', function() {
       api
         .get('/api/comments')
         .set('Accept', 'application/json')
+        .set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YTBiZDhkYTA2NTY4OTJlZTMyNTc4YjMiLCJpYXQiOjE1MTA3MjcxNTMsImV4cCI6MTUxMDgxMzU1M30.s65ZTkNYlk2FB73hCSkWwJPDfhD-f7I9E4CanPrYWHY')
         .end((err, res) => {
           expect(res.header['content-type'])
             .to.be.eq('application/json; charset=utf-8');
@@ -63,6 +65,7 @@ describe('Comments', function() {
       api
         .get('/api/comments')
         .set('Accept', 'application/json')
+        .set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YTBiZDhkYTA2NTY4OTJlZTMyNTc4YjMiLCJpYXQiOjE1MTA3MjcxNTMsImV4cCI6MTUxMDgxMzU1M30.s65ZTkNYlk2FB73hCSkWwJPDfhD-f7I9E4CanPrYWHY')
         .end((err, res) => {
           expect(res.body).to.be.an('array');
           done();
@@ -73,6 +76,7 @@ describe('Comments', function() {
       api
         .get('/api/comments')
         .set('Accept', 'application/json')
+        .set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YTBiZDhkYTA2NTY4OTJlZTMyNTc4YjMiLCJpYXQiOjE1MTA3MjcxNTMsImV4cCI6MTUxMDgxMzU1M30.s65ZTkNYlk2FB73hCSkWwJPDfhD-f7I9E4CanPrYWHY')
         .end((err, res) => {
           expect(res.body)
             .to.be.an('array')
@@ -94,6 +98,7 @@ describe('Comments', function() {
       api
         .get('/api/comments')
         .set('Accept', 'application/json')
+        .set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YTBiZDhkYTA2NTY4OTJlZTMyNTc4YjMiLCJpYXQiOjE1MTA3MjcxNTMsImV4cCI6MTUxMDgxMzU1M30.s65ZTkNYlk2FB73hCSkWwJPDfhD-f7I9E4CanPrYWHY')
         .end((err, res) => {
           const firstComment = res.body[0];
           expect(firstComment)
@@ -101,7 +106,7 @@ describe('Comments', function() {
             .and.to.be.a('string');
           expect(firstComment)
             .to.have.property('createdBy')
-            .and.to.be.a('string');
+            .and.to.be.a('object');
           expect(firstComment)
             .to.have.property('content')
             .and.to.be.a('string');
@@ -141,6 +146,7 @@ describe('Comments', function() {
       api
         .get('/api/comments')
         .set('Accept', 'application/json')
+        .set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YTBiZDhkYTA2NTY4OTJlZTMyNTc4YjMiLCJpYXQiOjE1MTA3MjcxNTMsImV4cCI6MTUxMDgxMzU1M30.s65ZTkNYlk2FB73hCSkWwJPDfhD-f7I9E4CanPrYWHY')
         .end((err, res) => {
           expect(res.body.length).to.equal(2);
           done();
@@ -174,6 +180,7 @@ describe('Comments', function() {
       api
         .post('/api/comments')
         .set('Accept', 'application/json')
+        .set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YTBiZDhkYTA2NTY4OTJlZTMyNTc4YjMiLCJpYXQiOjE1MTA3MjcxNTMsImV4cCI6MTUxMDgxMzU1M30.s65ZTkNYlk2FB73hCSkWwJPDfhD-f7I9E4CanPrYWHY')
         .send({
           createdBy: user.id,
           content: 'Blah'
@@ -185,6 +192,7 @@ describe('Comments', function() {
       api
         .post('/api/comments')
         .set('Accept', 'application/json')
+        .set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YTBiZDhkYTA2NTY4OTJlZTMyNTc4YjMiLCJpYXQiOjE1MTA3MjcxNTMsImV4cCI6MTUxMDgxMzU1M30.s65ZTkNYlk2FB73hCSkWwJPDfhD-f7I9E4CanPrYWHY')
         .send({
           createdBy: user.id,
           content: 'Blah'
@@ -252,6 +260,7 @@ describe('Comments', function() {
       api
         .get(`/api/comments/${comment.id}`)
         .set('Accept', 'application/json')
+        .set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YTBiZDhkYTA2NTY4OTJlZTMyNTc4YjMiLCJpYXQiOjE1MTA3MjcxNTMsImV4cCI6MTUxMDgxMzU1M30.s65ZTkNYlk2FB73hCSkWwJPDfhD-f7I9E4CanPrYWHY')
         .expect(200, done);
     });
 
@@ -259,6 +268,7 @@ describe('Comments', function() {
       api
         .get(`/api/comments/${comment.id}`)
         .set('Accept', 'application/json')
+        .set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YTBiZDhkYTA2NTY4OTJlZTMyNTc4YjMiLCJpYXQiOjE1MTA3MjcxNTMsImV4cCI6MTUxMDgxMzU1M30.s65ZTkNYlk2FB73hCSkWwJPDfhD-f7I9E4CanPrYWHY')
         .end((err, res) => {
           expect(res.header['content-type'])
             .to.be.eq('application/json; charset=utf-8');
@@ -269,6 +279,7 @@ describe('Comments', function() {
     it('should return object with properties:_id, createdBy, content', done => {
       api.get(`/api/comments/${comment.id}`)
         .set('Accept', 'application/json')
+        .set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YTBiZDhkYTA2NTY4OTJlZTMyNTc4YjMiLCJpYXQiOjE1MTA3MjcxNTMsImV4cCI6MTUxMDgxMzU1M30.s65ZTkNYlk2FB73hCSkWwJPDfhD-f7I9E4CanPrYWHY')
         .end((err, res) => {
           expect(res.body)
             .and.have.all.keys([
@@ -320,6 +331,7 @@ describe('Comments', function() {
       api
         .put(`/api/comments/${comment.id}`)
         .set('Accept', 'application/json')
+        .set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YTBiZDhkYTA2NTY4OTJlZTMyNTc4YjMiLCJpYXQiOjE1MTA3MjcxNTMsImV4cCI6MTUxMDgxMzU1M30.s65ZTkNYlk2FB73hCSkWwJPDfhD-f7I9E4CanPrYWHY')
         .send({
           createdBy: user.id,
           content: 'Blah'
@@ -331,6 +343,7 @@ describe('Comments', function() {
       api
         .get(`/api/comments/${comment.id}`)
         .set('Accept', 'application/json')
+        .set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YTBiZDhkYTA2NTY4OTJlZTMyNTc4YjMiLCJpYXQiOjE1MTA3MjcxNTMsImV4cCI6MTUxMDgxMzU1M30.s65ZTkNYlk2FB73hCSkWwJPDfhD-f7I9E4CanPrYWHY')
         .end((err, res) => {
           expect(res.header['content-type'])
             .to.be.eq('application/json; charset=utf-8');
@@ -341,6 +354,7 @@ describe('Comments', function() {
     it('should return object with properties: _id, createdBy, content', done => {
       api.get(`/api/comments/${comment.id}`)
         .set('Accept', 'application/json')
+        .set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YTBiZDhkYTA2NTY4OTJlZTMyNTc4YjMiLCJpYXQiOjE1MTA3MjcxNTMsImV4cCI6MTUxMDgxMzU1M30.s65ZTkNYlk2FB73hCSkWwJPDfhD-f7I9E4CanPrYWHY')
         .end((err, res) => {
           expect(res.body)
             .and.have.all.keys([
@@ -360,6 +374,7 @@ describe('Comments', function() {
       api
         .put(`/api/comments/${comment.id}`)
         .set('Accept', 'application/json')
+        .set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YTBiZDhkYTA2NTY4OTJlZTMyNTc4YjMiLCJpYXQiOjE1MTA3MjcxNTMsImV4cCI6MTUxMDgxMzU1M30.s65ZTkNYlk2FB73hCSkWwJPDfhD-f7I9E4CanPrYWHY')
         .send({
           createdBy: user.id,
           content: 'Blah'
@@ -404,6 +419,7 @@ describe('Comments', function() {
     it('should remove a comment by id', function(done) {
       api
         .delete(`/api/comments/${comment.id}`)
+        .set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YTBiZDhkYTA2NTY4OTJlZTMyNTc4YjMiLCJpYXQiOjE1MTA3MjcxNTMsImV4cCI6MTUxMDgxMzU1M30.s65ZTkNYlk2FB73hCSkWwJPDfhD-f7I9E4CanPrYWHY')
         .expect(204, done);
     });
 
