@@ -1,37 +1,46 @@
+<h1>{{ vm.lesson.title }}</h1>
+<h2>{{ vm.lesson.competencies }}</h2>
 <div>
-  <h1>{{ vm.lesson.title }}</h1>
   <p>{{ vm.lesson.competencies }}</p>
   <p>{{ vm.date }}</p>
-  <p>{{ vm.lesson.city }}</p>
-  <p>{{ vm.lesson.taughtBy }}</p>
   <p><a ng-href="{{ vm.lesson.lessonNotes }}" target="_blank">Read</a></p>
 
   <a ng-if="main.user.role === instructor" ui-sref="lessonsEdit({ id: vm.lesson._id })">Edit</a>
 </div>
 
-<canvas id="radar" class="chart chart-radar" chart-data="vm.data" chart-options="vm.chartOptions" chart-labels="vm.labels"></canvas>
+<!-- <canvas id="radar" class="chart chart-radar" chart-data="vm.data" chart-options="vm.chartOptions" chart-labels="vm.labels"></canvas> -->
 
-<div class="level">
-  <div class="level-item has-text-centered">
-    <div>
-      <p class="heading">Taught by</p>
-      <p class="small">{{ vm.lesson.taughtBy }}</p>
+<div class="box">
+  <div class="level">
+    <div class="level-item has-text-centered">
+      <div>
+        <p class="heading">Taught by</p>
+        <p class="small">{{ vm.lesson.taughtBy }}</p>
+      </div>
     </div>
-  </div>
-  <div class="level-item has-text-centered">
-    <div>
-      <p class="heading">Location</p>
-      <p class="small">{{ vm.lesson.city }}</p>
+    <div class="level-item has-text-centered">
+      <div>
+        <p class="heading">Location</p>
+        <p class="small">{{ vm.lesson.city }}</p>
+      </div>
     </div>
-  </div>
-  <div class="level-item has-text-centered">
-    <div>
-      <p class="heading">Created by</p>
-      <p class="small">{{ vm.lesson.creator }}</p>
+    <div class="level-item has-text-centered">
+      <div>
+        <p class="heading">Created by</p>
+        <p class="small">{{ vm.lesson.creator }}</p>
+      </div>
+    </div>
+    <div class="level-item has-text-centered">
+      <div>
+        <p class="heading">Date</p>
+        <p class="small">{{ vm.lesson.createdAt }}</p>
+      </div>
     </div>
   </div>
 </div>
-</div>
+
+
+
 
 
 <div class="box">
