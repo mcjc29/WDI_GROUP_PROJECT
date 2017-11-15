@@ -2,8 +2,8 @@ angular
   .module('gaFeedback')
   .controller('LessonsIndexCtrl', LessonsIndexCtrl);
 
-LessonsIndexCtrl.$inject = ['Lesson', 'filterFilter', '$scope'];
-function LessonsIndexCtrl(Lesson, filterFilter, $scope) {
+LessonsIndexCtrl.$inject = ['Lesson', 'filterFilter', '$scope', '$moment'];
+function LessonsIndexCtrl(Lesson, filterFilter, $scope, $moment) {
   const vm = this;
 
   Lesson
@@ -11,6 +11,9 @@ function LessonsIndexCtrl(Lesson, filterFilter, $scope) {
     .$promise
     .then(lessons => {
       vm.lessons = lessons;
+      vm.lessons.forEach(lesson => {
+        lesson.createdAt = $moment(lesson.createdAt).format('Do MMMM YYYY');
+      });
       filterLesson();
     });
 
