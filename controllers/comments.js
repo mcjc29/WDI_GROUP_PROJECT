@@ -3,7 +3,7 @@ const Comment = require('../models/comment');
 function commentsIndex(req, res, next) {
   Comment
     .find()
-    .populate('createdBy')
+    .populate('createdBy replies.createdBy')
     .exec()
     .then((comment) => res.status(200).json(comment))
     .catch(next);
