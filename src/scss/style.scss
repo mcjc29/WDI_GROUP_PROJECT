@@ -156,5 +156,19 @@ img {
 .hero {
   background-image: url(/images/coffeelaptop.jpg);
   background-size: cover;
+}
 
+label:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+#expand {
+  height: 0px;
+  overflow: hidden;
+  transition: height 0.5s;
+}
+
+#toggle:checked ~ #expand {
+  height: 300px;
 }
