@@ -5,7 +5,7 @@
     <div class="level-item">
       <h1>{{ vm.lesson.competencies }}</h1>
     </div>
-    <div>
+    <div ng-if="vm.lesson.lessonNotes">
       <a ng-href="{{ vm.lesson.lessonNotes }}" target="_blank" download><button class="button is-primary" >Download Lesson Notes</button></a>
       <button class="button is-link" ng-if="main.user.role === 'instructor'" ui-sref="lessonsEdit({ id: vm.lesson._id })">Edit Lesson</button>
     </div>

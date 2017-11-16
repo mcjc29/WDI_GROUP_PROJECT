@@ -51,7 +51,8 @@ function UsersShowCtrl(User, $stateParams, Rating, $moment) {
           vm.chartOptions = {
             title: {
               display: true,
-              text: 'Confidence Level Over Time'
+              text: 'Confidence Level Over Time',
+              fontSize: 24
             },
             scales: {
               yAxes: [
