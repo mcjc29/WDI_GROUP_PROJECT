@@ -6,7 +6,7 @@
       <h1>{{ vm.lesson.competencies }}</h1>
     </div>
     <div>
-      <button class="button is-primary" ng-href="{{ vm.lesson.lessonNotes }}" target="_blank" download>Download Lesson Notes</button>
+      <a ng-href="{{ vm.lesson.lessonNotes }}" target="_blank" download><button class="button is-primary" >Download Lesson Notes</button></a>
       <button class="button is-link" ng-if="main.user.role === 'instructor'" ui-sref="lessonsEdit({ id: vm.lesson._id })">Edit Lesson</button>
     </div>
   </div>
