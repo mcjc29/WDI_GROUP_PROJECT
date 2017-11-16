@@ -52,7 +52,8 @@ function UsersShowCtrl(User, $stateParams, Rating, $moment) {
             title: {
               display: true,
               text: 'Confidence Level Over Time',
-              fontSize: 24
+              fontSize: 24,
+              fontFamily: 'Arial'
             },
             scales: {
               yAxes: [
