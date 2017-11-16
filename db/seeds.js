@@ -7,7 +7,7 @@ const Rating      = require('../models/rating');
 const { db }      = require('../config/environment');
 mongoose.Promise  = require('bluebird');
 
-mongoose.connect(db.development, { useMongoClient: true });
+mongoose.connect(db.[env], { useMongoClient: true });
 
 User.collection.drop();
 Cohort.collection.drop();
