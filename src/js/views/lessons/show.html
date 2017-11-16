@@ -146,23 +146,26 @@
       </div>
     </div>
 
+    <div class="box">
+      <input id="toggle" class="hide" type="checkbox">
+      <div class="content has-text-centered">
+        <h1>
+          Lesson Notes
+        </h1>
+        <label for="toggle">
+          <span class="up">
+            <i input="checkbox" for="toggle" class="fa fa-arrow-down fa-2x grow" aria-hidden="true"></i>
+          </span>
+          <span class="down">
+            <i finput="checkbox" for="toggle" class="fa fa-arrow-up fa-2x grow" aria-hidden="true"></i>
+          </span>
+        </label>
+      </div>
 
-
-
-
-<div class="box">
-  <input id="toggle" type="checkbox" checked>
-    <div class="content has-text-centered">
-      <h1>
-        <label for="toggle">Lesson Notes</label>
-      </h1>
+      <div id="expand" class="content">
+        <section>
+          <div class="markdown-body" btf-markdown ng-include="vm.returnLessonNotes(vm.lesson.lessonNotes)">
+          </div>
+        </section>
+      </div>
     </div>
-
-    <div id="expand" class="content">
-      <section>
-        <div class="markdown-body" btf-markdown ng-include="vm.returnLessonNotes(vm.lesson.lessonNotes)">
-        </div>
-      </section>
-    </div>
-    <section>
-</div>
