@@ -100,3 +100,25 @@ img {
   color: white;
   border: white;
 }
+
+.good {
+  height: 4px;
+  background-color: #2CC185;
+  border-radius: 20px;
+  margin: 0;
+  border-radius: 50px;
+}
+
+.average {
+  height: 4px;
+  background-color: orange;
+  margin: 0;
+  border-radius: 50px;
+}
+
+.bad {
+  height: 4px;
+  background-color: red;
+  margin: 0;
+  border-radius: 50px
+}
