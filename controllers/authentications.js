@@ -10,7 +10,8 @@ function authenticationsRegister(req, res, next){
       const token = jwt.sign(payload, secret, { expiresIn: 60*60*24 });
       return res.status(200).json({
         message: `Welcome ${user.firstName}!`,
-        token
+        token,
+        user
       });
     })
     .catch(next);
@@ -30,7 +31,8 @@ function authenticationsLogin(req, res, next){
       const token = jwt.sign(payload, secret, { expiresIn: 60*60*24 });
       return res.status(200).json({
         message: `Welcome back ${user.firstName}!`,
-        token
+        token,
+        user
       });
     })
     .catch(next);
