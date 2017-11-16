@@ -63,15 +63,10 @@ function fetchByIdWithRatings(req, res) {
         return self
           .model('Rating')
           .find({ createdBy: user.id })
-          // .findAndGroup(req, res)
-          // find ratings by req.user and group
           .exec();
       })
 
-      // .findAndGroup - create new static model?
-
       .then(ratings => {
-        // Can't add ratings without converting .toObject()
         req.user.ratings = ratings;
         return resolve(req.user);
       })
