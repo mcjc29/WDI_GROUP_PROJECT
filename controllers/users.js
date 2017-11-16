@@ -1,33 +1,30 @@
 const User = require('../models/user');
-const Rating = require('../models/rating');
 
 function usersIndex(req, res, next) {
-  User
-    .find()
+  User.find()
     .exec()
-    .then((users) => res.status(200).json(users))
+    .then(users => res.status(200).json(users))
     .catch(next);
 }
 
 function usersShow(req, res, next) {
-  User
-    .fetchByIdWithRatings(req, res)
+  User.fetchByIdWithRatings(req, res)
     .then(user => res.status(200).json(user))
     .catch(next);
 }
 
 function usersUpdate(req, res, next) {
-  console.log(req.body);
-  User
-    .findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true })
+  User.findByIdAndUpdate(req.params.id, req.body, {
+    new: true,
+    runValidators: true
+  })
     .exec()
     .then(user => res.status(200).json(user))
     .catch(next);
 }
 
 function usersDelete(req, res, next) {
-  User
-    .findByIdAndRemove(req.params.id)
+  User.findByIdAndRemove(req.params.id)
     .exec()
     .then(() => res.sendStatus(204))
     .catch(next);
