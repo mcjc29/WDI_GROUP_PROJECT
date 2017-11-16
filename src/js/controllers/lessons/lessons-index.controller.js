@@ -13,7 +13,6 @@ function LessonsIndexCtrl(Lesson, filterFilter, $scope, $moment) {
       vm.lessons = lessons;
       vm.lessons.forEach(lesson => {
         lesson.createdAt = $moment(lesson.createdAt).format('Do MMMM YYYY');
-        console.log(lesson);
       });
       filterLesson();
     });
