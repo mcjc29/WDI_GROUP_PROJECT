@@ -3,13 +3,14 @@
 <div class="box">
   <article class="media chat-article">
     <div class="media-left">
-      <img class="profile-show-img" ng-src="{{ vm.user.image }}" alt="{{ vm.user.firstName }}">
+      <img class="profile-show-img" ng-class="vm.user.needHelp ? 'need-help' : ''" ng-src="{{ vm.user.image }}" alt="{{ vm.user.firstName }}">
     </div>
     <div class="media-content">
       <div class="content">
         <h3>{{ vm.user.firstName }} {{ vm.user.lastName }}</h3>
-        <h5>{{ vm.user.email }}</h5>
-        <h5>{{ vm.user.cohort | uppercase }} {{ vm.user.role | uppercase }}</h5>
+        <h5 class="profile-small">{{ vm.user.email }}</h5>
+        <h5 class="profile-small">{{ vm.user.cohort | uppercase }} {{ vm.user.role | uppercase }}</h5>
+        <h5 class="user-need-help profile-small">{{ vm.user.firstName }} would like some one-on-one help!</h5>
         <button ng-if="vm.user._id === main.user._id" class="button is-primary" ui-sref="usersEdit({ id: vm.user.id })">Edit Info</button>
       </div>
     </div>
@@ -58,7 +59,7 @@
   </div>
 </div>
 
-<div class="box">
+<div class="box chart-container">
   <canvas ng-show"vm.data" id="line" class="chart chart-line" chart-data="vm.data" chart-labels="vm.labels" chart-options="vm.chartOptions" chart-dataset-override="vm.datasetOverride" chart-click="vm.onClick">
   </canvas>
 </div>
