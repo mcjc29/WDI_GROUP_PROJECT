@@ -5,8 +5,8 @@
   <div class="level block">
     <div class="level-item has-text-centered">
       <div>
-        <img class="user-img-lrg" ng-class="user.needHelp ? 'need-help' : ''" ng-src="{{ user.image }}" alt="{{ user.name }}">
-        <!-- <img ng-hide="main.user.image" class="user-img-lrg" ng-src="images/no-user.jpg" alt="{{ user.name }}"> -->
+        <img ng-if="user.image !== 'image'" class="user-img-lrg" ng-class="user.needHelp ? 'need-help' : ''" ng-src="{{ user.image }}" alt="{{ user.firstName }}">
+        <img ng-if="user.image == 'image'" class="user-img-lrg" ng-src="images/no-user.jpg" alt="{{ user.name }}">
       </div>
     </div>
     <div class="has-text-centered">
