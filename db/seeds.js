@@ -326,7 +326,7 @@ User.create([
             createdBy: users[0]
           },
           {
-            content: "I've got some time to help!",
+            content: 'Ive got some time to help!',
             createdBy: users[6]
           }
         ]

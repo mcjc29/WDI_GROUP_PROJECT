@@ -1,6 +1,4 @@
-angular
-  .module('gaFeedback')
-  .config(Router);
+angular.module('gaFeedback').config(Router);
 
 Router.$inject = ['$stateProvider', '$urlRouterProvider', '$locationProvider'];
 
@@ -119,7 +117,13 @@ function Router($stateProvider, $urlRouterProvider, $locationProvider) {
     });
   $urlRouterProvider.otherwise('/');
 
-  redirectIfNotAuthenticated.$inject = ['$q', '$state', '$auth', '$timeout', '$rootScope'];
+  redirectIfNotAuthenticated.$inject = [
+    '$q',
+    '$state',
+    '$auth',
+    '$timeout',
+    '$rootScope'
+  ];
   function redirectIfNotAuthenticated($q, $state, $auth, $timeout, $rootScope) {
     var defer = $q.defer();
     if ($auth.getPayload()) {
