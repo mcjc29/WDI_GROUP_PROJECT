@@ -1,52 +1,50 @@
-<h1>Add A Lesson</h1>
-
-<form ng-submit="vm.submit()">
+<form ng-submit="vm.submit(vm.lesson)">
 <div class="field">
   <label class="label">Title</label>
   <div class="control">
-    <input class="input" type="text" placeholder="Title..." ng-model="vm.title">
+    <input class="input" type="text" placeholder="Title..." ng-model="vm.lesson.title" required>
   </div>
 </div>
 <div class="field">
   <label class="label">Start Time</label>
   <div class="control">
-    <input class="input" type="datetime-local" placeholder="Start time..." ng-model="vm.startTime">
+    <input class="input" type="datetime-local" placeholder="Start time..." ng-model="vm.lesson.startTime" required>
   </div>
 </div>
 <div class="field">
   <label class="label">End Time</label>
   <div class="control">
-    <input class="input" type="datetime-local" placeholder="End time..." ng-model="vm.endTime">
+    <input class="input" type="datetime-local" placeholder="End time..." ng-model="vm.lesson.endTime" required>
   </div>
 </div>
 <div class="field">
   <label class="label">Creator</label>
   <div class="control">
-    <input class="input" type="text" placeholder="Name of creator..." ng-model="vm.creator">
+    <input class="input" type="text" placeholder="Name of creator..." ng-model="vm.lesson.creator">
   </div>
 </div>
 <div class="field">
   <label class="label">City</label>
   <div class="control">
-    <input class="input" type="text" placeholder="City..." ng-model="vm.city">
+    <input class="input" type="text" placeholder="City..." ng-model="vm.lesson.city">
   </div>
 </div>
 <div class="field">
   <label class="label">Competencies</label>
   <div class="control">
-    <input class="input" type="text" placeholder="Competencies..." ng-model="vm.competencies">
+    <input class="input" type="text" placeholder="Competencies..." ng-model="vm.lesson.competencies" required>
   </div>
 </div>
 <div class="field">
   <label class="label">Instructor</label>
   <div class="control">
-    <input class="input" type="text" placeholder="Instructor..." ng-model="vm.taughtBy">
+    <input class="input" type="text" placeholder="Instructor..." ng-model="vm.lesson.taughtBy" required>
   </div>
 </div>
 <div class="field">
   <label class="label">Lesson Notes</label>
   <div class="control">
-    <input base64 type="file" name="base64" ng-model="vm.base64">
+    <input base64 type="file" name="base64" ng-model="vm.lesson.base64">
   </div>
 </div>
 
