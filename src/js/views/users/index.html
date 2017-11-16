@@ -1,20 +1,20 @@
 <h1>Students</h1>
 <div class="columns" ng-repeat="users in vm.users | chunkBy:4">
   <div class="column" ng-repeat="user in users">
-<div class="box user-index" ui-sref="usersShow({ id: user.id })">
-  <div class="level block">
-    <div class="level-item has-text-centered">
-      <div>
-        <img ng-if="user.image !== 'image'" class="user-img-lrg" ng-class="user.needHelp ? 'need-help' : ''" ng-src="{{ user.image }}" alt="{{ user.firstName }}">
-        <img ng-if="user.image == 'image'" class="user-img-lrg" ng-src="images/no-user.jpg" alt="{{ user.name }}">
-      </div>
-    </div>
-    <div class="has-text-centered">
-      <div>
-        <h4 class="heading">{{ user.firstName}} {{ user.lastName }}</h4>
+    <div class="box user-index" ui-sref="usersShow({ id: user.id })">
+      <div class="level block">
+        <div class="level-item has-text-centered">
+          <div>
+            <img ng-if="user.image !== 'image'" class="user-img-lrg" ng-class="user.needHelp ? 'need-help' : ''" ng-src="{{ user.image }}" alt="{{ user.firstName }}">
+            <img ng-if="user.image == 'image'" class="user-img-lrg" ng-src="images/no-user.jpg" alt="{{ user.name }}">
+          </div>
+        </div>
+        <div class="has-text-centered">
+          <div>
+            <h4 class="heading">{{ user.firstName}} {{ user.lastName }}</h4>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-</div>
-</div>
 </div>
