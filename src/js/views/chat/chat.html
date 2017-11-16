@@ -25,13 +25,14 @@
   <article class="media">
     <div class="media-left">
       <figure class="image is-64x64">
-        <img ng-class="comment.createdBy.needHelp ? 'need-help' : ''" src="{{ comment.createdBy.image }}" alt="{{ comment.createdBy.firstName }}">
+        <img ng-if="comment.createdBy.image !== 'image'" ng-class="comment.createdBy.needHelp ? 'need-help' : ''" class="user-img-sml" src="{{ comment.createdBy.image }}" alt="{{ comment.createdBy.firstName }}" ui-sref="usersShow({ id: comment.createdBy.id })">
+        <img ng-if="comment.createdBy.image == 'image'" ng-class="comment.createdBy.needHelp ? 'need-help' : ''" class="user-img-sml" ng-src="images/no-user.jpg" alt="{{ user.name }}" ui-sref="usersShow({ id: comment.createdBy.id })">
       </figure>
     </div>
     <div class="media-content">
       <div class="content">
         <p>
-          <strong>{{ comment.createdBy.firstName }}</strong>&nbsp;
+          <strong><a ui-sref="usersShow({ id: comment.createdBy.id })">{{ comment.createdBy.firstName }}</a></strong>&nbsp;
           <small>{{ comment.createdAt }}</small>
           <span class="float-right"><a class="delete is-large" ng-if="comment.createdBy.id == main.user._id" ng-click="vm.delete(comment)">Delete</a></span>
         </p>

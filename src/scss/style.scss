@@ -167,10 +167,6 @@ label:hover {
   height: 100%;
 }
 
-#toggle:checked ~ .down {
-  display: none;
-}
-
 .grow {
   transition: all .2s ease-in-out;
 }
@@ -181,4 +177,12 @@ label:hover {
 
 .hide {
   display: none;
+}
+
+.user-img-lrg {
+  height: 250px;
+}
+
+.user-img-sml {
+  cursor: pointer;
 }

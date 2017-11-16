@@ -1,6 +1,6 @@
-<h1>{{ vm.lesson.title }}</h1>
+<h1 class>{{ vm.lesson.title }}</h1>
 
-<div class="level">
+<div class="level ">
   <div class="content">
     <div class="level-item">
       <h1>{{ vm.lesson.competencies }}</h1>
@@ -12,9 +12,9 @@
   </div>
 </div>
 
-<canvas id="radar" class="chart chart-radar chart-container" chart-data="vm.data" chart-options="vm.chartOptions" chart-labels="vm.labels"></canvas>
+<canvas id="radar" class="chart chart-radar chart-container " chart-data="vm.data" chart-options="vm.chartOptions" chart-labels="vm.labels"></canvas>
 
-<div class="box">
+<div class="box ">
   <div class="level">
     <div class="level-item has-text-centered">
       <div>
@@ -43,7 +43,7 @@
   </div>
 </div>
 
-<div class="box">
+<div class="box ">
   <div class="content has-text-centered">
     <h1>Average Student Ratings</h1>
   </div>
@@ -76,7 +76,7 @@
     </div>
   </div>
 
-  <div class="box">
+  <div class="box ">
     <div class="content has-text-centered">
       <h1>Student Ratings</h1>
     </div>
@@ -146,23 +146,16 @@
       </div>
     </div>
 
-    <div class="box">
-      <input id="toggle" class="hide" type="checkbox">
+    <div class="box" id="scrollToHere">
       <div class="content has-text-centered">
         <h1>
           Lesson Notes
         </h1>
-        <label for="toggle">
-          <span class="up">
-            <i input="checkbox" for="toggle" class="fa fa-arrow-down fa-2x grow" aria-hidden="true"></i>
-          </span>
-          <span class="down">
-            <i finput="checkbox" for="toggle" class="fa fa-arrow-up fa-2x grow" aria-hidden="true"></i>
-          </span>
-        </label>
+        <span ng-click="vm.expandThis()">
+          <i input="checkbox" for="toggle" class="fa fa-2x grow" ng-class="{'fa-arrow-down': !vm.isExpanded, 'fa-arrow-up': vm.isExpanded}" aria-hidden="true"></i>
+        </span>
       </div>
-
-      <div id="expand" class="content">
+      <div class="content" ng-hide="!vm.isExpanded">
         <section>
           <div class="markdown-body" btf-markdown ng-include="vm.returnLessonNotes(vm.lesson.lessonNotes)">
           </div>
