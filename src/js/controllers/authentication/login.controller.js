@@ -13,7 +13,6 @@ function LoginCtrl($auth, $state, currentUserService, $rootScope) {
         if (res.status === 200) {
           currentUserService.getUser();
           $state.go('ratingsIndex');
-          console.log(res);
           $rootScope.$broadcast('displayMessage', {
             type: 'success',
             content: `You have successfully logged in, ${

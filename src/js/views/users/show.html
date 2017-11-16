@@ -3,7 +3,8 @@
 <div class="box">
   <article class="media chat-article">
     <div class="media-left">
-      <img class="profile-show-img" ng-class="vm.user.needHelp ? 'need-help' : ''" ng-src="{{ vm.user.image }}" alt="{{ vm.user.firstName }}">
+      <img ng-if="vm.user.image !== 'image'" ng-class="vm.user.needHelp ? 'need-help' : ''" class="profile-show-img" ng-src="{{ vm.user.image }}" alt="{{ vm.user.firstName }}" width="167">
+      <img ng-if="vm.user.image == 'image'" ng-class="vm.user.needHelp ? 'need-help' : ''" class="profile-show-img" ng-src="images/no-user.jpg" alt="{{ vm.user.name }}" width="167">
     </div>
     <div class="media-content">
       <div class="content">
@@ -59,7 +60,7 @@
   </div>
 </div>
 
-<div class="box chart-container">
+<div ng-if="vm.data" class="box chart-container">
   <canvas ng-show="vm.data" id="line" class="chart chart-line" chart-data="vm.data" chart-labels="vm.labels" chart-options="vm.chartOptions" chart-dataset-override="vm.datasetOverride" chart-click="vm.onClick">
   </canvas>
 </div>
