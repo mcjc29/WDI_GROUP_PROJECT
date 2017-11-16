@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const validator = require('validator');
+const beautifyUnique = require('mongoose-beautiful-unique-validation');
 
 const userSchema = new mongoose.Schema(
   {
@@ -17,6 +18,8 @@ const userSchema = new mongoose.Schema(
     timestamps: true
   }
 );
+
+userSchema.plugin(beautifyUnique);
 
 userSchema.virtual('password').set(setPassword);
 

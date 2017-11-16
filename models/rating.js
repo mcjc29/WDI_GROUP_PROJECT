@@ -14,10 +14,4 @@ const ratingSchema = new mongoose.Schema(
   }
 );
 
-ratingSchema.methods.belongsTo = function ratingBelongsTo(user) {
-  if (typeof this.createdBy.id === 'string')
-    return this.createdBy.id === user.id;
-  return user.id === this.createdBy.toString();
-};
-
 module.exports = mongoose.model('Rating', ratingSchema);

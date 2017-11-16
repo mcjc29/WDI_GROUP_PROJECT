@@ -6,7 +6,6 @@ const Cohort = require('../../models/cohort');
 const User = require('../../models/user');
 
 describe('Cohorts', function() {
-
   let token;
 
   beforeEach(done => {
@@ -22,7 +21,6 @@ describe('Cohorts', function() {
   });
 
   describe('GET /api/cohorts', () => {
-
     beforeEach(done => {
       api
         .post('/api/register')
@@ -67,18 +65,9 @@ describe('Cohorts', function() {
         .set('Accept', 'application/json')
         .set('Authorization', `Bearer ${token}`)
         .end((err, res) => {
-          expect(res.header['content-type'])
-            .to.be.eq('application/json; charset=utf-8');
-          done();
-        });
-    });
-    it('response should return a token', done => {
-      api
-        .get('/api/cohorts')
-        .set('Accept', 'application/json')
-        .set('Authorization', `Bearer ${token}`)
-        .end((err, res) => {
-          expect(res.body.token).to.be.a('string');
+          expect(res.header['content-type']).to.be.eq(
+            'application/json; charset=utf-8'
+          );
           done();
         });
     });
@@ -141,7 +130,6 @@ describe('Cohorts', function() {
   });
 
   describe('returns multiple cohorts', () => {
-
     beforeEach(done => {
       Cohort.create([
         {
@@ -172,7 +160,6 @@ describe('Cohorts', function() {
   });
 
   describe('POST /api/cohorts', () => {
-
     it('should return a 201 response', done => {
       api
         .post('/api/cohorts')
@@ -225,22 +212,18 @@ describe('Cohorts', function() {
 
           done();
         });
-
     });
-
   });
 
   describe('GET /api/cohorts/:id', () => {
-
     let cohort;
 
     beforeEach(done => {
-      Cohort
-        .create({
-          name: 'WDI-30',
-          city: 'London',
-          taughtBy: 'Alex && Rane'
-        })
+      Cohort.create({
+        name: 'WDI-30',
+        city: 'London',
+        taughtBy: 'Alex && Rane'
+      })
         .then(cohortData => {
           cohort = cohortData;
           done();
@@ -262,42 +245,41 @@ describe('Cohorts', function() {
         .set('Accept', 'application/json')
         .set('Authorization', `Bearer ${token}`)
         .end((err, res) => {
-          expect(res.header['content-type'])
-            .to.be.eq('application/json; charset=utf-8');
+          expect(res.header['content-type']).to.be.eq(
+            'application/json; charset=utf-8'
+          );
           done();
         });
     });
     it('should return object with properties:_id, name, city, taughtBy, createdAt, updatedAt', done => {
-      api.get(`/api/cohorts/${cohort.id}`)
+      api
+        .get(`/api/cohorts/${cohort.id}`)
         .set('Accept', 'application/json')
         .set('Authorization', `Bearer ${token}`)
         .end((err, res) => {
-          expect(res.body)
-            .and.have.all.keys([
-              '__v',
-              '_id',
-              'name',
-              'city',
-              'taughtBy',
-              'createdAt',
-              'updatedAt'
-            ]);
+          expect(res.body).and.have.all.keys([
+            '__v',
+            '_id',
+            'name',
+            'city',
+            'taughtBy',
+            'createdAt',
+            'updatedAt'
+          ]);
           done();
         });
     });
   });
 
   describe('PUT /api/cohorts/:id', () => {
-
     let cohort;
 
     beforeEach(done => {
-      Cohort
-        .create({
-          name: 'WDI-30',
-          city: 'London',
-          taughtBy: 'Alex && Rane'
-        })
+      Cohort.create({
+        name: 'WDI-30',
+        city: 'London',
+        taughtBy: 'Alex && Rane'
+      })
         .then(cohortData => {
           cohort = cohortData;
           done();
@@ -323,26 +305,27 @@ describe('Cohorts', function() {
         .set('Accept', 'application/json')
         .set('Authorization', `Bearer ${token}`)
         .end((err, res) => {
-          expect(res.header['content-type'])
-            .to.be.eq('application/json; charset=utf-8');
+          expect(res.header['content-type']).to.be.eq(
+            'application/json; charset=utf-8'
+          );
           done();
         });
     });
     it('should return object with properties: _id, name, city, taughtBy', done => {
-      api.get(`/api/cohorts/${cohort.id}`)
+      api
+        .get(`/api/cohorts/${cohort.id}`)
         .set('Accept', 'application/json')
         .set('Authorization', `Bearer ${token}`)
         .end((err, res) => {
-          expect(res.body)
-            .and.have.all.keys([
-              '__v',
-              '_id',
-              'name',
-              'city',
-              'taughtBy',
-              'createdAt',
-              'updatedAt'
-            ]);
+          expect(res.body).and.have.all.keys([
+            '__v',
+            '_id',
+            'name',
+            'city',
+            'taughtBy',
+            'createdAt',
+            'updatedAt'
+          ]);
           done();
         });
     });
@@ -357,25 +340,21 @@ describe('Cohorts', function() {
           taughtBy: 'Alex && Rane'
         })
         .end((err, res) => {
-          expect(res.body.name)
-            .to.be.eq('WDI-31');
+          expect(res.body.name).to.be.eq('WDI-31');
           done();
         });
     });
-
   });
 
   describe('DELETE /api/cohorts/:id', () => {
-
     let cohort;
 
     beforeEach(done => {
-      Cohort
-        .create({
-          name: 'WDI-30',
-          city: 'London',
-          taughtBy: 'Alex && Rane'
-        })
+      Cohort.create({
+        name: 'WDI-30',
+        city: 'London',
+        taughtBy: 'Alex && Rane'
+      })
         .then(cohortData => {
           cohort = cohortData;
           done();
