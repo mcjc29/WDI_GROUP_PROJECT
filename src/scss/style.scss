@@ -24,9 +24,9 @@ h1 {
 img {
   height: 250px;
   border-radius: 6px;
-  &.need-help {
-    box-shadow: 0 0 8px #f6201d;
-  }
+  // &.need-help {
+  //   box-shadow: 0 0 8px #f6201d;
+  // }
 }
 
 .knob {
@@ -88,7 +88,7 @@ img {
   &:hover {
     box-shadow: 0 0 8px #2CC185;
   }
-  
+
 }
 
 .block {
@@ -170,4 +170,10 @@ img {
 
 .user-img-sml {
   cursor: pointer;
+}
+
+.help-icon {
+  height: 30px;
+  width: 40px;
+  box-shadow: 0 0 8px #f6201d;
 }
