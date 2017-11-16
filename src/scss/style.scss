@@ -25,7 +25,7 @@ img {
   height: 250px;
   border-radius: 6px;
   &.need-help {
-    box-shadow: 0 0 8px #F98B02;
+    box-shadow: 0 0 8px #f6201d;
   }
 }
 
@@ -86,8 +86,9 @@ img {
 .user-index {
   cursor: pointer;
   &:hover {
-    background: #2CC185;
+    box-shadow: 0 0 8px #2CC185;
   }
+  
 }
 
 .block {
