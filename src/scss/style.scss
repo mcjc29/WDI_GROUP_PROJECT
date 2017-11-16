@@ -103,6 +103,10 @@ img {
   }
 }
 
+.button {
+  background-color: #2CC185 !important;
+}
+
 .knob {
   display: inline-block;
   margin: 20px auto;
@@ -129,7 +133,6 @@ img {
 .reply-input {
     display: none;
 }
-
 
 .float-right {
   float: right;
@@ -163,6 +166,10 @@ img {
     box-shadow: 0 0 8px #2CC185;
   }
 
+}
+
+.lesson-index:hover {
+  box-shadow: 0 0 8px #2CC185;
 }
 
 .block {
