@@ -9,10 +9,6 @@ $poppy:   #F15050;
 $yellow:  #F9D302;
 $orange:  #F98B02;
 
-$cream:   #fdfaf0;
-
-
-
 
 main {
   width: 90%;
@@ -66,35 +62,70 @@ img {
   margin-left: 16px;
 }
 
-
 .text-center {
   text-align: center;
 }
 
-.hero {
-  background-image: url("/../images/phyton.jpg");
-  background-size: cover;
-  padding: 0;
+.box-hover:hover {
+  background: #fbfbfb;
+}
+
+.chat-help {
+  margin-top: -108px;
+  margin-left: -6px;
+}
+
+.index-help {
+  // margin-top: -108px;
+  // margin-left: -6px;
+}
+
+.user-index {
+  cursor: pointer;
+  &:hover {
+    background: #2CC185;
+  }
+}
+
+.block {
+  display: block;
+}
+
+.user-img-lrg {
+  margin-bottom: 16px;
+}
+
+.btn:hover {
+  background-color: #2CC185;
+  color: white;
+  border: white;
+}
+
+.good {
+  height: 4px;
+  background-color: #2CC185;
+  border-radius: 20px;
   margin: 0;
+  border-radius: 50px;
+}
 
+.average {
+  height: 4px;
+  background-color: orange;
+  margin: 0;
+  border-radius: 50px;
 }
-.hometitle {
-  color: $cream;
-  font-weight: bold;
-   -webkit-text-stroke: 1px black;
-}
-.homesubtitle {
-  color:  $cream;
-  font-weight: bold;
-  -webkit-text-stroke: 1px black;
-}
-.subtext {
-  color: $cream;
-  font-weight: bold;
-  -webkit-text-stroke: 1px black;
 
+.bad {
+  height: 4px;
+  background-color: red;
+  margin: 0;
+  border-radius: 50px
 }
+<<<<<<< HEAD
 .box-hover:hover {
   shadow: black;
   background: #fbfbfb;
 }
+=======
+>>>>>>> 346edaf009b9baf47ddb7350debdb3a6f019c1c0

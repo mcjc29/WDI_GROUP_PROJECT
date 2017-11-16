@@ -21,11 +21,12 @@
   </article>
 </div>
 
-<div class="box chat-box" ng-repeat="comment in vm.comments track by $index">
+<div class="box" ng-repeat="comment in vm.comments track by $index">
   <article class="media">
     <div class="media-left">
       <figure class="image is-64x64">
         <img src="{{ comment.createdBy.image }}" alt="{{ comment.createdBy.firstName }}">
+        <div ng-if="comment.createdBy.needHelp" class="chat-help"><i class="fa fa-hand-paper-o" aria-hidden="true"></i></div>
       </figure>
     </div>
     <div class="media-content">

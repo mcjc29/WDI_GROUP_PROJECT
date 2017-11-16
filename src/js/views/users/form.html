@@ -1,16 +1,50 @@
 <h1>Update</h1>
 
 <form ng-submit="vm.submitForm()">
-  <label for="firstName">First Name</label>
-  <input type="text" name="firstName" ng-model="vm.user.firstName">
-  <label for="lastName">Last Name</label>
-  <input type="text" name="lastName" ng-model="vm.user.lastName">
-  <label for="role">Role</label>
-  <input type="text" name="role" ng-model="vm.user.role">
-  <label for="email">Email</label>
-  <input type="text" name="email" ng-model="vm.user.email">
-  <label for="image">Image</label>
-  <input type="text" name="image" ng-model="vm.user.image">
-  <label for="password">Password</label>
-  <input type="submit" value="Submit">
+  <div class="field">
+    <label class="label">First Name</label>
+    <div class="control">
+      <input class="input" type="text" placeholder="First Name..."  ng-model="vm.user.firstName">
+    </div>
+  </div>
+  <div class="field">
+    <label class="label">Last Name</label>
+    <div class="control">
+      <input class="input" type="text" placeholder="Last Name..."  ng-model="vm.user.lastName">
+    </div>
+  </div>
+  <div class="field">
+    <label class="label">Role</label>
+    <div class="control">
+      <input class="input" type="text" placeholder="Role..."  ng-model="vm.user.role">
+    </div>
+  </div>
+  <div class="field">
+    <label class="label">Email</label>
+    <div class="control has-icons-left has-icons-right">
+      <input class="input is-danger" type="email" placeholder="email.." value="hello@" ng-model="vm.user.email">
+      <span class="icon is-small is-left">
+        <i class="fa fa-envelope"></i>
+      </span>
+      <span class="icon is-small is-right">
+        <i class="fa fa-warning"></i>
+      </span>
+    </div>
+    <p class="help is-danger">This email is invalid</p>
+  </div>
+  <div class="field">
+    <label class="label">Image</label>
+    <div class="control">
+      <input class="input" type="text" placeholder="Image..."  ng-model="vm.user.image">
+    </div>
+  </div>
+  <div class="field">
+    <label class="label">Password</label>
+    <div class="control">
+      <input class="input" type="text" placeholder="Password...">
+    </div>
+  </div>
+  <div class="control">
+    <button class="button is-link">Submit</button>
+  </div>
 </form>

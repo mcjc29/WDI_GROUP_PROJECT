@@ -1,39 +1,47 @@
-<div>
-  <h1>{{ vm.lesson.title }}</h1>
-  <p>{{ vm.lesson.competencies }}</p>
-  <p>{{ vm.date }}</p>
-  <p>{{ vm.lesson.city }}</p>
-  <p>{{ vm.lesson.taughtBy }}</p>
+<h1>{{ vm.lesson.title }}</h1>
 
-  <button class="button"><a ng-href="{{ vm.lesson.lessonNotes }}" target="_blank" download>Download Lesson Notes</a></button>
-
-  <a ng-if="main.user.role === instructor" ui-sref="lessonsEdit({ id: vm.lesson._id })">Edit</a>
+<div class="level">
+  <div class="content">
+    <div class="level-item">
+      <h1>{{ vm.lesson.competencies }}</h1>
+    </div>
+    <div>
+      <button class="button is-primary" ng-href="{{ vm.lesson.lessonNotes }}" target="_blank" download>Download Lesson Notes</button>
+      <button class="button is-link" ng-if="main.user.role === 'instructor'" ui-sref="lessonsEdit({ id: vm.lesson._id })">Edit Lesson</button>
+    </div>
+  </div>
 </div>
 
 <canvas id="radar" class="chart chart-radar" chart-data="vm.data" chart-options="vm.chartOptions" chart-labels="vm.labels"></canvas>
 
-<div class="level">
-  <div class="level-item has-text-centered">
-    <div>
-      <p class="heading">Taught by</p>
-      <p class="small">{{ vm.lesson.taughtBy }}</p>
+<div class="box">
+  <div class="level">
+    <div class="level-item has-text-centered">
+      <div>
+        <p class="heading">Taught by</p>
+        <p class="small">{{ vm.lesson.taughtBy }}</p>
+      </div>
     </div>
-  </div>
-  <div class="level-item has-text-centered">
-    <div>
-      <p class="heading">Location</p>
-      <p class="small">{{ vm.lesson.city }}</p>
+    <div class="level-item has-text-centered">
+      <div>
+        <p class="heading">Location</p>
+        <p class="small">{{ vm.lesson.city }}</p>
+      </div>
     </div>
-  </div>
-  <div class="level-item has-text-centered">
-    <div>
-      <p class="heading">Created by</p>
-      <p class="small">{{ vm.lesson.creator }}</p>
+    <div class="level-item has-text-centered">
+      <div>
+        <p class="heading">Created by</p>
+        <p class="small">{{ vm.lesson.creator }}</p>
+      </div>
+    </div>
+    <div class="level-item has-text-centered">
+      <div>
+        <p class="heading">Date</p>
+        <p class="small">{{ vm.lesson.createdAt }}</p>
+      </div>
     </div>
   </div>
 </div>
-</div>
-
 
 <div class="box">
   <div class="content has-text-centered">
@@ -68,7 +76,6 @@
     </div>
   </div>
 
-
   <div class="box">
     <div class="content has-text-centered">
       <h1>Student Ratings</h1>
@@ -76,56 +83,68 @@
     <div class="columns" ng-repeat="users in vm.lessonData | chunkBy:4">
       <div class="column" ng-repeat="user in users">
         <div class="box">
-          <article class="media">
+
             <div class="media-left">
-              <figure class="image is-64x64">
-                <img src="{{ user.createdBy.image }}" alt="Image">
-              </figure>
+              <div class="level">
+                <div class="level-item">
+                  <div>
+                    <figure class="image is-48x48">
+                      <img src="{{ user.createdBy.image }}" alt="Image">
+                    </figure>
+                  </div>
+
+                </div>
+                <div class="level-item">
+                  <div class="content has-text-centered">
+                    <div>
+                      <p>
+                        <strong>{{ user.createdBy.firstName }}'s rating</strong>
+                        <hr class="good" ng-if="user.confidence > 66">
+                        <hr class="average" ng-if="user.confidence > 33 && user.confidence < 66">
+                        <hr class="bad" ng-if="user.confidence < 33">
+                      </p>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="media-content">
-              <div class="content has-text-centered">
-                <p>
-                  <strong>{{ user.createdBy.firstName }}</strong>
-                  <br>{{ rating.message }}
-                </p>
+
+            <br>
+            <br>
+
+            <div class="level">
+              <div class="level-item has-text-centered">
+                <div>
+                  <h5 class="heading">{{ user.pace }} </h5>
+                  <h2 class="heading">Pace</h2>
+                </div>
+              </div>
+              <div class="level-item has-text-centered">
+                <div>
+                  <h5 5 class="heading">{{ user.concepts }}</h5>
+                  <h2 class="heading">Concepts</h2>
+                </div>
               </div>
             </div>
-            <div class="content">
-              <div class="has-text-centered">
+            <div class="level">
+              <div class="level-item has-text-centered">
                 <div>
-                  <strong>Lesson Pace</strong>
-                  <small>{{ user.pace }}</small>
+                  <h5 class="heading">{{ user.syntax }} </h5>
+                  <h2 class="heading">Syntax</h2>
                 </div>
               </div>
-              <div class="has-text-centered">
+              <div class="level-item has-text-centered">
                 <div>
-                  <strong>Lesson Concepts</strong>
-                  <small>{{ user.concepts }}</small>
-                </div>
-              </div>
-              <div class="has-text-centered">
-                <div>
-                  <strong>Lesson Syntax</strong>
-                  <small>{{ user.syntax }}</small>
-                </div>
-              </div>
-              <div class="has-text-centered">
-                <div>
-                  <strong>Confidence</strong>
-                  <small>{{ user.confidence }}</small>
-                </div>
-              </div>
-              <div class="has-text-centered">
-                <div>
-                  <small>{{ user.message }}</small>
+                  <h5 5 class="heading">{{ user.confidence }}</h5>
+                  <h2 class="heading">Confidence</h2>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </article>
+      </div>
     </div>
-  </div>
 
 
 <h2>Lesson notes</h2>

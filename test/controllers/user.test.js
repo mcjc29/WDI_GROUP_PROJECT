@@ -33,6 +33,26 @@ describe('Users', function() {
           password: 'password',
           passwordConfirmation: 'password'
         })
+        .end((err, res) => {
+          token = res.body.token;
+          done();
+        });
+    });
+
+    beforeEach(done => {
+      api
+        .post('/api/register')
+        .set('Accept', 'application/json')
+        .send({
+          firstName: 'person',
+          lastName: 'person',
+          image: 'person',
+          role: 'student',
+          cohort: 'WDI-30',
+          email: 'person@person.com',
+          password: 'password',
+          passwordConfirmation: 'password'
+        })
         .end(() => {
           done();
         });
