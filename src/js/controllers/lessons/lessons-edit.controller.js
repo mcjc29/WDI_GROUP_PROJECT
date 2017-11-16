@@ -8,7 +8,6 @@ function LessonsEditCtrl(Lesson, $stateParams, $state) {
   const vm = this;
 
   vm.lesson = Lesson.get($stateParams);
-  console.log(vm.lesson);
   vm.submit = lesson => {
     Lesson
       .update({ id: lesson._id }, lesson)
