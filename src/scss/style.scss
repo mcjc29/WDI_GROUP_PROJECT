@@ -1,7 +1,77 @@
 
 @import "markdown";
 
+@font-face {
+  font-family: 'PFDinTextCompProBold';
+  src: url('/fonts/pfdintextcomppro-bold-webfont.eot');
+  src: url('/fonts/pfdintextcomppro-bold-webfont.eot?#iefix') format('embedded-opentype'),
+       url('/fonts/pfdintextcomppro-bold-webfont.woff') format('woff'),
+       url('/fonts/pfdintextcomppro-bold-webfont.ttf')  format('truetype'),
+       url('/fonts/pfdintextcomppro-bold-webfont.svg#svgFontName') format('svg');
+}
 
+@font-face {
+  font-family: 'PFDinTextCompProMedium';
+  src: url('/fonts/pfdintextcomppro-medium-webfont.eot');
+  src: url('/fonts/pfdintextcomppro-medium-webfont.eot?#iefix') format('embedded-opentype'),
+       url('/fonts/pfdintextcomppro-medium-webfont.woff') format('woff'),
+       url('/fonts/pfdintextcomppro-medium-webfont.ttf')  format('truetype'),
+       url('/fonts/pfdintextcomppro-medium-webfont.svg#svgFontName') format('svg');
+}
+
+@font-face {
+  font-family: 'PFDinTextCompProLight';
+  src: url('/fonts/pfdintextcomppro-light-webfont.eot');
+  src: url('/fonts/pfdintextcomppro-light-webfont.eot?#iefix') format('embedded-opentype'),
+       url('/fonts/pfdintextcomppro-light-webfont.woff') format('woff'),
+       url('/fonts/pfdintextcomppro-light-webfont.ttf')  format('truetype'),
+       url('/fonts/pfdintextcomppro-light-webfont.svg#svgFontName') format('svg');
+}
+
+@font-face {
+  font-family: 'News706BT-RomanC';
+  src: url('/fonts/News706BT-RomanC.eot');
+  src: url('/fonts/News706BT-RomanC.eot?#iefix') format('embedded-opentype'),
+       url('/fonts/News706BT-RomanC.woff') format('woff'),
+       url('/fonts/News706BT-RomanC.ttf')  format('truetype'),
+       url('/fonts/News706BT-RomanC.svg#svgFontName') format('svg');
+}
+
+@font-face {
+  font-family: 'News706BT-ItalicC';
+  src: url('/fonts/News706BT-ItalicC.eot');
+  src: url('/fonts/News706BT-ItalicC.eot?#iefix') format('embedded-opentype'),
+       url('/fonts/News706BT-ItalicC.woff') format('woff'),
+       url('/fonts/News706BT-ItalicC.ttf')  format('truetype'),
+       url('/fonts/News706BT-ItalicC.svg#svgFontName') format('svg');
+}
+
+@font-face {
+  font-family: 'News706BT-BoldC';
+  src: url('/fonts/News706BT-BoldC.eot');
+  src: url('/fonts/News706BT-BoldC.eot?#iefix') format('embedded-opentype'),
+       url('/fonts/News706BT-BoldC.woff') format('woff'),
+       url('/fonts/News706BT-BoldC.ttf')  format('truetype'),
+       url('/fonts/News706BT-BoldC.svg#svgFontName') format('svg');
+}
+
+@font-face {
+  font-family: 'Inconsolata';
+  src: url('/fonts/inconsolata.eot');
+  src: url('/fonts/inconsolata.eot?#iefix') format('embedded-opentype'),
+       url('/fonts/inconsolata.woff') format('woff'),
+       url('/fonts/inconsolata.ttf')  format('truetype'),
+       url('/fonts/inconsolata.svg#svgFontName') format('svg');
+}
+
+@font-face {
+  font-family: 'Iconic';
+  src: url('/fonts/iconic.eot');
+  src: url('/fonts/iconic.eot?#iefix') format('embedded-opentype'),
+       url('/fonts/iconic.woff') format('woff'),
+       url('/fonts/iconic.ttf')  format('truetype'),
+       url('/fonts/iconic.svg#svgFontName') format('svg');
+}
 
 $lgreen:   #199840;
 $dgreen:   #0B726E;
@@ -13,7 +83,6 @@ $poppy:   #F15050;
 $yellow:  #F9D302;
 $orange:  #F98B02;
 
-
 main {
   width: 90%;
   margin: 30px auto;
@@ -23,6 +92,7 @@ h1 {
   font-size: 40px;
   font-weight: 800;
   text-transform: uppercase;
+  font-family: 'PFDinTextCompProBold';
 }
 
 img {
@@ -159,22 +229,12 @@ img {
 }
 
 .hero {
-
-  font-family: 'Anton', sans-serif;
   color: #023157;
-
-}
-.homesubtitle {
-  font-size: 30px;
+  font-family: 'PFDinTextCompProBold';
 }
 
-.subtext {
-  font-size: 30px;
-}
-
-.container {
-  border-color: orange;
-  border-width: 1px;
+.text {
+  font-size: 35px;
 }
 
 
