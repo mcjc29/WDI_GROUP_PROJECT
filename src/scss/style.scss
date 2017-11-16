@@ -278,3 +278,18 @@ label:hover {
   width: 40px;
   box-shadow: 0 0 8px #f6201d;
 }
+
+.home-box {
+  margin: 100px 150px;
+  &.home-box.body {
+    padding-top: .1rem;
+    padding-top: .1rem;
+  }
+  &.home-text-container {
+    position: relative;
+    width: 80%;
+    &.home-text {
+
+    }
+  }
+}
