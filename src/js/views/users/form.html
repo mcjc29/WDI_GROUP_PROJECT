@@ -16,10 +16,9 @@
   <div class="field">
     <label class="label">Role</label>
     <div class="control">
-      <div class="select">
+      <div class="select" disabled>
         <select name="role" ng-model="vm.user.role" required>
-          <option>student</option>
-          <option>instructor</option>
+          <option>{{ vm.user.role }}</option>
         </select>
       </div>
     </div>
