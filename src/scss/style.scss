@@ -152,3 +152,24 @@ img {
     display: none;
   }
 }
+
+input {
+  display: none;
+  visibility: hidden;
+}
+
+label:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+#expand {
+  height: 0px;
+  overflow: hidden;
+  transition: height 0.5s;
+}
+
+#toggle:checked ~ #expand {
+  height: 300px;
+
+}
