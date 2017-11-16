@@ -1,13 +1,3 @@
-<<<<<<< HEAD
-const mongoose    = require('mongoose');
-const User        = require('../models/user');
-const Cohort      = require('../models/cohort');
-const Lesson      = require('../models/lesson');
-const Comment     = require('../models/comment');
-const Rating      = require('../models/rating');
-const { env, db }      = require('../config/environment');
-mongoose.Promise  = require('bluebird');
-=======
 const mongoose = require('mongoose');
 const User = require('../models/user');
 const Cohort = require('../models/cohort');
@@ -16,7 +6,6 @@ const Comment = require('../models/comment');
 const Rating = require('../models/rating');
 const { env, db } = require('../config/environment');
 mongoose.Promise = require('bluebird');
->>>>>>> development
 
 mongoose.connect(db[env], { useMongoClient: true });
 
@@ -337,7 +326,7 @@ User.create([
             createdBy: users[0]
           },
           {
-            content: "I've got some time to help!",
+            content: 'Ive got some time to help!',
             createdBy: users[6]
           }
         ]
