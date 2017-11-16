@@ -129,6 +129,7 @@ img {
 .box-hover:hover {
   shadow: black;
   background: #fbfbfb;
+}
 
 .user-need-help {
   text-shadow: 0 0 4px #F98B02;
@@ -150,4 +151,20 @@ img {
   .chart-container {
     display: none;
   }
+}
+
+label:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+#expand {
+  height: 0px;
+  overflow: hidden;
+  transition: height 0.5s;
+}
+
+#toggle:checked ~ #expand {
+  height: 300px;
+
 }
