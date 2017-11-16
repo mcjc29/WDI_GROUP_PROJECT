@@ -12,7 +12,6 @@ function base64() {
     link($scope, element, attrs, ngModel) {
 
       fileReader.onload = function fileLoaded() {
-        console.log(fileReader.result);
         ngModel.$setViewValue(fileReader.result);
       };
 
