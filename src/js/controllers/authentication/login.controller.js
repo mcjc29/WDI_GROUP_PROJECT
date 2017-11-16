@@ -14,7 +14,7 @@ function LoginCtrl($auth, $state, currentUserService, $rootScope) {
       .then(res => {
         if (res.status === 200) {
           currentUserService.getUser();
-          $state.go('usersIndex');
+          $state.go('ratingsIndex');
           console.log(res);
           $rootScope.$broadcast('displayMessage', {
             type: 'success',
