@@ -25,8 +25,7 @@
   <article class="media">
     <div class="media-left">
       <figure class="image is-64x64">
-        <img src="{{ comment.createdBy.image }}" alt="{{ comment.createdBy.firstName }}">
-        <div ng-if="comment.createdBy.needHelp" class="chat-help"><i class="fa fa-hand-paper-o" aria-hidden="true"></i></div>
+        <img ng-class="comment.createdBy.needHelp ? 'need-help' : ''" src="{{ comment.createdBy.image }}" alt="{{ comment.createdBy.firstName }}">
       </figure>
     </div>
     <div class="media-content">

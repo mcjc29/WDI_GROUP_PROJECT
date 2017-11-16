@@ -11,8 +11,8 @@
     </div>
   </div>
 </div>
-a 
-<canvas id="radar" class="chart chart-radar" chart-data="vm.data" chart-options="vm.chartOptions" chart-labels="vm.labels"></canvas>
+
+<canvas id="radar" class="chart chart-radar chart-container" chart-data="vm.data" chart-options="vm.chartOptions" chart-labels="vm.labels"></canvas>
 
 <div class="box">
   <div class="level">
@@ -89,7 +89,7 @@ a
                 <div class="level-item">
                   <div>
                     <figure class="image is-48x48">
-                      <img src="{{ user.createdBy.image }}" alt="Image">
+                      <img ng-class="user.createdBy.needHelp ? 'need-help' : ''" src="{{ user.createdBy.image }}" alt="Image">
                     </figure>
                   </div>
 
