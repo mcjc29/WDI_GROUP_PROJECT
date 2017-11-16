@@ -10,8 +10,8 @@
         <h3>{{ vm.user.firstName }} {{ vm.user.lastName }}</h3>
         <h5 class="profile-small">{{ vm.user.email }}</h5>
         <h5 class="profile-small">{{ vm.user.cohort | uppercase }} {{ vm.user.role | uppercase }}</h5>
-        <h5 class="user-need-help profile-small">{{ vm.user.firstName }} would like some one-on-one help!</h5>
-        <button ng-if="vm.user._id === main.user._id" class="button is-primary" ui-sref="usersEdit({ id: vm.user.id })">Edit Info</button>
+        <h5 ng-if="vm.user.needHelp" class="user-need-help profile-small">{{ vm.user.firstName }} would like some one-on-one help!</h5>
+        <button ng-if="vm.user._id === main.user._id" class="button is-primary" ui-sref="usersEdit({ id: vm.user._id })">Edit Info</button>
       </div>
     </div>
   </article>
