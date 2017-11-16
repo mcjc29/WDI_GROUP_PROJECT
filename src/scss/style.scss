@@ -24,6 +24,9 @@ h1 {
 img {
   height: 250px;
   border-radius: 6px;
+  &.need-help {
+    box-shadow: 0 0 8px #F98B02;
+  }
 }
 
 .knob {
@@ -123,8 +126,31 @@ img {
   border-radius: 50px
 }
 
+.box-hover:hover {
+  shadow: black;
+  background: #fbfbfb;
 
-// testing something
+.user-need-help {
+  text-shadow: 0 0 4px #F98B02;
+}
+
+@media screen and (max-width: 768px) {
+  .content {
+    .profile-small {
+    font-size: .6em;
+    }
+  }
+  h1 {
+    line-height: 40px;
+    margin-bottom: 20px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .chart-container {
+    display: none;
+  }
+}
 
 input {
   display: none;
@@ -144,4 +170,3 @@ label:hover {
 
 #toggle:checked ~ #expand {
   height: 300px;
-}
