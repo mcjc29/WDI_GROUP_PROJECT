@@ -1,6 +1,4 @@
-angular
-  .module('gaFeedback')
-  .controller('LessonsNewCtrl', LessonsNewCtrl);
+angular.module('gaFeedback').controller('LessonsNewCtrl', LessonsNewCtrl);
 
 LessonsNewCtrl.$inject = ['Lesson', '$state'];
 
@@ -21,11 +19,8 @@ function LessonsNewCtrl(Lesson, $state) {
       base64: vm.lesson.base64
     };
 
-    Lesson
-      .save(vm.newLesson)
-      .$promise
-      .then(() => {
-        $state.go('lessonsIndex');
-      });
+    Lesson.save(vm.newLesson).$promise.then(() => {
+      $state.go('lessonsIndex');
+    });
   }
 }
