@@ -1,5 +1,4 @@
 const User = require('../models/user');
-const Rating = require('../models/rating');
 
 function usersIndex(req, res, next) {
   User
@@ -17,7 +16,6 @@ function usersShow(req, res, next) {
 }
 
 function usersUpdate(req, res, next) {
-  console.log(req.body);
   User
     .findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true })
     .exec()
