@@ -1,6 +1,4 @@
-angular
-  .module('gaFeedback')
-  .controller('LoginCtrl', LoginCtrl);
+angular.module('gaFeedback').controller('LoginCtrl', LoginCtrl);
 
 LoginCtrl.$inject = ['$auth', '$state', 'currentUserService', '$rootScope'];
 
@@ -18,7 +16,9 @@ function LoginCtrl($auth, $state, currentUserService, $rootScope) {
           console.log(res);
           $rootScope.$broadcast('displayMessage', {
             type: 'success',
-            content: `You have successfully logged in, ${res.data.user.firstName}!`
+            content: `You have successfully logged in, ${
+              res.data.user.firstName
+            }!`
           });
         }
       })

@@ -163,6 +163,18 @@ img {
   height: 100%;
 }
 
+.grow {
+  transition: all .2s ease-in-out;
+}
+
+.grow:hover {
+  transform: scale(1.3);
+}
+
+.hide {
+  display: none;
+}
+
 .user-img-lrg {
   height: 250px;
 }
