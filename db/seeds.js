@@ -4,10 +4,10 @@ const Cohort      = require('../models/cohort');
 const Lesson      = require('../models/lesson');
 const Comment     = require('../models/comment');
 const Rating      = require('../models/rating');
-const { db }      = require('../config/environment');
+const { env,db }      = require('../config/environment');
 mongoose.Promise  = require('bluebird');
 
-mongoose.connect(db.[env], { useMongoClient: true });
+mongoose.connect(db[env], { useMongoClient: true });
 
 User.collection.drop();
 Cohort.collection.drop();
