@@ -60,7 +60,7 @@
   </div>
 </div>
 
-<div class="box chart-container">
+<div ng-if="vm.data" class="box chart-container">
   <canvas ng-show="vm.data" id="line" class="chart chart-line" chart-data="vm.data" chart-labels="vm.labels" chart-options="vm.chartOptions" chart-dataset-override="vm.datasetOverride" chart-click="vm.onClick">
   </canvas>
 </div>
