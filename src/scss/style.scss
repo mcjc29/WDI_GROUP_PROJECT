@@ -24,9 +24,9 @@ h1 {
 img {
   height: 250px;
   border-radius: 6px;
-  // &.need-help {
-  //   box-shadow: 0 0 8px #f6201d;
-  // }
+  &.need-help {
+    box-shadow: 0 0 8px #f6201d;
+  }
 }
 
 .knob {
