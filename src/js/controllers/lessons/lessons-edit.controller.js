@@ -8,12 +8,12 @@ function LessonsEditCtrl(Lesson, $stateParams, $state) {
   const vm = this;
 
   vm.lesson = Lesson.get($stateParams);
-  vm.submit = lesson => {
+  vm.submit = () => {
     Lesson
-      .update({ id: lesson._id }, lesson)
+      .update({ id: $stateParams.id }, vm.lesson)
       .$promise
-      .then(lesson => {
-        $state.go('lessonsShow', { id: lesson._id });
+      .then(() => {
+        $state.go('lessonsShow', { id: $stateParams.id });
       });
   };
 }
