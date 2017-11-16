@@ -1,7 +1,7 @@
 <h1>Lessons</h1>
 <div ng-if="main.user.role === 'instructor'" class="content">
   <div class="control">
-    <button type="submit" ui-sref="lessonsNew" class="button is-link">Add a lesson</button>
+    <button type="submit" ui-sref="lessonsNew" class="button is-primary">Add a lesson</button>
   </div>
 </div>
 
@@ -16,23 +16,25 @@
   </div>
 </div>
 
-  <div class="box">
+    <div class="box">
     <div class="columns" ng-repeat="lessons in vm.filtered | orderBy: '-' | chunkBy:3">
       <div class="column" ng-repeat="lesson in lessons">
-
         <div class="box box-hover">
           <div class="content">
             <div class="has-text-centered">
               <p><strong>
                 {{ lesson.title }}
               </strong></p>
+              <p><small>
+                {{ lesson.competencies }}
+              </small></p>
               <small class="is-small">
                 {{ lesson.createdAt }}
               </small>
             </div>
           </div>
           <div class="has-text-centered">
-            <a class="button is-outlined btn" ui-sref="lessonsShow({ id: lesson._id })">View Lesson</a>
+            <a class="button is-primary" ui-sref="lessonsShow({ id: lesson._id })">View Lesson</a>
           </div>
         </div>
       </div>
