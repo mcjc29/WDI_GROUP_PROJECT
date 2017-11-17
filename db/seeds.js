@@ -9,11 +9,11 @@ mongoose.Promise = require('bluebird');
 
 mongoose.connect(db[env], { useMongoClient: true });
 
-User.collection.drop();
-Cohort.collection.drop();
-Comment.collection.drop();
-Lesson.collection.drop();
-Rating.collection.drop();
+User.collection.remove();
+Cohort.collection.remove();
+Comment.collection.remove();
+Lesson.collection.remove();
+Rating.collection.remove();
 
 User.create([
   {
@@ -273,7 +273,7 @@ User.create([
     firstName: 'Rane',
     lastName: 'Gowan',
     email: 'rane@ga.co',
-    image: 'image',
+    image: 'https://avatars0.githubusercontent.com/u/11501555?s=460&v=4',
     cohort: 'WDI-30',
     role: 'instructor',
     password: 'password',
@@ -283,7 +283,8 @@ User.create([
     firstName: 'Alex',
     lastName: 'Chin',
     email: 'alex@ga.co',
-    image: 'image',
+    image:
+      'https://ga-core-production-herokuapp-com.global.ssl.fastly.net/assets/controllers/education/immersives/web-development-immersive/alex-chin-ea15c8688ba4c346299701815547463a.jpg',
     cohort: 'WDI-30',
     role: 'instructor',
     password: 'password',
@@ -293,7 +294,7 @@ User.create([
     firstName: 'Marta',
     lastName: 'Mattioli',
     email: 'marta@ga.co',
-    image: 'image',
+    image: 'https://avatars1.githubusercontent.com/u/12926207?s=400&v=4',
     cohort: 'WDI-30',
     role: 'instructor',
     password: 'password',
@@ -303,13 +304,14 @@ User.create([
     firstName: 'Mike',
     lastName: 'Belither',
     email: 'mike@ga.co',
-    image: 'image',
+    image:
+      'https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAIA_wDGAAAAAQAAAAAAAArKAAAAJGEyN2M0YmE4LWU0M2ItNGExZC04MTAxLTNkYTFmMDI2ZmM0Mg.jpg',
     cohort: 'WDI-30',
     role: 'instructor',
     password: 'password',
     passwordConfirmation: 'password'
   }
 ])
-
+  .then(users => console.log(`${users.length} users created!`))
   .catch(err => console.log(err))
   .finally(() => mongoose.connection.close());
