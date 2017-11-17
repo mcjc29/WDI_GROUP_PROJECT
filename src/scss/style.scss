@@ -103,7 +103,7 @@ img {
   }
 }
 
-.button {
+.is-primary {
   background-color: #2CC185 !important;
 }
 
@@ -287,14 +287,15 @@ label:hover {
 }
 
 .home-box {
-  margin: 100px 150px;
+  margin: 100px 100px;
+  background: #2CC185 !important;
+  border-radius: 10px;
   &.home-box.body {
     padding-top: .1rem;
     padding-top: .1rem;
   }
   &.home-text-container {
     position: relative;
-    width: 80%;
     &.home-text {
 
     }
