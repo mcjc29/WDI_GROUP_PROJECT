@@ -9,11 +9,11 @@ mongoose.Promise = require('bluebird');
 
 mongoose.connect(db[env], { useMongoClient: true });
 
-User.collection.remove();
-Cohort.collection.remove();
-Comment.collection.remove();
-Lesson.collection.remove();
-Rating.collection.remove();
+User.collection.drop();
+Cohort.collection.drop();
+Comment.collection.drop();
+Lesson.collection.drop();
+Rating.collection.drop();
 
 User.create([
   {
