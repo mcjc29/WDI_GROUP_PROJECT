@@ -9,11 +9,11 @@ mongoose.Promise = require('bluebird');
 
 mongoose.connect(db[env], { useMongoClient: true });
 
-User.collection.drop();
-Cohort.collection.drop();
-Comment.collection.drop();
-Lesson.collection.drop();
-Rating.collection.drop();
+User.collection.remove();
+Cohort.collection.remove();
+Comment.collection.remove();
+Lesson.collection.remove();
+Rating.collection.remove();
 
 User.create([
   {
@@ -273,7 +273,7 @@ User.create([
     firstName: 'Rane',
     lastName: 'Gowan',
     email: 'rane@ga.co',
-    image: 'image',
+    image: 'https://avatars0.githubusercontent.com/u/11501555?s=460&v=4',
     cohort: 'WDI-30',
     role: 'instructor',
     password: 'password',
@@ -283,7 +283,8 @@ User.create([
     firstName: 'Alex',
     lastName: 'Chin',
     email: 'alex@ga.co',
-    image: 'image',
+    image:
+      'https://ga-core-production-herokuapp-com.global.ssl.fastly.net/assets/controllers/education/immersives/web-development-immersive/alex-chin-ea15c8688ba4c346299701815547463a.jpg',
     cohort: 'WDI-30',
     role: 'instructor',
     password: 'password',
@@ -293,7 +294,7 @@ User.create([
     firstName: 'Marta',
     lastName: 'Mattioli',
     email: 'marta@ga.co',
-    image: 'image',
+    image: 'https://avatars1.githubusercontent.com/u/12926207?s=400&v=4',
     cohort: 'WDI-30',
     role: 'instructor',
     password: 'password',
@@ -303,167 +304,14 @@ User.create([
     firstName: 'Mike',
     lastName: 'Belither',
     email: 'mike@ga.co',
-    image: 'image',
+    image:
+      'https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAIA_wDGAAAAAQAAAAAAAArKAAAAJGEyN2M0YmE4LWU0M2ItNGExZC04MTAxLTNkYTFmMDI2ZmM0Mg.jpg',
     cohort: 'WDI-30',
     role: 'instructor',
     password: 'password',
     passwordConfirmation: 'password'
   }
 ])
-  .then(users => {
-    console.log(`${users.length} users created!`);
-    return Comment.create([
-      {
-        content: 'Hi guys, can anyone help with my homework?',
-        createdBy: users[1],
-        replies: [
-          {
-            content: 'Hey, I can help? Slack me up!',
-            createdBy: users[2]
-          },
-          {
-            content: 'Still struggling?',
-            createdBy: users[0]
-          },
-          {
-            content: 'Ive got some time to help!',
-            createdBy: users[6]
-          }
-        ]
-      },
-      {
-        content: "Here to help with today's lesson - I'm a ninja!",
-        createdBy: users[12]
-      }
-    ]).then(comments => {
-      console.log(`${comments.length} comments created!`);
-      return Cohort.create([
-        {
-          name: 'WDI-30',
-          city: 'London',
-          taughtBy: 'Rane, Alex'
-        },
-        {
-          name: 'WDI-29',
-          city: 'London',
-          taughtBy: 'Mike Hayden, Emily Isacke'
-        },
-        {
-          name: 'UX-12',
-          city: 'London',
-          taughtBy: '???, ???'
-        }
-      ]).then(cohorts => {
-        console.log(`${cohorts.length} cohorts created!`);
-        return Lesson.create([
-          {
-            title: 'Ng Resource Factories',
-            startTime: new Date(2017, 10, 14, 12, 8),
-            endTime: new Date(2017, 10, 14, 13, 40),
-            creator: 'Alex Chin',
-            city: 'London',
-            competencies: 'Front End Frameworks',
-            taughtBy: 'Alex Chin'
-          },
-          {
-            title: 'Angular $http',
-            startTime: new Date(2017, 11, 5, 10, 30),
-            endTime: new Date(2017, 11, 8, 11, 30),
-            creator: 'Alex Chin & Micah Rich',
-            city: 'London & LA',
-            competencies: 'Front End Frameworks',
-            taughtBy: 'Rane Gowan'
-          },
-          {
-            title: 'Uploading Images with Angular',
-            startTime: new Date(2017, 11, 5, 10, 30),
-            endTime: new Date(2017, 11, 20, 11, 30),
-            creator: 'Mike Hayden',
-            city: 'London',
-            competencies: 'Programming, Server Applications, MV* Applications',
-            taughtBy: 'Alex Chin'
-          }
-        ]).then(lessons => {
-          console.log(`${lessons.length} lessons created!`);
-          return Rating.create([
-            {
-              createdBy: users[0],
-              pace: 50,
-              concepts: 50,
-              syntax: 50,
-              confidence: 50,
-              message: 'Feeling ok!',
-              needHelp: false
-            },
-            {
-              createdBy: users[0],
-              pace: -25,
-              concepts: 0,
-              syntax: 15,
-              confidence: 10,
-              message: 'Alex is going too fast :(',
-              needHelp: true
-            },
-            {
-              createdBy: users[0],
-              pace: 0,
-              concepts: 10,
-              syntax: 10,
-              confidence: 25,
-              message: '',
-              needHelp: true
-            },
-            {
-              createdBy: users[0],
-              pace: 90,
-              concepts: 75,
-              syntax: 80,
-              confidence: 70,
-              message: 'Feeling pretty good about things!',
-              needHelp: false
-            },
-            {
-              createdBy: users[0],
-              pace: 40,
-              concepts: 20,
-              syntax: 20,
-              confidence: 30,
-              message: 'Tired AF!',
-              needHelp: false
-            },
-            {
-              createdBy: users[10],
-              pace: 90,
-              concepts: 90,
-              syntax: 90,
-              confidence: 90,
-              message: 'Smashing it!',
-              needHelp: false
-            },
-            {
-              createdBy: users[20],
-              pace: 60,
-              concepts: 60,
-              syntax: 60,
-              confidence: 60,
-              message: 'Doing pretty good!',
-              needHelp: false
-            },
-            {
-              createdBy: users[15],
-              pace: 50,
-              concepts: 20,
-              syntax: 20,
-              confidence: 40,
-              message: 'Not too bad!',
-              needHelp: false
-            }
-          ]).then(ratings => {
-            console.log(`${ratings.length} ratings created!`);
-          });
-        });
-      });
-    });
-  })
+  .then(users => console.log(`${users.length} users created!`))
   .catch(err => console.log(err))
   .finally(() => mongoose.connection.close());
