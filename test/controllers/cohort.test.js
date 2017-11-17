@@ -29,7 +29,7 @@ describe('Cohorts', function() {
           firstName: 'person',
           lastName: 'person',
           image: 'person',
-          role: 'student',
+          role: 'Instructor',
           cohort: 'WDI-30',
           email: 'person@person.com',
           password: 'password',
@@ -214,7 +214,44 @@ describe('Cohorts', function() {
         });
     });
   });
+  describe('checking unique fields', function() {
+    beforeEach(done => {
+      api
+        .post('/api/cohorts')
+        .set('Accept', 'application/json')
+        .set('Authorization', `Bearer ${token}`)
+        .send({
+          name: 'WDI-30',
+          city: 'London',
+          taughtBy: 'Alex && Rane'
+        })
+        .then(() => done())
+        .catch(() => done());
+    });
 
+    it('should not create a user with the same name, duplicate cohort', function(
+      done
+    ) {
+      api
+        .post('/api/cohorts')
+        .set('Accept', 'application/json')
+        .set('Authorization', `Bearer ${token}`)
+        .send({
+          name: 'WDI-30',
+          city: 'London',
+          taughtBy: 'Alex && Rane'
+        })
+        .end((err, res) => {
+          expect(res.status).to.eq(400);
+          expect(res.body).to.be.a('object');
+          expect(res.body.message).to.eq('Bad Request');
+          expect(res.body.errors).to.eq(
+            'ValidationError: name: Path `name` (WDI-30) is not unique.'
+          );
+          done();
+        });
+    });
+  });
   describe('GET /api/cohorts/:id', () => {
     let cohort;
 
