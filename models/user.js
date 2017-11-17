@@ -1,35 +1,33 @@
-const mongoose  = require('mongoose');
-const bcrypt    = require('bcrypt');
+const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
 const validator = require('validator');
+const beautifyUnique = require('mongoose-beautiful-unique-validation');
 
-const userSchema = new mongoose.Schema({
-  firstName: { type: String, required: true },
-  lastName: { type: String, required: true },
-  email: { type: String, unique: true, required: true },
-  image: String,
-  role: { type: String, required: true },
-  cohort: { type: String, required: true },
-  passwordHash: { type: String, required: true },
-  needHelp: Boolean
-}, {
-  timestamps: true
-});
+const userSchema = new mongoose.Schema(
+  {
+    firstName: { type: String, required: true },
+    lastName: { type: String, required: true },
+    email: { type: String, unique: true, required: true },
+    image: String,
+    role: { type: String, required: true },
+    cohort: { type: String, required: true },
+    passwordHash: { type: String, required: true },
+    needHelp: Boolean
+  },
+  {
+    timestamps: true
+  }
+);
 
-userSchema
-  .virtual('password')
-  .set(setPassword);
+userSchema.plugin(beautifyUnique);
 
-userSchema
-  .virtual('passwordConfirmation')
-  .set(setPasswordConfirmation);
+userSchema.virtual('password').set(setPassword);
 
-userSchema
-  .path('passwordHash')
-  .validate(validatePasswordHash);
+userSchema.virtual('passwordConfirmation').set(setPasswordConfirmation);
 
-userSchema
-  .path('email')
-  .validate(validateEmail);
+userSchema.path('passwordHash').validate(validatePasswordHash);
+
+userSchema.path('email').validate(validateEmail);
 
 userSchema.statics.fetchByIdWithRatings = fetchByIdWithRatings;
 userSchema.methods.validatePassword = validatePassword;
@@ -56,22 +54,17 @@ function fetchByIdWithRatings(req, res) {
     self
       .findById(req.params.id)
       .exec()
-      .then((user) => {
+      .then(user => {
         if (!user) return res.notFound();
         req.user = user.toObject();
 
         return self
           .model('Rating')
           .find({ createdBy: user.id })
-          // .findAndGroup(req, res)
-          // find ratings by req.user and group
           .exec();
       })
 
-      // .findAndGroup - create new static model?
-
       .then(ratings => {
-        // Can't add ratings without converting .toObject()
         req.user.ratings = ratings;
         return resolve(req.user);
       })
@@ -79,8 +72,8 @@ function fetchByIdWithRatings(req, res) {
   });
 }
 
-function setPassword(value){
-  this._password    = value;
+function setPassword(value) {
+  this._password = value;
   this.passwordHash = bcrypt.hashSync(value, bcrypt.genSaltSync(8));
 }
 
@@ -110,6 +103,6 @@ function validateEmail(email) {
   }
 }
 
-function validatePassword(password){
+function validatePassword(password) {
   return bcrypt.compareSync(password, this.passwordHash);
 }

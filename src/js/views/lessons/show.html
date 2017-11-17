@@ -1,20 +1,22 @@
-<h1>{{ vm.lesson.title }}</h1>
+<h1 class>{{ vm.lesson.title }}</h1>
 
-<div class="level">
+<div class="level ">
   <div class="content">
     <div class="level-item">
       <h1>{{ vm.lesson.competencies }}</h1>
     </div>
-    <div>
-      <button class="button is-primary" ng-href="{{ vm.lesson.lessonNotes }}" target="_blank" download>Download Lesson Notes</button>
+    <div ng-if="vm.lesson.lessonNotes">
+      <a ng-href="{{ vm.lesson.lessonNotes }}" target="_blank" download><button class="button is-primary" >Download Lesson Notes</button></a>
       <button class="button is-link" ng-if="main.user.role === 'instructor'" ui-sref="lessonsEdit({ id: vm.lesson._id })">Edit Lesson</button>
     </div>
   </div>
 </div>
 
-<canvas id="radar" class="chart chart-radar" chart-data="vm.data" chart-options="vm.chartOptions" chart-labels="vm.labels"></canvas>
+<div ng-if="vm.data" class="box chart-container">
+  <canvas id="radar" class="chart chart-radar chart-container " chart-data="vm.data" chart-options="vm.chartOptions" chart-labels="vm.labels"></canvas>
+</div>
 
-<div class="box">
+<div class="box ">
   <div class="level">
     <div class="level-item has-text-centered">
       <div>
@@ -43,7 +45,7 @@
   </div>
 </div>
 
-<div class="box">
+<div class="box ">
   <div class="content has-text-centered">
     <h1>Average Student Ratings</h1>
   </div>
@@ -76,7 +78,7 @@
     </div>
   </div>
 
-  <div class="box">
+  <div class="box ">
     <div class="content has-text-centered">
       <h1>Student Ratings</h1>
     </div>
@@ -89,7 +91,8 @@
                 <div class="level-item">
                   <div>
                     <figure class="image is-48x48">
-                      <img src="{{ user.createdBy.image }}" alt="Image">
+                      <img ng-if="user.createdBy.image !== 'image'" ng-class="user.createdBy.needHelp ? 'need-help' : ''" ng-src="{{ user.createdBy.image }}" alt="{{ user.createdBy.firstName }}">
+                      <img ng-if="user.createdBy.image == 'image'" ng-class="user.createdBy.needHelp ? 'need-help' : ''" ng-src="images/no-user.jpg" alt="{{ user.createdBy.name }}">
                     </figure>
                   </div>
 
@@ -146,6 +149,19 @@
       </div>
     </div>
 
-
-<h2>Lesson notes</h2>
-<div class="markdown-body" btf-markdown ng-include="vm.returnLessonNotes(vm.lesson.lessonNotes)"></div>
+    <div ng-if="vm.lesson.lessonNotes" class="box" id="scrollToHere">
+      <div class="content has-text-centered">
+        <h1>
+          Lesson Notes
+        </h1>
+        <span ng-click="vm.expandThis()">
+          <i input="checkbox" for="toggle" class="fa fa-2x grow" ng-class="{'fa-arrow-down': !vm.isExpanded, 'fa-arrow-up': vm.isExpanded}" aria-hidden="true"></i>
+        </span>
+      </div>
+      <div class="content" ng-hide="!vm.isExpanded">
+        <section>
+          <div class="markdown-body" btf-markdown ng-include="vm.returnLessonNotes(vm.lesson.lessonNotes)">
+          </div>
+        </section>
+      </div>
+    </div>

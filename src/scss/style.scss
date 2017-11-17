@@ -1,14 +1,87 @@
+
 @import "markdown";
 
-$lgreen: #199840;
-$dgreen: #0B726E;
-$turq:   #32b8b6;
+@font-face {
+  font-family: 'PFDinTextCompProBold';
+  src: url('/fonts/pfdintextcomppro-bold-webfont.eot');
+  src: url('/fonts/pfdintextcomppro-bold-webfont.eot?#iefix') format('embedded-opentype'),
+       url('/fonts/pfdintextcomppro-bold-webfont.woff') format('woff'),
+       url('/fonts/pfdintextcomppro-bold-webfont.ttf')  format('truetype'),
+       url('/fonts/pfdintextcomppro-bold-webfont.svg#svgFontName') format('svg');
+}
+
+@font-face {
+  font-family: 'PFDinTextCompProMedium';
+  src: url('/fonts/pfdintextcomppro-medium-webfont.eot');
+  src: url('/fonts/pfdintextcomppro-medium-webfont.eot?#iefix') format('embedded-opentype'),
+       url('/fonts/pfdintextcomppro-medium-webfont.woff') format('woff'),
+       url('/fonts/pfdintextcomppro-medium-webfont.ttf')  format('truetype'),
+       url('/fonts/pfdintextcomppro-medium-webfont.svg#svgFontName') format('svg');
+}
+
+@font-face {
+  font-family: 'PFDinTextCompProLight';
+  src: url('/fonts/pfdintextcomppro-light-webfont.eot');
+  src: url('/fonts/pfdintextcomppro-light-webfont.eot?#iefix') format('embedded-opentype'),
+       url('/fonts/pfdintextcomppro-light-webfont.woff') format('woff'),
+       url('/fonts/pfdintextcomppro-light-webfont.ttf')  format('truetype'),
+       url('/fonts/pfdintextcomppro-light-webfont.svg#svgFontName') format('svg');
+}
+
+@font-face {
+  font-family: 'News706BT-RomanC';
+  src: url('/fonts/News706BT-RomanC.eot');
+  src: url('/fonts/News706BT-RomanC.eot?#iefix') format('embedded-opentype'),
+       url('/fonts/News706BT-RomanC.woff') format('woff'),
+       url('/fonts/News706BT-RomanC.ttf')  format('truetype'),
+       url('/fonts/News706BT-RomanC.svg#svgFontName') format('svg');
+}
+
+@font-face {
+  font-family: 'News706BT-ItalicC';
+  src: url('/fonts/News706BT-ItalicC.eot');
+  src: url('/fonts/News706BT-ItalicC.eot?#iefix') format('embedded-opentype'),
+       url('/fonts/News706BT-ItalicC.woff') format('woff'),
+       url('/fonts/News706BT-ItalicC.ttf')  format('truetype'),
+       url('/fonts/News706BT-ItalicC.svg#svgFontName') format('svg');
+}
+
+@font-face {
+  font-family: 'News706BT-BoldC';
+  src: url('/fonts/News706BT-BoldC.eot');
+  src: url('/fonts/News706BT-BoldC.eot?#iefix') format('embedded-opentype'),
+       url('/fonts/News706BT-BoldC.woff') format('woff'),
+       url('/fonts/News706BT-BoldC.ttf')  format('truetype'),
+       url('/fonts/News706BT-BoldC.svg#svgFontName') format('svg');
+}
+
+@font-face {
+  font-family: 'Inconsolata';
+  src: url('/fonts/inconsolata.eot');
+  src: url('/fonts/inconsolata.eot?#iefix') format('embedded-opentype'),
+       url('/fonts/inconsolata.woff') format('woff'),
+       url('/fonts/inconsolata.ttf')  format('truetype'),
+       url('/fonts/inconsolata.svg#svgFontName') format('svg');
+}
+
+@font-face {
+  font-family: 'Iconic';
+  src: url('/fonts/iconic.eot');
+  src: url('/fonts/iconic.eot?#iefix') format('embedded-opentype'),
+       url('/fonts/iconic.woff') format('woff'),
+       url('/fonts/iconic.ttf')  format('truetype'),
+       url('/fonts/iconic.svg#svgFontName') format('svg');
+}
+
+$lgreen:   #199840;
+$dgreen:   #0B726E;
+$turq:     #32b8b6;
+$fontblue: #6d98a9;
 
 $primary: #FB4542;
 $poppy:   #F15050;
 $yellow:  #F9D302;
 $orange:  #F98B02;
-
 
 main {
   width: 90%;
@@ -19,11 +92,19 @@ h1 {
   font-size: 40px;
   font-weight: 800;
   text-transform: uppercase;
+  font-family: 'PFDinTextCompProBold';
 }
 
 img {
   height: 250px;
   border-radius: 6px;
+  &.need-help {
+    box-shadow: 0 0 8px #f6201d;
+  }
+}
+
+.button {
+  background-color: #2CC185 !important;
 }
 
 .knob {
@@ -52,7 +133,6 @@ img {
 .reply-input {
     display: none;
 }
-
 
 .float-right {
   float: right;
@@ -83,8 +163,13 @@ img {
 .user-index {
   cursor: pointer;
   &:hover {
-    background: #2CC185;
+    box-shadow: 0 0 8px #2CC185;
   }
+
+}
+
+.lesson-index:hover {
+  box-shadow: 0 0 8px #2CC185;
 }
 
 .block {
@@ -126,4 +211,77 @@ img {
 .box-hover:hover {
   shadow: black;
   background: #fbfbfb;
+}
+
+.user-need-help {
+  text-shadow: 0 0 4px #F98B02;
+}
+
+@media screen and (max-width: 768px) {
+  .content {
+    .profile-small {
+    font-size: .6em;
+    }
+  }
+  h1 {
+    line-height: 40px;
+    margin-bottom: 20px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .chart-container {
+    display: none;
+  }
+}
+
+.hero {
+  color: #023157;
+  font-family: 'PFDinTextCompProBold';
+}
+
+.text {
+  font-size: 35px;
+}
+
+
+label:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+#expand {
+  height: 0px;
+  overflow: hidden;
+  transition: height 0.5s;
+}
+
+#toggle:checked ~ #expand {
+  height: 100%;
+}
+
+.grow {
+  transition: all .2s ease-in-out;
+}
+
+.grow:hover {
+  transform: scale(1.3);
+}
+
+.hide {
+  display: none;
+}
+
+.user-img-lrg {
+  height: 250px;
+}
+
+.user-img-sml {
+  cursor: pointer;
+}
+
+.help-icon {
+  height: 30px;
+  width: 40px;
+  box-shadow: 0 0 8px #f6201d;
 }

@@ -1,34 +1,43 @@
-angular
-  .module('gaFeedback')
-  .controller('LessonsShowCtrl', LessonsShowCtrl);
+angular.module('gaFeedback').controller('LessonsShowCtrl', LessonsShowCtrl);
 
-LessonsShowCtrl.$inject = ['Lesson', '$stateParams', 'Rating', '$moment'];
+LessonsShowCtrl.$inject = [
+  'Lesson',
+  '$stateParams',
+  'Rating',
+  '$moment',
+  '$window',
+  '$timeout'
+];
 
-function LessonsShowCtrl(Lesson, $stateParams, Rating, $moment) {
+function LessonsShowCtrl(
+  Lesson,
+  $stateParams,
+  Rating,
+  $moment,
+  $window,
+  $timeout
+) {
   const vm = this;
-
-  Lesson
-    .get({ id: $stateParams.id })
-    .$promise
-    .then(lesson => {
-      vm.lesson = lesson;
-      vm.lesson.createdAt = $moment(vm.lesson.createdAt).format('Do MMMM YYYY');
-    });
 
   vm.avgPace;
   vm.avgConcepts;
   vm.avgSyntax;
   vm.avgConfidence;
+  vm.isExpanded = false;
+  vm.expandThis = expandThis;
 
-  Rating
-    .query()
-    .$promise
-    .then(data => {
+  Lesson.get({ id: $stateParams.id }).$promise.then(lesson => {
+    vm.lesson = lesson;
+    vm.lesson.createdAt = $moment(vm.lesson.createdAt).format('Do MMMM YYYY');
+    Rating.query().$promise.then(data => {
       vm.ratings = data;
-
       const lessonData = [];
+
       data.filter(rating => {
-        if ((rating.createdAt >= vm.lesson.startTime && rating.createdAt <= vm.lesson.endTime)) {
+        if (
+          rating.createdAt >= vm.lesson.startTime &&
+          rating.createdAt <= vm.lesson.endTime
+        ) {
           lessonData.push(rating);
         }
       });
@@ -37,19 +46,27 @@ function LessonsShowCtrl(Lesson, $stateParams, Rating, $moment) {
 
       const paceValues = [];
       lessonData.filter(rating => paceValues.push(rating.pace));
-      vm.avgPace = Math.ceil((paceValues.reduce((a,b) => a + b)) / paceValues.length);
+      vm.avgPace = Math.ceil(
+        paceValues.reduce((a, b) => a + b) / paceValues.length
+      );
 
       const conceptsValues = [];
       lessonData.filter(rating => conceptsValues.push(rating.concepts));
-      vm.avgConcepts = Math.ceil((conceptsValues.reduce((a,b) => a + b)) / conceptsValues.length);
+      vm.avgConcepts = Math.ceil(
+        conceptsValues.reduce((a, b) => a + b) / conceptsValues.length
+      );
 
       const syntaxValues = [];
       lessonData.filter(rating => syntaxValues.push(rating.syntax));
-      vm.avgSyntax = Math.ceil((syntaxValues.reduce((a,b) => a + b)) / syntaxValues.length);
+      vm.avgSyntax = Math.ceil(
+        syntaxValues.reduce((a, b) => a + b) / syntaxValues.length
+      );
 
       const confidenceValues = [];
       lessonData.filter(rating => confidenceValues.push(rating.confidence));
-      vm.avgConfidence = Math.ceil((confidenceValues.reduce((a,b) => a + b)) / confidenceValues.length);
+      vm.avgConfidence = Math.ceil(
+        confidenceValues.reduce((a, b) => a + b) / confidenceValues.length
+      );
 
       vm.labels = ['Confidence', 'Concepts', 'Syntax', 'Pace'];
 
@@ -83,8 +100,8 @@ function LessonsShowCtrl(Lesson, $stateParams, Rating, $moment) {
           }
         }
       };
-
     });
+  });
 
   vm.options = {
     animate: false,
@@ -98,8 +115,17 @@ function LessonsShowCtrl(Lesson, $stateParams, Rating, $moment) {
     readOnly: true
   };
 
-  vm.returnLessonNotes = (url) => {
+  vm.returnLessonNotes = url => {
     return url;
   };
 
+  function expandThis() {
+    vm.isExpanded ? (vm.isExpanded = false) : (vm.isExpanded = true);
+    $timeout(() => {
+      $window.scrollTo(
+        0,
+        document.getElementById('scrollToHere').offsetTop - 20
+      );
+    }, 100);
+  }
 }

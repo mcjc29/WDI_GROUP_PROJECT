@@ -4,7 +4,6 @@ require('../spec_helper');
 const User = require('../../models/user');
 
 describe('Authentications', function() {
-
   beforeEach(done => {
     User.collection.remove();
     done();
@@ -21,7 +20,6 @@ describe('Authentications', function() {
         .post('/api/register')
         .set('Accept', 'application/json')
         .send({
-
           firstName: 'person',
           lastName: 'person',
           image: 'person',
@@ -30,7 +28,6 @@ describe('Authentications', function() {
           email: 'person@person.com',
           password: 'password',
           passwordConfirmation: 'password'
-
         })
         .end((err, res) => {
           expect(res.status).to.eq(200);
@@ -40,6 +37,54 @@ describe('Authentications', function() {
           done();
         });
     });
+
+    describe('checking unique fields', function() {
+      beforeEach(done => {
+        api
+          .post('/api/register')
+          .set('Accept', 'application/json')
+          .send({
+            firstName: 'person',
+            lastName: 'person',
+            image: 'person',
+            role: 'student',
+            cohort: 'WDI-30',
+            email: 'person@person.com',
+            password: 'password',
+            passwordConfirmation: 'password'
+          })
+          .then(() => done())
+          .catch(() => done());
+      });
+
+      it('should not register a user with the same email, duplicate email', function(
+        done
+      ) {
+        api
+          .post('/api/register')
+          .set('Accept', 'application/json')
+          .send({
+            firstName: 'person2',
+            lastName: 'person2',
+            image: 'person2',
+            role: 'student',
+            cohort: 'WDI-30',
+            email: 'person@person.com',
+            password: 'password1',
+            passwordConfirmation: 'password1'
+          })
+          .end((err, res) => {
+            expect(res.status).to.eq(400);
+            expect(res.body).to.be.a('object');
+            expect(res.body.message).to.eq('Bad Request');
+            expect(res.body.errors).to.eq(
+              'ValidationError: email: Path `email` (person@person.com) is not unique.'
+            );
+            done();
+          });
+      });
+    });
+
     it('should not register a user without a first name', function(done) {
       api
         .post('/api/register')
@@ -55,7 +100,9 @@ describe('Authentications', function() {
         .end((err, res) => {
           expect(res.status).to.eq(400);
           expect(res.body).to.be.a('object');
-          expect(res.body.errors).to.eq('ValidationError: firstName: Path `firstName` is required.');
+          expect(res.body.errors).to.eq(
+            'ValidationError: firstName: Path `firstName` is required.'
+          );
           expect(res.body.message).to.eq('Bad Request');
           done();
         });
@@ -75,7 +122,9 @@ describe('Authentications', function() {
         .end((err, res) => {
           expect(res.status).to.eq(400);
           expect(res.body).to.be.a('object');
-          expect(res.body.errors).to.eq('ValidationError: email: Path `email` is required.');
+          expect(res.body.errors).to.eq(
+            'ValidationError: email: Path `email` is required.'
+          );
           expect(res.body.message).to.eq('Bad Request');
           done();
         });
@@ -95,7 +144,9 @@ describe('Authentications', function() {
         .end((err, res) => {
           expect(res.status).to.eq(400);
           expect(res.body).to.be.a('object');
-          expect(res.body.errors).to.eq('ValidationError: cohort: Path `cohort` is required.');
+          expect(res.body.errors).to.eq(
+            'ValidationError: cohort: Path `cohort` is required.'
+          );
           expect(res.body.message).to.eq('Bad Request');
           done();
         });
@@ -115,12 +166,16 @@ describe('Authentications', function() {
         .end((err, res) => {
           expect(res.status).to.eq(400);
           expect(res.body).to.be.a('object');
-          expect(res.body.errors).to.eq('ValidationError: passwordHash: Path `passwordHash` is required.');
+          expect(res.body.errors).to.eq(
+            'ValidationError: passwordHash: Path `passwordHash` is required.'
+          );
           expect(res.body.message).to.eq('Bad Request');
           done();
         });
     });
-    it('should not register a user with no password confirmation', function(done) {
+    it('should not register a user with no password confirmation', function(
+      done
+    ) {
       api
         .post('/api/register')
         .set('Accept', 'application/json')
@@ -135,7 +190,9 @@ describe('Authentications', function() {
         .end((err, res) => {
           expect(res.status).to.eq(400);
           expect(res.body).to.be.a('object');
-          expect(res.body.errors).to.eq('ValidationError: passwordConfirmation: Passwords do not match.');
+          expect(res.body.errors).to.eq(
+            'ValidationError: passwordConfirmation: Passwords do not match.'
+          );
           expect(res.body.message).to.eq('Bad Request');
           done();
         });
@@ -143,7 +200,6 @@ describe('Authentications', function() {
   });
 
   describe('POST /api/login', function() {
-
     beforeEach(done => {
       api
         .post('/api/register')
@@ -211,5 +267,4 @@ describe('Authentications', function() {
         });
     });
   });
-
 });

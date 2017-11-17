@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="gaFeedback">
+<html ng-app="gaFeedback" ng-strict-di>
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -24,12 +24,11 @@
             <span></span>
           </button>
         </div>
-        <div class="navbar-menu" ng-class="{ 'is-active': main.showBurgerMenu}" id="navMenu">
+        <div class="navbar-menu" ng-class="{ 'is-active': main.showBurgerMenu }" id="navMenu">
           <div class="navbar-start">
             <a class="navbar-item" ng-if="main.user" ui-sref="ratingsIndex">Rate it</a>
             <a class="navbar-item" ng-if="main.user" ui-sref="usersIndex">Your Class</a>
             <a class="navbar-item" ng-if="main.user" ui-sref="lessonsIndex">Lessons</a>
-            <a class="navbar-item" ng-if="main.user" ui-sref="cohortsIndex">Cohorts</a>
             <a class="navbar-item" ng-if="main.user" ui-sref="commentIndex">Chat</a>
           </div>
           <div class="navbar-end">
@@ -40,6 +39,9 @@
         </div>
       </nav>
     </header>
+    <div ng-show="main.message" class="my-message notification is-{{ main.messageType }}" role="alert">
+      {{ main.message }}
+    </div>
     <main ui-view></main>
   </body>
 </html>

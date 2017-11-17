@@ -1,6 +1,4 @@
-angular
-  .module('gaFeedback')
-  .controller('LessonsNewCtrl', LessonsNewCtrl);
+angular.module('gaFeedback').controller('LessonsNewCtrl', LessonsNewCtrl);
 
 LessonsNewCtrl.$inject = ['Lesson', '$state'];
 
@@ -11,22 +9,18 @@ function LessonsNewCtrl(Lesson, $state) {
 
   function addLesson() {
     vm.newLesson = {
-      title: vm.title,
-      startTime: vm.startTime,
-      endTime: vm.endTime,
-      creator: vm.creator,
-      city: vm.city,
-      competencies: vm.competencies,
-      taughtBy: vm.taughtBy,
-      base64: vm.base64
+      title: vm.lesson.title,
+      startTime: vm.lesson.startTime,
+      endTime: vm.lesson.endTime,
+      creator: vm.lesson.creator,
+      city: vm.lesson.city,
+      competencies: vm.lesson.competencies,
+      taughtBy: vm.lesson.taughtBy,
+      base64: vm.lesson.base64
     };
-    console.log(vm.startTime);
 
-    Lesson
-      .save(vm.newLesson)
-      .$promise
-      .then(() => {
-        $state.go('lessonsIndex');
-      });
+    Lesson.save(vm.newLesson).$promise.then(() => {
+      $state.go('lessonsIndex');
+    });
   }
 }

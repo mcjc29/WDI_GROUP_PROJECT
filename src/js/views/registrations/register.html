@@ -3,68 +3,69 @@
 <div class="field">
   <label class="label">First name</label>
   <div class="control">
-    <input class="input" type="text" placeholder="First name..." ng-model="vm.user.firstName">
+    <input class="input" type="text" placeholder="First name..." ng-model="vm.user.firstName" required>
   </div>
 </div>
 
 <div class="field">
   <label class="label">Last name</label>
   <div class="control">
-    <input class="input" type="text" placeholder="Last name..." ng-model="vm.user.lastName">
+    <input class="input" type="text" placeholder="Last name..." ng-model="vm.user.lastName" required>
   </div>
 </div>
 
 <div class="field">
   <label class="label">Cohort</label>
   <div class="control">
-    <input class="input" type="text" placeholder="Cohort" ng-model="vm.user.cohort">
+    <input class="input" type="text" placeholder="Cohort" ng-model="vm.user.cohort" required>
   </div>
 </div>
 
 <div class="field">
   <label class="label">Role</label>
   <div class="control">
-    <input class="input" type="text" placeholder="Role" ng-model="vm.user.role">
+    <div class="select">
+      <select name="role" ng-model="vm.user.role" required>
+        <option>student</option>
+        <option>instructor</option>
+      </select>
+    </div>
   </div>
 </div>
 
 <div class="field">
   <label class="label">Email</label>
-  <div class="control has-icons-left has-icons-right">
-    <input ng-style="{'background-color' :vm.user.email === $invalid ? 'orange' : 'white'}" class="input is-link" type="email" placeholder="Email address..." ng-model="vm.user.email">
-    <!-- <span ng-style="{'background-color' :vm.user.email === $invalid ? 'red' : 'white'}">A valid email is required.</span> -->
+  <div class="control has-icons-left">
+    <input class="input" type="email" placeholder="Email address..." ng-model="vm.user.email" required>
     <span class="icon is-small is-left">
       <i class="fa fa-envelope"></i>
     </span>
-    <span class="icon is-small is-right">
-      <i class="fa fa-warning"></i>
-    </span>
+  </div>
+</div>
+
+<div class="field">
+  <label class="label">Image Link <small>(optional)</small></label>
+  <div class="control">
+    <input class="input" type="text" placeholder="Image..." name="image" ng-model="vm.user.image">
   </div>
 </div>
 
 <div class="field">
   <label class="label">Password</label>
-  <div class="control has-icons-left has-icons-right">
-    <input ng-style="{'background-color' :vm.user.password === $invalid  ? 'ornage' : 'white'}" class="input is-success" type="text" placeholder="Password" ng-model="vm.user.password">
+  <div class="control has-icons-left">
+    <input class="input" type="text" placeholder="Password" ng-model="vm.user.password" required>
     <span class="icon is-small is-left">
       <i class="fa fa-user"></i>
     </span>
-    <span class="icon is-small is-right">
-      <i class="fa fa-check"></i>
-    </span>
   </div>
-  <p ng-class="help">This password is available</p>
 </div>
 
 <div class="field">
-  <label class="label">Password confirmation</label>
-  <div class="control has-icons-left has-icons-right">
-    <input class="input is-success" type="text" placeholder="Confirm password..." ng-model="vm.user.passwordConfirmation" >
+  <label class="label">Password Confirmation</label>
+  <div class="control has-icons-left">
+    <input class="input" type="text" placeholder="Confirm password..." ng-model="vm.user.passwordConfirmation" required>
     <span class="icon is-small is-left">
       <i class="fa fa-user"></i>
-    </span>
-    <span class="icon is-small is-right">
-      <i class="fa fa-check"></i>
     </span>
   </div>
 </div>
@@ -73,4 +74,5 @@
   <div class="control">
     <button type="submit" class="button is-link">Register</button>
   </div>
+</div>
 </form>

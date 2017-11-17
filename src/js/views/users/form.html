@@ -1,47 +1,47 @@
 <h1>Update</h1>
 
-<form ng-submit="vm.submitForm()">
+<form ng-submit="vm.submit(vm.user)">
   <div class="field">
     <label class="label">First Name</label>
     <div class="control">
-      <input class="input" type="text" placeholder="First Name..."  ng-model="vm.user.firstName">
+      <input class="input" type="text" placeholder="First Name..." name="firstName" ng-model="vm.user.firstName" required>
     </div>
   </div>
   <div class="field">
     <label class="label">Last Name</label>
     <div class="control">
-      <input class="input" type="text" placeholder="Last Name..."  ng-model="vm.user.lastName">
+      <input class="input" type="text" placeholder="Last Name..." name="lastName" ng-model="vm.user.lastName" required>
     </div>
   </div>
   <div class="field">
     <label class="label">Role</label>
     <div class="control">
-      <input class="input" type="text" placeholder="Role..."  ng-model="vm.user.role">
+      <div class="select" disabled>
+        <select name="role" ng-model="vm.user.role" required>
+          <option>{{ vm.user.role }}</option>
+        </select>
+      </div>
     </div>
   </div>
   <div class="field">
     <label class="label">Email</label>
     <div class="control has-icons-left has-icons-right">
-      <input class="input is-danger" type="email" placeholder="email.." value="hello@" ng-model="vm.user.email">
+      <input class="input" type="email" placeholder="email.." name="email" ng-model="vm.user.email" required>
       <span class="icon is-small is-left">
         <i class="fa fa-envelope"></i>
       </span>
-      <span class="icon is-small is-right">
-        <i class="fa fa-warning"></i>
-      </span>
-    </div>
-    <p class="help is-danger">This email is invalid</p>
-  </div>
-  <div class="field">
-    <label class="label">Image</label>
-    <div class="control">
-      <input class="input" type="text" placeholder="Image..."  ng-model="vm.user.image">
     </div>
   </div>
   <div class="field">
-    <label class="label">Password</label>
+    <label class="label">Image Link <small>(optional)</small></label>
     <div class="control">
-      <input class="input" type="text" placeholder="Password...">
+      <input class="input" type="text" placeholder="Image..." name="image" ng-model="vm.user.image">
+    </div>
+  </div>
+  <div class="field">
+    <label for="needHelp" value="vm.user.needHelp"></label>
+    <div class="control">
+      <input type="checkbox" ng-model="vm.user.needHelp" ng-checked="vm.user.needHelp"><p style="display: inline-block">&nbsp;I would like some help!</p>
     </div>
   </div>
   <div class="control">

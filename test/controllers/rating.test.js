@@ -6,7 +6,6 @@ const Rating = require('../../models/rating');
 const User = require('../../models/user');
 
 describe('Ratings', function() {
-
   let token;
 
   beforeEach(done => {
@@ -24,7 +23,6 @@ describe('Ratings', function() {
   });
 
   describe('GET /api/ratings', () => {
-
     beforeEach(done => {
       api
         .post('/api/register')
@@ -46,26 +44,24 @@ describe('Ratings', function() {
     });
 
     beforeEach(done => {
-      User
-        .create({
-          firstName: 'person2',
-          lastName: 'person2',
-          role: 'student',
-          cohort: 'WDI-30',
-          email: 'person2@person2.com',
-          password: 'password',
-          passwordConfirmation: 'password'
-        })
-        .then((user) => {
-          return Rating
-            .create({
-              createdBy: user,
-              pace: 10,
-              concepts: 10,
-              syntax: 10,
-              confidence: 10,
-              message: 'lovin it'
-            });
+      User.create({
+        firstName: 'person2',
+        lastName: 'person2',
+        role: 'student',
+        cohort: 'WDI-30',
+        email: 'person2@person2.com',
+        password: 'password',
+        passwordConfirmation: 'password'
+      })
+        .then(user => {
+          return Rating.create({
+            createdBy: user,
+            pace: 10,
+            concepts: 10,
+            syntax: 10,
+            confidence: 10,
+            message: 'lovin it'
+          });
         })
         .then(() => done())
         .catch(done);
@@ -85,8 +81,9 @@ describe('Ratings', function() {
         .set('Accept', 'application/json')
         .set('Authorization', `Bearer ${token}`)
         .end((err, res) => {
-          expect(res.header['content-type'])
-            .to.be.eq('application/json; charset=utf-8');
+          expect(res.header['content-type']).to.be.eq(
+            'application/json; charset=utf-8'
+          );
           done();
         });
     });
@@ -127,7 +124,9 @@ describe('Ratings', function() {
         });
     });
 
-    it('should have properties: _id, createdBy, pace, concepts, syntax, confidence, message, createdAt, updatedAt', function(done) {
+    it('should have properties: _id, createdBy, pace, concepts, syntax, confidence, message, createdAt, updatedAt', function(
+      done
+    ) {
       api
         .get('/api/ratings')
         .set('Accept', 'application/json')
@@ -162,36 +161,54 @@ describe('Ratings', function() {
 
   describe('returns multiple ratings', () => {
     beforeEach(done => {
-      User
-        .create({
-          firstName: 'person2',
-          lastName: 'person2',
+      api
+        .post('/api/register')
+        .set('Accept', 'application/json')
+        .send({
+          firstName: 'person',
+          lastName: 'person',
+          image: 'person',
           role: 'student',
           cohort: 'WDI-30',
-          email: 'person2@person2.com',
+          email: 'person@person.com',
           password: 'password',
           passwordConfirmation: 'password'
         })
-        .then((user) => {
-          return Rating
-            .create([
-              {
-                createdBy: user,
-                pace: 10,
-                concepts: 10,
-                syntax: 10,
-                confidence: 10,
-                message: 'lovin it'
-              },
-              {
-                createdBy: 'person2',
-                pace: 11,
-                concepts: 10,
-                syntax: 11,
-                confidence: 11,
-                message: 'yay'
-              }
-            ]);
+        .end((err, res) => {
+          token = res.body.token;
+          done();
+        });
+    });
+
+    beforeEach(done => {
+      User.create({
+        firstName: 'person2',
+        lastName: 'person2',
+        role: 'student',
+        cohort: 'WDI-30',
+        email: 'person2@person2.com',
+        password: 'password',
+        passwordConfirmation: 'password'
+      })
+        .then(user => {
+          return Rating.create([
+            {
+              createdBy: user,
+              pace: 10,
+              concepts: 10,
+              syntax: 10,
+              confidence: 10,
+              message: 'lovin it'
+            },
+            {
+              createdBy: user,
+              pace: 11,
+              concepts: 10,
+              syntax: 11,
+              confidence: 11,
+              message: 'yay'
+            }
+          ]);
         })
         .then(() => done())
         .catch(done);
@@ -210,7 +227,6 @@ describe('Ratings', function() {
   });
 
   describe('POST /api/ratings', () => {
-
     it('should return a 201 response', done => {
       api
         .post('/api/ratings')
@@ -274,11 +290,6 @@ describe('Ratings', function() {
 
           done();
         });
-
     });
-
   });
-
-
-
 });
