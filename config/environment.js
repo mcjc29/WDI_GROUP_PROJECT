@@ -6,5 +6,5 @@ module.exports = {
     development: 'mongodb://localhost/wdip3-development',
     test: 'mongodb://localhost/wdip3-test'
   },
-  env: process.env.NODE_ENV
+  env: process.env.NODE_ENV || 'development'
 };
