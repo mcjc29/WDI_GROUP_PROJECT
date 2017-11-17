@@ -155,17 +155,11 @@ img {
   margin-left: -6px;
 }
 
-.index-help {
-  // margin-top: -108px;
-  // margin-left: -6px;
-}
-
 .user-index {
   cursor: pointer;
   &:hover {
     box-shadow: 0 0 8px #2CC185;
   }
-
 }
 
 .lesson-index:hover {
@@ -220,12 +214,18 @@ img {
 @media screen and (max-width: 768px) {
   .content {
     .profile-small {
-    font-size: .6em;
+      font-size: .6em;
     }
   }
   h1 {
     line-height: 40px;
     margin-bottom: 20px;
+  }
+  .home-text {
+    font-size: 20px;
+  }
+  .home-box {
+    margin: 0;
   }
 }
 
