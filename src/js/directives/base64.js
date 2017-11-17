@@ -1,7 +1,6 @@
-angular
-  .module('gaFeedback')
-  .directive('base64', base64);
+angular.module('gaFeedback').directive('base64', base64);
 
+base64.$inject = [];
 function base64() {
   const fileReader = new FileReader();
 
@@ -10,17 +9,15 @@ function base64() {
     require: 'ngModel',
 
     link($scope, element, attrs, ngModel) {
-
       fileReader.onload = function fileLoaded() {
         console.log(fileReader.result);
         ngModel.$setViewValue(fileReader.result);
       };
 
-      element.on('change', (e) => {
+      element.on('change', e => {
         const file = (e.target.files || e.dataTransfer.files)[0];
         fileReader.readAsDataURL(file);
       });
     }
-
   };
 }
