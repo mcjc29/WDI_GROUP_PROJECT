@@ -1,5 +1,6 @@
 angular.module('gaFeedback').directive('base64', base64);
 
+base64.$inject = [];
 function base64() {
   const fileReader = new FileReader();
 
