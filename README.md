@@ -16,9 +16,7 @@ Our feedback platform is a mobile-responsive MEAN stack single-page application,
 
 <img src="https://imgur.com/cmTv6x9.png" width="700">
 
-######  The usefulness of the feedback platform depends on its usage by students so, with this in mind, we set out to make the process of submitting a rating as easy as possible.
-
-###### Once logged in, the user is immediately presented with the rating submission page, featuring easy to use dials, a message input and a checkbox to signal a desire for help.
+######  The usefulness of the feedback platform depends on its usage by students so, with this in mind, we set out to make the process of submitting a rating as easy as possible. Once logged in, the user is immediately presented with the rating submission page, featuring easy to use dials, a message input and a checkbox to signal a desire for help.
 
 <img src="https://imgur.com/xCgUs0f.png" width="700">
 
@@ -26,7 +24,7 @@ Our feedback platform is a mobile-responsive MEAN stack single-page application,
 
 <img src="https://imgur.com/q4TQFp0.png" width="700">
 
-###### Next, each data point is presented as a value on a static dial. After this, the ratings of each student are displayed, with a colour system implemented so that instructors can easily identify students that struggled.
+###### Next, each data point is presented as a value on a static dial. After this, the ratings of each student are displayed, with a colour system implemented so that instructors can easily identify students that struggled. Students which check the 'I need help' box on the rating submission page will have their profile image highlighted in red wherever it appears on the site. This can be turned off by the user on their edit profile page.
 
 <img src="https://imgur.com/q4G7FCw.png" width="700">
 
