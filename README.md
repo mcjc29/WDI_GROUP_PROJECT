@@ -5,7 +5,7 @@ A project WDI
 
 # GA WDI30 Group Project - GA Feedback
 
-GA's Web Development Immersive course is fast-paced, and after finding that some students felt that lessons were too quick, or that concepts hadn't sunk in, we decided to create a feedback platform. the app allows students to provide feedback on lessons by rating it on various aspects and flagging up concerns. The platform also allows for the downloading of lesson notes and provides a class chat where students can ask for help with homework and projects or just have a conversation.
+GA's Web Development Immersive course is fast-paced, and after finding that some students felt that lessons were too quick, or that concepts hadn't sunk in, we decided to create a feedback platform. The app allows students to provide feedback on lessons by rating it on various aspects and flagging up concerns. The platform also allows for the downloading of lesson notes and provides a class chat where students can ask for help with homework and projects or just have a conversation.
 
 Our feedback platform is a mobile-responsive MEAN stack single-page application, styled using the Bulma CSS framework, Amazon S3 file hosting and featuring packages such as angular-chart.js, ui-knobs, moment.js, jsonwebtoken and satellizer. It is tested using Mocha, Chai and Supertest.
 
