@@ -7,9 +7,9 @@ A project WDI
 
 GA's Web Development Immersive course is fast-paced, and after finding that some students felt that lessons were too quick, or that concepts hadn't sunk in, we decided to create a feedback platform. The app allows students to provide feedback on lessons by rating it on various aspects and flagging up concerns. The platform also allows for the downloading of lesson notes and provides a class chat where students can ask for help with homework and projects or just have a conversation.
 
-Our feedback platform is a mobile-responsive MEAN stack single-page application, styled using the Bulma CSS framework, Amazon S3 file hosting and featuring packages such as angular-chart.js, ui-knobs, moment.js, jsonwebtoken and satellizer. It is tested using Mocha, Chai and Supertest.
+Our feedback platform is a mobile-responsive MEAN stack single-page application, styled using the Bulma CSS framework, Amazon S3 file hosting and featuring packages such as angular-chart.js, ui-knob, moment.js, jsonwebtoken and satellizer. It is tested using Mocha, Chai and supertest.
 
-##### [Visit website](https://ga-feedback-george.herokuapp.com/).
+##### [Visit website](https://ga-feedback-george.herokuapp.com/)
 
 ---
 
@@ -27,13 +27,13 @@ Our feedback platform is a mobile-responsive MEAN stack single-page application,
 
 ###### After submitting a rating, the user is redirected to the lessons index page, which lists all lessons by date. Each lesson page presents the user with a visual representation of the students feelings, using the data from all ratings submitted between the lesson start and end time. First, a radar chart maps out the data - the larger the shape, the better the students feel about the lesson.
 
-<img src="https://imgur.com/q4G7FCw.png" width="700">
+<img src="https://imgur.com/q4TQFp0.png" width="700">
 
 ###### Next, each data point is presented as a value on a static dial. After this, the ratings of each student are displayed, with a colour system implemented so that instructors can easily identify students that struggled.
 
-<img src="https://imgur.com/q4TQFp0.png" width="700">
+<img src="https://imgur.com/q4G7FCw.png" width="700">
 
-###### Finally, the lesson notes are displayed in a dropdown box. they are also available to download from the top of the page.
+###### Finally, the lesson notes (hosted using AWS S3) are displayed in a dropdown box. They are also available to download from the top of the page. We faced a few difficulties implementing this part of the website but felt it was important, as it allowed students to easily access notes and read on their mobiles.
 
 <img src="https://imgur.com/Ygqdobw.png" width="700">
 
@@ -45,9 +45,13 @@ Our feedback platform is a mobile-responsive MEAN stack single-page application,
 
 <img src="https://imgur.com/ys59c8A.png" width="700">
 
+###### Our application is thoroughly tested using Mocha and Chai.
+
+<img src="https://imgur.com/WZrijOu.png" width="700">
+
 ---
 
-We are generally pleased with the outcome of the project, having got to grips new technologies and produced a fully authenticated, functional and genuinely useful application. It also provided a great learning experience of coding in a team and managing version control.
+We are very pleased with the outcome of the project, having got to grips new technologies and produced a fully authenticated, functional and genuinely useful application. It also provided a great learning experience of coding in a team and managing version control.
 
 We have a number of ideas to further develop the application, including:
 - Expand the scope of the app to include other GA campuses and courses, the aggregate global data could help inform course and lesson planning in the future.
