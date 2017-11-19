@@ -1,11 +1,8 @@
-# WDI_GROUP_PROJECT
-A project WDI
-
 ![image](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png)
 
-# GA WDI30 Group Project - GA Feedback
+# WDI-30 Group Project - GA Feedback
 
-GA's Web Development Immersive course is fast-paced, and after finding that some students felt that lessons were too quick, or that concepts hadn't sunk in, we decided to create a feedback platform. The app allows students to provide feedback on lessons by rating it on various aspects and flagging up concerns. The platform also allows for the downloading of lesson notes and provides a class chat where students can ask for help with homework and projects or just have a conversation.
+GA's Web Development Immersive course is fast-paced, and after finding that some students felt that lessons were too quick, or that concepts hadn't sunk in, we decided to create a feedback platform. The app allows students to provide feedback on lessons by rating it on various aspects and flagging up concerns. The platform also allows lesson notes to be read and downloaded, as well as providing a class chat where students can ask for help with homework and projects or just have a conversation.
 
 Our feedback platform is a mobile-responsive MEAN stack single-page application, styled using the Bulma CSS framework, Amazon S3 file hosting and featuring packages such as angular-chart.js, ui-knob, moment.js, jsonwebtoken and satellizer. It is tested using Mocha, Chai and supertest.
 
@@ -13,13 +10,13 @@ Our feedback platform is a mobile-responsive MEAN stack single-page application,
 
 ---
 
-###### The planning phase of the project began with the creation of a Trello board, specifying our MVP requirements and desired features. Tasks were assigned to members of the group throughout the project using this system.
+###### The planning phase of the project began with the creation of a Trello board, specifying our MVP requirements and desired features. Tasks were assigned to members of the group throughout the project using this system. The next step was wireframing our website.
 
 <img src="https://imgur.com/Nwreqpf.png" width="700">
 
-###### The next step was wireframing our website. The usefulness of the feedback platform depends on its usage by students. With this in mind, we aimed to make the process of submitting a rating as easy as possible.
-
 <img src="https://imgur.com/cmTv6x9.png" width="700">
+
+######  The usefulness of the feedback platform depends on its usage by students so, with this in mind, we set out to make the process of submitting a rating as easy as possible.
 
 ###### Once logged in, the user is immediately presented with the rating submission page, featuring easy to use dials, a message input and a checkbox to signal a desire for help.
 
@@ -33,7 +30,7 @@ Our feedback platform is a mobile-responsive MEAN stack single-page application,
 
 <img src="https://imgur.com/q4G7FCw.png" width="700">
 
-###### Finally, the lesson notes (hosted using AWS S3) are displayed in a dropdown box. They are also available to download from the top of the page. We faced a few difficulties implementing this part of the website but felt it was important, as it allowed students to easily access notes and read on their mobiles.
+###### Finally, the lesson notes (hosted using AWS S3) are displayed in an expanding section. They are also available to download from the top of the page. We faced a few difficulties implementing this part of the website but felt it was important, as it allowed students to easily access notes and read on their mobiles.
 
 <img src="https://imgur.com/Ygqdobw.png" width="700">
 
@@ -51,10 +48,10 @@ Our feedback platform is a mobile-responsive MEAN stack single-page application,
 
 ---
 
-We are very pleased with the outcome of the project, having got to grips new technologies and produced a fully authenticated, functional and genuinely useful application. It also provided a great learning experience of coding in a team and managing version control.
+We are very pleased with the outcome of the project, having got to grips with new technologies and produced a fully authenticated, functional and genuinely useful application. It also provided a great learning experience of coding in a team and managing version control.
 
 We have a number of ideas to further develop the application, including:
-- Expand the scope of the app to include other GA campuses and courses, the aggregate global data could help inform course and lesson planning in the future.
+- Expand the scope of the app to include other GA campuses and courses. The aggregate global data could help inform course and lesson planning in the future.
 - Enable OAuth using General Assembly's main website login details.
 - Prompt students to use the system by enabling push notification, automatic emails or text messages.
 - Improve the look and feel of the website with further styling and animation.
