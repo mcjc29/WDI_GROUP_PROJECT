@@ -5,16 +5,13 @@
       <div class="level block">
         <div class="level-item has-text-centered">
           <div>
-            <img ng-if="user.image !== 'image'" class="user-img-lrg" ng-class="user.needHelp ? 'need-help' : ''" ng-src="{{ user.image }}" alt="{{ user.firstName }}">
-            <img ng-if="user.image == 'image'" class="user-img-lrg" ng-src="images/no-user.jpg" alt="{{ user.name }}">
+            <img ng-if="user.image" class="user-img-lrg" ng-class="user.needHelp ? 'need-help' : ''" ng-src="{{ user.image }}" alt="{{ user.firstName }}">
+            <img ng-if="!user.image" class="user-img-lrg" src="images/no-user.jpg" alt="{{ user.firstName }}">
           </div>
         </div>
         <div class="has-text-centered">
           <div>
             <h4 class="heading">{{ user.firstName}} {{ user.lastName }}</h4>
-            <!-- <img ng-if="user.needHelp" class="help-icon" src="https://cdn.dribbble.com/users/767710/screenshots/3701728/peanut_dribbble_wave_animation_800x600.gif"> -->
-
-            <!-- <i class="fa fa-hand-paper-o" aria-hidden="true" ng-if="user.needHelp" class="help-icon"></i> -->
           </div>
         </div>
       </div>
@@ -30,7 +27,7 @@
         <div class="level-item has-text-centered">
           <div>
             <img ng-if="user.image" class="user-img-lrg" ng-class="user.needHelp ? 'need-help' : ''" ng-src="{{ user.image }}" alt="{{ user.firstName }}">
-            <img ng-if="!user.image" class="user-img-lrg" ng-class="user.needHelp ? 'need-help' : ''" src="images/no-user.jpg" alt="{{ user.name }}">
+            <img ng-if="!user.image" class="user-img-lrg" ng-class="user.needHelp ? 'need-help' : ''" src="images/no-user.jpg" alt="{{ user.firstName }}">
           </div>
         </div>
         <div class="has-text-centered">
