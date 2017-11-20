@@ -25,8 +25,8 @@
   <article class="media">
     <div class="media-left">
       <figure class="image is-64x64">
-        <img ng-if="comment.createdBy.image !== 'image'" ng-class="comment.createdBy.needHelp ? 'need-help' : ''" class="user-img-sml" src="{{ comment.createdBy.image }}" alt="{{ comment.createdBy.firstName }}" ui-sref="usersShow({ id: comment.createdBy.id })">
-        <img ng-if="comment.createdBy.image == 'image'" ng-class="comment.createdBy.needHelp ? 'need-help' : ''" class="user-img-sml" ng-src="images/no-user.jpg" alt="{{ user.name }}" ui-sref="usersShow({ id: comment.createdBy.id })">
+        <img ng-if="comment.createdBy.image" ng-class="comment.createdBy.needHelp ? 'need-help' : ''" class="user-img-sml" src="{{ comment.createdBy.image }}" alt="{{ comment.createdBy.firstName }}" ui-sref="usersShow({ id: comment.createdBy.id })">
+        <img ng-if="!comment.createdBy.image" ng-class="comment.createdBy.needHelp ? 'need-help' : ''" class="user-img-sml" src="images/no-user.jpg" alt="{{ user.name }}" ui-sref="usersShow({ id: comment.createdBy.id })">
       </figure>
     </div>
     <div class="media-content">
