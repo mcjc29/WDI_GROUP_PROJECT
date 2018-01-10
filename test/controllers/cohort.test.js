@@ -214,6 +214,7 @@ describe('Cohorts', function() {
         });
     });
   });
+
   describe('checking unique fields', function() {
     beforeEach(done => {
       api

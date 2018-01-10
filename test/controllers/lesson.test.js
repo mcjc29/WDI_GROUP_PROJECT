@@ -6,9 +6,7 @@ const Lesson = require('../../models/lesson');
 const User = require('../../models/user');
 
 describe('Lessons', function() {
-
   let token;
-
 
   beforeEach(done => {
     Lesson.collection.remove();
@@ -23,9 +21,7 @@ describe('Lessons', function() {
     done();
   });
 
-
   describe('GET /api/lessons', () => {
-
     beforeEach(done => {
       api
         .post('/api/register')
@@ -56,7 +52,6 @@ describe('Lessons', function() {
         city: 'London',
         competencies: 'Programming, Server Applications',
         taughtBy: 'Alex Chin'
-
       })
         .then(() => done())
         .catch(done);
@@ -76,8 +71,9 @@ describe('Lessons', function() {
         .set('Accept', 'application/json')
         .set('Authorization', `Bearer ${token}`)
         .end((err, res) => {
-          expect(res.header['content-type'])
-            .to.be.eq('application/json; charset=utf-8');
+          expect(res.header['content-type']).to.be.eq(
+            'application/json; charset=utf-8'
+          );
           done();
         });
     });
@@ -119,7 +115,9 @@ describe('Lessons', function() {
         });
     });
 
-    it('should have properties: _id, title, startTime, endTime, creator, city, competencies, taughtBy', function(done) {
+    it('should have properties: _id, title, startTime, endTime, creator, city, competencies, taughtBy', function(
+      done
+    ) {
       api
         .get('/api/lessons')
         .set('Accept', 'application/json')
@@ -156,7 +154,6 @@ describe('Lessons', function() {
   });
 
   describe('returns multiple lessons', () => {
-
     beforeEach(done => {
       Lesson.create([
         {
@@ -195,7 +192,6 @@ describe('Lessons', function() {
   });
 
   describe('POST /api/lessons', () => {
-
     it('should return a 201 response', done => {
       api
         .post('/api/lessons')
@@ -261,26 +257,22 @@ describe('Lessons', function() {
 
           done();
         });
-
     });
-
   });
 
   describe('GET /api/lessons/:id', () => {
-
     let lesson;
 
     beforeEach(done => {
-      Lesson
-        .create({
-          title: 'Basic Terminal, Navigating the Filesystem',
-          startTime: new Date(1776, 4, 5, 10, 30),
-          endTime: new Date(1776, 4, 5, 11, 30),
-          creator: 'Alex Chin',
-          city: 'London',
-          competencies: 'Programming, Server Applications',
-          taughtBy: 'Alex Chin'
-        })
+      Lesson.create({
+        title: 'Basic Terminal, Navigating the Filesystem',
+        startTime: new Date(1776, 4, 5, 10, 30),
+        endTime: new Date(1776, 4, 5, 11, 30),
+        creator: 'Alex Chin',
+        city: 'London',
+        competencies: 'Programming, Server Applications',
+        taughtBy: 'Alex Chin'
+      })
         .then(lessonData => {
           lesson = lessonData;
           done();
@@ -302,50 +294,50 @@ describe('Lessons', function() {
         .set('Accept', 'application/json')
         .set('Authorization', `Bearer ${token}`)
         .end((err, res) => {
-          expect(res.header['content-type'])
-            .to.be.eq('application/json; charset=utf-8');
+          expect(res.header['content-type']).to.be.eq(
+            'application/json; charset=utf-8'
+          );
           done();
         });
     });
+
     it('should return object with properties:_id, title, startTime, endTime, creator, city, competencies, taughtBy, createdAt, updatedAt', done => {
-      api.get(`/api/lessons/${lesson.id}`)
+      api
+        .get(`/api/lessons/${lesson.id}`)
         .set('Accept', 'application/json')
         .set('Authorization', `Bearer ${token}`)
         .end((err, res) => {
-          expect(res.body)
-            .and.have.all.keys([
-              '__v',
-              '_id',
-              'title',
-              'startTime',
-              'endTime',
-              'creator',
-              'city',
-              'competencies',
-              'taughtBy',
-              'createdAt',
-              'updatedAt'
-            ]);
+          expect(res.body).and.have.all.keys([
+            '__v',
+            '_id',
+            'title',
+            'startTime',
+            'endTime',
+            'creator',
+            'city',
+            'competencies',
+            'taughtBy',
+            'createdAt',
+            'updatedAt'
+          ]);
           done();
         });
     });
   });
 
   describe('PUT /api/lessons/:id', () => {
-
     let lesson;
 
     beforeEach(done => {
-      Lesson
-        .create({
-          title: 'Basic Terminal, Navigating the Filesystem',
-          startTime: new Date(1776, 4, 5, 10, 30),
-          endTime: new Date(1776, 4, 5, 11, 30),
-          creator: 'Alex Chin',
-          city: 'London',
-          competencies: 'Programming, Server Applications',
-          taughtBy: 'Alex Chin'
-        })
+      Lesson.create({
+        title: 'Basic Terminal, Navigating the Filesystem',
+        startTime: new Date(1776, 4, 5, 10, 30),
+        endTime: new Date(1776, 4, 5, 11, 30),
+        creator: 'Alex Chin',
+        city: 'London',
+        competencies: 'Programming, Server Applications',
+        taughtBy: 'Alex Chin'
+      })
         .then(lessonData => {
           lesson = lessonData;
           done();
@@ -375,30 +367,31 @@ describe('Lessons', function() {
         .set('Accept', 'application/json')
         .set('Authorization', `Bearer ${token}`)
         .end((err, res) => {
-          expect(res.header['content-type'])
-            .to.be.eq('application/json; charset=utf-8');
+          expect(res.header['content-type']).to.be.eq(
+            'application/json; charset=utf-8'
+          );
           done();
         });
     });
     it('should return object with properties: _id, title, startTime, endTime, creator, city, competencies, taughtBy, createdAt, updatedAt', done => {
-      api.get(`/api/lessons/${lesson.id}`)
+      api
+        .get(`/api/lessons/${lesson.id}`)
         .set('Accept', 'application/json')
         .set('Authorization', `Bearer ${token}`)
         .end((err, res) => {
-          expect(res.body)
-            .and.have.all.keys([
-              '__v',
-              '_id',
-              'title',
-              'startTime',
-              'endTime',
-              'creator',
-              'city',
-              'competencies',
-              'taughtBy',
-              'createdAt',
-              'updatedAt'
-            ]);
+          expect(res.body).and.have.all.keys([
+            '__v',
+            '_id',
+            'title',
+            'startTime',
+            'endTime',
+            'creator',
+            'city',
+            'competencies',
+            'taughtBy',
+            'createdAt',
+            'updatedAt'
+          ]);
           done();
         });
     });
@@ -417,29 +410,25 @@ describe('Lessons', function() {
           taughtBy: 'Rane'
         })
         .end((err, res) => {
-          expect(res.body.taughtBy)
-            .to.be.eq('Rane');
+          expect(res.body.taughtBy).to.be.eq('Rane');
           done();
         });
     });
-
   });
 
   describe('DELETE /api/lessons/:id', () => {
-
     let lesson;
 
     beforeEach(done => {
-      Lesson
-        .create({
-          title: 'Basic Terminal, Navigating the Filesystem',
-          startTime: new Date(1776, 4, 5, 10, 30),
-          endTime: new Date(1776, 4, 5, 11, 30),
-          creator: 'Alex Chin',
-          city: 'London',
-          competencies: 'Programming, Server Applications',
-          taughtBy: 'Alex Chin'
-        })
+      Lesson.create({
+        title: 'Basic Terminal, Navigating the Filesystem',
+        startTime: new Date(1776, 4, 5, 10, 30),
+        endTime: new Date(1776, 4, 5, 11, 30),
+        creator: 'Alex Chin',
+        city: 'London',
+        competencies: 'Programming, Server Applications',
+        taughtBy: 'Alex Chin'
+      })
         .then(lessonData => {
           lesson = lessonData;
           done();
