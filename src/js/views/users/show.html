@@ -3,15 +3,15 @@
 <div class="box">
   <article class="media chat-article">
     <div class="media-left">
-      <img ng-if="vm.user.image !== 'image'" ng-class="vm.user.needHelp ? 'need-help' : ''" class="profile-show-img" ng-src="{{ vm.user.image }}" alt="{{ vm.user.firstName }}" width="167">
-      <img ng-if="vm.user.image == 'image'" ng-class="vm.user.needHelp ? 'need-help' : ''" class="profile-show-img" ng-src="images/no-user.jpg" alt="{{ vm.user.name }}" width="167">
+      <img ng-if="vm.user.image" ng-class="vm.user.needHelp ? 'need-help' : ''" class="profile-show-img" ng-src="{{ vm.user.image }}" alt="{{ vm.user.firstName }}" width="167">
+      <img ng-if="!vm.user.image" ng-class="vm.user.needHelp ? 'need-help' : ''" class="profile-show-img" src="images/no-user.jpg" alt="{{ vm.user.name }}" width="167">
     </div>
     <div class="media-content">
       <div class="content">
         <h3>{{ vm.user.firstName }} {{ vm.user.lastName }}</h3>
         <h5 class="profile-small">{{ vm.user.email }}</h5>
         <h5 class="profile-small">{{ vm.user.cohort | uppercase }} {{ vm.user.role | uppercase }}</h5>
-        <h5 ng-if="vm.user.needHelp" class="user-need-help profile-small">{{ vm.user.firstName }} would like some one-on-one help!</h5>
+        <h5 ng-if="vm.user.needHelp" class="user-need-help profile-small">{{ vm.user.firstName }} would like some help!</h5>
         <button ng-if="vm.user._id === main.user._id" class="button is-primary" ui-sref="usersEdit({ id: vm.user._id })">Edit Info</button>
       </div>
     </div>

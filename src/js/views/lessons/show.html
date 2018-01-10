@@ -91,8 +91,8 @@
                 <div class="level-item">
                   <div>
                     <figure class="image is-48x48">
-                      <img ng-if="user.createdBy.image !== 'image'" ng-class="user.createdBy.needHelp ? 'need-help' : ''" ng-src="{{ user.createdBy.image }}" alt="{{ user.createdBy.firstName }}">
-                      <img ng-if="user.createdBy.image == 'image'" ng-class="user.createdBy.needHelp ? 'need-help' : ''" ng-src="images/no-user.jpg" alt="{{ user.createdBy.name }}">
+                      <img ng-if="user.createdBy.image" ng-class="user.createdBy.needHelp ? 'need-help' : ''" ng-src="{{ user.createdBy.image }}" alt="{{ user.createdBy.firstName }}">
+                      <img ng-if="!user.createdBy.image" ng-class="user.createdBy.needHelp ? 'need-help' : ''" src="images/no-user.jpg" alt="{{ user.createdBy.name }}">
                     </figure>
                   </div>
 
